@@ -8,7 +8,7 @@ import Register from "../pages/authentication/register/Register";
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <h1 className="text-3xl font-bold underline">
+        element: <h1>
             Welcome to Juan DepEd
         </h1>,
     },
