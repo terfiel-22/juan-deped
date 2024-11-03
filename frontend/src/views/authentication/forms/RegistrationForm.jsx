@@ -8,18 +8,14 @@ import { IconEye, IconEyeOff } from '@tabler/icons'
 
 const RegistrationForm = () => {
 
-    //   password
-    //
+    //   password 
     const [showPassword, setShowPassword] = React.useState(false);
-
     const handleClickShowPassword = () => setShowPassword((show) => !show);
-
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
 
-    //   confirm password
-    //
+    //   confirm password 
     const [showPassword2, setShowPassword2] = React.useState(false);
 
     const handleClickShowPassword2 = () => setShowPassword2((show) => !show);
