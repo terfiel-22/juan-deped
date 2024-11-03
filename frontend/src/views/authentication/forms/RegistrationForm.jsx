@@ -1,123 +1,166 @@
-import { Button, Grid, IconButton, InputAdornment } from '@mui/material'
+import { Button, Grid, Step, Stepper, StepLabel, Typography, FormControlLabel, Alert } from '@mui/material'
 import React from 'react'
 import CustomFormLabel from '../../../components/forms/theme-elements/CustomFormLabel'
 import CustomTextField from '../../../components/forms/theme-elements/CustomTextField'
-import { Stack } from '@mui/system'
-import CustomOutlinedInput from '../../../components/forms/theme-elements/CustomOutlinedInput'
-import { IconEye, IconEyeOff } from '@tabler/icons'
+import { Box, Stack } from '@mui/system'
+import CustomCheckbox from '../../../components/forms/theme-elements/CustomCheckbox'
+
+const steps = ['Account', 'Profile', 'Finish'];
 
 const RegistrationForm = () => {
+    const [activeStep, setActiveStep] = React.useState(0);
+    const [skipped, setSkipped] = React.useState(new Set());
 
-    //   password 
-    const [showPassword, setShowPassword] = React.useState(false);
-    const handleClickShowPassword = () => setShowPassword((show) => !show);
-    const handleMouseDownPassword = (event) => {
-        event.preventDefault();
+    const isStepOptional = (step) => step === 1;
+
+    const isStepSkipped = (step) => skipped.has(step);
+
+    const handleNext = () => {
+        let newSkipped = skipped;
+        if (isStepSkipped(activeStep)) {
+            newSkipped = new Set(newSkipped.values());
+            newSkipped.delete(activeStep);
+        }
+
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        setSkipped(newSkipped);
     };
 
-    //   confirm password 
-    const [showPassword2, setShowPassword2] = React.useState(false);
+    const handleBack = () => {
+        setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    };
 
-    const handleClickShowPassword2 = () => setShowPassword2((show) => !show);
+    const handleSkip = () => {
+        if (!isStepOptional(activeStep)) {
+            // You probably want to guard against something like this,
+            // it should never occur unless someone's actively trying to break something.
+            throw new Error("You can't skip a step that isn't optional.");
+        }
 
-    const handleMouseDownPassword2 = (event) => {
-        event.preventDefault();
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        setSkipped((prevSkipped) => {
+            const newSkipped = new Set(prevSkipped.values());
+            newSkipped.add(activeStep);
+            return newSkipped;
+        });
+    };
+
+    // eslint-disable-next-line consistent-return
+    const handleSteps = (step) => {
+        switch (step) {
+            case 0:
+                return (
+                    <Box>
+                        <CustomFormLabel htmlFor="Name">Name</CustomFormLabel>
+                        <CustomTextField id="Name" variant="outlined" fullWidth />
+                        <CustomFormLabel htmlFor="Email">Email</CustomFormLabel>
+                        <CustomTextField id="Email" type="email" variant="outlined" fullWidth />
+                        <CustomFormLabel htmlFor="Password">Password</CustomFormLabel>
+                        <CustomTextField id="Password" type="password" variant="outlined" fullWidth />
+                    </Box>
+                );
+            case 1:
+                return (
+                    <Box>
+                        <CustomFormLabel htmlFor="Fname">First Name</CustomFormLabel>
+                        <CustomTextField id="Fname" variant="outlined" fullWidth />
+                        <CustomFormLabel htmlFor="Lname">Last Name</CustomFormLabel>
+                        <CustomTextField id="Lname" type="text" variant="outlined" fullWidth />
+                        <CustomFormLabel htmlFor="Address">Address</CustomFormLabel>
+                        <CustomTextField id="Address" multiline rows={4} variant="outlined" fullWidth />
+                    </Box>
+                );
+            case 2:
+                return (
+                    <Box pt={3}>
+                        <Typography variant="h5">Terms and condition</Typography>
+                        <Typography variant="body2" sx={{ mt: 1 }}>
+                            Sard about this site or you have been to it, but you cannot figure out what it is or
+                            what it can do. MTA web directory isSard about this site or you have been to it, but
+                            you cannot figure out what it is or what it can do. MTA web directory is
+                        </Typography>
+                        <FormControlLabel
+                            control={<CustomCheckbox defaultChecked />}
+                            label="Agree with terms?"
+                        />
+                    </Box>
+                );
+            default:
+                break;
+        }
+    };
+
+    const handleReset = () => {
+        setActiveStep(0);
     };
 
     return (
         <Grid container spacing={3}>
-            <Grid item xs={12} lg={6}>
-                <Grid container spacing={3}>
-                    <Grid item xs={12} sm={3} display="flex" alignItems="center">
-                        <CustomFormLabel htmlFor="ft-uname" sx={{ mt: 0, mb: { xs: '-10px', sm: 0 } }}>
-                            Username
-                        </CustomFormLabel>
-                    </Grid>
-                    <Grid item xs={12} sm={9}>
-                        <CustomTextField id="ft-uname" placeholder="John.Deo" fullWidth />
-                    </Grid>
-                    {/* 4 */}
-                    <Grid item xs={12} sm={3} display="flex" alignItems="center">
-                        <CustomFormLabel htmlFor="ft-pwd" sx={{ mt: 0, mb: { xs: '-10px', sm: 0 } }}>
-                            Password
-                        </CustomFormLabel>
-                    </Grid>
-                    <Grid item xs={12} sm={9}>
-                        <CustomOutlinedInput
-                            type={showPassword ? 'text' : 'password'}
-                            endAdornment={
-                                <InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="toggle password visibility"
-                                        onClick={handleClickShowPassword}
-                                        onMouseDown={handleMouseDownPassword}
-                                        edge="end"
-                                    >
-                                        {showPassword ? <IconEyeOff size="20" /> : <IconEye size="20" />}
-                                    </IconButton>
-                                </InputAdornment>
+            <Grid item xs={12} lg={12}>
+                <Box width="100%">
+                    <Stepper activeStep={activeStep} alternativeLabel>
+                        {steps.map((label, index) => {
+                            const stepProps = {};
+                            const labelProps = {};
+                            if (isStepOptional(index)) {
+                                labelProps.optional = <Typography variant="caption">Optional</Typography>;
                             }
-                            id="fs-pwd"
-                            placeholder="john.deo"
-                            fullWidth
-                        />
-                    </Grid>
-                </Grid>
-            </Grid>
-            {/* 2 column */}
-            <Grid item xs={12} lg={6}>
-                <Grid container spacing={3}>
-                    <Grid item xs={12} sm={3} display="flex" alignItems="center">
-                        <CustomFormLabel htmlFor="ft-email" sx={{ mt: 0, mb: { xs: '-10px', sm: 0 } }}>
-                            Email
-                        </CustomFormLabel>
-                    </Grid>
-                    <Grid item xs={12} sm={9}>
-                        <CustomOutlinedInput
-                            endAdornment={<InputAdornment position="end">@example.com</InputAdornment>}
-                            id="fs-email"
-                            placeholder="john.deo"
-                            fullWidth
-                        />
-                    </Grid>
-                    {/* 4 */}
-                    <Grid item xs={12} sm={3} display="flex" alignItems="center">
-                        <CustomFormLabel htmlFor="ft-lang" sx={{ mt: 0, mb: { xs: '-10px', sm: 0 } }}>
-                            Confirm
-                        </CustomFormLabel>
-                    </Grid>
-                    <Grid item xs={12} sm={9}>
-                        <CustomOutlinedInput
-                            type={showPassword2 ? 'text' : 'password'}
-                            endAdornment={
-                                <InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="toggle password visibility"
-                                        onClick={handleClickShowPassword2}
-                                        onMouseDown={handleMouseDownPassword2}
-                                        edge="end"
-                                    >
-                                        {showPassword2 ? <IconEyeOff size="20" /> : <IconEye size="20" />}
-                                    </IconButton>
-                                </InputAdornment>
+                            if (isStepSkipped(index)) {
+                                stepProps.completed = false;
                             }
-                            id="fs-pwd"
-                            placeholder="john.deo"
-                            fullWidth
-                        />
-                    </Grid>
-                </Grid>
-            </Grid>
-            <Grid item xs={12} sm={3}></Grid>
-            <Grid item xs={12} sm={9}>
-                <Stack direction="row" spacing={2}>
-                    <Button variant="contained" color="primary">
-                        Submit
-                    </Button>
-                    <Button variant="text" color="error">
-                        Cancel
-                    </Button>
-                </Stack>
+                            return (
+                                <Step key={label} {...stepProps}>
+                                    <StepLabel {...labelProps}>{label}</StepLabel>
+                                </Step>
+                            );
+                        })}
+                    </Stepper>
+                    {activeStep === steps.length ? (
+                        <>
+                            <Stack spacing={2} mt={3}>
+                                <Alert severity="success" mt={2}>
+                                    All steps completed - you&apos;re finished
+                                </Alert>
+
+                                <Box textAlign="right">
+                                    <Button onClick={handleReset} variant="contained" color="error">
+                                        Reset
+                                    </Button>
+                                </Box>
+                            </Stack>
+                        </>
+                    ) : (
+                        <>
+                            <Box>{handleSteps(activeStep)}</Box>
+
+                            <Box display="flex" flexDirection="row" mt={3}>
+                                <Button
+                                    color="inherit"
+                                    variant="contained"
+                                    disabled={activeStep === 0}
+                                    onClick={handleBack}
+                                    sx={{ mr: 1 }}
+                                >
+                                    Back
+                                </Button>
+                                <Box flex="1 1 auto" />
+                                {isStepOptional(activeStep) && (
+                                    <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
+                                        Skip
+                                    </Button>
+                                )}
+
+                                <Button
+                                    onClick={handleNext}
+                                    variant="contained"
+                                    color={activeStep === steps.length - 1 ? 'success' : 'secondary'}
+                                >
+                                    {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                                </Button>
+                            </Box>
+                        </>
+                    )}
+                </Box>
             </Grid>
         </Grid>
     )
