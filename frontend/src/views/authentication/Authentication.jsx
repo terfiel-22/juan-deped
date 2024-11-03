@@ -1,9 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
-import { Grid, Box, Stack, Typography, Card } from '@mui/material';
+import { Grid, Box, Card } from '@mui/material';
 import PageContainer from 'src/components/container/PageContainer';
 import Logo from 'src/layouts/full/shared/logo/Logo';
-import AuthLogin from './authForms/AuthLogin';
+import AuthLayout from './layouts/AuthLayout';
 
 const Authentication = () => {
     return (
@@ -23,7 +22,7 @@ const Authentication = () => {
                     },
                 }}
             >
-                <Grid container spacing={0} justifyContent="end" sx={{ height: '100vh' }}>
+                <Grid container spacing={0} justifyContent="center" sx={{ height: '100vh' }}>
                     <Grid
                         item
                         xs={12}
@@ -33,32 +32,12 @@ const Authentication = () => {
                         display="flex"
                         justifyContent="center"
                         alignItems="center"
-                        p={2}
                     >
-                        <Card elevation={9} sx={{ p: 4, zIndex: 1, width: '100%', maxWidth: '450px' }}>
+                        <Card elevation={9} sx={{ p: 4, zIndex: 1, width: '100%' }}>
                             <Box display="flex" alignItems="center" justifyContent="center">
                                 <Logo />
                             </Box>
-                            <AuthLogin
-                                subtitle={
-                                    <Stack direction="row" spacing={1} justifyContent="center" mt={3}>
-                                        <Typography color="textSecondary" variant="h6" fontWeight="500">
-                                            New to JuanDepEd?
-                                        </Typography>
-                                        <Typography
-                                            component={Link}
-                                            to="/auth/register"
-                                            fontWeight="500"
-                                            sx={{
-                                                textDecoration: 'none',
-                                                color: 'primary.main',
-                                            }}
-                                        >
-                                            Create an account
-                                        </Typography>
-                                    </Stack>
-                                }
-                            />
+                            <AuthLayout />
                         </Card>
                     </Grid>
                 </Grid>
