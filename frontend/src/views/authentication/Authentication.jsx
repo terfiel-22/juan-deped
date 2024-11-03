@@ -33,7 +33,7 @@ const Authentication = () => {
                         justifyContent="center"
                         alignItems="center"
                     >
-                        <Card elevation={9} sx={{ p: 4, zIndex: 1, width: '100%' }}>
+                        <Card elevation={9} sx={{ p: 4, zIndex: 1, width: '100%', height: { xs: '100vh', sm: 'auto' } }}>
                             <Box display="flex" alignItems="center" justifyContent="center">
                                 <Logo />
                             </Box>
