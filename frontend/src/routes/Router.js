@@ -22,8 +22,12 @@ const Tickets = Loadable(lazy(() => import('../views/apps/tickets/Tickets')));
 const Contacts = Loadable(lazy(() => import('../views/apps/contacts/Contacts')));
 const Ecommerce = Loadable(lazy(() => import('../views/apps/eCommerce/Ecommerce')));
 const EcommerceDetail = Loadable(lazy(() => import('../views/apps/eCommerce/EcommerceDetail')));
-const EcommerceAddProduct = Loadable(lazy(() => import('../views/apps/eCommerce/EcommerceAddProduct')));
-const EcommerceEditProduct = Loadable(lazy(() => import('../views/apps/eCommerce/EcommerceEditProduct')));
+const EcommerceAddProduct = Loadable(
+  lazy(() => import('../views/apps/eCommerce/EcommerceAddProduct')),
+);
+const EcommerceEditProduct = Loadable(
+  lazy(() => import('../views/apps/eCommerce/EcommerceEditProduct')),
+);
 const EcomProductList = Loadable(lazy(() => import('../views/apps/eCommerce/EcomProductList')));
 const EcomProductCheckout = Loadable(
   lazy(() => import('../views/apps/eCommerce/EcommerceCheckout')),
@@ -147,6 +151,9 @@ const PagePricing = Loadable(lazy(() => import('../views/pages/frontend-pages/Pr
 const BlogPage = Loadable(lazy(() => import('../views/pages/frontend-pages/Blog')));
 const BlogPost = Loadable(lazy(() => import('../views/pages/frontend-pages/BlogPost')));
 
+/** Juan DepEd */
+const Authentication = Loadable(lazy(() => import('../views/authentication/Authentication')));
+
 const Router = [
   {
     path: '/',
@@ -264,6 +271,9 @@ const Router = [
       { path: '/frontend-pages/blog', element: <BlogPage /> },
       { path: '/frontend-pages/blog/detail/:id', element: <BlogPost /> },
       { path: '*', element: <Navigate to="/auth/404" /> },
+
+      /** Juan DepEd */
+      { path: '/auth', element: <Authentication /> },
     ],
   },
 ];
