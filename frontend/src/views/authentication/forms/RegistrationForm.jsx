@@ -1,4 +1,5 @@
-import { Button, Grid, Step, Stepper, StepLabel, Typography, FormControlLabel, Alert } from '@mui/material'
+import { Button, Grid, Step, Stepper, StepLabel, Typography, FormControlLabel, Alert, MobileStepper } from '@mui/material'
+import { KeyboardArrowLeft, KeyboardArrowRight } from '@mui/icons-material';
 import React from 'react'
 import CustomFormLabel from '../../../components/forms/theme-elements/CustomFormLabel'
 import CustomTextField from '../../../components/forms/theme-elements/CustomTextField'
@@ -98,7 +99,7 @@ const RegistrationForm = () => {
         <Grid container spacing={3}>
             <Grid item xs={12} lg={12}>
                 <Box width="100%">
-                    <Stepper activeStep={activeStep} alternativeLabel>
+                    <Stepper activeStep={activeStep} alternativeLabel sx={{ display: { xs: 'none', sm: 'flex' } }}>
                         {steps.map((label, index) => {
                             const stepProps = {};
                             const labelProps = {};
@@ -160,6 +161,14 @@ const RegistrationForm = () => {
                             </Box>
                         </>
                     )}
+
+                    <MobileStepper
+                        variant="progress"
+                        steps={steps.length}
+                        position="bottom"
+                        activeStep={activeStep}
+                        sx={{ maxWidth: 400, flexGrow: 1, display: { xs: activeStep > steps.length - 1 ? "none" : "block", sm: "none" } }}
+                    />
                 </Box>
             </Grid>
         </Grid>
