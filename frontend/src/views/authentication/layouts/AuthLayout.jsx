@@ -18,31 +18,26 @@ const AuthLayout = () => {
     };
 
     return (
-        <div>
-            {/* ------------------------------------------------------------------------------------------------ */}
-            {/* Basic Layout */}
-            {/* ------------------------------------------------------------------------------------------------ */}
-            <BlankCard>
-                <TabContext value={value}>
-                    <Box sx={{ borderBottom: 1, borderColor: (theme) => theme.palette.divider }}>
-                        <TabList
-                            onChange={handleChange}
-                            aria-label="lab API tabs example"
-                            centered
-                        >
-                            <Tab label="Login" value="1" />
-                            <Tab label="Register" value="2" />
-                        </TabList>
-                    </Box>
-                    <TabPanel value="1">
-                        <LoginForm />
-                    </TabPanel>
-                    <TabPanel value="2">
-                        <RegistrationForm />
-                    </TabPanel>
-                </TabContext>
-            </BlankCard>
-        </div>
+        <BlankCard>
+            <TabContext value={value}>
+                <Box sx={{ borderBottom: 1, borderColor: (theme) => theme.palette.divider }}>
+                    <TabList
+                        onChange={handleChange}
+                        aria-label="lab API tabs example"
+                        centered
+                    >
+                        <Tab label="Login" value="1" />
+                        <Tab label="Register" value="2" />
+                    </TabList>
+                </Box>
+                <TabPanel value="1">
+                    <LoginForm />
+                </TabPanel>
+                <TabPanel value="2">
+                    <RegistrationForm />
+                </TabPanel>
+            </TabContext>
+        </BlankCard>
     );
 };
 

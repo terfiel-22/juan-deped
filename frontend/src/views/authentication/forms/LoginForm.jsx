@@ -51,7 +51,7 @@ const LoginForm = () => {
                         fullWidth
                     />
                 </Box>
-                <Stack justifyContent="space-between" direction="row" alignItems="center" my={2}>
+                <Grid container justifyContent="space-between" direction="row" alignItems="center" my={2}>
                     <FormGroup>
                         <FormControlLabel
                             control={<CustomCheckbox defaultChecked />}
@@ -69,7 +69,7 @@ const LoginForm = () => {
                     >
                         Forgot Password ?
                     </Typography>
-                </Stack>
+                </Grid>
             </Stack>
             <Box>
                 <Button
