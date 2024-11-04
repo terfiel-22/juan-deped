@@ -40,7 +40,7 @@ const PersonalInformation = () => {
                     />
                 </Grid>
                 <Grid item xs={12} sm={12} lg={3}>
-                    <CustomFormLabel htmlFor="xname">Extension Name</CustomFormLabel>
+                    <CustomFormLabel htmlFor="xname">Ext. Name</CustomFormLabel>
                     <CustomTextField
                         id="xname"
                         placeholder="Enter text"
