@@ -1,1 +1,8 @@
-[] Authentication - Form Wizard
+BACKEND
+[] Database Connection
+[] Authentication
+[] Middleware
+[] Error Handler
+
+FRONTEND
+[] Authentication
