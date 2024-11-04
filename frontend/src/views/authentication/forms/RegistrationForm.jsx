@@ -10,12 +10,13 @@ import AdditionalInformation from './registration/AdditionalInformation'
 import ProgressMobileStepper from '../../../components/shared/ProgressMobileStepper'
 
 const steps = ['Personal', 'Student', 'Identification', 'Address', 'Guardian', 'Additional'];
+const optionals = new Set([]) // index of optional steps
 
 const RegistrationForm = () => {
     const [activeStep, setActiveStep] = useState(0);
     const [skipped, setSkipped] = useState(new Set());
 
-    const isStepOptional = (step) => step === 1;
+    const isStepOptional = (step) => optionals.has(step)
 
     const isStepSkipped = (step) => skipped.has(step);
 
