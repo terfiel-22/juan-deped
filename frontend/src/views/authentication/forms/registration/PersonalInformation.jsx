@@ -8,7 +8,7 @@ const PersonalInformation = () => {
     return (
         <Box>
             <Grid container spacing={1}>
-                <Grid item xs={12} sm={12} lg={4}>
+                <Grid item xs={12} sm={12} lg={3}>
                     <CustomFormLabel htmlFor="fname">First Name</CustomFormLabel>
                     <CustomTextField
                         id="fname"
@@ -18,7 +18,7 @@ const PersonalInformation = () => {
                         size="small"
                     />
                 </Grid>
-                <Grid item xs={12} sm={12} lg={4}>
+                <Grid item xs={12} sm={12} lg={3}>
                     <CustomFormLabel htmlFor="mname">Middle Name</CustomFormLabel>
                     <CustomTextField
                         id="mname"
@@ -28,7 +28,7 @@ const PersonalInformation = () => {
                         size="small"
                     />
                 </Grid>
-                <Grid item xs={12} sm={12} lg={4}>
+                <Grid item xs={12} sm={12} lg={3}>
 
                     <CustomFormLabel htmlFor="lname">Last Name</CustomFormLabel>
                     <CustomTextField
@@ -39,7 +39,7 @@ const PersonalInformation = () => {
                         size="small"
                     />
                 </Grid>
-                <Grid item xs={12} sm={12} lg={4}>
+                <Grid item xs={12} sm={12} lg={3}>
                     <CustomFormLabel htmlFor="xname">Extension Name</CustomFormLabel>
                     <CustomTextField
                         id="xname"
@@ -70,16 +70,6 @@ const PersonalInformation = () => {
                     />
                 </Grid>
                 <Grid item xs={12} sm={12} lg={4}>
-                    <CustomFormLabel htmlFor="email">Email</CustomFormLabel>
-                    <CustomTextField
-                        id="email"
-                        placeholder="Enter text"
-                        variant="outlined"
-                        fullWidth
-                        size="small"
-                    />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={4}>
                     <CustomFormLabel htmlFor="mobile">Mobile No.</CustomFormLabel>
                     <CustomTextField
                         id="mobile"
@@ -90,9 +80,29 @@ const PersonalInformation = () => {
                     />
                 </Grid>
                 <Grid item xs={12} sm={12} lg={4}>
+                    <CustomFormLabel htmlFor="email">Email</CustomFormLabel>
+                    <CustomTextField
+                        id="email"
+                        placeholder="Enter text"
+                        variant="outlined"
+                        fullWidth
+                        size="small"
+                    />
+                </Grid>
+                <Grid item xs={12} sm={12} lg={4}>
                     <CustomFormLabel htmlFor="password">Password</CustomFormLabel>
                     <CustomTextField
                         id="password"
+                        placeholder="Enter text"
+                        variant="outlined"
+                        fullWidth
+                        size="small"
+                    />
+                </Grid>
+                <Grid item xs={12} sm={12} lg={4}>
+                    <CustomFormLabel htmlFor="cpassword">Confirm Password</CustomFormLabel>
+                    <CustomTextField
+                        id="cpassword"
                         placeholder="Enter text"
                         variant="outlined"
                         fullWidth
