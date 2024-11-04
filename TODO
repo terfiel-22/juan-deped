@@ -2,7 +2,8 @@ BACKEND
 [/] Database Connection
 [/] Track (Model)
 [/] Mock Track Data
-[] Track (Controller)
+[/] Track Endpoints
+[/] Initialize Track Data
 [] Authentication
 [] Middleware
 [] Error Handler
