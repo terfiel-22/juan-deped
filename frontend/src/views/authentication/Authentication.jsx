@@ -27,7 +27,7 @@ const Authentication = () => {
                         item
                         xs={12}
                         sm={12}
-                        lg={5}
+                        lg={6}
                         xl={4}
                         display="flex"
                         justifyContent="center"
