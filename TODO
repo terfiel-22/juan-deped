@@ -6,8 +6,8 @@ BACKEND
 [/] Initialize Track Data
 [/] Subject Model
 [/] Mock Subject Data
-[] Subject Endpoints
-[] Initialize Subject Data
+[/] Subject Endpoints
+[/] Initialize Subject Data
 [] Authentication
 [] Middleware
 [] Error Handler
