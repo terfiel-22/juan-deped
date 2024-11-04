@@ -1,16 +1,19 @@
-import { Button, Grid, Step, Stepper, StepLabel, Typography, FormControlLabel, Alert, MobileStepper } from '@mui/material'
-import { KeyboardArrowLeft, KeyboardArrowRight } from '@mui/icons-material';
-import React from 'react'
-import CustomFormLabel from '../../../components/forms/theme-elements/CustomFormLabel'
-import CustomTextField from '../../../components/forms/theme-elements/CustomTextField'
+import { Button, Grid, Step, Stepper, StepLabel, Typography, Alert } from '@mui/material'
+import { useState } from 'react'
 import { Box, Stack } from '@mui/system'
-import CustomCheckbox from '../../../components/forms/theme-elements/CustomCheckbox'
+import PersonalInformation from './registration/PersonalInformation'
+import StudentInformation from './registration/StudentInformation'
+import IdentificationInformation from './registration/IdentificationInformation'
+import AddressInformation from './registration/AddressInformation'
+import GuardianInformation from './registration/GuardianInformation'
+import AdditionalInformation from './registration/AdditionalInformation'
+import ProgressMobileStepper from '../../../components/shared/ProgressMobileStepper'
 
-const steps = ['Account', 'Profile', 'Finish'];
+const steps = ['Personal', 'Student', 'Identification', 'Address', 'Guardian', 'Additional'];
 
 const RegistrationForm = () => {
-    const [activeStep, setActiveStep] = React.useState(0);
-    const [skipped, setSkipped] = React.useState(new Set());
+    const [activeStep, setActiveStep] = useState(0);
+    const [skipped, setSkipped] = useState(new Set());
 
     const isStepOptional = (step) => step === 1;
 
@@ -51,40 +54,27 @@ const RegistrationForm = () => {
         switch (step) {
             case 0:
                 return (
-                    <Box>
-                        <CustomFormLabel htmlFor="Name">Name</CustomFormLabel>
-                        <CustomTextField id="Name" variant="outlined" fullWidth />
-                        <CustomFormLabel htmlFor="Email">Email</CustomFormLabel>
-                        <CustomTextField id="Email" type="email" variant="outlined" fullWidth />
-                        <CustomFormLabel htmlFor="Password">Password</CustomFormLabel>
-                        <CustomTextField id="Password" type="password" variant="outlined" fullWidth />
-                    </Box>
+                    <PersonalInformation />
                 );
             case 1:
                 return (
-                    <Box>
-                        <CustomFormLabel htmlFor="Fname">First Name</CustomFormLabel>
-                        <CustomTextField id="Fname" variant="outlined" fullWidth />
-                        <CustomFormLabel htmlFor="Lname">Last Name</CustomFormLabel>
-                        <CustomTextField id="Lname" type="text" variant="outlined" fullWidth />
-                        <CustomFormLabel htmlFor="Address">Address</CustomFormLabel>
-                        <CustomTextField id="Address" multiline rows={4} variant="outlined" fullWidth />
-                    </Box>
+                    <StudentInformation />
                 );
             case 2:
                 return (
-                    <Box pt={3}>
-                        <Typography variant="h5">Terms and condition</Typography>
-                        <Typography variant="body2" sx={{ mt: 1 }}>
-                            Sard about this site or you have been to it, but you cannot figure out what it is or
-                            what it can do. MTA web directory isSard about this site or you have been to it, but
-                            you cannot figure out what it is or what it can do. MTA web directory is
-                        </Typography>
-                        <FormControlLabel
-                            control={<CustomCheckbox defaultChecked />}
-                            label="Agree with terms?"
-                        />
-                    </Box>
+                    <IdentificationInformation />
+                );
+            case 3:
+                return (
+                    <AddressInformation />
+                );
+            case 4:
+                return (
+                    <GuardianInformation />
+                );
+            case 5:
+                return (
+                    <AdditionalInformation />
                 );
             default:
                 break;
@@ -162,13 +152,7 @@ const RegistrationForm = () => {
                         </>
                     )}
 
-                    <MobileStepper
-                        variant="progress"
-                        steps={steps.length}
-                        position="bottom"
-                        activeStep={activeStep}
-                        sx={{ maxWidth: 400, flexGrow: 1, display: { xs: activeStep > steps.length - 1 ? "none" : "block", sm: "none" } }}
-                    />
+                    <ProgressMobileStepper steps={steps} activeStep={activeStep} />
                 </Box>
             </Grid>
         </Grid>
