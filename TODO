@@ -21,8 +21,9 @@ BACKEND
 [/] Alumni Tracking Model
 [/] Graduation Tracking Model
 [] Student Endpoints
+[] Student Controller
 [] Alumni Endpoints
-[] 
+[] Alumni Controller
 [] Authentication
 [] Middleware
 [] Error Handler
