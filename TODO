@@ -13,6 +13,7 @@ BACKEND
 [/] Mock Formatted Personnel Data 
 [/] Personnel Endpoints
 [/] Initialize Personnel Data
+[/] Student Model
 [] Authentication
 [] Middleware
 [] Error Handler
