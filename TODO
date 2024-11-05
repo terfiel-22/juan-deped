@@ -8,8 +8,9 @@ BACKEND
 [/] Mock Subject Data
 [/] Subject Endpoints
 [/] Initialize Subject Data
-[/] Mock Personnel Data 
+[/] Mock Personnel Data in JSON 
 [/] Personnel Model
+[/] Mock Formatted Personnel Data 
 [] Authentication
 [] Middleware
 [] Error Handler
