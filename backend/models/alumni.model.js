@@ -18,4 +18,4 @@ const alumniSchema = new Schema(
 
 const Alumni = model("Alumni", alumniSchema);
 
-module.exports = Alumni;
+export default Alumni;

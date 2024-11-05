@@ -19,6 +19,7 @@ BACKEND
 [/] Leverage Error Handler on Controllers
 [/] Alumni Model
 [/] Alumni Tracking Model
+[/] Graduation Tracking Model
 [] Student Endpoints
 [] Alumni Endpoints
 [] 

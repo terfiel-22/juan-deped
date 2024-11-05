@@ -69,4 +69,4 @@ const alumniTrackingSchema = new Schema(
 
 const AlumniTracking = model("Alumni Tracking", alumniTrackingSchema);
 
-module.exports = AlumniTracking;
+export default AlumniTracking;
