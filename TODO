@@ -18,6 +18,10 @@ BACKEND
 [/] Unsupported Routes
 [/] Leverage Error Handler on Controllers
 [/] Alumni Model
+[/] Alumni Tracking Model
+[] Student Endpoints
+[] Alumni Endpoints
+[] 
 [] Authentication
 [] Middleware
 [] Error Handler
