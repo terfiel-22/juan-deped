@@ -14,6 +14,8 @@ BACKEND
 [/] Personnel Endpoints
 [/] Initialize Personnel Data
 [/] Student Model
+[/] Custom Error Handler
+[/] Unsupported Routes
 [] Authentication
 [] Middleware
 [] Error Handler
