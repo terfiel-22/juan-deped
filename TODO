@@ -16,6 +16,7 @@ BACKEND
 [/] Student Model
 [/] Custom Error Handler
 [/] Unsupported Routes
+[/] Leverage Error Handler on Controllers
 [] Authentication
 [] Middleware
 [] Error Handler

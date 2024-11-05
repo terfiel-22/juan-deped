@@ -14,8 +14,7 @@ export const initTracks = async (req, res, next) => {
       .status(201)
       .json({ message: "Tracks data is successfully initialized." });
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: "Internal Server Error" });
+    next(error);
   }
 };
 
@@ -28,8 +27,7 @@ export const initSubjects = async (req, res, next) => {
       .status(201)
       .json({ message: "Subjects data is successfully initialized." });
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: "Internal Server Error" });
+    next(error);
   }
 };
 
@@ -42,7 +40,6 @@ export const initPersonnels = async (req, res, next) => {
       .status(201)
       .json({ message: "Personnels data is successfully initialized." });
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: "Internal Server Error" });
+    next(error);
   }
 };
