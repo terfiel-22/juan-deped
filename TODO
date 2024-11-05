@@ -11,6 +11,8 @@ BACKEND
 [/] Mock Personnel Data in JSON 
 [/] Personnel Model
 [/] Mock Formatted Personnel Data 
+[/] Personnel Endpoints
+[/] Initialize Personnel Data
 [] Authentication
 [] Middleware
 [] Error Handler

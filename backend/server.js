@@ -2,11 +2,9 @@ import { config } from "dotenv";
 import express from "express";
 import connectToMongoDB from "./db/connectToMongoDB.js";
 import apiRoute from "./routes/api.route.js";
-import formattedPersonnelsData from "./_mockData/formattedPersonnels.data.js";
 
 /** Initialization */
 config();
-formattedPersonnelsData();
 
 /** Variables */
 const app = express();
