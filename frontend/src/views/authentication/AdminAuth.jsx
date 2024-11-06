@@ -5,17 +5,12 @@ import { Stack } from '@mui/system';
 import CustomFormLabel from '../../components/forms/theme-elements/CustomFormLabel';
 import CustomOutlinedInput from '../../components/forms/theme-elements/CustomOutlinedInput';
 import { IconEye, IconEyeOff } from '@tabler/icons';
-import { useState } from 'react';
 import { LoadingButton } from '@mui/lab';
 import useAdminSignup from '../../hooks/admin/useAdminSignup';
+import usePasswordVisibility from '../../hooks/ui/usePasswordVisibility';
 
 const AdminAuth = () => {
-    // Password
-    const [showPassword, setShowPassword] = useState(false);
-    const handleClickShowPassword = () => setShowPassword((show) => !show);
-    const handleMouseDownPassword = (event) => {
-        event.preventDefault();
-    };
+    const [showPassword, handleClickShowPassword, handleMouseDownPassword] = usePasswordVisibility()
 
     const [error, resetError, loading, handleChange, handleSubmit] = useAdminSignup()
 

@@ -36,4 +36,5 @@ FRONTEND
 [/] Fix Cors Policy Error
 [/] Handle Auth Error
 [/] Create Admin Auth Hook
+[/] Create Hook for Password Visibility
 [] Handle Admin Auth Success
