@@ -6,6 +6,7 @@ import CustomFormLabel from '../../components/forms/theme-elements/CustomFormLab
 import CustomOutlinedInput from '../../components/forms/theme-elements/CustomOutlinedInput';
 import { IconEye, IconEyeOff } from '@tabler/icons';
 import { useState } from 'react';
+import axiosClient from '../../utils/axiosClient';
 
 const AdminAuth = () => {
     // Password
@@ -26,7 +27,29 @@ const AdminAuth = () => {
         })
     }
     const handleSubmit = () => {
-        console.log(formData);
+        const {
+            username,
+            password
+        } = formData;
+
+        if (
+            !username ||
+            !password
+        ) {
+            alert("Please fill in all required fields!");
+            return;
+        }
+
+        axiosClient
+            .post("/auth/login/admin", formData)
+            .then(({ data }) => {
+                console.log(data);
+            })
+            .catch(
+                (err) => {
+                    console.error(err.message);
+                }
+            );
     }
 
 
