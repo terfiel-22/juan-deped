@@ -26,13 +26,6 @@ BACKEND
 [/] Admin Data and Init Admin Route/Controller
 [/] Admin Login
 [/] Logout
-[] Student Endpoints
-[] Student Controller
-[] Alumni Endpoints
-[] Alumni Controller
-[] Authentication
-[] Middleware
-[] Error Handler
 
 FRONTEND
 [/] Axios Client
@@ -40,3 +33,4 @@ FRONTEND
 [/] Admin Auth Page
 [/] Admin Auth Handling Field Data
 [/] Admin Auth To Server
+[/] Fix Cors Policy Error
