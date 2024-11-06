@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import axiosClient from '../../utils/axiosClient';
+import { setCurrentUser } from '../../store/user/UserSlice';
 
 const useAdminSignup = () => {
+  const dispatch = useDispatch();
   // Error
   const [error, setError] = useState(null);
   const resetError = () => {
@@ -36,7 +39,7 @@ const useAdminSignup = () => {
     axiosClient
       .post('/auth/login/admin', formData)
       .then(({ data }) => {
-        console.log(data);
+        dispatch(setCurrentUser(data));
       })
       .catch(({ response: { data } }) => {
         setError(data.message);

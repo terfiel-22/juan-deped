@@ -37,4 +37,5 @@ FRONTEND
 [/] Handle Auth Error
 [/] Create Admin Auth Hook
 [/] Create Hook for Password Visibility
+[/] Create Redux Store for User
 [] Handle Admin Auth Success
