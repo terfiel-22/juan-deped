@@ -22,6 +22,7 @@ BACKEND
 [/] Graduation Tracking Model
 [/] Auth Model
 [/] Fix Foreign Keys
+[/] Auth Routes and Controllers
 [] Student Endpoints
 [] Student Controller
 [] Alumni Endpoints
