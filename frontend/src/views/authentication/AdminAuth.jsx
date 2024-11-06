@@ -1,4 +1,4 @@
-import { Grid, Box, Card, InputAdornment, IconButton, Typography, Button } from '@mui/material';
+import { Grid, Box, Card, InputAdornment, IconButton, Typography, Button, Alert } from '@mui/material';
 import PageContainer from 'src/components/container/PageContainer';
 import Logo from 'src/layouts/full/shared/logo/Logo';
 import { Stack } from '@mui/system';
@@ -7,6 +7,7 @@ import CustomOutlinedInput from '../../components/forms/theme-elements/CustomOut
 import { IconEye, IconEyeOff } from '@tabler/icons';
 import { useState } from 'react';
 import axiosClient from '../../utils/axiosClient';
+import { LoadingButton } from '@mui/lab';
 
 const AdminAuth = () => {
     // Password
@@ -15,6 +16,11 @@ const AdminAuth = () => {
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
+
+    // Error
+    const [error, setError] = useState(null);
+    // Loading
+    const [loading, setLoading] = useState(false)
 
     // Handle Form
     const [formData, setFormData] = useState({});
@@ -27,6 +33,7 @@ const AdminAuth = () => {
         })
     }
     const handleSubmit = () => {
+        setLoading(true);
         const {
             username,
             password
@@ -36,7 +43,8 @@ const AdminAuth = () => {
             !username ||
             !password
         ) {
-            alert("Please fill in all required fields!");
+            setError("Please fill in all required fields!");
+            setLoading(false);
             return;
         }
 
@@ -46,13 +54,13 @@ const AdminAuth = () => {
                 console.log(data);
             })
             .catch(
-                (err) => {
-                    console.error(err.message);
+                ({ response: { data } }) => {
+                    setError(data.message);
                 }
-            );
+            ).finally(() => {
+                setLoading(false);
+            });
     }
-
-
 
     return (
         <PageContainer title="JuanDepEd | Authentication" description="Juan DepEd Authentication Page">
@@ -86,10 +94,15 @@ const AdminAuth = () => {
                             <Box display="flex" alignItems="center" justifyContent="center">
                                 <Logo />
                             </Box>
+                            <Box display="flex" alignItems="center" justifyContent="center">
+                                <Typography variant="h1">Administration</Typography>
+                            </Box>
                             <Stack sx={{ py: 4 }}>
-                                <Box display="flex" alignItems="center" justifyContent="center">
-                                    <Typography variant="h1">Administration</Typography>
-                                </Box>
+                                {error &&
+                                    <Alert variant="filled" severity="error" onClose={() => { setError(null) }}>
+                                        {error}
+                                    </Alert>
+                                }
                                 <Box>
                                     <CustomFormLabel htmlFor="username">Username</CustomFormLabel>
                                     <CustomOutlinedInput
@@ -123,16 +136,17 @@ const AdminAuth = () => {
                                 </Box>
                             </Stack>
                             <Box>
-                                <Button
-                                    color="primary"
+                                <LoadingButton
+                                    loading={loading}
                                     variant="contained"
+                                    color="primary"
                                     size="large"
                                     fullWidth
                                     type="button"
                                     onClick={handleSubmit}
                                 >
                                     Sign In
-                                </Button>
+                                </LoadingButton>
                             </Box>
                         </Card>
                     </Grid>

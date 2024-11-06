@@ -34,3 +34,4 @@ FRONTEND
 [/] Admin Auth Handling Field Data
 [/] Admin Auth To Server
 [/] Fix Cors Policy Error
+[/] Handle Auth Error
