@@ -1,4 +1,5 @@
 import {
+  initAdminAccount,
   initPersonnels,
   initSubjects,
   initTracks,
@@ -8,4 +9,5 @@ export default (router) => {
   router.post("/init/tracks", initTracks);
   router.post("/init/subjects", initSubjects);
   router.post("/init/personnels", initPersonnels);
+  router.post("/init/admin", initAdminAccount);
 };

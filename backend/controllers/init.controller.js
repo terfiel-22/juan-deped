@@ -4,6 +4,7 @@ import formattedPersonnels from "../_mockData/formattedPersonnels.data.js";
 import Track from "../models/track.model.js";
 import Subject from "../models/subject.model.js";
 import Personnel from "../models/personnel.model.js";
+import admin from "../_mockData/admin.data.js";
 
 export const initTracks = async (req, res, next) => {
   try {
@@ -39,6 +40,14 @@ export const initPersonnels = async (req, res, next) => {
     res
       .status(201)
       .json({ message: "Personnels data is successfully initialized." });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const initAdminAccount = async (req, res, next) => {
+  try {
+    res.status(201).json(admin);
   } catch (error) {
     next(error);
   }

@@ -23,6 +23,7 @@ BACKEND
 [/] Auth Model
 [/] Fix Foreign Keys
 [/] Auth Routes and Controllers
+[/] Admin Data and Init Admin Route/Controller
 [] Student Endpoints
 [] Student Controller
 [] Alumni Endpoints
