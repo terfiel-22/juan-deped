@@ -9,6 +9,7 @@ import { Stack } from '@mui/system';
 import ProfileImg from 'src/assets/images/profile/user-1.jpg';
 import unlimitedImg from 'src/assets/images/backgrounds/unlimited-bg.png';
 import Scrollbar from 'src/components/custom-scroll/Scrollbar';
+import useLogout from '../../../../hooks/auth/useLogout';
 
 const Profile = () => {
   const [anchorEl2, setAnchorEl2] = useState(null);
@@ -18,6 +19,9 @@ const Profile = () => {
   const handleClose2 = () => {
     setAnchorEl2(null);
   };
+
+  // Logout
+  const handleLogout = useLogout();
 
   return (
     <Box>
@@ -153,11 +157,11 @@ const Profile = () => {
                 </Box>
               </Box>
               <Button
-                to="/auth/login"
                 variant="outlined"
                 color="primary"
-                component={Link}
+                onClick={handleLogout}
                 fullWidth
+                type='button'
               >
                 Logout
               </Button>

@@ -41,4 +41,6 @@ FRONTEND
 [/] Setup Unauthenticated Route
 [/] Leverage combineReducers of Redux
 [/] Persist Redux Data
-[] Handle Admin Auth Success
+[/] Handle Admin Auth Success
+[/] Handle Logout
+[] Redirect On Login after Logout

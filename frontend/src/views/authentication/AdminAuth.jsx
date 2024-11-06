@@ -1,4 +1,4 @@
-import { Grid, Box, Card, InputAdornment, IconButton, Typography, Button, Alert } from '@mui/material';
+import { Grid, Box, Card, InputAdornment, IconButton, Typography, Alert } from '@mui/material';
 import PageContainer from 'src/components/container/PageContainer';
 import Logo from 'src/layouts/full/shared/logo/Logo';
 import { Stack } from '@mui/system';
@@ -6,13 +6,13 @@ import CustomFormLabel from '../../components/forms/theme-elements/CustomFormLab
 import CustomOutlinedInput from '../../components/forms/theme-elements/CustomOutlinedInput';
 import { IconEye, IconEyeOff } from '@tabler/icons';
 import { LoadingButton } from '@mui/lab';
-import useAdminSignup from '../../hooks/admin/useAdminSignup';
 import usePasswordVisibility from '../../hooks/ui/usePasswordVisibility';
+import useAdminSignin from '../../hooks/auth/useAdminSignin';
 
 const AdminAuth = () => {
     const [showPassword, handleClickShowPassword, handleMouseDownPassword] = usePasswordVisibility()
 
-    const [error, resetError, loading, handleChange, handleSubmit] = useAdminSignup()
+    const [error, resetError, loading, handleChange, handleSubmit] = useAdminSignin()
 
     return (
         <PageContainer title="JuanDepEd | Authentication" description="Juan DepEd Authentication Page">
