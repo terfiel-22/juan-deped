@@ -153,6 +153,7 @@ const BlogPost = Loadable(lazy(() => import('../views/pages/frontend-pages/BlogP
 
 /** Juan DepEd */
 const Authentication = Loadable(lazy(() => import('../views/authentication/Authentication')));
+const AdminAuth = Loadable(lazy(() => import('../views/authentication/AdminAuth')));
 
 const Router = [
   {
@@ -274,6 +275,7 @@ const Router = [
 
       /** Juan DepEd */
       { path: '/auth', element: <Authentication /> },
+      { path: '/admin/auth', element: <AdminAuth /> },
     ],
   },
 ];
