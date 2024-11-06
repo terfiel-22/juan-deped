@@ -1,6 +1,7 @@
 import {
   alumniLogin,
   alumniRegister,
+  logout,
   parentLogin,
   parentRegister,
   personnelLogin,
@@ -18,4 +19,5 @@ export default (router) => {
   router.post("/auth/register/alumni", alumniRegister);
   router.post("/auth/register/parent", parentRegister);
   router.post("/auth/register/personnel", personnelRegister);
+  router.post("/auth/logout", logout);
 };

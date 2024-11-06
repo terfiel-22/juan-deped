@@ -61,3 +61,11 @@ export const personnelRegister = async (req, res, next) => {
     next(error);
   }
 };
+
+export const logout = async (req, res, next) => {
+  try {
+    res.status(201).json({ message: "Logout route." });
+  } catch (error) {
+    next(error);
+  }
+};
