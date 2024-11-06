@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { selectCurrentUser } from "../../store/user/UserSlice";
 
-const UnAuthenticatedRoute = ({ children }) => {
+const GuestRoute = () => {
 
     const currentUser = useSelector(selectCurrentUser);
 
@@ -10,7 +10,7 @@ const UnAuthenticatedRoute = ({ children }) => {
         return <Navigate to="/dashboards/modern" />;
     }
 
-    return children;
+    return <Outlet />;
 };
 
-export default UnAuthenticatedRoute;
+export default GuestRoute;
