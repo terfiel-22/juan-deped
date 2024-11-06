@@ -1,6 +1,6 @@
 import { model, Schema } from "mongoose";
 
-const accountSchema = Schema(
+const authSchema = Schema(
   {
     password: { type: String, required: true },
     role: {
@@ -24,6 +24,6 @@ const accountSchema = Schema(
 );
 
 // Export Personnel Model
-const Account = model("Account", accountSchema);
+const Auth = model("Auth", authSchema);
 
-export default Account;
+export default Auth;
