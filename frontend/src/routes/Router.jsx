@@ -157,6 +157,7 @@ const AdminAuth = Loadable(lazy(() => import('../views/authentication/AdminAuth'
 
 /** Middleware */
 const GuestRoute = Loadable(lazy(() => import('./middlewares/GuestRoute')));
+const AuthRoute = Loadable(lazy(() => import('./middlewares/AuthRoute')));
 
 
 const Router = [
@@ -287,6 +288,13 @@ const Router = [
     children: [
       { path: '/auth', element: <Authentication /> },
       { path: '/admin/auth', element: <AdminAuth /> },
+    ]
+  },
+  {
+    path: "/",
+    element: <AuthRoute />,
+    children: [
+      { path: '/dashboard', element: <h1>Dashboard</h1> }
     ]
   }
 ];
