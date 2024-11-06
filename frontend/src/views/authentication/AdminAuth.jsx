@@ -6,8 +6,8 @@ import CustomFormLabel from '../../components/forms/theme-elements/CustomFormLab
 import CustomOutlinedInput from '../../components/forms/theme-elements/CustomOutlinedInput';
 import { IconEye, IconEyeOff } from '@tabler/icons';
 import { useState } from 'react';
-import axiosClient from '../../utils/axiosClient';
 import { LoadingButton } from '@mui/lab';
+import useAdminSignup from '../../hooks/admin/useAdminSignup';
 
 const AdminAuth = () => {
     // Password
@@ -17,50 +17,7 @@ const AdminAuth = () => {
         event.preventDefault();
     };
 
-    // Error
-    const [error, setError] = useState(null);
-    // Loading
-    const [loading, setLoading] = useState(false)
-
-    // Handle Form
-    const [formData, setFormData] = useState({});
-    const handleChange = (e) => {
-        const key = e.target.id;
-        const value = e.target.value
-        setFormData({
-            ...formData,
-            [key]: value
-        })
-    }
-    const handleSubmit = () => {
-        setLoading(true);
-        const {
-            username,
-            password
-        } = formData;
-
-        if (
-            !username ||
-            !password
-        ) {
-            setError("Please fill in all required fields!");
-            setLoading(false);
-            return;
-        }
-
-        axiosClient
-            .post("/auth/login/admin", formData)
-            .then(({ data }) => {
-                console.log(data);
-            })
-            .catch(
-                ({ response: { data } }) => {
-                    setError(data.message);
-                }
-            ).finally(() => {
-                setLoading(false);
-            });
-    }
+    const [error, resetError, loading, handleChange, handleSubmit] = useAdminSignup()
 
     return (
         <PageContainer title="JuanDepEd | Authentication" description="Juan DepEd Authentication Page">
@@ -99,7 +56,7 @@ const AdminAuth = () => {
                             </Box>
                             <Stack sx={{ py: 4 }}>
                                 {error &&
-                                    <Alert variant="filled" severity="error" onClose={() => { setError(null) }}>
+                                    <Alert variant="filled" severity="error" onClose={resetError}>
                                         {error}
                                     </Alert>
                                 }
@@ -108,7 +65,7 @@ const AdminAuth = () => {
                                     <CustomOutlinedInput
                                         onChange={handleChange}
                                         id="username"
-                                        placeholder="ACNTS SHS"
+                                        placeholder="username"
                                         fullWidth
                                     />
                                 </Box>

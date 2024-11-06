@@ -35,3 +35,5 @@ FRONTEND
 [/] Admin Auth To Server
 [/] Fix Cors Policy Error
 [/] Handle Auth Error
+[/] Create Admin Auth Hook
+[] Handle Admin Auth Success
