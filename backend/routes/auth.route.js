@@ -14,8 +14,8 @@ export default (router) => {
   router.post("/auth/login/alumni", alumniLogin);
   router.post("/auth/login/parent", parentLogin);
   router.post("/auth/login/personnel", personnelLogin);
-  router.post("/auth/login/student", studentRegister);
-  router.post("/auth/login/alumni", alumniRegister);
-  router.post("/auth/login/parent", parentRegister);
-  router.post("/auth/login/personnel", personnelRegister);
+  router.post("/auth/register/student", studentRegister);
+  router.post("/auth/register/alumni", alumniRegister);
+  router.post("/auth/register/parent", parentRegister);
+  router.post("/auth/register/personnel", personnelRegister);
 };
