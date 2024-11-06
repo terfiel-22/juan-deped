@@ -94,7 +94,8 @@ export const personnelRegister = async (req, res, next) => {
 
 export const logout = async (req, res, next) => {
   try {
-    res.status(201).json({ message: "Logout route." });
+    res.cookie("jwt", "", { maxAge: 0 });
+    res.status(200).json({ message: "Logged out successfully." });
   } catch (error) {
     next(error);
   }

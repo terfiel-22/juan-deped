@@ -25,6 +25,7 @@ BACKEND
 [/] Auth Routes and Controllers
 [/] Admin Data and Init Admin Route/Controller
 [/] Admin Login
+[/] Logout
 [] Student Endpoints
 [] Student Controller
 [] Alumni Endpoints
