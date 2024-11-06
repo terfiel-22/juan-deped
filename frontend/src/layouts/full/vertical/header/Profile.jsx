@@ -10,6 +10,8 @@ import ProfileImg from 'src/assets/images/profile/user-1.jpg';
 import unlimitedImg from 'src/assets/images/backgrounds/unlimited-bg.png';
 import Scrollbar from 'src/components/custom-scroll/Scrollbar';
 import useLogout from '../../../../hooks/auth/useLogout';
+import { useSelector } from 'react-redux';
+import { selectCurrentUserRole } from '../../../../store/user/UserSlice';
 
 const Profile = () => {
   const [anchorEl2, setAnchorEl2] = useState(null);
@@ -20,8 +22,11 @@ const Profile = () => {
     setAnchorEl2(null);
   };
 
+  // Current User Role
+  const role = useSelector(selectCurrentUserRole);
+
   // Logout
-  const handleLogout = useLogout();
+  const handleLogout = useLogout(role);
 
   return (
     <Box>
@@ -74,7 +79,7 @@ const Profile = () => {
                   Mathew Anderson
                 </Typography>
                 <Typography variant="subtitle2" color="textSecondary">
-                  Designer
+                  {role}
                 </Typography>
                 <Typography
                   variant="subtitle2"

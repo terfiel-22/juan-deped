@@ -43,4 +43,4 @@ FRONTEND
 [/] Persist Redux Data
 [/] Handle Admin Auth Success
 [/] Handle Logout
-[] Redirect On Login after Logout
+[/] Redirect On Login after Logout
