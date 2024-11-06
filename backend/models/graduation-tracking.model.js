@@ -1,7 +1,8 @@
-import { model, Schema } from "mongoose";
+import { model, Schema, Types } from "mongoose";
 
 const graduationTrackingSchema = new Schema(
   {
+    studentId: { type: Types.ObjectId, ref: "Student", required: true },
     personalInfo: {
       name: { type: String, required: true },
       batchYearGraduated: { type: String, required: true },

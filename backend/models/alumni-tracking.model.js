@@ -2,7 +2,7 @@ import { model, Schema, Types } from "mongoose";
 
 const alumniTrackingSchema = new Schema(
   {
-    alumniId: { type: Types.ObjectId, required: true },
+    alumniId: { type: Types.ObjectId, required: true, ref: "Alumni" },
     currentStatus: {
       status: {
         type: String,

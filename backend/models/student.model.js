@@ -1,7 +1,8 @@
-import { model, Schema } from "mongoose";
+import { model, Schema, Types } from "mongoose";
 
 const studentSchema = Schema(
   {
+    accountId: { type: Types.ObjectId, ref: "Account", required: true },
     schoolYear: { type: String, required: true },
     gradeLevelToEnroll: { type: String, required: true },
 
@@ -21,7 +22,6 @@ const studentSchema = Schema(
       middleName: { type: String },
       extensionName: { type: String },
       email: { type: String },
-      password: { type: String },
     },
 
     currentAddress: {
@@ -117,7 +117,7 @@ const studentSchema = Schema(
   { timestamps: true }
 );
 
-// Export Personnel Model
+// Export Student Model
 const Student = model("Student", studentSchema);
 
 export default Student;
