@@ -2,7 +2,7 @@ import { model, Schema, Types } from "mongoose";
 
 const personnelSchema = new Schema(
   {
-    accountId: { type: Types.ObjectId, ref: "Account" },
+    authId: { type: Types.ObjectId, ref: "Auth" },
     basicInformation: {
       empNo: { type: String, default: "" },
       account: { type: String, default: "" },

@@ -2,7 +2,7 @@ import { model, Schema, Types } from "mongoose";
 
 const alumniSchema = new Schema(
   {
-    accountId: { type: Types.ObjectId, ref: "Account" },
+    authId: { type: Types.ObjectId, ref: "Auth" },
     learnerReferenceNo: { type: String, unique: true },
     fullName: { type: String, required: true },
     birthDate: { type: Date, required: true },

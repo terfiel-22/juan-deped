@@ -20,7 +20,7 @@ BACKEND
 [/] Alumni Model
 [/] Alumni Tracking Model
 [/] Graduation Tracking Model
-[/] Account Model
+[/] Auth Model
 [/] Fix Foreign Keys
 [] Student Endpoints
 [] Student Controller
