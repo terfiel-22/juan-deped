@@ -1,4 +1,5 @@
 import {
+  adminLogin,
   alumniLogin,
   alumniRegister,
   logout,
@@ -11,6 +12,7 @@ import {
 } from "../controllers/auth.controller.js";
 
 export default (router) => {
+  router.post("/auth/login/admin", adminLogin);
   router.post("/auth/login/student", studentLogin);
   router.post("/auth/login/alumni", alumniLogin);
   router.post("/auth/login/parent", parentLogin);

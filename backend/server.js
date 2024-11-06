@@ -1,5 +1,6 @@
 import { config } from "dotenv";
 import express from "express";
+import cookieParser from "cookie-parser";
 import connectToMongoDB from "./db/connectToMongoDB.js";
 import apiRoute from "./routes/api.route.js";
 import errorHandler from "./middlewares/errorHandler.js";
@@ -13,6 +14,9 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 /** Middlewares */
+app.use(express.json());
+app.use(cookieParser());
+
 app.use("/api", apiRoute());
 app.use(unsupportedRoutes);
 app.use(errorHandler);

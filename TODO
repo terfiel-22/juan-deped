@@ -24,6 +24,7 @@ BACKEND
 [/] Fix Foreign Keys
 [/] Auth Routes and Controllers
 [/] Admin Data and Init Admin Route/Controller
+[/] Admin Login
 [] Student Endpoints
 [] Student Controller
 [] Alumni Endpoints

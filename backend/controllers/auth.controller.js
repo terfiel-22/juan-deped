@@ -1,3 +1,33 @@
+import bcrypt from "bcryptjs";
+import generateTokenAndSetCookie from "../utils/generateTokenAndSetCookie.js";
+import Auth from "../models/auth.model.js";
+import HttpError from "../utils/HttpError.utils.js";
+
+export const adminLogin = async (req, res, next) => {
+  try {
+    const { username, password } = req.body;
+
+    const user = await Auth.findOne({ username });
+    const isPasswordCorrect = await bcrypt.compare(
+      password,
+      user?.password || ""
+    );
+
+    if (!user || !isPasswordCorrect)
+      throw new HttpError("Invalid username or password.", 400);
+
+    generateTokenAndSetCookie(user._id, res);
+
+    res.status(200).json({
+      _id: user._id,
+      username: user.username,
+      role: user.role,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const studentLogin = async (req, res, next) => {
   try {
     res.status(201).json({ message: "Student Login route" });
