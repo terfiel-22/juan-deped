@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { createSelector } from 'reselect';
 
 const initialState = {
   currentUser: null,
@@ -14,7 +15,11 @@ export const UserSlice = createSlice({
   },
 });
 
-export const { setCurrentUser } = UserSlice.actions;
-export const selectCartReducer = (state) => state.useruserReducer;
-
 export const UserReducer = UserSlice.reducer;
+
+// Actions
+export const { setCurrentUser } = UserSlice.actions;
+
+// Selector
+export const selectUserReducer = (state) => state.userReducer;
+export const selectCurrentUser = createSelector([selectUserReducer], (user) => user.currentUser);

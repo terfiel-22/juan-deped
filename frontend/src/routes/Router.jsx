@@ -2,6 +2,7 @@ import React, { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
 
 import Loadable from '../layouts/full/shared/loadable/Loadable';
+import UnAuthenticatedRoute from '../components/auth/UnauthenticatedRoute';
 
 /* ***Layouts**** */
 const FullLayout = Loadable(lazy(() => import('../layouts/full/FullLayout')));
@@ -155,6 +156,7 @@ const BlogPost = Loadable(lazy(() => import('../views/pages/frontend-pages/BlogP
 const Authentication = Loadable(lazy(() => import('../views/authentication/Authentication')));
 const AdminAuth = Loadable(lazy(() => import('../views/authentication/AdminAuth')));
 
+
 const Router = [
   {
     path: '/',
@@ -275,7 +277,7 @@ const Router = [
 
       /** Juan DepEd */
       { path: '/auth', element: <Authentication /> },
-      { path: '/admin/auth', element: <AdminAuth /> },
+      { path: '/admin/auth', element: <UnAuthenticatedRoute><AdminAuth /></UnAuthenticatedRoute> },
     ],
   },
 ];

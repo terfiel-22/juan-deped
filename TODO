@@ -38,4 +38,5 @@ FRONTEND
 [/] Create Admin Auth Hook
 [/] Create Hook for Password Visibility
 [/] Create Redux Store for User
+[/] Setup Unauthenticated Route
 [] Handle Admin Auth Success
