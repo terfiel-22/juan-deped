@@ -1,4 +1,3 @@
-import React from 'react'
 import { Grid, Box, Card, InputAdornment, IconButton, Typography, Button } from '@mui/material';
 import PageContainer from 'src/components/container/PageContainer';
 import Logo from 'src/layouts/full/shared/logo/Logo';
@@ -6,15 +5,31 @@ import { Stack } from '@mui/system';
 import CustomFormLabel from '../../components/forms/theme-elements/CustomFormLabel';
 import CustomOutlinedInput from '../../components/forms/theme-elements/CustomOutlinedInput';
 import { IconEye, IconEyeOff } from '@tabler/icons';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const AdminAuth = () => {
     // Password
-    const [showPassword, setShowPassword] = React.useState(false);
+    const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => setShowPassword((show) => !show);
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
+
+    // Handle Form
+    const [formData, setFormData] = useState({});
+    const handleChange = (e) => {
+        const key = e.target.id;
+        const value = e.target.value
+        setFormData({
+            ...formData,
+            [key]: value
+        })
+    }
+    const handleSubmit = () => {
+        console.log(formData);
+    }
+
+
 
     return (
         <PageContainer title="JuanDepEd | Authentication" description="Juan DepEd Authentication Page">
@@ -48,13 +63,14 @@ const AdminAuth = () => {
                             <Box display="flex" alignItems="center" justifyContent="center">
                                 <Logo />
                             </Box>
-                            <Stack sx={{ py: 4, }}>
+                            <Stack sx={{ py: 4 }}>
                                 <Box display="flex" alignItems="center" justifyContent="center">
                                     <Typography variant="h1">Administration</Typography>
                                 </Box>
                                 <Box>
                                     <CustomFormLabel htmlFor="username">Username</CustomFormLabel>
                                     <CustomOutlinedInput
+                                        onChange={handleChange}
                                         id="username"
                                         placeholder="ACNTS SHS"
                                         fullWidth
@@ -63,6 +79,7 @@ const AdminAuth = () => {
                                 <Box>
                                     <CustomFormLabel htmlFor="password">Password</CustomFormLabel>
                                     <CustomOutlinedInput
+                                        onChange={handleChange}
                                         type={showPassword ? 'text' : 'password'}
                                         endAdornment={
                                             <InputAdornment position="end">
@@ -88,9 +105,8 @@ const AdminAuth = () => {
                                     variant="contained"
                                     size="large"
                                     fullWidth
-                                    component={Link}
-                                    to="/"
-                                    type="submit"
+                                    type="button"
+                                    onClick={handleSubmit}
                                 >
                                     Sign In
                                 </Button>
