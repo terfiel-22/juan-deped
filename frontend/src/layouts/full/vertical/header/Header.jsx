@@ -12,10 +12,7 @@ import { IconMenu2, IconMoon, IconSun } from '@tabler/icons';
 // components
 import Notifications from './Notifications';
 import Profile from './Profile';
-import Cart from './Cart';
 import Search from './Search';
-import Language from './Language';
-import Navigation from './Navigation';
 import MobileRightSidebar from './MobileRightSidebar';
 
 const Header = () => {
@@ -57,20 +54,9 @@ const Header = () => {
         {/* Search Dropdown */}
         {/* ------------------------------------------- */}
         <Search />
-        {lgUp ? (
-          <>
-            <Navigation />
-          </>
-        ) : null}
 
         <Box flexGrow={1} />
         <Stack spacing={1} direction="row" alignItems="center">
-          <Language />
-          {/* ------------------------------------------- */}
-          {/* Ecommerce Dropdown */}
-          {/* ------------------------------------------- */}
-          <Cart />
-
           <IconButton
             size="large"
             color="inherit"
@@ -85,10 +71,8 @@ const Header = () => {
             )}
           </IconButton>
 
-          {/* ------------------------------------------- */}
-          {/* End Ecommerce Dropdown */}
-          {/* ------------------------------------------- */}
           <Notifications />
+
           {/* ------------------------------------------- */}
           {/* Toggle Right Sidebar for mobile */}
           {/* ------------------------------------------- */}

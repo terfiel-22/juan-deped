@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 
 import Header from './vertical/header/Header';
-import HorizontalHeader from '../full/horizontal/header/Header';
+import HorizontalHeader from './horizontal/header/Header';
 import Sidebar from './vertical/sidebar/Sidebar';
 import Customizer from './shared/customizer/Customizer';
 import Navigation from './horizontal/navbar/Navbar';

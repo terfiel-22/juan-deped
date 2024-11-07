@@ -110,7 +110,7 @@ const Menuitems = [
   /** END - Juan DepEd */
   {
     navlabel: true,
-    subheader: 'Home',
+    subheader: 'Template',
   },
   {
     id: uniqueId(),
