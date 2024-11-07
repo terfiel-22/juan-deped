@@ -292,7 +292,7 @@ const Router = [
   },
   {
     path: "/",
-    element: <AuthRoute />,
+    element: <FullLayout />,
     children: [
       { path: '/dashboard', element: <h1>Dashboard</h1> }
     ]
