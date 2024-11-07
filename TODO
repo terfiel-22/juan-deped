@@ -46,3 +46,4 @@ FRONTEND
 [/] Redirect to Login Page after Logout
 [/] Prevent Authenticated User routing to Auth Pages 
 [/] Prevent Guest User routing to Dashboard Pages 
+[/] Setup Pages

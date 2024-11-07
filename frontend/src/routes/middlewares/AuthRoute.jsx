@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { selectCurrentUser } from "../../store/user/UserSlice";
+import FullLayout from "../../layouts/full/FullLayout";
 
 const AuthRoute = () => {
 
@@ -10,7 +11,7 @@ const AuthRoute = () => {
         return <Navigate to="/auth" />;
     }
 
-    return <Outlet />;
+    return <FullLayout />;
 };
 
 export default AuthRoute;

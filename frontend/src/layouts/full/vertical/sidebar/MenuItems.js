@@ -50,16 +50,28 @@ import {
   IconLockAccess,
   IconListDetails,
   IconListNumbers,
+  IconChartHistogram,
 } from '@tabler/icons';
 
 import { uniqueId } from 'lodash';
 
 const Menuitems = [
+  /** Start - Juan DepEd */
+  {
+    navlabel: true,
+    subheader: 'Admin',
+  },
+  {
+    id: uniqueId(),
+    title: 'Dashboard',
+    icon: IconChartHistogram,
+    href: '/dashboard',
+  },
+  /** END - Juan DepEd */
   {
     navlabel: true,
     subheader: 'Home',
   },
-
   {
     id: uniqueId(),
     title: 'Modern',
