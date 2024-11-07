@@ -11,7 +11,7 @@ const AuthRoute = () => {
         return <Navigate to="/auth" />;
     }
 
-    return <Navigate to="/dashboard" />;
+    return <FullLayout />;
 };
 
 export default AuthRoute;
