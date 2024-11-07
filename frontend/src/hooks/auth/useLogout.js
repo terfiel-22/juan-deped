@@ -1,12 +1,15 @@
 import axiosClient from '../../utils/axiosClient';
-import { setCurrentUser } from '../../store/user/UserSlice';
-import { useDispatch } from 'react-redux';
+import { selectCurrentUserRole, setCurrentUser } from '../../store/user/UserSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { USER_ROLES_LOGIN_ROUTES } from '../../constants/UserRoles';
 
-const useLogout = (role) => {
+const useLogout = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  // Current User Role
+  const role = useSelector(selectCurrentUserRole);
 
   const handleLogout = () => {
     axiosClient
@@ -21,7 +24,7 @@ const useLogout = (role) => {
       });
   };
 
-  return handleLogout;
+  return [role, handleLogout];
 };
 
 export default useLogout;
