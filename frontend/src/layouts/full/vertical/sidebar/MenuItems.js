@@ -59,13 +59,53 @@ const Menuitems = [
   /** Start - Juan DepEd */
   {
     navlabel: true,
-    subheader: 'Admin',
+    subheader: 'Home',
   },
   {
     id: uniqueId(),
-    title: 'Dashboard',
+    title: 'Analytics',
     icon: IconChartHistogram,
     href: '/dashboard',
+  },
+  {
+    navlabel: true,
+    subheader: 'User Management',
+  },
+  {
+    navlabel: true,
+    subheader: 'Enrollment Management',
+  },
+  {
+    navlabel: true,
+    subheader: 'Student Management',
+  },
+  {
+    navlabel: true,
+    subheader: 'Class Management',
+  },
+  {
+    navlabel: true,
+    subheader: 'Attendance Management',
+  },
+  {
+    navlabel: true,
+    subheader: 'Grade Management',
+  },
+  {
+    navlabel: true,
+    subheader: 'Document Management',
+  },
+  {
+    navlabel: true,
+    subheader: 'Event Management',
+  },
+  {
+    navlabel: true,
+    subheader: 'Account Settings',
+  },
+  {
+    navlabel: true,
+    subheader: 'System Settings & Security',
   },
   /** END - Juan DepEd */
   {

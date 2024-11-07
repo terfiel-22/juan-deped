@@ -47,3 +47,4 @@ FRONTEND
 [/] Prevent Authenticated User routing to Auth Pages 
 [/] Prevent Guest User routing to Dashboard Pages 
 [/] Setup Pages
+[/] Sidebar NavGroup Header
