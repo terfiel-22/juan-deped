@@ -51,6 +51,7 @@ import {
   IconListDetails,
   IconListNumbers,
   IconChartHistogram,
+  IconUsers,
 } from '@tabler/icons';
 
 import { uniqueId } from 'lodash';
@@ -70,6 +71,12 @@ const Menuitems = [
   {
     navlabel: true,
     subheader: 'User Management',
+  },
+  {
+    id: uniqueId(),
+    title: 'Personnels',
+    icon: IconUsers,
+    href: '/personnels',
   },
   {
     navlabel: true,

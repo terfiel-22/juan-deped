@@ -159,6 +159,8 @@ const AdminAuth = Loadable(lazy(() => import('../views/authentication/AdminAuth'
 const GuestRoute = Loadable(lazy(() => import('./middlewares/GuestRoute')));
 const AuthRoute = Loadable(lazy(() => import('./middlewares/AuthRoute')));
 
+/** User Management */
+const Personnels = Loadable(lazy(() => import('../views/user-management/personnels/Personnels')));
 
 const Router = [
   {
@@ -294,7 +296,8 @@ const Router = [
     path: "/",
     element: <AuthRoute />,
     children: [
-      { path: '/dashboard', element: <h1>Dashboard</h1> }
+      { path: '/dashboard', element: <h1>Dashboard</h1> },
+      { path: '/personnels', element: <Personnels /> }
     ]
   }
 ];
