@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-const useEnhancedTableSearch = (rows, fieldName, setRows) => {
+const useEnhancedTableSearch = (rows, fieldName, setRows, setPage) => {
   const [search, setSearch] = useState('');
 
   const filteredRows = useCallback(
@@ -16,6 +16,7 @@ const useEnhancedTableSearch = (rows, fieldName, setRows) => {
     const rows = filteredRows(keyword);
     setSearch(keyword);
     setRows(rows);
+    setPage(0);
   }, []);
 
   return [search, handleSearch];

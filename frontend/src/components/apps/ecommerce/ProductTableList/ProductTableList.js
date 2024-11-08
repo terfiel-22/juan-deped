@@ -166,7 +166,7 @@ const ProductTableList = () => {
   }, [getProducts]);
 
   const FIELD_NAME = 'title';
-  const [search, handleSearch] = useEnhancedTableSearch(rows, FIELD_NAME, setRows);
+  const [search, handleSearch] = useEnhancedTableSearch(rows, FIELD_NAME, setRows, setPage);
   const [selected, isSelected, handleSelectAllClick, handleClick] = useEnhancedTableSelect(
     rows,
     FIELD_NAME,
