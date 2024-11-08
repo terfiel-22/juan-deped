@@ -56,3 +56,4 @@ FRONTEND
 [/] Create hook for Fetching Personnel 
 [/] Display Personnel Data on Table
 [/] Create Pagination
+[/] Create Pagination Hook

@@ -18,29 +18,25 @@ import { useSelector } from 'react-redux';
 import useFetchPersonnels from '../../../hooks/personnel/useFetchPersonnels';
 import { selectPersonnels } from '../../../store/user/UserSlice';
 import TablePaginationActions from '@mui/material/TablePagination/TablePaginationActions';
+import useTablePagination from '../../../hooks/ui/useTablePagination';
 
 
 const PersonnelTableList = () => {
     /** Fetch Personnels */
     const [error, resetError] = useFetchPersonnels();
-    const rows = useSelector(selectPersonnels);
+    const personnels = useSelector(selectPersonnels);
 
     /** Pagination */
-
-    const [page, setPage] = React.useState(0);
-    const [rowsPerPage, setRowsPerPage] = React.useState(5);
-
-    // Avoid a layout jump when reaching the last page with empty rows.
-    const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
-
-    const handleChangePage = (event, newPage) => {
-        setPage(newPage);
-    };
-
-    const handleChangeRowsPerPage = (event) => {
-        setRowsPerPage(parseInt(event.target.value, 10));
-        setPage(0);
-    };
+    const [
+        page,
+        rowsPerPage,
+        pageData,
+        emptyRows,
+        rowsPerPageOptions,
+        rowsCount,
+        handleChangePage,
+        handleChangeRowsPerPage,
+    ] = useTablePagination(personnels)
 
     return (
         <Box>
@@ -79,40 +75,38 @@ const PersonnelTableList = () => {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {(rowsPerPage > 0
-                                        ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                        : rows).map((personnel) => (
-                                            <TableRow key={personnel._id}>
-                                                <TableCell>
-                                                    <Typography color="textSecondary" variant="h6" fontWeight="400">
-                                                        {personnel.basicInformation.empNo}
-                                                    </Typography>
-                                                </TableCell>
-                                                <TableCell>
-                                                    <Typography color="textSecondary" variant="h6" fontWeight="400">
-                                                        {personnel.basicInformation.account}
-                                                    </Typography>
-                                                </TableCell>
-                                                <TableCell>
-                                                    <Typography color="textSecondary" variant="h6" fontWeight="400">
-                                                        {personnel.basicInformation.lName},&nbsp;{personnel.basicInformation.fName}
-                                                    </Typography>
-                                                </TableCell>
-                                                <TableCell>
-                                                    <Typography color="textSecondary" variant="h6" fontWeight="400">
-                                                        {personnel.basicInformation.position}
-                                                    </Typography>
-                                                </TableCell>
-                                                <TableCell>
-                                                    <Typography color="textSecondary" variant="h6" fontWeight="400">
-                                                        {personnel.basicInformation.eligibility}
-                                                    </Typography>
-                                                </TableCell>
-                                                <TableCell>
-                                                    {/* ACTIONS */}
-                                                </TableCell>
-                                            </TableRow>
-                                        ))}
+                                    {pageData.map((personnel) => (
+                                        <TableRow key={personnel._id}>
+                                            <TableCell>
+                                                <Typography color="textSecondary" variant="h6" fontWeight="400">
+                                                    {personnel.basicInformation.empNo}
+                                                </Typography>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Typography color="textSecondary" variant="h6" fontWeight="400">
+                                                    {personnel.basicInformation.account}
+                                                </Typography>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Typography color="textSecondary" variant="h6" fontWeight="400">
+                                                    {personnel.basicInformation.lName},&nbsp;{personnel.basicInformation.fName}
+                                                </Typography>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Typography color="textSecondary" variant="h6" fontWeight="400">
+                                                    {personnel.basicInformation.position}
+                                                </Typography>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Typography color="textSecondary" variant="h6" fontWeight="400">
+                                                    {personnel.basicInformation.eligibility}
+                                                </Typography>
+                                            </TableCell>
+                                            <TableCell>
+                                                {/* ACTIONS */}
+                                            </TableCell>
+                                        </TableRow>
+                                    ))}
                                     {emptyRows > 0 && (
                                         <TableRow style={{ height: 53 * emptyRows }}>
                                             <TableCell colSpan={6} />
@@ -122,12 +116,12 @@ const PersonnelTableList = () => {
                                 <TableFooter>
                                     <TableRow>
                                         <TablePagination
-                                            rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+                                            rowsPerPageOptions={rowsPerPageOptions}
                                             colSpan={6}
-                                            count={rows.length}
+                                            count={rowsCount}
                                             rowsPerPage={rowsPerPage}
                                             page={page}
-                                            SelectProps={{
+                                            slotProps={{
                                                 inputprops: {
                                                     'aria-label': 'rows per page',
                                                 },
