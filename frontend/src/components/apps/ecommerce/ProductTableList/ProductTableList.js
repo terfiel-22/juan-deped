@@ -1,6 +1,5 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { alpha } from '@mui/material/styles';
 import { format } from 'date-fns';
 import {
   Box,
@@ -12,14 +11,11 @@ import {
   TablePagination,
   TableRow,
   TableSortLabel,
-  Toolbar,
   IconButton,
   Tooltip,
   FormControlLabel,
   Typography,
   Avatar,
-  TextField,
-  InputAdornment,
   Paper,
 } from '@mui/material';
 
@@ -29,7 +25,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchProducts } from 'src/store/apps/eCommerce/EcommerceSlice';
 import CustomCheckbox from '../../../forms/theme-elements/CustomCheckbox';
 import CustomSwitch from '../../../forms/theme-elements/CustomSwitch';
-import { IconDotsVertical, IconFilter, IconSearch, IconTrash } from '@tabler/icons';
+import { IconDotsVertical } from '@tabler/icons';
+import useEnhancedTableSelect from '../../../../hooks/ui/useEnhancedTableSelect';
+import useEnhancedTableSearch from '../../../../hooks/ui/useEnhancedTableSearch';
+import EnhancedTableToolbar from '../../../shared/EnhancedTableToolbar';
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -145,67 +144,9 @@ EnhancedTableHead.propTypes = {
   rowCount: PropTypes.number.isRequired,
 };
 
-const EnhancedTableToolbar = (props) => {
-  const { numSelected, handleSearch, search } = props;
-
-  return (
-    <Toolbar
-      sx={{
-        pl: { sm: 2 },
-        pr: { xs: 1, sm: 1 },
-        ...(numSelected > 0 && {
-          bgcolor: (theme) =>
-            alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity),
-        }),
-      }}
-    >
-      {numSelected > 0 ? (
-        <Typography sx={{ flex: '1 1 100%' }} color="inherit" variant="subtitle2" component="div">
-          {numSelected} selected
-        </Typography>
-      ) : (
-        <Box sx={{ flex: '1 1 100%' }}>
-          <TextField
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <IconSearch size="1.1rem" />
-                </InputAdornment>
-              ),
-            }}
-            placeholder="Search Product"
-            size="small"
-            onChange={handleSearch}
-            value={search}
-          />
-        </Box>
-      )}
-
-      {numSelected > 0 ? (
-        <Tooltip title="Delete">
-          <IconButton>
-            <IconTrash width="18" />
-          </IconButton>
-        </Tooltip>
-      ) : (
-        <Tooltip title="Filter list">
-          <IconButton>
-            <IconFilter size="1.2rem" icon="filter" />
-          </IconButton>
-        </Tooltip>
-      )}
-    </Toolbar>
-  );
-};
-
-EnhancedTableToolbar.propTypes = {
-  numSelected: PropTypes.number.isRequired,
-};
-
 const ProductTableList = () => {
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('calories');
-  const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -219,56 +160,23 @@ const ProductTableList = () => {
   const getProducts = useSelector((state) => state.ecommerceReducer.products);
 
   const [rows, setRows] = React.useState(getProducts);
-  const [search, setSearch] = React.useState('');
 
   React.useEffect(() => {
     setRows(getProducts);
   }, [getProducts]);
 
-  const handleSearch = (event) => {
-    const filteredRows = getProducts.filter((row) => {
-      return row.title.toLowerCase().includes(event.target.value);
-    });
-    setSearch(event.target.value);
-    setRows(filteredRows);
-  };
+  const FIELD_NAME = 'title';
+  const [search, handleSearch] = useEnhancedTableSearch(rows, FIELD_NAME, setRows);
+  const [selected, isSelected, handleSelectAllClick, handleClick] = useEnhancedTableSelect(
+    rows,
+    FIELD_NAME,
+  );
 
   // This is for the sorting
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
-  };
-
-  // This is for select all the row
-  const handleSelectAllClick = (event) => {
-    if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.title);
-      setSelected(newSelecteds);
-      return;
-    }
-    setSelected([]);
-  };
-
-  // This is for the single row sleect
-  const handleClick = (event, name) => {
-    const selectedIndex = selected.indexOf(name);
-    let newSelected = [];
-
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1),
-      );
-    }
-
-    setSelected(newSelected);
   };
 
   const handleChangePage = (event, newPage) => {
@@ -284,8 +192,6 @@ const ProductTableList = () => {
     setDense(event.target.checked);
   };
 
-  const isSelected = (name) => selected.indexOf(name) !== -1;
-
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
@@ -295,7 +201,7 @@ const ProductTableList = () => {
         <EnhancedTableToolbar
           numSelected={selected.length}
           search={search}
-          handleSearch={(event) => handleSearch(event)}
+          handleSearch={handleSearch}
         />
         <Paper variant="outlined" sx={{ mx: 2, mt: 1 }}>
           <TableContainer>
