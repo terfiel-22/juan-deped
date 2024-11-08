@@ -30,6 +30,7 @@ import { fetchProducts } from 'src/store/apps/eCommerce/EcommerceSlice';
 import CustomCheckbox from '../../forms/theme-elements/CustomCheckbox';
 import CustomSwitch from '../../forms/theme-elements/CustomSwitch';
 import { IconDotsVertical, IconFilter, IconSearch, IconTrash } from '@tabler/icons';
+import useFetchPersonnels from '../../../hooks/personnel/useFetchPersonnels';
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
@@ -215,6 +216,9 @@ const PersonnelTableList = () => {
     React.useEffect(() => {
         dispatch(fetchProducts());
     }, [dispatch]);
+
+    /** Fetch Personnels */
+    const [error, resetError, loading] = useFetchPersonnels();
 
     const getProducts = useSelector((state) => state.ecommerceReducer.products);
 

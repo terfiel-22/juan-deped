@@ -3,6 +3,7 @@ import { createSelector } from 'reselect';
 
 const initialState = {
   currentUser: null,
+  personnels: [],
 };
 
 export const UserSlice = createSlice({
@@ -12,13 +13,16 @@ export const UserSlice = createSlice({
     setCurrentUser: (state, action) => {
       state.currentUser = action.payload;
     },
+    setPersonnels: (state, action) => {
+      state.personnels = action.payload;
+    },
   },
 });
 
 export const UserReducer = UserSlice.reducer;
 
 // Actions
-export const { setCurrentUser } = UserSlice.actions;
+export const { setCurrentUser, setPersonnels } = UserSlice.actions;
 
 // Selector
 export const selectUserReducer = (state) => state.userReducer;
@@ -26,3 +30,4 @@ export const selectCurrentUser = createSelector([selectUserReducer], (user) => u
 export const selectCurrentUserRole = createSelector([selectCurrentUser], (currentUser) =>
   currentUser ? currentUser.role : 'Guest',
 );
+export const selectPersonnels = createSelector([selectUserReducer], (user) => user.personnels);
