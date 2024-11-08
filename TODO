@@ -53,4 +53,5 @@ FRONTEND
 [/] Modify File Extensions and Header
 [/] Create Personnels Page
 [/] UI for Personnel Table List
-[/] Create hook for Fetching Personnel
+[/] Create hook for Fetching Personnel 
+[/] Display Personnel Data on Table
