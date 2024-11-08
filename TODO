@@ -26,6 +26,7 @@ BACKEND
 [/] Admin Data and Init Admin Route/Controller
 [/] Admin Login
 [/] Logout
+[/] Fetch Personnels
 
 FRONTEND
 [/] Axios Client
