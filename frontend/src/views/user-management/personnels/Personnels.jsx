@@ -15,7 +15,7 @@ const BCrumb = [
 
 const Personnels = () => {
     return (
-        <PageContainer title="Personnels" description="this is Personnels page">
+        <PageContainer title="JuanDepEd | Personnels" description="this is Personnels page">
             {/* breadcrumb */}
             <Breadcrumb title="Personnels" items={BCrumb} />
             {/* end breadcrumb */}

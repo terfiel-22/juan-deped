@@ -7,27 +7,20 @@ import {
     TableContainer,
     TableHead,
     Typography,
-    Avatar,
     Paper,
     Alert,
-    AvatarGroup,
-    Chip,
     TableRow,
 } from '@mui/material';
 
 import { useSelector } from 'react-redux';
 import useFetchPersonnels from '../../../hooks/personnel/useFetchPersonnels';
 import { selectPersonnels } from '../../../store/user/UserSlice';
-import { basicsTableData } from '../../../views/tables/tableData';
-import { Stack } from '@mui/system';
 
 
 const PersonnelTableList = () => {
     /** Fetch Personnels */
     const [error, resetError] = useFetchPersonnels();
     const personnels = useSelector(selectPersonnels);
-
-    const basics = basicsTableData;
 
     return (
         <Box>
@@ -55,43 +48,39 @@ const PersonnelTableList = () => {
                                             <Typography variant="h6">Full Name</Typography>
                                         </TableCell>
                                         <TableCell>
-                                            <Typography variant="h6">Civil Status</Typography>
+                                            <Typography variant="h6">Position</Typography>
                                         </TableCell>
                                         <TableCell>
-                                            <Typography variant="h6">Position</Typography>
+                                            <Typography variant="h6">Eligibility</Typography>
                                         </TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {personnels.map(({ basicInformation }) => (
-                                        <TableRow key={basicInformation._id}>
+                                    {personnels.map((personnel) => (
+                                        <TableRow key={personnel._id}>
                                             <TableCell>
                                                 <Typography color="textSecondary" variant="h6" fontWeight="400">
-                                                    {basicInformation.empNo}
+                                                    {personnel.basicInformation.empNo}
                                                 </Typography>
                                             </TableCell>
-
                                             <TableCell>
                                                 <Typography color="textSecondary" variant="h6" fontWeight="400">
-                                                    {basicInformation.account}
+                                                    {personnel.basicInformation.account}
                                                 </Typography>
                                             </TableCell>
-
                                             <TableCell>
                                                 <Typography color="textSecondary" variant="h6" fontWeight="400">
-                                                    {basicInformation.lName}, {basicInformation.fName}
+                                                    {personnel.basicInformation.lName},&nbsp;{personnel.basicInformation.fName}
                                                 </Typography>
                                             </TableCell>
-
                                             <TableCell>
                                                 <Typography color="textSecondary" variant="h6" fontWeight="400">
-                                                    {basicInformation.civilStatus}
+                                                    {personnel.basicInformation.position}
                                                 </Typography>
                                             </TableCell>
-
                                             <TableCell>
                                                 <Typography color="textSecondary" variant="h6" fontWeight="400">
-                                                    {basicInformation.position}
+                                                    {personnel.basicInformation.eligibility}
                                                 </Typography>
                                             </TableCell>
                                         </TableRow>
