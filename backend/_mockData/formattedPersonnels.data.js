@@ -24,39 +24,38 @@ const parseDate = (dateString) => {
 };
 
 const formattedPersonnels = personnels.map((person) => ({
-  basicInformation: {
-    empNo: person["EMPNO"] || "",
-    account: person["ACCOUNT"] || "",
-    lName: person["LNAME"] || "",
-    fName: person["FNAME"] || "",
-    mName: person["MNAME"] || "",
-    civilStatus: person["CIV STAT"] || "",
-    position: person["POSITION"] || "",
-    eligibility: person["ELIGIBILITY"] || "",
-    birthdate: isValidDate(person["BIRTHDATE"])
-      ? parseDate(person["BIRTHDATE"])
-      : null,
-    age: person["AGE"] ? parseInt(person["AGE"], 10) : 0,
-    bloodType: person["Blood Type"] || "",
-    yrsOfTeachingPrivate: person["YEARS OF TEACHING PRIVATE"]
-      ? parseFloat(person["YEARS OF TEACHING PRIVATE"])
-      : 0,
-    tin: person["TIN"] || "",
-    gsisId: person["GSIS_ID"] || "",
-    hdmfId: person["HDMF_ID"] || "",
-    phicId: person["PHIC_ID"] || "",
-    contactNo: person["CONTACT #"] || "",
-    depedEmail: person["DEPED EMAIL/PERSONAL EMAIL"] || "",
-    permAddress: person["PERMANENT ADDRESS"] || "",
-    resAddress: person["RESIDENTIAL ADDRESS"] || "",
-    prcIdNo: person["PRC ID No."] || "",
-    validityDate: isValidDate(person["Date of Validity"])
-      ? parseDate(person["Date of Validity"])
-      : null,
-    emergencyContact: person["Emergency Contact"] || "",
-    relationship: person["Relationship"] || "",
-    phoneNo: person["Phone Number"] || "",
-  },
+  empNo: person["EMPNO"] || "",
+  account: person["ACCOUNT"] || "",
+  lName: person["LNAME"] || "",
+  fName: person["FNAME"] || "",
+  mName: person["MNAME"] || "",
+  civilStatus: person["CIV STAT"] || "",
+  position: person["POSITION"] || "",
+  eligibility: person["ELIGIBILITY"] || "",
+  birthdate: isValidDate(person["BIRTHDATE"])
+    ? parseDate(person["BIRTHDATE"])
+    : null,
+  age: person["AGE"] ? parseInt(person["AGE"], 10) : 0,
+  bloodType: person["Blood Type"] || "",
+  yrsOfTeachingPrivate: person["YEARS OF TEACHING PRIVATE"]
+    ? parseFloat(person["YEARS OF TEACHING PRIVATE"])
+    : 0,
+  tin: person["TIN"] || "",
+  gsisId: person["GSIS_ID"] || "",
+  hdmfId: person["HDMF_ID"] || "",
+  phicId: person["PHIC_ID"] || "",
+  contactNo: person["CONTACT #"] || "",
+  depedEmail: person["DEPED EMAIL/PERSONAL EMAIL"] || "",
+  permAddress: person["PERMANENT ADDRESS"] || "",
+  resAddress: person["RESIDENTIAL ADDRESS"] || "",
+  prcIdNo: person["PRC ID No."] || "",
+  validityDate: isValidDate(person["Date of Validity"])
+    ? parseDate(person["Date of Validity"])
+    : null,
+  emergencyContact: person["Emergency Contact"] || "",
+  relationship: person["Relationship"] || "",
+  phoneNo: person["Phone Number"] || "",
+
   employment: {
     plantilla: person["PLANTILLA"] || "",
     origApt: isValidDate(person["ORIG APT"])

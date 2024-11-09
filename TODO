@@ -27,6 +27,7 @@ BACKEND
 [/] Admin Login
 [/] Logout
 [/] Fetch Personnels
+[/] Update Personnels Schema
 
 FRONTEND
 [/] Axios Client
