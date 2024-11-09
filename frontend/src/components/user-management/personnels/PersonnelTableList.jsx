@@ -151,7 +151,7 @@ const PersonnelTableList = () => {
                                             return (
                                                 <TableRow
                                                     hover
-                                                    onClick={(event) => handleClick(event, personnel._id)}
+                                                    onClick={() => handleClick(personnel[FIELD_NAME])}
                                                     role="checkbox"
                                                     aria-checked={isItemSelected}
                                                     tabIndex={-1}

@@ -9,8 +9,8 @@ const useEnhancedTableSelect = ({ rows, fieldName }) => {
   const handleSelectAllClick = useCallback(
     (event) => {
       if (event.target.checked) {
-        const newSelecteds = rows.map((n) => n[fieldName]);
-        setSelected(newSelecteds);
+        const _selected = rows.map((n) => n[fieldName]);
+        setSelected(_selected);
         return;
       }
       setSelected([]);
@@ -20,7 +20,7 @@ const useEnhancedTableSelect = ({ rows, fieldName }) => {
 
   // This is for the single row sleect
   const handleClick = useCallback(
-    (event, name) => {
+    (name) => {
       const selectedIndex = selected.indexOf(name);
       let newSelected = [];
 
