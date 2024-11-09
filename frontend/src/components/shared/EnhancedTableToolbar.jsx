@@ -5,7 +5,7 @@ import React from 'react'
 import PropTypes from 'prop-types';
 
 const EnhancedTableToolbar = (props) => {
-    const { numSelected, handleSearch, search } = props;
+    const { numSelected, handleSearch, search, searchField = '' } = props;
 
     return (
         <Toolbar
@@ -32,7 +32,7 @@ const EnhancedTableToolbar = (props) => {
                                 </InputAdornment>
                             ),
                         }}
-                        placeholder="Search Product"
+                        placeholder={`Search ${searchField}`}
                         size="small"
                         onChange={handleSearch}
                         value={search}
@@ -58,7 +58,7 @@ const EnhancedTableToolbar = (props) => {
 };
 
 EnhancedTableToolbar.propTypes = {
-    numSelected: PropTypes.number.isRequired,
+    numSelected: PropTypes.number.isRequired
 };
 
 export default EnhancedTableToolbar

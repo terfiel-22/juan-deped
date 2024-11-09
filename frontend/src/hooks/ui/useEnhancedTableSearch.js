@@ -12,10 +12,11 @@ const useEnhancedTableSearch = ({ rows, fieldName, setRows, setPage }) => {
   );
 
   const handleSearch = useCallback((e) => {
+    console.log(rows);
     const keyword = e.target.value.toLowerCase();
-    const rows = filteredRows(keyword);
+    const filtered = filteredRows(keyword);
     setSearch(keyword);
-    setRows(rows);
+    setRows(filtered);
     setPage(0);
   }, []);
 

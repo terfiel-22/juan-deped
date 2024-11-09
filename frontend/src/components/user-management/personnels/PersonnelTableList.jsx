@@ -69,14 +69,11 @@ const headCells = [
 ];
 
 const PersonnelTableList = () => {
-    const [rows, setRows] = useState([])
 
     /** Fetch Personnels */
     const [error, resetError] = useFetchPersonnels();
     const personnels = useSelector(selectPersonnels);
-    useEffect(() => {
-        setRows(personnels)
-    }, [personnels])
+    const [rows, setRows] = useState(personnels);
 
     // This is for pagination
     const [
@@ -93,6 +90,7 @@ const PersonnelTableList = () => {
 
     // This is for searching
     const FIELD_NAME = 'empNo';
+    const SEARCH_FIELD = 'EMP No.'
     const [search, handleSearch] = useEnhancedTableSearch({
         rows,
         fieldName: FIELD_NAME,
@@ -127,6 +125,7 @@ const PersonnelTableList = () => {
                             numSelected={selected.length}
                             search={search}
                             handleSearch={handleSearch}
+                            searchField={SEARCH_FIELD}
                         />
                         <Paper variant="outlined" sx={{ mx: 2, mt: 1 }}>
                             <TableContainer>
@@ -170,27 +169,27 @@ const PersonnelTableList = () => {
                                                     </TableCell>
                                                     <TableCell>
                                                         <Typography color="textSecondary" variant="h6" fontWeight="400">
-                                                            {personnel.basicInformation.empNo}
+                                                            {personnel.empNo}
                                                         </Typography>
                                                     </TableCell>
                                                     <TableCell>
                                                         <Typography color="textSecondary" variant="h6" fontWeight="400">
-                                                            {personnel.basicInformation.account}
+                                                            {personnel.account}
                                                         </Typography>
                                                     </TableCell>
                                                     <TableCell>
                                                         <Typography color="textSecondary" variant="h6" fontWeight="400">
-                                                            {personnel.basicInformation.lName},&nbsp;{personnel.basicInformation.fName}
+                                                            {personnel.lName},&nbsp;{personnel.fName}
                                                         </Typography>
                                                     </TableCell>
                                                     <TableCell>
                                                         <Typography color="textSecondary" variant="h6" fontWeight="400">
-                                                            {personnel.basicInformation.position}
+                                                            {personnel.position}
                                                         </Typography>
                                                     </TableCell>
                                                     <TableCell>
                                                         <Typography color="textSecondary" variant="h6" fontWeight="400">
-                                                            {personnel.basicInformation.eligibility}
+                                                            {personnel.eligibility}
                                                         </Typography>
                                                     </TableCell>
                                                     <TableCell>
