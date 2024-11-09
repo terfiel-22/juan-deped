@@ -61,3 +61,4 @@ FRONTEND
 [/] Fix error between search and pagination
 [/] EnhancedTableHead Custom Component
 [/] Custom Hook for EnhancedTableHead Sorting
+[/] Handling Table Dense with Custom Hook and Component

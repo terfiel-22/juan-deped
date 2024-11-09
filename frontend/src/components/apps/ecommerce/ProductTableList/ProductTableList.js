@@ -10,7 +10,6 @@ import {
   TableRow,
   IconButton,
   Tooltip,
-  FormControlLabel,
   Typography,
   Avatar,
   Paper,
@@ -19,7 +18,6 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchProducts } from 'src/store/apps/eCommerce/EcommerceSlice';
 import CustomCheckbox from '../../../forms/theme-elements/CustomCheckbox';
-import CustomSwitch from '../../../forms/theme-elements/CustomSwitch';
 import { IconDotsVertical } from '@tabler/icons';
 import useEnhancedTableSelect from '../../../../hooks/ui/useEnhancedTableSelect';
 import useEnhancedTableSearch from '../../../../hooks/ui/useEnhancedTableSearch';
@@ -27,6 +25,8 @@ import EnhancedTableToolbar from '../../../shared/EnhancedTableToolbar';
 import useTablePagination from '../../../../hooks/ui/useTablePagination';
 import EnhancedTableHead from '../../../shared/EnhancedTableHead';
 import useEnhancedTableSort from '../../../../hooks/ui/useEnhancedTableSort';
+import TableDenseToggle from '../../../shared/TableDenseToggle';
+import useTableDenseToggle from '../../../../hooks/ui/useTableDenseToggle';
 
 const headCells = [
   {
@@ -63,8 +63,6 @@ const headCells = [
 ];
 
 const ProductTableList = () => {
-  const [dense, setDense] = React.useState(false);
-
   const dispatch = useDispatch();
   //Fetch Products
   React.useEffect(() => {
@@ -106,9 +104,8 @@ const ProductTableList = () => {
   const [order, orderBy, getComparator, stableSort, handleRequestSort] =
     useEnhancedTableSort(FIELD_NAME);
 
-  const handleChangeDense = (event) => {
-    setDense(event.target.checked);
-  };
+  // This is for table density
+  const [dense, handleChangeDense] = useTableDenseToggle();
 
   return (
     <Box>
@@ -246,12 +243,7 @@ const ProductTableList = () => {
             onRowsPerPageChange={handleChangeRowsPerPage}
           />
         </Paper>
-        <Box ml={2}>
-          <FormControlLabel
-            control={<CustomSwitch checked={dense} onChange={handleChangeDense} />}
-            label="Dense padding"
-          />
-        </Box>
+        <TableDenseToggle dense={dense} handleChangeDense={handleChangeDense} />
       </Box>
     </Box>
   );
