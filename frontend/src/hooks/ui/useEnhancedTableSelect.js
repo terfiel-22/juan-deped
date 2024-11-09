@@ -15,7 +15,7 @@ const useEnhancedTableSelect = ({ rows, fieldName }) => {
       }
       setSelected([]);
     },
-    [fieldName],
+    [fieldName, rows],
   );
 
   // This is for the single row sleect
