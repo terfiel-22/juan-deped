@@ -1,6 +1,6 @@
 import { IconButton, InputAdornment, TextField, Toolbar, Tooltip, Typography } from '@mui/material';
 import { alpha, Box } from '@mui/system';
-import { IconFilter, IconSearch, IconTrash } from '@tabler/icons';
+import { IconFilter, IconPlus, IconSearch, IconTrash } from '@tabler/icons';
 import React from 'react'
 import PropTypes from 'prop-types';
 
@@ -37,6 +37,11 @@ const EnhancedTableToolbar = (props) => {
                         onChange={handleSearch}
                         value={search}
                     />
+                    <Tooltip title="Filter">
+                        <IconButton>
+                            <IconFilter size="1.2rem" icon="filter" />
+                        </IconButton>
+                    </Tooltip>
                 </Box>
             )}
 
@@ -47,9 +52,9 @@ const EnhancedTableToolbar = (props) => {
                     </IconButton>
                 </Tooltip>
             ) : (
-                <Tooltip title="Filter list">
+                <Tooltip title="Add New">
                     <IconButton>
-                        <IconFilter size="1.2rem" icon="filter" />
+                        <IconPlus size="1.2rem" icon="plus" />
                     </IconButton>
                 </Tooltip>
             )}
