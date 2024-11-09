@@ -26,49 +26,24 @@ import useEnhancedTableSearch from '../../../../hooks/ui/useEnhancedTableSearch'
 import EnhancedTableToolbar from '../../../shared/EnhancedTableToolbar';
 import useTablePagination from '../../../../hooks/ui/useTablePagination';
 import EnhancedTableHead from '../../../shared/EnhancedTableHead';
-
-function descendingComparator(a, b, orderBy) {
-  if (b[orderBy] < a[orderBy]) {
-    return -1;
-  }
-  if (b[orderBy] > a[orderBy]) {
-    return 1;
-  }
-  return 0;
-}
-
-function getComparator(order, orderBy) {
-  return order === 'desc'
-    ? (a, b) => descendingComparator(a, b, orderBy)
-    : (a, b) => -descendingComparator(a, b, orderBy);
-}
-
-function stableSort(array, comparator) {
-  const stabilizedThis = array.map((el, index) => [el, index]);
-  stabilizedThis.sort((a, b) => {
-    const order = comparator(a[0], b[0]);
-    if (order !== 0) return order;
-    return a[1] - b[1];
-  });
-  return stabilizedThis.map((el) => el[0]);
-}
+import useEnhancedTableSort from '../../../../hooks/ui/useEnhancedTableSort';
 
 const headCells = [
   {
-    id: 'name',
+    id: 'title',
     numeric: false,
     disablePadding: false,
     label: 'Products',
   },
   {
-    id: 'pname',
+    id: 'created',
     numeric: false,
     disablePadding: false,
     label: 'Date',
   },
 
   {
-    id: 'status',
+    id: 'stock',
     numeric: false,
     disablePadding: false,
     label: 'Status',
@@ -88,8 +63,6 @@ const headCells = [
 ];
 
 const ProductTableList = () => {
-  const [order, setOrder] = React.useState('asc');
-  const [orderBy, setOrderBy] = React.useState('calories');
   const [dense, setDense] = React.useState(false);
 
   const dispatch = useDispatch();
@@ -106,6 +79,7 @@ const ProductTableList = () => {
     setRows(getProducts);
   }, [getProducts]);
 
+  // This is for pagination
   const [
     page,
     rowsPerPage,
@@ -117,19 +91,20 @@ const ProductTableList = () => {
     handleChangePage,
     handleChangeRowsPerPage,
   ] = useTablePagination(rows);
+
+  // This is for searching
   const FIELD_NAME = 'title';
   const [search, handleSearch] = useEnhancedTableSearch(rows, FIELD_NAME, setRows, setPage);
+
+  // This is for selecting
   const [selected, isSelected, handleSelectAllClick, handleClick] = useEnhancedTableSelect(
     rows,
     FIELD_NAME,
   );
 
   // This is for the sorting
-  const handleRequestSort = (event, property) => {
-    const isAsc = orderBy === property && order === 'asc';
-    setOrder(isAsc ? 'desc' : 'asc');
-    setOrderBy(property);
-  };
+  const [order, orderBy, getComparator, stableSort, handleRequestSort] =
+    useEnhancedTableSort(FIELD_NAME);
 
   const handleChangeDense = (event) => {
     setDense(event.target.checked);
