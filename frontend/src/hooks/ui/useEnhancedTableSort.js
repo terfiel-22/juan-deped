@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-const useEnhancedTableSort = (initialOrderBy = '') => {
+const useEnhancedTableSort = ({ initialOrderBy = '' }) => {
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState(initialOrderBy);
 

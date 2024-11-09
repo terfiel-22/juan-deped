@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 
-const useTablePagination = (rows) => {
+const useTablePagination = ({ rows }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 

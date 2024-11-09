@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-const useEnhancedTableSelect = (rows, fieldName) => {
+const useEnhancedTableSelect = ({ rows, fieldName }) => {
   /** Selected */
   const [selected, setSelected] = useState([]);
   const isSelected = useCallback((name) => selected.indexOf(name) !== -1, [selected]);
