@@ -29,6 +29,7 @@ import { IconDotsVertical } from '@tabler/icons';
 import useEnhancedTableSelect from '../../../../hooks/ui/useEnhancedTableSelect';
 import useEnhancedTableSearch from '../../../../hooks/ui/useEnhancedTableSearch';
 import EnhancedTableToolbar from '../../../shared/EnhancedTableToolbar';
+import useTablePagination from '../../../../hooks/ui/useTablePagination';
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -147,9 +148,7 @@ EnhancedTableHead.propTypes = {
 const ProductTableList = () => {
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('calories');
-  const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   const dispatch = useDispatch();
   //Fetch Products
@@ -165,6 +164,17 @@ const ProductTableList = () => {
     setRows(getProducts);
   }, [getProducts]);
 
+  const [
+    page,
+    rowsPerPage,
+    pageData,
+    emptyRows,
+    rowsPerPageOptions,
+    rowsCount,
+    setPage,
+    handleChangePage,
+    handleChangeRowsPerPage,
+  ] = useTablePagination(rows);
   const FIELD_NAME = 'title';
   const [search, handleSearch] = useEnhancedTableSearch(rows, FIELD_NAME, setRows, setPage);
   const [selected, isSelected, handleSelectAllClick, handleClick] = useEnhancedTableSelect(
@@ -179,21 +189,9 @@ const ProductTableList = () => {
     setOrderBy(property);
   };
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
-
   const handleChangeDense = (event) => {
     setDense(event.target.checked);
   };
-
-  // Avoid a layout jump when reaching the last page with empty rows.
-  const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
   return (
     <Box>
@@ -219,97 +217,95 @@ const ProductTableList = () => {
                 rowCount={rows.length}
               />
               <TableBody>
-                {stableSort(rows, getComparator(order, orderBy))
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((row, index) => {
-                    const isItemSelected = isSelected(row.title);
-                    const labelId = `enhanced-table-checkbox-${index}`;
+                {stableSort(pageData, getComparator(order, orderBy)).map((row, index) => {
+                  const isItemSelected = isSelected(row.title);
+                  const labelId = `enhanced-table-checkbox-${index}`;
 
-                    return (
-                      <TableRow
-                        hover
-                        onClick={(event) => handleClick(event, row.title)}
-                        role="checkbox"
-                        aria-checked={isItemSelected}
-                        tabIndex={-1}
-                        key={row.title}
-                        selected={isItemSelected}
-                      >
-                        <TableCell padding="checkbox">
-                          <CustomCheckbox
-                            color="primary"
-                            checked={isItemSelected}
-                            inputprops={{
-                              'aria-labelledby': labelId,
-                            }}
+                  return (
+                    <TableRow
+                      hover
+                      onClick={(event) => handleClick(event, row.title)}
+                      role="checkbox"
+                      aria-checked={isItemSelected}
+                      tabIndex={-1}
+                      key={row.title}
+                      selected={isItemSelected}
+                    >
+                      <TableCell padding="checkbox">
+                        <CustomCheckbox
+                          color="primary"
+                          checked={isItemSelected}
+                          inputprops={{
+                            'aria-labelledby': labelId,
+                          }}
+                        />
+                      </TableCell>
+
+                      <TableCell>
+                        <Box display="flex" alignItems="center">
+                          <Avatar
+                            src={row.photo}
+                            alt={row.photo}
+                            variant="rounded"
+                            sx={{ width: 56, height: 56, borderRadius: '100%' }}
                           />
-                        </TableCell>
-
-                        <TableCell>
-                          <Box display="flex" alignItems="center">
-                            <Avatar
-                              src={row.photo}
-                              alt={row.photo}
-                              variant="rounded"
-                              sx={{ width: 56, height: 56, borderRadius: '100%' }}
-                            />
-                            <Box
-                              sx={{
-                                ml: 2,
-                              }}
-                            >
-                              <Typography variant="h6" fontWeight="600">
-                                {row.title}
-                              </Typography>
-                              <Typography color="textSecondary" variant="subtitle2">
-                                {row.category}
-                              </Typography>
-                            </Box>
-                          </Box>
-                        </TableCell>
-                        <TableCell>
-                          <Typography>{format(new Date(row.created), 'E, MMM d yyyy')}</Typography>
-                        </TableCell>
-
-                        <TableCell>
-                          <Box display="flex" alignItems="center">
-                            <Box
-                              sx={{
-                                backgroundColor: row.stock
-                                  ? (theme) => theme.palette.success.main
-                                  : (theme) => theme.palette.error.main,
-                                borderRadius: '100%',
-                                height: '10px',
-                                width: '10px',
-                              }}
-                            />
-                            <Typography
-                              color="textSecondary"
-                              variant="subtitle2"
-                              sx={{
-                                ml: 1,
-                              }}
-                            >
-                              {row.stock ? 'InStock' : 'Out of Stock'}
+                          <Box
+                            sx={{
+                              ml: 2,
+                            }}
+                          >
+                            <Typography variant="h6" fontWeight="600">
+                              {row.title}
+                            </Typography>
+                            <Typography color="textSecondary" variant="subtitle2">
+                              {row.category}
                             </Typography>
                           </Box>
-                        </TableCell>
+                        </Box>
+                      </TableCell>
+                      <TableCell>
+                        <Typography>{format(new Date(row.created), 'E, MMM d yyyy')}</Typography>
+                      </TableCell>
 
-                        <TableCell>
-                          <Typography fontWeight="500" variant="h6">
-                            ${row.price}
+                      <TableCell>
+                        <Box display="flex" alignItems="center">
+                          <Box
+                            sx={{
+                              backgroundColor: row.stock
+                                ? (theme) => theme.palette.success.main
+                                : (theme) => theme.palette.error.main,
+                              borderRadius: '100%',
+                              height: '10px',
+                              width: '10px',
+                            }}
+                          />
+                          <Typography
+                            color="textSecondary"
+                            variant="subtitle2"
+                            sx={{
+                              ml: 1,
+                            }}
+                          >
+                            {row.stock ? 'InStock' : 'Out of Stock'}
                           </Typography>
-                        </TableCell>
-                        <TableCell>
-                          <Tooltip title="Edit">
-                            <IconButton size="small">
-                              <IconDotsVertical size="1.1rem" />
-                            </IconButton>
-                          </Tooltip>
-                        </TableCell>
-                      </TableRow>
-                    );
-                  })}
+                        </Box>
+                      </TableCell>
+
+                      <TableCell>
+                        <Typography fontWeight="500" variant="h6">
+                          ${row.price}
+                        </Typography>
+                      </TableCell>
+                      <TableCell>
+                        <Tooltip title="Edit">
+                          <IconButton size="small">
+                            <IconDotsVertical size="1.1rem" />
+                          </IconButton>
+                        </Tooltip>
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
                 {emptyRows > 0 && (
                   <TableRow
                     style={{
@@ -323,9 +319,9 @@ const ProductTableList = () => {
             </Table>
           </TableContainer>
           <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
+            rowsPerPageOptions={rowsPerPageOptions}
             component="div"
-            count={rows.length}
+            count={rowsCount}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}

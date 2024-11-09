@@ -34,6 +34,7 @@ const useTablePagination = (rows) => {
     emptyRows,
     rowsPerPageOptions,
     rowsCount,
+    setPage,
     handleChangePage,
     handleChangeRowsPerPage,
   ];
