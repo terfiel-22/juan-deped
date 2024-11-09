@@ -59,3 +59,4 @@ FRONTEND
 [/] Create Pagination Hook
 [/] Create Custom Component and Custom Hook for Table
 [/] Fix error between search and pagination
+[/] EnhancedTableHead Custom Component
