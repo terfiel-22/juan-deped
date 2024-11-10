@@ -1,22 +1,52 @@
 import bcrypt from "bcryptjs";
-import Track from "../models/track.model.js";
+import uniqid from "uniqid";
 import Subject from "../models/subject.model.js";
 import Personnel from "../models/personnel.model.js";
 import Auth from "../models/auth.model.js";
-import tracks from "../_mockData/tracks.data.js";
 import subjects from "../_mockData/subjects.data.js";
 import formattedPersonnels from "../_mockData/formattedPersonnels.data.js";
 import admin from "../_mockData/admin.data.js";
+import tracks from "../_mockData/tracks.data.js";
 import HttpError from "../utils/HttpError.utils.js";
+import {
+  Specialization,
+  Strand,
+  Track,
+} from "../models/track-strand-specialization.model.js";
 
-export const initTracks = async (req, res, next) => {
+export const initTrackStrandSpecialization = async (req, res, next) => {
   try {
     await Track.deleteMany({});
-    await Track.insertMany(tracks);
+    await Strand.deleteMany({});
+    await Specialization.deleteMany({});
 
-    res
-      .status(201)
-      .json({ message: "Tracks data is successfully initialized." });
+    for (const track of tracks) {
+      const trackDoc = await Track.create({
+        code: uniqid(),
+        name: track.name,
+      });
+
+      for (const strand of track.strands) {
+        const strandDoc = await Strand.create({
+          code: uniqid(),
+          name: strand.name,
+          trackCode: trackDoc.code,
+        });
+
+        for (const specialization of strand.specializations) {
+          await Specialization.create({
+            code: uniqid(),
+            name: specialization.name,
+            strandCode: strandDoc.code,
+          });
+        }
+      }
+    }
+
+    res.status(201).json({
+      message:
+        "Tracks, Strands and Specialization data is successfully initialized.",
+    });
   } catch (error) {
     next(error);
   }
