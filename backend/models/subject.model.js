@@ -1,33 +1,75 @@
 import { model, Schema } from "mongoose";
 
-// Subject Schema
-const subjectSchema = new Schema({
+const coreSubjectSchema = new Schema({
   name: {
     type: String,
     required: true,
   },
-  areas: { type: [String], index: true },
+  writtenWork: {
+    type: Number,
+    default: 0.25,
+  },
+  performanceTask: {
+    type: Number,
+    default: 0.5,
+  },
+  quarterlyAssessment: {
+    type: Number,
+    default: 0.25,
+  },
 });
 
-// Specialized Subject Schema
+const appliedSubjectSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  writtenWork: {
+    type: Number,
+    default: 0.25,
+  },
+  performanceTask: {
+    type: Number,
+    default: 0.45,
+  },
+  quarterlyAssessment: {
+    type: Number,
+    default: 0.3,
+  },
+});
+
 const specializedSchema = new Schema({
   strand: {
     type: String,
     required: true,
   },
-  subjects: { type: [subjectSchema], index: true },
+  name: {
+    type: String,
+    required: true,
+  },
+  areas: [
+    {
+      type: String,
+      index: true,
+    },
+  ],
+  writtenWork: {
+    type: Number,
+    default: 0.2,
+  },
+  performanceTask: {
+    type: Number,
+    default: 0.6,
+  },
+  quarterlyAssessment: {
+    type: Number,
+    default: 0.2,
+  },
 });
 
-const unifiedSubjectSchema = new Schema(
-  {
-    coreSubjects: { type: [subjectSchema], index: true },
-    appliedSubjects: { type: [subjectSchema], index: true },
-    specializedSubjects: { type: [specializedSchema], index: true },
-  },
-  { timestamps: true }
+export const CoreSubject = model("Core Subject", coreSubjectSchema);
+export const AppliedSubject = model("Applied Subject", appliedSubjectSchema);
+export const SpecializedSubject = model(
+  "Specialized Subject",
+  specializedSchema
 );
-
-// Export Subject Model
-const Subject = model("Subject", unifiedSubjectSchema);
-
-export default Subject;

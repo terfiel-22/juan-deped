@@ -1,9 +1,17 @@
 import bcrypt from "bcryptjs";
 import uniqid from "uniqid";
-import Subject from "../models/subject.model.js";
+import {
+  AppliedSubject,
+  CoreSubject,
+  SpecializedSubject,
+} from "../models/subject.model.js";
 import Personnel from "../models/personnel.model.js";
 import Auth from "../models/auth.model.js";
-import subjects from "../_mockData/subjects.data.js";
+import {
+  coreSubjects,
+  appliedSubjects,
+  specializedSubjects,
+} from "../_mockData/subjects.data.js";
 import formattedPersonnels from "../_mockData/formattedPersonnels.data.js";
 import admin from "../_mockData/admin.data.js";
 import tracks from "../_mockData/tracks.data.js";
@@ -54,8 +62,26 @@ export const initTrackStrandSpecialization = async (req, res, next) => {
 
 export const initSubjects = async (req, res, next) => {
   try {
-    await Subject.deleteMany({});
-    await Subject.insertMany(subjects);
+    await Promise.all([
+      await CoreSubject.deleteMany({}),
+      await AppliedSubject.deleteMany({}),
+      await SpecializedSubject.deleteMany({}),
+    ]);
+
+    await Promise.all([
+      await CoreSubject.insertMany(coreSubjects),
+      await AppliedSubject.insertMany(appliedSubjects),
+    ]);
+
+    for (const specializedSubject of specializedSubjects) {
+      for (const subject of specializedSubject.subjects) {
+        await SpecializedSubject.create({
+          strand: specializedSubject.strand,
+          name: subject.name,
+          areas: subject.areas,
+        });
+      }
+    }
 
     res
       .status(201)

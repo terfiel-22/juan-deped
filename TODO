@@ -28,6 +28,8 @@ BACKEND
 [/] Logout
 [/] Fetch Personnels
 [/] Update Personnels Schema
+[/] Create Each Model for Track, Strand and Specialization
+[/] Create Each Model for Subject Types 
 
 FRONTEND
 [/] Axios Client
