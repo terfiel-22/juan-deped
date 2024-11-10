@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Grid, Step, Stepper, StepLabel, Typography, Alert } from '@mui/material'
+import { Button, Grid, Alert } from '@mui/material'
 import { Box, Stack } from '@mui/system'
 import PersonalInformation from '../registration-step-forms/PersonalInformation'
 import StudentInformation from '../registration-step-forms/StudentInformation'
@@ -8,105 +8,37 @@ import AddressInformation from '../registration-step-forms/AddressInformation'
 import GuardianInformation from '../registration-step-forms/GuardianInformation'
 import AdditionalInformation from '../registration-step-forms/AdditionalInformation'
 import ProgressMobileStepper from '../../../../components/shared/ProgressMobileStepper'
-const steps = ['Personal', 'Student', 'Identification', 'Address', 'Guardian', 'Additional'];
+import WebStepper from "../../../../components/shared/WebStepper";
+import useStepper from "../../../../hooks/ui/useStepper";
+
+const steps = [
+    { name: "Personal", component: <PersonalInformation /> },
+    { name: "Student", component: <StudentInformation /> },
+    { name: "Identification", component: <IdentificationInformation /> },
+    { name: "Address", component: <AddressInformation /> },
+    { name: "Guardian", component: <GuardianInformation /> },
+    { name: "Additional", component: <AdditionalInformation /> },
+]
 const optionals = new Set([]) // index of optional steps
 
 const RegStudent = () => {
-    // For registration step
-    const [activeStep, setActiveStep] = useState(0);
-    const [skipped, setSkipped] = useState(new Set());
-
-    const isStepOptional = (step) => optionals.has(step)
-
-    const isStepSkipped = (step) => skipped.has(step);
-
-    const handleNext = () => {
-        let newSkipped = skipped;
-        if (isStepSkipped(activeStep)) {
-            newSkipped = new Set(newSkipped.values());
-            newSkipped.delete(activeStep);
-        }
-
-        setActiveStep((prevActiveStep) => prevActiveStep + 1);
-        setSkipped(newSkipped);
-    };
-
-    const handleBack = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    };
-
-    const handleSkip = () => {
-        if (!isStepOptional(activeStep)) {
-            // You probably want to guard against something like this,
-            // it should never occur unless someone's actively trying to break something.
-            throw new Error("You can't skip a step that isn't optional.");
-        }
-
-        setActiveStep((prevActiveStep) => prevActiveStep + 1);
-        setSkipped((prevSkipped) => {
-            const newSkipped = new Set(prevSkipped.values());
-            newSkipped.add(activeStep);
-            return newSkipped;
-        });
-    };
-
-    // eslint-disable-next-line consistent-return
-    const handleSteps = (step) => {
-        switch (step) {
-            case 0:
-                return (
-                    <PersonalInformation />
-                );
-            case 1:
-                return (
-                    <StudentInformation />
-                );
-            case 2:
-                return (
-                    <IdentificationInformation />
-                );
-            case 3:
-                return (
-                    <AddressInformation />
-                );
-            case 4:
-                return (
-                    <GuardianInformation />
-                );
-            case 5:
-                return (
-                    <AdditionalInformation />
-                );
-            default:
-                break;
-        }
-    };
-
-    const handleReset = () => {
-        setActiveStep(0);
-    };
+    // For Stepper
+    const [
+        activeStep,
+        isStepOptional,
+        isStepSkipped,
+        handleNext,
+        handleBack,
+        handleSkip,
+        handleSteps,
+        handleReset,
+    ] = useStepper(steps, optionals)
 
     return (
         <Grid container spacing={3}>
             <Grid item xs={12} lg={12}>
                 <Box width="100%">
-                    <Stepper activeStep={activeStep} alternativeLabel sx={{ display: { xs: 'none', sm: 'flex' } }}>
-                        {steps.map((label, index) => {
-                            const stepProps = {};
-                            const labelProps = {};
-                            if (isStepOptional(index)) {
-                                labelProps.optional = <Typography variant="caption">Optional</Typography>;
-                            }
-                            if (isStepSkipped(index)) {
-                                stepProps.completed = false;
-                            }
-                            return (
-                                <Step key={label} {...stepProps}>
-                                    <StepLabel {...labelProps}>{label}</StepLabel>
-                                </Step>
-                            );
-                        })}
-                    </Stepper>
+                    <WebStepper steps={steps} activeStep={activeStep} isStepOptional={isStepOptional} isStepSkipped={isStepSkipped} />
                     {activeStep === steps.length ? (
                         <>
                             <Stack spacing={2} mt={3}>
