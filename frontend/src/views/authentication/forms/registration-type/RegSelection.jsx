@@ -1,11 +1,12 @@
 import { Button, Divider, Grid, Typography } from '@mui/material'
 import { Box } from '@mui/system'
+import { useCallback } from 'react'
 
 const RegSelection = ({ setRegType }) => {
-    const handleSelection = (e) => {
+    const handleSelection = useCallback((e) => {
         const selected = e.target.name;
         setRegType(selected);
-    }
+    }, [])
 
     return (
         <Grid container spacing={3}>
