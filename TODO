@@ -30,6 +30,7 @@ BACKEND
 [/] Update Personnels Schema
 [/] Create Each Model for Track, Strand and Specialization
 [/] Create Each Model for Subject Types 
+[/] Add selection for Registration between Student or Alumni
 
 FRONTEND
 [/] Axios Client
