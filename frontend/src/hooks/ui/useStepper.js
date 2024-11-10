@@ -1,13 +1,13 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 const useStepper = (steps, optionals) => {
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set());
 
-  const isStepOptional = (step) => optionals.has(step);
-  const isStepSkipped = (step) => skipped.has(step);
+  const isStepOptional = useCallback((step) => optionals.has(step), [optionals]);
+  const isStepSkipped = useCallback((step) => skipped.has(step), [skipped]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     let newSkipped = skipped;
     if (isStepSkipped(activeStep)) {
       newSkipped = new Set(newSkipped.values());
@@ -16,13 +16,13 @@ const useStepper = (steps, optionals) => {
 
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     setSkipped(newSkipped);
-  };
+  }, []);
 
-  const handleBack = () => {
+  const handleBack = useCallback(() => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
+  }, []);
 
-  const handleSkip = () => {
+  const handleSkip = useCallback(() => {
     if (!isStepOptional(activeStep)) {
       // You probably want to guard against something like this,
       // it should never occur unless someone's actively trying to break something.
@@ -35,16 +35,16 @@ const useStepper = (steps, optionals) => {
       newSkipped.add(activeStep);
       return newSkipped;
     });
-  };
+  }, []);
 
   // eslint-disable-next-line consistent-return
-  const handleSteps = (step) => {
+  const handleSteps = useCallback((step) => {
     return steps[step].component;
-  };
+  }, []);
 
-  const handleReset = () => {
+  const handleReset = useCallback(() => {
     setActiveStep(0);
-  };
+  }, []);
 
   return [
     activeStep,
