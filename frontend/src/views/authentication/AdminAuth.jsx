@@ -60,7 +60,7 @@ const AdminAuth = () => {
                                     <CustomOutlinedInput
                                         onChange={handleChange}
                                         id="email"
-                                        placeholder="Email"
+                                        placeholder="admin@example.com"
                                         type="email"
                                         fullWidth
                                     />
