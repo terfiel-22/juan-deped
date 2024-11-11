@@ -5,23 +5,23 @@ const studentSchema = Schema(
     authId: { type: Types.ObjectId, ref: "Auth", required: true },
     schoolYear: { type: String, required: true },
     gradeLevelToEnroll: { type: String, required: true },
+    withLRN: { type: Boolean, default: true },
+    isReturnee: { type: Boolean, default: false },
 
     learnerInformation: {
       psaBirthCertificateNo: { type: String },
       learnerReferenceNo: { type: String, unique: true },
       lastName: { type: String, required: true },
-      birthDate: { type: Date, required: true },
-      placeOfBirth: {
-        municipalityCity: { type: String, required: true },
-      },
       firstName: { type: String, required: true },
-      motherTongue: { type: String },
-      age: { type: Number },
-      weightKg: { type: Number },
-      heightM: { type: Number },
-      middleName: { type: String },
+      middleName: { type: String, required: true },
       extensionName: { type: String },
-      email: { type: String },
+      birthDate: { type: Date, required: true },
+      sex: { type: String, required: true, enum: ["male", "female"] },
+      age: { type: Number },
+      placeOfBirth: { type: String, required: true },
+      motherTongue: { type: String },
+      indigenousPeople: { type: String },
+      fourPsHouseHoldId: { type: String },
     },
 
     currentAddress: {
@@ -50,21 +50,30 @@ const studentSchema = Schema(
         firstName: { type: String },
         middleName: { type: String },
         contactNumber: { type: String },
-        email: { type: String },
+        additional: {
+          email: { type: String },
+          mobile: { type: String },
+        },
       },
       mother: {
         lastName: { type: String },
         firstName: { type: String },
         middleName: { type: String },
         contactNumber: { type: String },
-        email: { type: String },
+        additional: {
+          email: { type: String },
+          mobile: { type: String },
+        },
       },
       guardian: {
         lastName: { type: String },
         firstName: { type: String },
         middleName: { type: String },
         contactNumber: { type: String },
-        email: { type: String },
+        additional: {
+          email: { type: String },
+          mobile: { type: String },
+        },
       },
     },
 
@@ -77,6 +86,18 @@ const studentSchema = Schema(
 
     seniorHighSchool: {
       semester: { type: String, enum: ["1st Sem", "2nd Sem"] },
+      trackStrand: { type: String },
+    },
+
+    preferredDistanceLearningModalities: {
+      isModularPrint: { type: Boolean, default: false },
+      isOnline: { type: Boolean, default: false },
+      isRadioBased: { type: Boolean, default: false },
+      isBlended: { type: Boolean, default: false },
+      isModularDigital: { type: Boolean, default: false },
+      isEducationTV: { type: Boolean, default: false },
+      isHomeschooling: { type: Boolean, default: false },
+      isFaceToFace: { type: Boolean, default: false },
     },
 
     ncPasser: {
@@ -112,6 +133,13 @@ const studentSchema = Schema(
         learningCenterName: { type: String },
         learningCenterAddress: { type: String },
       },
+    },
+
+    additional: {
+      weightKg: { type: Number },
+      heightM: { type: Number },
+      email: { type: String },
+      mobile: { type: String },
     },
   },
   { timestamps: true }
