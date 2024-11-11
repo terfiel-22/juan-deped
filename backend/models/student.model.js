@@ -41,7 +41,7 @@ const studentSchema = Schema(
           return this.isIndigenousPeople;
         },
       },
-      isFourPsBenificiary: { type: Boolean, default: false },
+      isFourPsBeneficiary: { type: Boolean, default: false },
       fourPsHouseHoldId: {
         type: String,
         required: function () {
