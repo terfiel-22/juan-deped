@@ -32,6 +32,7 @@ BACKEND
 [/] Create Each Model for Subject Types 
 [/] Create Student Endpoint
 [/] Change Auth Model
+[/] Save Student Information and Authentication Credentials
 
 FRONTEND
 [/] Axios Client

@@ -15,7 +15,7 @@ const studentSchema = Schema(
       psaBirthCertificateNo: {
         type: String,
         required: function () {
-          return this.isPsaAvailable;
+          return this.learnerInformation.isPsaAvailable;
         },
       },
       learnerReferenceNo: {
@@ -38,14 +38,14 @@ const studentSchema = Schema(
       indigenousPeople: {
         type: String,
         required: function () {
-          return this.isIndigenousPeople;
+          return this.learnerInformation.isIndigenousPeople;
         },
       },
       isFourPsBeneficiary: { type: Boolean, default: false },
       fourPsHouseHoldId: {
         type: String,
         required: function () {
-          return this.isFourPsBenificiary;
+          return this.learnerInformation.isFourPsBenificiary;
         },
       },
     },
@@ -65,43 +65,43 @@ const studentSchema = Schema(
       houseNoStreet: {
         type: String,
         required: function () {
-          return !this.isSameAsCurrent;
+          return !this.permanentAddress.isSameAsCurrent;
         },
       },
       streetName: {
         type: String,
         required: function () {
-          return !this.isSameAsCurrent;
+          return !this.permanentAddress.isSameAsCurrent;
         },
       },
       barangay: {
         type: String,
         required: function () {
-          return !this.isSameAsCurrent;
+          return !this.permanentAddress.isSameAsCurrent;
         },
       },
       municipalityCity: {
         type: String,
         required: function () {
-          return !this.isSameAsCurrent;
+          return !this.permanentAddress.isSameAsCurrent;
         },
       },
       province: {
         type: String,
         required: function () {
-          return !this.isSameAsCurrent;
+          return !this.permanentAddress.isSameAsCurrent;
         },
       },
       country: {
         type: String,
         required: function () {
-          return !this.isSameAsCurrent;
+          return !this.permanentAddress.isSameAsCurrent;
         },
       },
       zipCode: {
         type: String,
         required: function () {
-          return !this.isSameAsCurrent;
+          return !this.permanentAddress.isSameAsCurrent;
         },
       },
     },
@@ -178,19 +178,19 @@ const studentSchema = Schema(
       certificateNo: {
         type: String,
         required: function () {
-          return this.isNcPasser;
+          return this.ncPasser.isNcPasser;
         },
       },
       specialization: {
         type: String,
         required: function () {
-          return this.isNcPasser;
+          return this.ncPasser.isNcPasser;
         },
       },
       validUntil: {
         type: Date,
         required: function () {
-          return this.isNcPasser;
+          return this.ncPasser.isNcPasser;
         },
       },
     },
@@ -201,19 +201,19 @@ const studentSchema = Schema(
         genAve: {
           type: String,
           required: function () {
-            return this.isHsCompleter;
+            return this.shsEligibility.hsCompleter.isHsCompleter;
           },
         },
         graduationDate: {
           type: String,
           required: function () {
-            return this.isHsCompleter;
+            return this.shsEligibility.hsCompleter.isHsCompleter;
           },
         },
         schoolAddress: {
           type: String,
           required: function () {
-            return this.isHsCompleter;
+            return this.shsEligibility.hsCompleter.isHsCompleter;
           },
         },
       },
@@ -222,19 +222,19 @@ const studentSchema = Schema(
         genAve: {
           type: String,
           required: function () {
-            return this.isJhsCompleter;
+            return this.shsEligibility.jhsCompleter.isJhsCompleter;
           },
         },
         graduationDate: {
           type: String,
           required: function () {
-            return this.isJhsCompleter;
+            return this.shsEligibility.jhsCompleter.isJhsCompleter;
           },
         },
         schoolAddress: {
           type: String,
           required: function () {
-            return this.isJhsCompleter;
+            return this.shsEligibility.jhsCompleter.isJhsCompleter;
           },
         },
       },
@@ -243,19 +243,19 @@ const studentSchema = Schema(
         examDate: {
           type: String,
           required: function () {
-            return this.isPeptPasser;
+            return this.shsEligibility.peptPasser.isPeptPasser;
           },
         },
         learningCenterName: {
           type: String,
           required: function () {
-            return this.isPeptPasser;
+            return this.shsEligibility.peptPasser.isPeptPasser;
           },
         },
         learningCenterAddress: {
           type: String,
           required: function () {
-            return this.isPeptPasser;
+            return this.shsEligibility.peptPasser.isPeptPasser;
           },
         },
       },
@@ -264,19 +264,19 @@ const studentSchema = Schema(
         examDate: {
           type: String,
           required: function () {
-            return this.isAlsPasser;
+            return this.shsEligibility.alsPasser.isAlsPasser;
           },
         },
         learningCenterName: {
           type: String,
           required: function () {
-            return this.isAlsPasser;
+            return this.shsEligibility.alsPasser.isAlsPasser;
           },
         },
         learningCenterAddress: {
           type: String,
           required: function () {
-            return this.isAlsPasser;
+            return this.shsEligibility.alsPasser.isAlsPasser;
           },
         },
       },
@@ -285,25 +285,25 @@ const studentSchema = Schema(
         examType: {
           type: String,
           required: function () {
-            return this.isOtherExamPasser;
+            return this.shsEligibility.others.isOtherExamPasser;
           },
         },
         examDate: {
           type: String,
           required: function () {
-            return this.isOtherExamPasser;
+            return this.shsEligibility.others.isOtherExamPasser;
           },
         },
         learningCenterName: {
           type: String,
           required: function () {
-            return this.isOtherExamPasser;
+            return this.shsEligibility.others.isOtherExamPasser;
           },
         },
         learningCenterAddress: {
           type: String,
           required: function () {
-            return this.isOtherExamPasser;
+            return this.shsEligibility.others.isOtherExamPasser;
           },
         },
       },
