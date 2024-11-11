@@ -3,90 +3,163 @@ import { model, Schema, Types } from "mongoose";
 const studentSchema = Schema(
   {
     authId: { type: Types.ObjectId, ref: "Auth", required: true },
+    email: { type: String, required: true },
+    mobile: { type: String, required: true },
     schoolYear: { type: String, required: true },
-    gradeLevelToEnroll: { type: String, required: true },
+    gradeLevelToEnroll: { type: Number, required: true, enum: ["11", "12"] },
     withLRN: { type: Boolean, default: true },
     isReturnee: { type: Boolean, default: false },
 
     learnerInformation: {
-      psaBirthCertificateNo: { type: String },
-      learnerReferenceNo: { type: String, unique: true },
+      isPsaAvailable: { type: Boolean, default: true },
+      psaBirthCertificateNo: {
+        type: String,
+        required: function () {
+          return this.isPsaAvailable;
+        },
+      },
+      learnerReferenceNo: {
+        type: String,
+        unique: true,
+        required: function () {
+          return this.withLRN;
+        },
+      },
       lastName: { type: String, required: true },
       firstName: { type: String, required: true },
       middleName: { type: String, required: true },
-      extensionName: { type: String },
+      extensionName: String,
       birthDate: { type: Date, required: true },
       sex: { type: String, required: true, enum: ["male", "female"] },
-      age: { type: Number },
+      age: { type: Number, required: true },
       placeOfBirth: { type: String, required: true },
-      motherTongue: { type: String },
-      indigenousPeople: { type: String },
-      fourPsHouseHoldId: { type: String },
+      motherTongue: { type: String, required: true },
+      isIndigenousPeople: { type: Boolean, default: false },
+      indigenousPeople: {
+        type: String,
+        required: function () {
+          return this.isIndigenousPeople;
+        },
+      },
+      isFourPsBenificiary: { type: Boolean, default: false },
+      fourPsHouseHoldId: {
+        type: String,
+        required: function () {
+          return this.isFourPsBenificiary;
+        },
+      },
     },
 
     currentAddress: {
-      houseNoStreet: { type: String },
-      streetName: { type: String },
-      barangay: { type: String },
-      municipalityCity: { type: String },
-      province: { type: String },
-      country: { type: String },
-      zipCode: { type: String },
+      houseNoStreet: { type: String, required: true },
+      streetName: { type: String, required: true },
+      barangay: { type: String, required: true },
+      municipalityCity: { type: String, required: true },
+      province: { type: String, required: true },
+      country: { type: String, required: true },
+      zipCode: { type: String, required: true },
     },
 
     permanentAddress: {
       isSameAsCurrent: { type: Boolean, default: false },
-      houseNoStreet: { type: String },
-      streetName: { type: String },
-      barangay: { type: String },
-      municipalityCity: { type: String },
-      province: { type: String },
-      zipCode: { type: String },
+      houseNoStreet: {
+        type: String,
+        required: function () {
+          return !this.isSameAsCurrent;
+        },
+      },
+      streetName: {
+        type: String,
+        required: function () {
+          return !this.isSameAsCurrent;
+        },
+      },
+      barangay: {
+        type: String,
+        required: function () {
+          return !this.isSameAsCurrent;
+        },
+      },
+      municipalityCity: {
+        type: String,
+        required: function () {
+          return !this.isSameAsCurrent;
+        },
+      },
+      province: {
+        type: String,
+        required: function () {
+          return !this.isSameAsCurrent;
+        },
+      },
+      country: {
+        type: String,
+        required: function () {
+          return !this.isSameAsCurrent;
+        },
+      },
+      zipCode: {
+        type: String,
+        required: function () {
+          return !this.isSameAsCurrent;
+        },
+      },
     },
 
     parentsOrGuardians: {
       father: {
-        lastName: { type: String },
-        firstName: { type: String },
-        middleName: { type: String },
-        contactNumber: { type: String },
-        additional: {
-          email: { type: String },
-          mobile: { type: String },
-        },
+        lastName: { type: String, required: true },
+        firstName: { type: String, required: true },
+        middleName: { type: String, required: true },
+        contactNumber: { type: String, required: true },
+        email: { type: String, required: true },
       },
       mother: {
-        lastName: { type: String },
-        firstName: { type: String },
-        middleName: { type: String },
-        contactNumber: { type: String },
-        additional: {
-          email: { type: String },
-          mobile: { type: String },
-        },
+        lastName: { type: String, required: true },
+        firstName: { type: String, required: true },
+        middleName: { type: String, required: true },
+        contactNumber: { type: String, required: true },
+        email: { type: String, required: true },
       },
       guardian: {
-        lastName: { type: String },
-        firstName: { type: String },
-        middleName: { type: String },
-        contactNumber: { type: String },
-        additional: {
-          email: { type: String },
-          mobile: { type: String },
-        },
+        lastName: { type: String, required: true },
+        firstName: { type: String, required: true },
+        middleName: { type: String, required: true },
+        contactNumber: { type: String, required: true },
+        email: { type: String, required: true },
       },
     },
 
     returningLearner: {
-      lastGradeLevelCompleted: { type: String },
-      lastSchoolYearCompleted: { type: String },
-      lastSchoolAttended: { type: String },
-      schoolID: { type: String },
+      lastGradeLevelCompleted: {
+        type: String,
+        required: function () {
+          return this.isReturnee;
+        },
+      },
+      lastSchoolYearCompleted: {
+        type: String,
+        required: function () {
+          return this.isReturnee;
+        },
+      },
+      lastSchoolAttended: {
+        type: String,
+        required: function () {
+          return this.isReturnee;
+        },
+      },
+      schoolID: {
+        type: String,
+        required: function () {
+          return this.isReturnee;
+        },
+      },
     },
 
     seniorHighSchool: {
       semester: { type: String, enum: ["1st Sem", "2nd Sem"] },
-      trackStrand: { type: String },
+      trackStrand: { type: String, required: true },
     },
 
     preferredDistanceLearningModalities: {
@@ -101,45 +174,144 @@ const studentSchema = Schema(
     },
 
     ncPasser: {
-      certificateNo: { type: String },
-      specialization: { type: String },
-      validUntil: { type: Date },
+      isNcPasser: { type: Boolean, default: false },
+      certificateNo: {
+        type: String,
+        required: function () {
+          return this.isNcPasser;
+        },
+      },
+      specialization: {
+        type: String,
+        required: function () {
+          return this.isNcPasser;
+        },
+      },
+      validUntil: {
+        type: Date,
+        required: function () {
+          return this.isNcPasser;
+        },
+      },
     },
 
     shsEligibility: {
       hsCompleter: {
-        genAve: { type: String },
-        graduationDate: { type: String },
-        schoolAddress: { type: String },
+        isHsCompleter: { type: Boolean, default: false },
+        genAve: {
+          type: String,
+          required: function () {
+            return this.isHsCompleter;
+          },
+        },
+        graduationDate: {
+          type: String,
+          required: function () {
+            return this.isHsCompleter;
+          },
+        },
+        schoolAddress: {
+          type: String,
+          required: function () {
+            return this.isHsCompleter;
+          },
+        },
       },
       jhsCompleter: {
-        genAve: { type: String },
-        graduationDate: { type: String },
-        schoolAddress: { type: String },
+        isJhsCompleter: { type: Boolean, default: false },
+        genAve: {
+          type: String,
+          required: function () {
+            return this.isJhsCompleter;
+          },
+        },
+        graduationDate: {
+          type: String,
+          required: function () {
+            return this.isJhsCompleter;
+          },
+        },
+        schoolAddress: {
+          type: String,
+          required: function () {
+            return this.isJhsCompleter;
+          },
+        },
       },
       peptPasser: {
-        examDate: { type: String },
-        learningCenterName: { type: String },
-        learningCenterAddress: { type: String },
+        isPeptPasser: { type: Boolean, default: false },
+        examDate: {
+          type: String,
+          required: function () {
+            return this.isPeptPasser;
+          },
+        },
+        learningCenterName: {
+          type: String,
+          required: function () {
+            return this.isPeptPasser;
+          },
+        },
+        learningCenterAddress: {
+          type: String,
+          required: function () {
+            return this.isPeptPasser;
+          },
+        },
       },
       alsPasser: {
-        examDate: { type: String },
-        learningCenterName: { type: String },
-        learningCenterAddress: { type: String },
+        isAlsPasser: { type: Boolean, default: false },
+        examDate: {
+          type: String,
+          required: function () {
+            return this.isAlsPasser;
+          },
+        },
+        learningCenterName: {
+          type: String,
+          required: function () {
+            return this.isAlsPasser;
+          },
+        },
+        learningCenterAddress: {
+          type: String,
+          required: function () {
+            return this.isAlsPasser;
+          },
+        },
       },
       others: {
-        examType: { type: String },
-        examDate: { type: String },
-        learningCenterName: { type: String },
-        learningCenterAddress: { type: String },
+        isOtherExamPasser: { type: Boolean, default: false },
+        examType: {
+          type: String,
+          required: function () {
+            return this.isOtherExamPasser;
+          },
+        },
+        examDate: {
+          type: String,
+          required: function () {
+            return this.isOtherExamPasser;
+          },
+        },
+        learningCenterName: {
+          type: String,
+          required: function () {
+            return this.isOtherExamPasser;
+          },
+        },
+        learningCenterAddress: {
+          type: String,
+          required: function () {
+            return this.isOtherExamPasser;
+          },
+        },
       },
     },
 
     additional: {
-      weightKg: { type: Number },
-      heightM: { type: Number },
-      email: { type: String },
-      mobile: { type: String },
+      weightKg: Number,
+      heightM: Number,
     },
   },
   { timestamps: true }
