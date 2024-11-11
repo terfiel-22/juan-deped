@@ -5,9 +5,9 @@ import HttpError from "../utils/HttpError.utils.js";
 
 export const adminLogin = async (req, res, next) => {
   try {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
-    const user = await Auth.findOne({ username });
+    const user = await Auth.findOne({ email });
     const isPasswordCorrect = await bcrypt.compare(
       password,
       user?.password || ""

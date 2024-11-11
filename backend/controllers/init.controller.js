@@ -108,12 +108,13 @@ export const initAdminAccount = async (req, res, next) => {
   try {
     await Auth.deleteMany({});
 
-    const { email, password, role } = admin;
+    const { username, email, password, role } = admin;
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
     const userAdmin = new Auth({
+      username,
       email,
       password: hashedPassword,
       role,

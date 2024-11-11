@@ -28,9 +28,9 @@ const useAdminSignin = () => {
 
   const handleSubmit = () => {
     setLoading(true);
-    const { username, password } = formData;
+    const { email, password } = formData;
 
-    if (!username || !password) {
+    if (!email || !password) {
       setError('Please fill in all required fields!');
       setLoading(false);
       return;

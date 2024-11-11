@@ -56,11 +56,12 @@ const AdminAuth = () => {
                                     </Alert>
                                 }
                                 <Box>
-                                    <CustomFormLabel htmlFor="username">Username</CustomFormLabel>
+                                    <CustomFormLabel htmlFor="email">Email</CustomFormLabel>
                                     <CustomOutlinedInput
                                         onChange={handleChange}
-                                        id="username"
-                                        placeholder="username"
+                                        id="email"
+                                        placeholder="Email"
+                                        type="email"
                                         fullWidth
                                     />
                                 </Box>
