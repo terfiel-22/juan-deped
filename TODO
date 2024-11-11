@@ -30,8 +30,7 @@ BACKEND
 [/] Update Personnels Schema
 [/] Create Each Model for Track, Strand and Specialization
 [/] Create Each Model for Subject Types 
-[/] Add selection for Registration between Student or Alumni
-[/] Custom Component and Hook for Stepper
+[/] Create Student Endpoint
 
 FRONTEND
 [/] Axios Client
@@ -68,3 +67,5 @@ FRONTEND
 [/] Custom Hook for EnhancedTableHead Sorting
 [/] Handling Table Dense with Custom Hook and Component
 [/] Apply Enhance Table on PersonnelTable
+[/] Add selection for Registration between Student or Alumni
+[/] Custom Component and Hook for Stepper
