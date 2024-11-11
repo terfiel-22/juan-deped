@@ -31,6 +31,7 @@ BACKEND
 [/] Create Each Model for Track, Strand and Specialization
 [/] Create Each Model for Subject Types 
 [/] Create Student Endpoint
+[/] Change Auth Model
 
 FRONTEND
 [/] Axios Client
