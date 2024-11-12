@@ -153,7 +153,6 @@ const BlogPost = Loadable(lazy(() => import('../views/pages/frontend-pages/BlogP
 
 /** Juan DepEd */
 const Authentication = Loadable(lazy(() => import('../views/authentication/Authentication')));
-const AdminAuth = Loadable(lazy(() => import('../views/authentication/AdminAuth')));
 
 /** Middleware */
 const GuestRoute = Loadable(lazy(() => import('./middlewares/GuestRoute')));
