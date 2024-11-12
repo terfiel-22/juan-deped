@@ -22,7 +22,7 @@ const Profile = () => {
 
 
   // Logout
-  const [role, handleLogout] = useLogout();
+  const [user, handleLogout] = useLogout();
 
   return (
     <Box>
@@ -72,10 +72,10 @@ const Profile = () => {
               <Avatar src={ProfileImg} alt={ProfileImg} sx={{ width: 95, height: 95 }} />
               <Box>
                 <Typography variant="subtitle2" color="textPrimary" fontWeight={600}>
-                  Mathew Anderson
+                  {user.username}
                 </Typography>
                 <Typography variant="subtitle2" color="textSecondary">
-                  {role}
+                  {user.role}
                 </Typography>
                 <Typography
                   variant="subtitle2"
@@ -85,7 +85,7 @@ const Profile = () => {
                   gap={1}
                 >
                   <IconMail width={15} height={15} />
-                  info@modernize.com
+                  {user.email}
                 </Typography>
               </Box>
             </Stack>

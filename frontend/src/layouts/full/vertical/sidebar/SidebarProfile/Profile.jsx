@@ -3,7 +3,6 @@ import { Box, Avatar, Typography, IconButton, Tooltip, useMediaQuery } from '@mu
 import { useSelector } from 'react-redux';
 import img1 from 'src/assets/images/profile/user-1.jpg';
 import { IconPower } from '@tabler/icons';
-import { Link } from 'react-router-dom';
 import useLogout from '../../../../../hooks/auth/useLogout';
 
 export const Profile = () => {
@@ -12,7 +11,7 @@ export const Profile = () => {
   const hideMenu = lgUp ? customizer.isCollapse && !customizer.isSidebarHover : '';
 
   // Logout
-  const [role, handleLogout] = useLogout();
+  const [user, handleLogout] = useLogout();
 
   return (
     <Box
@@ -27,10 +26,10 @@ export const Profile = () => {
 
           <Box>
             <Typography variant="h6" color="textPrimary">
-              Mathew
+              {user.username}
             </Typography>
             <Typography variant="caption" color="textSecondary">
-              {role}
+              {user.role}
             </Typography>
           </Box>
           <Box sx={{ ml: 'auto' }}>
