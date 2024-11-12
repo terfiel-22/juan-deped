@@ -1,4 +1,4 @@
-import { Button, FormControlLabel, FormGroup, Grid, IconButton, InputAdornment, Typography } from '@mui/material'
+import { Alert, Button, FormControlLabel, FormGroup, Grid, IconButton, InputAdornment, Typography } from '@mui/material'
 import React from 'react'
 import CustomFormLabel from '../../../components/forms/theme-elements/CustomFormLabel'
 import { Box, Stack } from '@mui/system'
@@ -7,20 +7,29 @@ import { Link } from 'react-router-dom'
 import CustomOutlinedInput from '../../../components/forms/theme-elements/CustomOutlinedInput'
 import { IconEye, IconEyeOff } from '@tabler/icons'
 import usePasswordVisibility from '../../../hooks/ui/usePasswordVisibility'
+import useSignin from '../../../hooks/auth/useSignin'
+import { LoadingButton } from '@mui/lab'
 
 
 const LoginForm = () => {
+    const [error, resetError, loading, handleChange, handleSubmit] = useSignin()
 
     const [showPassword, handleClickShowPassword, handleMouseDownPassword] = usePasswordVisibility()
 
     return (
         <>
             <Stack>
+                {error &&
+                    <Alert variant="filled" severity="error" onClose={resetError}>
+                        {error}
+                    </Alert>
+                }
                 <Box>
                     <CustomFormLabel htmlFor="email">Email/LRN</CustomFormLabel>
                     <CustomOutlinedInput
                         id="email"
                         placeholder="Email or LRN"
+                        onChange={handleChange}
                         fullWidth
                     />
                 </Box>
@@ -42,6 +51,7 @@ const LoginForm = () => {
                         }
                         id="password"
                         placeholder="******"
+                        onChange={handleChange}
                         fullWidth
                     />
                 </Box>
@@ -66,17 +76,17 @@ const LoginForm = () => {
                 </Grid>
             </Stack>
             <Box>
-                <Button
-                    color="primary"
+                <LoadingButton
+                    loading={loading}
                     variant="contained"
+                    color="primary"
                     size="large"
                     fullWidth
-                    component={Link}
-                    to="/"
-                    type="submit"
+                    type="button"
+                    onClick={handleSubmit}
                 >
                     Sign In
-                </Button>
+                </LoadingButton>
             </Box>
         </>
     )

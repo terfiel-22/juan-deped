@@ -288,7 +288,6 @@ const Router = [
     element: <GuestRoute />,
     children: [
       { path: '/auth', element: <Authentication /> },
-      { path: '/admin/auth', element: <AdminAuth /> },
     ]
   },
   {

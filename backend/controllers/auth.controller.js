@@ -17,7 +17,7 @@ export const login = async (req, res, next) => {
     );
 
     if (!user || !isPasswordCorrect)
-      throw new HttpError("Invalid email/lrn or password.", 400);
+      throw new HttpError("Invalid credentials.", 400);
 
     generateTokenAndSetCookie(user._id, res);
 
