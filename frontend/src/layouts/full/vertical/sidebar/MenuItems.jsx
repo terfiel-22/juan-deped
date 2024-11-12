@@ -57,90 +57,10 @@ import {
 
 import { uniqueId } from 'lodash';
 
-const Menuitems = [
-  /** Start - Juan DepEd */
+export const Original = [
   {
     navlabel: true,
     subheader: 'Home',
-  },
-  {
-    id: uniqueId(),
-    title: 'Analytics',
-    icon: IconChartHistogram,
-    href: '/dashboard',
-  },
-  {
-    navlabel: true,
-    subheader: 'User Management',
-  },
-  {
-    id: uniqueId(),
-    title: 'Personnels',
-    icon: IconUsers,
-    href: '/personnels',
-  },
-  {
-    navlabel: true,
-    subheader: 'Career Management',
-  },
-  {
-    id: uniqueId(),
-    title: 'Tracks',
-    icon: IconTable,
-    href: '/tracks',
-  },
-  {
-    id: uniqueId(),
-    title: 'Strands',
-    icon: IconTable,
-    href: '/strands',
-  },
-  {
-    id: uniqueId(),
-    title: 'Specializations',
-    icon: IconTable,
-    href: '/specializations',
-  },
-  {
-    navlabel: true,
-    subheader: 'Enrollment Management',
-  },
-  {
-    navlabel: true,
-    subheader: 'Student Management',
-  },
-  {
-    navlabel: true,
-    subheader: 'Class Management',
-  },
-  {
-    navlabel: true,
-    subheader: 'Attendance Management',
-  },
-  {
-    navlabel: true,
-    subheader: 'Grade Management',
-  },
-  {
-    navlabel: true,
-    subheader: 'Document Management',
-  },
-  {
-    navlabel: true,
-    subheader: 'Event Management',
-  },
-  {
-    navlabel: true,
-    subheader: 'Account Settings',
-  },
-  {
-    navlabel: true,
-    subheader: 'System Settings & Security',
-  },
-  /** END - Juan DepEd */
-  {
-    navlabel: true,
-    subheader: 'Template',
   },
   {
     id: uniqueId(),
@@ -218,7 +138,6 @@ const Menuitems = [
     chipColor: 'secondary',
     href: '/apps/contacts',
   },
-
   {
     id: uniqueId(),
     title: 'Blog',
@@ -749,7 +668,6 @@ const Menuitems = [
       },
     ],
   },
-
   {
     navlabel: true,
     subheader: 'Charts',
@@ -984,6 +902,89 @@ const Menuitems = [
     icon: IconStar,
     href: 'https://google.com',
   },
+]
+
+const Menuitems = [
+  /** Start - Juan DepEd */
+  {
+    navlabel: true,
+    subheader: 'Home',
+  },
+  {
+    id: uniqueId(),
+    title: 'Analytics',
+    icon: IconChartHistogram,
+    href: '/dashboard',
+  },
+  {
+    navlabel: true,
+    subheader: 'User Management',
+  },
+  {
+    id: uniqueId(),
+    title: 'Personnels',
+    icon: IconUsers,
+    href: '/personnels',
+  },
+  {
+    navlabel: true,
+    subheader: 'Career Management',
+  },
+  {
+    id: uniqueId(),
+    title: 'Tracks',
+    icon: IconTable,
+    href: '/tracks',
+  },
+  {
+    id: uniqueId(),
+    title: 'Strands',
+    icon: IconTable,
+    href: '/strands',
+  },
+  {
+    id: uniqueId(),
+    title: 'Specializations',
+    icon: IconTable,
+    href: '/specializations',
+  },
+  {
+    navlabel: true,
+    subheader: 'Enrollment Management',
+  },
+  {
+    navlabel: true,
+    subheader: 'Student Management',
+  },
+  {
+    navlabel: true,
+    subheader: 'Class Management',
+  },
+  {
+    navlabel: true,
+    subheader: 'Attendance Management',
+  },
+  {
+    navlabel: true,
+    subheader: 'Grade Management',
+  },
+  {
+    navlabel: true,
+    subheader: 'Document Management',
+  },
+  {
+    navlabel: true,
+    subheader: 'Event Management',
+  },
+  {
+    navlabel: true,
+    subheader: 'Account Settings',
+  },
+  {
+    navlabel: true,
+    subheader: 'System Settings & Security',
+  },
+  /** END - Juan DepEd */
 ];
 
 export default Menuitems;
