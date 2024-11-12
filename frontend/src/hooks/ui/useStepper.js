@@ -35,7 +35,7 @@ const useStepper = (steps, optionals) => {
       newSkipped.add(activeStep);
       return newSkipped;
     });
-  }, []);
+  }, [activeStep]);
 
   // eslint-disable-next-line consistent-return
   const handleSteps = useCallback((step) => {

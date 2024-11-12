@@ -7,11 +7,14 @@ const GuardianInformation = Loadable(lazy(() => import('../registration-step-for
 const IdentificationInformation = Loadable(lazy(() => import('../registration-step-forms/IdentificationInformation')))
 const StudentInformation = Loadable(lazy(() => import('../registration-step-forms/StudentInformation')))
 
-export const studentRegSteps = [
-    { name: "Personal", component: <PersonalInformation /> },
-    { name: "Student", component: <StudentInformation /> },
-    { name: "Identification", component: <IdentificationInformation /> },
-    { name: "Address", component: <AddressInformation /> },
-    { name: "Guardian", component: <GuardianInformation /> },
-    { name: "Additional", component: <AdditionalInformation /> },
+export const steps = [
+    { component: <PersonalInformation /> },
+    { component: <StudentInformation /> },
+    { component: <IdentificationInformation /> },
+    { component: <AddressInformation /> },
+    { component: <GuardianInformation /> },
+    { component: <AdditionalInformation /> },
 ];
+
+
+export const optionals = new Set([]) // index of optional steps

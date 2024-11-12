@@ -3,10 +3,7 @@ import { Box, Stack } from '@mui/system'
 import ProgressMobileStepper from '../../../../components/shared/ProgressMobileStepper'
 import WebStepper from "../../../../components/shared/WebStepper";
 import useStepper from "../../../../hooks/ui/useStepper";
-import { studentRegSteps } from '../steps/RegistrationSteps';
-
-const steps = studentRegSteps;
-const optionals = new Set([]) // index of optional steps
+import { steps, optionals } from '../steps/StudentRegistrationSteps';
 
 const RegStudent = () => {
     // For Stepper
