@@ -161,6 +161,11 @@ const AuthRoute = Loadable(lazy(() => import('./middlewares/AuthRoute')));
 /** User Management */
 const Personnels = Loadable(lazy(() => import('../views/user-management/personnels/Personnels')));
 
+/** Career Management */
+const Tracks = Loadable(lazy(() => import('../views/career-management/Tracks')));
+const Strands = Loadable(lazy(() => import('../views/career-management/Strands')));
+const Specializations = Loadable(lazy(() => import('../views/career-management/Specializations')));
+
 const Router = [
   {
     path: '/',
@@ -294,7 +299,10 @@ const Router = [
     element: <AuthRoute />,
     children: [
       { path: '/dashboard', element: <ModernDash /> },
-      { path: '/personnels', element: <Personnels /> }
+      { path: '/personnels', element: <Personnels /> },
+      { path: '/tracks', element: <Tracks /> },
+      { path: '/strands', element: <Strands /> },
+      { path: '/specializations', element: <Specializations /> },
     ]
   }
 ];

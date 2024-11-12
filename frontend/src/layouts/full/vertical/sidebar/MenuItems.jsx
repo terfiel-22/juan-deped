@@ -52,6 +52,7 @@ import {
   IconListNumbers,
   IconChartHistogram,
   IconUsers,
+  IconTable,
 } from '@tabler/icons';
 
 import { uniqueId } from 'lodash';
@@ -77,6 +78,28 @@ const Menuitems = [
     title: 'Personnels',
     icon: IconUsers,
     href: '/personnels',
+  },
+  {
+    navlabel: true,
+    subheader: 'Career Management',
+  },
+  {
+    id: uniqueId(),
+    title: 'Tracks',
+    icon: IconTable,
+    href: '/tracks',
+  },
+  {
+    id: uniqueId(),
+    title: 'Strands',
+    icon: IconTable,
+    href: '/strands',
+  },
+  {
+    id: uniqueId(),
+    title: 'Specializations',
+    icon: IconTable,
+    href: '/specializations',
   },
   {
     navlabel: true,

@@ -30,22 +30,19 @@ export const initTrackStrandSpecialization = async (req, res, next) => {
 
     for (const track of tracks) {
       const trackDoc = await Track.create({
-        code: uniqid(),
         name: track.name,
       });
 
       for (const strand of track.strands) {
         const strandDoc = await Strand.create({
-          code: uniqid(),
           name: strand.name,
-          trackCode: trackDoc.code,
+          track: trackDoc._id,
         });
 
         for (const specialization of strand.specializations) {
           await Specialization.create({
-            code: uniqid(),
             name: specialization.name,
-            strandCode: strandDoc.code,
+            strand: strandDoc._id,
           });
         }
       }
