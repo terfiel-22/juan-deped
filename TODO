@@ -33,6 +33,7 @@ BACKEND
 [/] Create Student Endpoint
 [/] Change Auth Model
 [/] Save Student Information and Authentication Credentials
+[/] Student And Alumni Authentication
 
 FRONTEND
 [/] Axios Client
