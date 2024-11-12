@@ -1,9 +1,9 @@
-
-import { useState } from 'react'
-import RegStudent from './registration-type/RegStudent'
+import { lazy, useState } from 'react'
 import RegSelection from './registration-type/RegSelection';
-import RegAlumni from './registration-type/RegAlumni';
+import Loadable from '../../../layouts/full/shared/loadable/Loadable';
 
+const RegStudent = Loadable(lazy(() => import('./registration-type/RegStudent')))
+const RegAlumni = Loadable(lazy(() => import('./registration-type/RegAlumni')))
 
 const RegistrationForm = () => {
     // For Registration Type Selection
