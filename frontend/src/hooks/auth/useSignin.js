@@ -18,11 +18,10 @@ const useSignin = () => {
   const [formData, setFormData] = useState({});
 
   const handleChange = (e) => {
-    const key = e.target.id;
-    const value = e.target.value;
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [key]: value,
+      [name]: value,
     });
   };
 

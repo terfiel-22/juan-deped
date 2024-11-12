@@ -28,6 +28,7 @@ const LoginForm = () => {
                     <CustomFormLabel htmlFor="email">Email/LRN</CustomFormLabel>
                     <CustomOutlinedInput
                         id="email"
+                        name="email"
                         placeholder="Email or LRN"
                         onChange={handleChange}
                         fullWidth
@@ -50,6 +51,7 @@ const LoginForm = () => {
                             </InputAdornment>
                         }
                         id="password"
+                        name="password"
                         placeholder="******"
                         onChange={handleChange}
                         fullWidth
