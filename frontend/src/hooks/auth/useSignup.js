@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import axiosClient from '../../utils/axiosClient';
 import { setCurrentUser } from '../../store/user/UserSlice';
 
-const useAdminSignin = () => {
+const useSignup = () => {
   const dispatch = useDispatch();
   // Error
   const [error, setError] = useState(null);
@@ -18,26 +18,25 @@ const useAdminSignin = () => {
   const [formData, setFormData] = useState({});
 
   const handleChange = (e) => {
-    const key = e.target.id;
-    const value = e.target.value;
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [key]: value,
+      [name]: value,
     });
   };
 
   const handleSubmit = () => {
     setLoading(true);
-    const { email, password } = formData;
+    const { username, email, learnerReferenceNo, password, cpassword, role } = formData;
 
-    if (!email || !password) {
+    if (!username || !email || !learnerReferenceNo || !password || !cpassword || !role) {
       setError('Please fill in all required fields!');
       setLoading(false);
       return;
     }
 
     axiosClient
-      .post('/auth/login/admin', formData)
+      .post('/auth/register', formData)
       .then(({ data }) => {
         dispatch(setCurrentUser(data));
       })
@@ -52,4 +51,4 @@ const useAdminSignin = () => {
   return [error, resetError, loading, handleChange, handleSubmit];
 };
 
-export default useAdminSignin;
+export default useSignup;
