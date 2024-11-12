@@ -1,24 +1,11 @@
-import { useState } from "react";
 import { Button, Grid, Alert } from '@mui/material'
 import { Box, Stack } from '@mui/system'
-import PersonalInformation from '../registration-step-forms/PersonalInformation'
-import StudentInformation from '../registration-step-forms/StudentInformation'
-import IdentificationInformation from '../registration-step-forms/IdentificationInformation'
-import AddressInformation from '../registration-step-forms/AddressInformation'
-import GuardianInformation from '../registration-step-forms/GuardianInformation'
-import AdditionalInformation from '../registration-step-forms/AdditionalInformation'
 import ProgressMobileStepper from '../../../../components/shared/ProgressMobileStepper'
 import WebStepper from "../../../../components/shared/WebStepper";
 import useStepper from "../../../../hooks/ui/useStepper";
+import { studentRegSteps } from '../steps/RegistrationSteps';
 
-const steps = [
-    { name: "Personal", component: <PersonalInformation /> },
-    { name: "Student", component: <StudentInformation /> },
-    { name: "Identification", component: <IdentificationInformation /> },
-    { name: "Address", component: <AddressInformation /> },
-    { name: "Guardian", component: <GuardianInformation /> },
-    { name: "Additional", component: <AdditionalInformation /> },
-]
+const steps = studentRegSteps;
 const optionals = new Set([]) // index of optional steps
 
 const RegStudent = () => {
