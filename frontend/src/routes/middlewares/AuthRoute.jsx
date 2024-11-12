@@ -11,6 +11,11 @@ const AuthRoute = () => {
         return <Navigate to="/auth" />;
     }
 
+    if (currentUser.role === "Student") {
+        // If student don't have a details, return student details form
+        // If student is approved by registrar, return dashboard
+    }
+
     return <FullLayout />;
 };
 
