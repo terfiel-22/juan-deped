@@ -30,7 +30,29 @@ export const adminLogin = async (req, res, next) => {
 
 export const studentLogin = async (req, res, next) => {
   try {
-    res.status(201).json({ message: "Student Login route" });
+    const { email, password } = req.body;
+
+    const userByEmail = await Auth.findOne({ email });
+    const userByLRN = await Auth.findOne({ learnerReferenceNo: email });
+    const user = userByEmail ?? userByLRN;
+
+    const isPasswordCorrect = await bcrypt.compare(
+      password,
+      user?.password || ""
+    );
+
+    if (!user || !isPasswordCorrect)
+      throw new HttpError("Invalid email/lrn or password.", 400);
+
+    generateTokenAndSetCookie(user._id, res);
+
+    res.status(200).json({
+      _id: user._id,
+      username: user.username,
+      email: user.email,
+      learnerReferenceNo: user.learnerReferenceNo,
+      role: user.role,
+    });
   } catch (error) {
     next(error);
   }

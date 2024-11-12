@@ -6,26 +6,21 @@ import CustomCheckbox from '../../../components/forms/theme-elements/CustomCheck
 import { Link } from 'react-router-dom'
 import CustomOutlinedInput from '../../../components/forms/theme-elements/CustomOutlinedInput'
 import { IconEye, IconEyeOff } from '@tabler/icons'
+import usePasswordVisibility from '../../../hooks/ui/usePasswordVisibility'
 
 
 const LoginForm = () => {
 
-    // Password
-    const [showPassword, setShowPassword] = React.useState(false);
-    const handleClickShowPassword = () => setShowPassword((show) => !show);
-    const handleMouseDownPassword = (event) => {
-        event.preventDefault();
-    };
+    const [showPassword, handleClickShowPassword, handleMouseDownPassword] = usePasswordVisibility()
 
     return (
         <>
             <Stack>
                 <Box>
-                    <CustomFormLabel htmlFor="email">Email</CustomFormLabel>
+                    <CustomFormLabel htmlFor="email">Email/LRN</CustomFormLabel>
                     <CustomOutlinedInput
-                        endAdornment={<InputAdornment position="end">@gmail.com</InputAdornment>}
                         id="email"
-                        placeholder="john.deo"
+                        placeholder="Email or LRN"
                         fullWidth
                     />
                 </Box>
