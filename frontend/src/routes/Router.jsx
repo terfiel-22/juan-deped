@@ -252,7 +252,6 @@ const Router = [
       { path: '/react-tables/row-selection', element: <ReactRowSelectionTable /> },
       { path: '/react-tables/sorting', element: <ReactSortingTable /> },
       { path: '/react-tables/sticky', element: <ReactStickyTable /> },
-
       { path: '*', element: <Navigate to="/auth/404" /> },
     ],
   },
@@ -296,7 +295,7 @@ const Router = [
     path: "/",
     element: <AuthRoute />,
     children: [
-      { path: '/dashboard', element: <h1>Dashboard</h1> },
+      { path: '/dashboard', element: <ModernDash /> },
       { path: '/personnels', element: <Personnels /> }
     ]
   }
