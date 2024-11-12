@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import axiosClient from '../../utils/axiosClient';
 import { setCurrentUser } from '../../store/user/UserSlice';
 
-const useAdminSignin = () => {
+const useSignin = () => {
   const dispatch = useDispatch();
   // Error
   const [error, setError] = useState(null);
@@ -37,7 +37,7 @@ const useAdminSignin = () => {
     }
 
     axiosClient
-      .post('/auth/login/admin', formData)
+      .post('/auth/login', formData)
       .then(({ data }) => {
         dispatch(setCurrentUser(data));
       })
@@ -52,4 +52,4 @@ const useAdminSignin = () => {
   return [error, resetError, loading, handleChange, handleSubmit];
 };
 
-export default useAdminSignin;
+export default useSignin;

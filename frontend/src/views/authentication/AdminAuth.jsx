@@ -7,12 +7,12 @@ import CustomOutlinedInput from '../../components/forms/theme-elements/CustomOut
 import { IconEye, IconEyeOff } from '@tabler/icons';
 import { LoadingButton } from '@mui/lab';
 import usePasswordVisibility from '../../hooks/ui/usePasswordVisibility';
-import useAdminSignin from '../../hooks/auth/useAdminSignin';
+import useSignin from '../../hooks/auth/useSignin';
 
 const AdminAuth = () => {
     const [showPassword, handleClickShowPassword, handleMouseDownPassword] = usePasswordVisibility()
 
-    const [error, resetError, loading, handleChange, handleSubmit] = useAdminSignin()
+    const [error, resetError, loading, handleChange, handleSubmit] = useSignin()
 
     return (
         <PageContainer title="JuanDepEd | Authentication" description="Juan DepEd Authentication Page">
