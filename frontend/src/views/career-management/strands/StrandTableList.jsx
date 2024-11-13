@@ -25,16 +25,16 @@ import useFetchAndDispatch from '../../../hooks/shared/useFetchAndDispatch';
 
 const headCells = [
     {
-        id: 'track',
-        numeric: false,
-        disablePadding: false,
-        label: 'Track',
-    },
-    {
         id: 'name',
         numeric: false,
         disablePadding: false,
         label: 'Strand',
+    },
+    {
+        id: 'track',
+        numeric: false,
+        disablePadding: false,
+        label: 'Track',
     }
 ];
 
@@ -139,12 +139,12 @@ const StrandTableList = () => {
                                                     </TableCell>
                                                     <TableCell>
                                                         <Typography color="textSecondary" variant="h6" fontWeight="400">
-                                                            {strand.track}
+                                                            {strand.name}
                                                         </Typography>
                                                     </TableCell>
                                                     <TableCell>
                                                         <Typography color="textSecondary" variant="h6" fontWeight="400">
-                                                            {strand.name}
+                                                            {strand.track}
                                                         </Typography>
                                                     </TableCell>
                                                 </TableRow>
