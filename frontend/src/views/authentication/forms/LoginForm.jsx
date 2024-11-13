@@ -68,7 +68,7 @@ const LoginForm = () => {
                     </FormGroup>
                     <Typography
                         component={Link}
-                        to="/auth/forgot-password"
+                        to="/forgot-password"
                         fontWeight="500"
                         sx={{
                             textDecoration: 'none',

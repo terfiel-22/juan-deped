@@ -130,7 +130,7 @@ const Login = Loadable(lazy(() => import('../views/authentication/auth1/Login'))
 const Login2 = Loadable(lazy(() => import('../views/authentication/auth2/Login2')));
 const Register = Loadable(lazy(() => import('../views/authentication/auth1/Register')));
 const Register2 = Loadable(lazy(() => import('../views/authentication/auth2/Register2')));
-const ForgotPassword = Loadable(lazy(() => import('../views/authentication/auth1/ForgotPassword')));
+// const ForgotPassword = Loadable(lazy(() => import('../views/authentication/auth1/ForgotPassword')));
 const ForgotPassword2 = Loadable(
   lazy(() => import('../views/authentication/auth2/ForgotPassword2')),
 );
@@ -153,6 +153,7 @@ const BlogPost = Loadable(lazy(() => import('../views/pages/frontend-pages/BlogP
 
 /** Juan DepEd */
 const Authentication = Loadable(lazy(() => import('../views/authentication/Authentication')));
+const ForgotPassword = Loadable(lazy(() => import('../views/authentication/ForgotPassword')));
 
 /** Middleware */
 const GuestRoute = Loadable(lazy(() => import('./middlewares/GuestRoute')));
@@ -296,6 +297,7 @@ const Router = [
     element: <GuestRoute />,
     children: [
       { path: '/auth', element: <Authentication /> },
+      { path: '/forgot-password', element: <ForgotPassword /> },
       { path: '*', element: <Navigate to="/404" /> },
     ]
   },
