@@ -17,15 +17,15 @@ import { useSelector } from 'react-redux';
 import useFetchPersonnels from '../../../hooks/personnel/useFetchPersonnels';
 import { selectPersonnels } from '../../../store/user/UserSlice';
 import useTablePagination from '../../../hooks/ui/useTablePagination';
-import EnhancedTableToolbar from '../../shared/EnhancedTableToolbar';
-import EnhancedTableHead from '../../shared/EnhancedTableHead';
+import EnhancedTableToolbar from '../../../components/shared/EnhancedTableToolbar';
+import EnhancedTableHead from '../../../components/shared/EnhancedTableHead';
 import useEnhancedTableSearch from '../../../hooks/ui/useEnhancedTableSearch';
 import useEnhancedTableSelect from '../../../hooks/ui/useEnhancedTableSelect';
 import useEnhancedTableSort from '../../../hooks/ui/useEnhancedTableSort';
 import useTableDenseToggle from '../../../hooks/ui/useTableDenseToggle';
-import { useEffect, useState } from 'react';
-import TableDenseToggle from '../../shared/TableDenseToggle';
-import CustomCheckbox from '../../forms/theme-elements/CustomCheckbox';
+import { useState } from 'react';
+import TableDenseToggle from '../../../components/shared/TableDenseToggle';
+import CustomCheckbox from '../../../components/forms/theme-elements/CustomCheckbox';
 import { IconDotsVertical } from '@tabler/icons';
 
 const headCells = [

@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axiosClient from '../../utils/axiosClient';
 
 const useFetch = (url) => {
   // Data
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
 
   // Error
   const [error, setError] = useState(null);
@@ -12,32 +12,13 @@ const useFetch = (url) => {
   };
 
   // Loading
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  // Handle Form
-  const [formData, setFormData] = useState({});
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = () => {
-    setLoading(true);
-    const { email, password } = formData;
-
-    if (!email || !password) {
-      setError('Please fill in all required fields!');
-      setLoading(false);
-      return;
-    }
-
+  useEffect(() => {
     axiosClient
       .get(url)
       .then(({ data }) => {
+        console.log(data);
         setData(data);
       })
       .catch(({ response: { data } }) => {
@@ -46,9 +27,9 @@ const useFetch = (url) => {
       .finally(() => {
         setLoading(false);
       });
-  };
+  }, [url]);
 
-  return [data, error, resetError, loading, handleChange, handleSubmit];
+  return [data, error, resetError, loading];
 };
 
 export default useFetch;

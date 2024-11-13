@@ -1,7 +1,7 @@
 import { Box } from "@mui/system"
 import PageContainer from "../../../components/container/PageContainer"
 import Breadcrumb from "../../../layouts/full/shared/breadcrumb/Breadcrumb"
-import PersonnelTableList from "../../../components/user-management/personnels/PersonnelTableList";
+import PersonnelTableList from "./PersonnelTableList";
 
 const BCrumb = [
     {

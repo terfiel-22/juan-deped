@@ -162,9 +162,9 @@ const AuthRoute = Loadable(lazy(() => import('./middlewares/AuthRoute')));
 const Personnels = Loadable(lazy(() => import('../views/user-management/personnels/Personnels')));
 
 /** Career Management */
-const Tracks = Loadable(lazy(() => import('../views/career-management/Tracks')));
-const Strands = Loadable(lazy(() => import('../views/career-management/Strands')));
-const Specializations = Loadable(lazy(() => import('../views/career-management/Specializations')));
+const Tracks = Loadable(lazy(() => import('../views/career-management/tracks/Tracks')));
+const Strands = Loadable(lazy(() => import('../views/career-management/strands/Strands')));
+const Specializations = Loadable(lazy(() => import('../views/career-management/specializations/Specializations')));
 
 const Router = [
   {
