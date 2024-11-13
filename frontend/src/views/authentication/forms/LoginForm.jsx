@@ -1,5 +1,5 @@
-import { Alert, Button, FormControlLabel, FormGroup, Grid, IconButton, InputAdornment, Typography } from '@mui/material'
-import React from 'react'
+import { Alert, FormControlLabel, FormGroup, Grid, IconButton, InputAdornment, Typography } from '@mui/material'
+import React, { useState } from 'react'
 import CustomFormLabel from '../../../components/forms/theme-elements/CustomFormLabel'
 import { Box, Stack } from '@mui/system'
 import CustomCheckbox from '../../../components/forms/theme-elements/CustomCheckbox'
@@ -12,7 +12,7 @@ import { LoadingButton } from '@mui/lab'
 
 
 const LoginForm = () => {
-    const [error, resetError, loading, handleChange, handleSubmit] = useSignin()
+    const [formData, remembered, handleRemembered, error, resetError, loading, handleChange, handleSubmit] = useSignin()
 
     const [showPassword, handleClickShowPassword, handleMouseDownPassword] = usePasswordVisibility()
 
@@ -30,6 +30,7 @@ const LoginForm = () => {
                         id="email"
                         name="email"
                         placeholder="Email or LRN"
+                        value={formData.email}
                         onChange={handleChange}
                         fullWidth
                     />
@@ -53,6 +54,7 @@ const LoginForm = () => {
                         id="password"
                         name="password"
                         placeholder="******"
+                        value={formData.password}
                         onChange={handleChange}
                         fullWidth
                     />
@@ -60,7 +62,7 @@ const LoginForm = () => {
                 <Grid container justifyContent="space-between" direction="row" alignItems="center" my={2}>
                     <FormGroup>
                         <FormControlLabel
-                            control={<CustomCheckbox defaultChecked />}
+                            control={<CustomCheckbox name="remembered" checked={remembered} onChange={handleRemembered} />}
                             label="Remeber this Device"
                         />
                     </FormGroup>
