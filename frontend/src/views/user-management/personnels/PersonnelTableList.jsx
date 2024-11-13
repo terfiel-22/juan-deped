@@ -15,7 +15,7 @@ import {
 
 import { useSelector } from 'react-redux';
 import useFetchPersonnels from '../../../hooks/personnel/useFetchPersonnels';
-import { selectPersonnels } from '../../../store/user/UserSlice';
+import { selectPersonnels, setPersonnels } from '../../../store/user/UserSlice';
 import useTablePagination from '../../../hooks/ui/useTablePagination';
 import EnhancedTableToolbar from '../../../components/shared/EnhancedTableToolbar';
 import EnhancedTableHead from '../../../components/shared/EnhancedTableHead';
@@ -27,6 +27,7 @@ import { useState } from 'react';
 import TableDenseToggle from '../../../components/shared/TableDenseToggle';
 import CustomCheckbox from '../../../components/forms/theme-elements/CustomCheckbox';
 import { IconDotsVertical } from '@tabler/icons';
+import useFetchAndDispatch from '../../../hooks/shared/useFetchAndDispatch';
 
 const headCells = [
     {
@@ -68,11 +69,11 @@ const headCells = [
 ];
 
 const PersonnelTableList = () => {
-
     /** Fetch Personnels */
-    const [error, resetError] = useFetchPersonnels();
-    const personnels = useSelector(selectPersonnels);
-    const [rows, setRows] = useState(personnels);
+    const [data, error, resetError] = useFetchAndDispatch({
+        url: "/personnels", setter: setPersonnels, selector: selectPersonnels
+    });
+    const [rows, setRows] = useState(data);
 
     // This is for pagination
     const [

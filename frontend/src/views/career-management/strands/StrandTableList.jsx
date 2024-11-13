@@ -10,7 +10,6 @@ import {
     TableRow,
     TablePagination,
 } from '@mui/material';
-import useFetch from '../../../hooks/shared/useFetch';
 import useTablePagination from '../../../hooks/ui/useTablePagination';
 import useEnhancedTableSearch from '../../../hooks/ui/useEnhancedTableSearch';
 import useEnhancedTableSelect from '../../../hooks/ui/useEnhancedTableSelect';
@@ -18,9 +17,11 @@ import useEnhancedTableSort from '../../../hooks/ui/useEnhancedTableSort';
 import useTableDenseToggle from '../../../hooks/ui/useTableDenseToggle';
 import EnhancedTableToolbar from '../../../components/shared/EnhancedTableToolbar';
 import EnhancedTableHead from '../../../components/shared/EnhancedTableHead';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import TableDenseToggle from '../../../components/shared/TableDenseToggle';
 import CustomCheckbox from '../../../components/forms/theme-elements/CustomCheckbox';
+import { selectStrands, setStrands } from '../../../store/career/CareerSlice';
+import useFetchAndDispatch from '../../../hooks/shared/useFetchAndDispatch';
 
 const headCells = [
     {
@@ -38,12 +39,11 @@ const headCells = [
 ];
 
 const StrandTableList = () => {
-    /** Fetch Tracks */
-    const [data, error, resetError] = useFetch("/strands");
+    /** Fetch Strands */
+    const [data, error, resetError] = useFetchAndDispatch({
+        url: "/strands", setter: setStrands, selector: selectStrands
+    });
     const [rows, setRows] = useState(data);
-    useEffect(() => {
-        setRows(data);
-    }, [data])
 
     // This is for pagination
     const [

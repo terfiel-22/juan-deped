@@ -9,6 +9,7 @@ import EcommerceReducer from './apps/eCommerce/EcommerceSlice';
 import UserProfileReducer from './apps/userProfile/UserProfileSlice';
 import BlogReducer from './apps/blog/BlogSlice';
 import { UserReducer } from './user/UserSlice';
+import { CareerReducer } from './career/CareerSlice';
 
 export const rootReducer = combineReducers({
   customizer: CustomizerReducer,
@@ -23,4 +24,5 @@ export const rootReducer = combineReducers({
 
   /** JuanDepEd */
   userReducer: UserReducer,
+  careerReducer: CareerReducer,
 });

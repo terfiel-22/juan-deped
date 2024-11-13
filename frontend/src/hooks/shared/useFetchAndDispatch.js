@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { setPersonnels } from '../../store/user/UserSlice';
 import axiosClient from '../../utils/axiosClient';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-const useFetchPersonnels = (url) => {
+const useFetchAndDispatch = ({ url, setter, selector }) => {
+  /** Dispatch/Select */
   const dispatch = useDispatch();
+  const data = useSelector(selector);
 
   // Error
   const [error, setError] = useState(null);
@@ -13,14 +14,13 @@ const useFetchPersonnels = (url) => {
   };
 
   // Loading
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
     axiosClient
-      .get('/personnels')
+      .get(url)
       .then(({ data }) => {
-        dispatch(setPersonnels(data));
+        dispatch(setter(data));
       })
       .catch(({ response: { data } }) => {
         setError(data.message);
@@ -28,9 +28,9 @@ const useFetchPersonnels = (url) => {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [url]);
 
-  return [error, resetError, loading];
+  return [data, error, resetError, loading];
 };
 
-export default useFetchPersonnels;
+export default useFetchAndDispatch;
