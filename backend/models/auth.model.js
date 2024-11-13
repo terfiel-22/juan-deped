@@ -22,6 +22,10 @@ const authSchema = Schema(
         "Parent/Guardian",
       ],
     },
+    isApproved: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );

@@ -115,6 +115,7 @@ export const initAdminAccount = async (req, res, next) => {
       email,
       password: hashedPassword,
       role,
+      isApproved: true,
     });
 
     if (!userAdmin) throw new HttpError("Invalid user data.", 400);

@@ -313,11 +313,6 @@ const studentSchema = Schema(
       weightKg: Number,
       heightM: Number,
     },
-
-    isApproved: {
-      type: Boolean,
-      default: false,
-    },
   },
   { timestamps: true }
 );
