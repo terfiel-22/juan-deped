@@ -166,6 +166,9 @@ const Tracks = Loadable(lazy(() => import('../views/career-management/tracks/Tra
 const Strands = Loadable(lazy(() => import('../views/career-management/strands/Strands')));
 const Specializations = Loadable(lazy(() => import('../views/career-management/specializations/Specializations')));
 
+/** ERROR */
+const PageNotFound = Loadable(lazy(() => import('../views/errors/PageNotFound')))
+
 const Router = [
   {
     path: '/',
@@ -256,7 +259,7 @@ const Router = [
       { path: '/react-tables/row-selection', element: <ReactRowSelectionTable /> },
       { path: '/react-tables/sorting', element: <ReactSortingTable /> },
       { path: '/react-tables/sticky', element: <ReactStickyTable /> },
-      { path: '*', element: <Navigate to="/auth/404" /> },
+      { path: '*', element: <Navigate to="/404" /> },
     ],
   },
   {
@@ -287,22 +290,26 @@ const Router = [
   },
 
   /** Juan DepEd */
+  { path: '/404', element: <PageNotFound /> },
   {
     path: "/",
     element: <GuestRoute />,
     children: [
       { path: '/auth', element: <Authentication /> },
+      { path: '*', element: <Navigate to="/404" /> },
     ]
   },
   {
     path: "/",
     element: <AuthRoute />,
     children: [
+      { path: '/', element: <Navigate to="/dashboard" /> },
       { path: '/dashboard', element: <ModernDash /> },
       { path: '/personnels', element: <Personnels /> },
       { path: '/tracks', element: <Tracks /> },
       { path: '/strands', element: <Strands /> },
       { path: '/specializations', element: <Specializations /> },
+      { path: '*', element: <Navigate to="/404" /> },
     ]
   }
 ];
