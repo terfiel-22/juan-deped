@@ -16,7 +16,15 @@ export const fetchTracks = async (req, res, next) => {
 
 export const fetchStrands = async (req, res, next) => {
   try {
-    const strands = await Strand.find({}).populate("track").exec();
+    const strandList = await Strand.find({}).populate("track").exec();
+
+    let strands = [];
+    strandList.forEach(({ name, track }) => {
+      strands.push({
+        name: name,
+        track: track.name,
+      });
+    });
 
     res.status(200).json(strands);
   } catch (error) {
@@ -26,7 +34,7 @@ export const fetchStrands = async (req, res, next) => {
 
 export const fetchSpecializations = async (req, res, next) => {
   try {
-    const specializations = await Specialization.find({})
+    const specializationList = await Specialization.find({})
       .populate({
         path: "strand",
         populate: {
@@ -35,6 +43,15 @@ export const fetchSpecializations = async (req, res, next) => {
         },
       })
       .exec();
+
+    let specializations = [];
+    specializationList.forEach(({ name, strand }) => {
+      specializations.push({
+        name: name,
+        strand: strand.name,
+        track: strand.track.name,
+      });
+    });
 
     res.status(200).json(specializations);
   } catch (error) {
