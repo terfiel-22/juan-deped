@@ -18,7 +18,6 @@ const useFetch = (url) => {
     axiosClient
       .get(url)
       .then(({ data }) => {
-        console.log(data);
         setData(data);
       })
       .catch(({ response: { data } }) => {

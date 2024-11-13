@@ -14,11 +14,11 @@ const useEnhancedTableSort = ({ initialOrderBy = '' }) => {
     return 0;
   }, []);
 
-  const getComparator = useCallback((order, orderBy) => {
+  const getComparator = useCallback(() => {
     return order === 'desc'
       ? (a, b) => descendingComparator(a, b, orderBy)
       : (a, b) => -descendingComparator(a, b, orderBy);
-  }, []);
+  }, [order, orderBy, descendingComparator]);
 
   const stableSort = useCallback((array, comparator) => {
     const stabilizedThis = array.map((el, index) => [el, index]);

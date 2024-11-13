@@ -41,9 +41,8 @@ const headCells = [
         disablePadding: false,
         label: 'Account',
     },
-
     {
-        id: 'fullName',
+        id: 'lName',
         numeric: false,
         disablePadding: false,
         label: 'Full Name',
@@ -144,7 +143,7 @@ const PersonnelTableList = () => {
                                         rowCount={rows.length}
                                     />
                                     <TableBody>
-                                        {stableSort(pageData, getComparator(order, orderBy)).map((personnel, index) => {
+                                        {stableSort(pageData, getComparator()).map((personnel, index) => {
                                             const isItemSelected = isSelected(personnel[FIELD_NAME]);
                                             const labelId = `enhanced-table-checkbox-${index}`;
 

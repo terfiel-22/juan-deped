@@ -1,8 +1,28 @@
-import React from 'react'
+import { Box } from '@mui/system'
+import PageContainer from '../../../components/container/PageContainer'
+import Breadcrumb from '../../../layouts/full/shared/breadcrumb/Breadcrumb'
+import StrandTableList from './StrandTableList';
+
+const BCrumb = [
+    {
+        to: '/',
+        title: 'Career Management',
+    },
+    {
+        title: 'Strands',
+    },
+];
 
 const Strands = () => {
     return (
-        <div>Strands</div>
+        <PageContainer title="JuanDepEd | Strands" description="this is Strands page">
+            {/* breadcrumb */}
+            <Breadcrumb title="Strands" items={BCrumb} />
+            {/* end breadcrumb */}
+            <Box>
+                <StrandTableList />
+            </Box>
+        </PageContainer>
     )
 }
 

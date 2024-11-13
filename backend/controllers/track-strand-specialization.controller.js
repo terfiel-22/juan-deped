@@ -19,9 +19,10 @@ export const fetchStrands = async (req, res, next) => {
     const strandList = await Strand.find({}).populate("track").exec();
 
     let strands = [];
-    strandList.forEach(({ name, track }) => {
+    strandList.forEach(({ _id, name, track }) => {
       strands.push({
-        name: name,
+        _id,
+        name,
         track: track.name,
       });
     });
@@ -45,9 +46,10 @@ export const fetchSpecializations = async (req, res, next) => {
       .exec();
 
     let specializations = [];
-    specializationList.forEach(({ name, strand }) => {
+    specializationList.forEach(({ _id, name, strand }) => {
       specializations.push({
-        name: name,
+        _id,
+        name,
         strand: strand.name,
         track: strand.track.name,
       });

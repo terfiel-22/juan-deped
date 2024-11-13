@@ -24,16 +24,22 @@ import CustomCheckbox from '../../../components/forms/theme-elements/CustomCheck
 
 const headCells = [
     {
-        id: 'name',
+        id: 'track',
         numeric: false,
         disablePadding: false,
         label: 'Track',
+    },
+    {
+        id: 'name',
+        numeric: false,
+        disablePadding: false,
+        label: 'Strand',
     }
 ];
 
-const TrackTableList = () => {
+const StrandTableList = () => {
     /** Fetch Tracks */
-    const [data, error, resetError] = useFetch("/tracks");
+    const [data, error, resetError] = useFetch("/strands");
     const [rows, setRows] = useState(data);
     useEffect(() => {
         setRows(data);
@@ -54,7 +60,7 @@ const TrackTableList = () => {
 
     // This is for searching
     const FIELD_NAME = 'name';
-    const SEARCH_FIELD = 'Track'
+    const SEARCH_FIELD = 'Strand'
     const [search, handleSearch] = useEnhancedTableSearch({
         rows,
         fieldName: FIELD_NAME,
@@ -108,18 +114,18 @@ const TrackTableList = () => {
                                         rowCount={rows.length}
                                     />
                                     <TableBody>
-                                        {stableSort(pageData, getComparator()).map((track, index) => {
-                                            const isItemSelected = isSelected(track[FIELD_NAME]);
+                                        {stableSort(pageData, getComparator()).map((strand, index) => {
+                                            const isItemSelected = isSelected(strand[FIELD_NAME]);
                                             const labelId = `enhanced-table-checkbox-${index}`;
 
                                             return (
                                                 <TableRow
                                                     hover
-                                                    onClick={() => handleClick(track[FIELD_NAME])}
+                                                    onClick={() => handleClick(strand[FIELD_NAME])}
                                                     role="checkbox"
                                                     aria-checked={isItemSelected}
                                                     tabIndex={-1}
-                                                    key={track._id}
+                                                    key={strand._id}
                                                     selected={isItemSelected}
                                                 >
                                                     <TableCell padding="checkbox">
@@ -133,7 +139,12 @@ const TrackTableList = () => {
                                                     </TableCell>
                                                     <TableCell>
                                                         <Typography color="textSecondary" variant="h6" fontWeight="400">
-                                                            {track.name}
+                                                            {strand.track}
+                                                        </Typography>
+                                                    </TableCell>
+                                                    <TableCell>
+                                                        <Typography color="textSecondary" variant="h6" fontWeight="400">
+                                                            {strand.name}
                                                         </Typography>
                                                     </TableCell>
                                                 </TableRow>
@@ -169,4 +180,4 @@ const TrackTableList = () => {
     );
 }
 
-export default TrackTableList
+export default StrandTableList
