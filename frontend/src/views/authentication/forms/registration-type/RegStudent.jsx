@@ -14,11 +14,11 @@ const IdentificationInformation = Loadable(lazy(() => import('../student-form-st
 const LearnerInformation = Loadable(lazy(() => import('../student-form-steps/LearnerInformation')))
 
 const RegStudent = () => {
-    const [formFields, handleChange, handleNextForm, handleSubmit] = useStudentDetailForm();
+    const { handleSubmit } = useStudentDetailForm();
 
     // For Stepper
     const steps = [
-        { component: <BasicInformation handleChange={handleChange} formFields={formFields} /> },
+        { component: <BasicInformation /> },
         { component: <LearnerInformation /> },
         { component: <IdentificationInformation /> },
         { component: <AddressInformation /> },
@@ -36,7 +36,7 @@ const RegStudent = () => {
         handleSkip,
         handleSteps,
         handleReset,
-    ] = useStepper(steps, optionals, handleNextForm)
+    ] = useStepper(steps, optionals)
 
     return (
         <Grid container spacing={3}>
@@ -51,7 +51,7 @@ const RegStudent = () => {
                                 </Alert>
 
                                 <Box textAlign="right">
-                                    <Button onClick={handleSubmit} variant="contained" color="error">
+                                    <Button onClick={handleSubmit} variant="contained" color="primary">
                                         Submit
                                     </Button>
                                     <Button onClick={handleReset} variant="contained" color="error">

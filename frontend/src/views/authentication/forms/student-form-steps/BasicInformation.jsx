@@ -3,9 +3,13 @@ import CustomFormLabel from '../../../../components/forms/theme-elements/CustomF
 import CustomTextField from '../../../../components/forms/theme-elements/CustomTextField'
 import { FormControlLabel, Grid, RadioGroup } from '@mui/material'
 import CustomRadio from '../../../../components/forms/theme-elements/CustomRadio'
+import { useCallback, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectCurrentStudent, setCurrentStudent } from '../../../../store/user/UserSlice'
+import useStudentDetailForm from '../../../../hooks/student/useStudentDetailForm'
 
-const BasicInformation = ({ handleChange, formFields }) => {
-    if (!formFields) return;
+const BasicInformation = () => {
+    const { formFields, handleChange } = useStudentDetailForm()
 
     const { email, mobile, schoolYear, gradeLevelToEnroll, withLRN, isReturnee } = formFields;
 

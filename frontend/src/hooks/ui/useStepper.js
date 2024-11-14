@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-const useStepper = (steps, optionals, handleNextForm) => {
+const useStepper = (steps, optionals) => {
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set());
 
@@ -13,7 +13,6 @@ const useStepper = (steps, optionals, handleNextForm) => {
       newSkipped = new Set(newSkipped.values());
       newSkipped.delete(activeStep);
     }
-    handleNextForm();
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     setSkipped(newSkipped);
   }, []);

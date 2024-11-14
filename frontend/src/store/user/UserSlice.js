@@ -37,7 +37,7 @@ export const UserSlice = createSlice({
 export const UserReducer = UserSlice.reducer;
 
 // Actions
-export const { setCurrentUser, setCurrentStudentDetails, setCredentials, setPersonnels } =
+export const { setCurrentUser, setCurrentStudent, setCredentials, setPersonnels } =
   UserSlice.actions;
 
 // Selector

@@ -1,44 +1,40 @@
 import { useCallback, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectCurrentStudent } from '../../store/user/UserSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCurrentStudent, setCurrentStudent } from '../../store/user/UserSlice';
 
 const useStudentDetailForm = () => {
+  const dispatch = useDispatch();
   const currentStudent = useSelector(selectCurrentStudent);
-  const [formFields, setFormFields] = useState(
-    currentStudent ?? {
-      email: '',
-      mobile: '',
-      schoolYear: '',
-      gradeLevelToEnroll: '11',
-      withLRN: true,
-      isReturnee: false,
-    },
-  );
 
-  const handleChange = useCallback((e) => {
-    const { name, value, type, checked } = e.target;
+  const [formFields, setFormFields] = useState(currentStudent);
 
-    setFormFields((prevState) => ({
-      ...prevState,
-      [name]:
+  const handleChange = useCallback(
+    (e) => {
+      const { name, value, type, checked } = e.target;
+      const _value =
         type === 'checkbox'
           ? checked
           : value === 'true' || value === 'false'
           ? value === 'true'
-          : value,
-    }));
-  }, []);
+          : value;
 
-  const handleNextForm = useCallback(() => {
-    /** Save to the store changes */
-    console.log(formFields);
-  }, [formFields]);
+      setFormFields({
+        ...formFields,
+        [name]: _value,
+      });
+      dispatch(
+        setCurrentStudent({
+          ...formFields,
+          [name]: _value,
+        }),
+      );
+    },
+    [setFormFields, formFields],
+  );
 
-  const handleSubmit = useCallback(() => {
-    console.log(formFields);
-  }, [formFields]);
+  const handleSubmit = useCallback(() => {}, []);
 
-  return [formFields, handleChange, handleNextForm, handleSubmit];
+  return { formFields, handleChange, handleSubmit };
 };
 
 export default useStudentDetailForm;
