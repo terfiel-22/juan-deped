@@ -9,6 +9,23 @@ const initialState = {
     gradeLevelToEnroll: '11',
     withLRN: true,
     isReturnee: false,
+
+    isPsaAvailable: true,
+    psaBirthCertificateNo: '',
+    learnerReferenceNo: '',
+    lastName: '',
+    firstName: '',
+    middleName: '',
+    extensionName: '',
+    birthDate: '',
+    sex: '',
+    age: '',
+    placeOfBirth: '',
+    motherTongue: '',
+    isIndigenousPeople: false,
+    indigenousPeople: '',
+    isFourPsBeneficiary: false,
+    fourPsHouseHoldId: '',
   },
 };
 

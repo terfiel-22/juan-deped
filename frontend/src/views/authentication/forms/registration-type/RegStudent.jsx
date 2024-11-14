@@ -41,7 +41,7 @@ const RegStudent = () => {
     return (
         <Grid container spacing={3}>
             <Grid item xs={12} lg={12}>
-                <Box width="100%">
+                <Box width="100%" px={2}>
                     <WebStepper steps={steps} activeStep={activeStep} isStepOptional={isStepOptional} isStepSkipped={isStepSkipped} />
                     {activeStep === steps.length ? (
                         <>
