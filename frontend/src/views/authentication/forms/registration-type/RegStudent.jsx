@@ -3,10 +3,30 @@ import { Box, Stack } from '@mui/system'
 import ProgressMobileStepper from '../../../../components/shared/ProgressMobileStepper'
 import WebStepper from "../../../../components/shared/WebStepper";
 import useStepper from "../../../../hooks/ui/useStepper";
-import { steps, optionals } from '../steps/StudentRegistrationSteps';
+import { lazy } from "react";
+import Loadable from "../../../../layouts/full/shared/loadable/Loadable";
+import useStudentDetailForm from '../../../../hooks/student/useStudentDetailForm';
+const BasicInformation = Loadable(lazy(() => import('../student-form-steps/BasicInformation')))
+const AdditionalInformation = Loadable(lazy(() => import('../student-form-steps/AdditionalInformation')))
+const AddressInformation = Loadable(lazy(() => import('../student-form-steps/AddressInformation')))
+const GuardianInformation = Loadable(lazy(() => import('../student-form-steps/GuardianInformation')))
+const IdentificationInformation = Loadable(lazy(() => import('../student-form-steps/IdentificationInformation')))
+const StudentInformation = Loadable(lazy(() => import('../student-form-steps/StudentInformation')))
 
 const RegStudent = () => {
+    const { handleChange, handleSubmit } = useStudentDetailForm();
+
     // For Stepper
+    const steps = [
+        { component: <BasicInformation handleChange={handleChange} /> },
+        { component: <StudentInformation /> },
+        { component: <IdentificationInformation /> },
+        { component: <AddressInformation /> },
+        { component: <GuardianInformation /> },
+        { component: <AdditionalInformation /> },
+    ];
+    const optionals = new Set([])
+
     const [
         activeStep,
         isStepOptional,
@@ -31,6 +51,9 @@ const RegStudent = () => {
                                 </Alert>
 
                                 <Box textAlign="right">
+                                    <Button onClick={handleSubmit} variant="contained" color="error">
+                                        Submit
+                                    </Button>
                                     <Button onClick={handleReset} variant="contained" color="error">
                                         Reset
                                     </Button>
