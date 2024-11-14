@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCurrentStudent, setCurrentStudent } from '../../store/user/UserSlice';
+import { selectCurrentStudent, setCurrentStudent } from '../../store/student/StudentSlice';
 
 const useStudentDetailForm = () => {
   const dispatch = useDispatch();

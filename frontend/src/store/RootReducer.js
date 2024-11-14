@@ -10,6 +10,7 @@ import UserProfileReducer from './apps/userProfile/UserProfileSlice';
 import BlogReducer from './apps/blog/BlogSlice';
 import { UserReducer } from './user/UserSlice';
 import { CareerReducer } from './career/CareerSlice';
+import { StudentReducer } from './student/StudentSlice';
 
 export const rootReducer = combineReducers({
   customizer: CustomizerReducer,
@@ -24,5 +25,6 @@ export const rootReducer = combineReducers({
 
   /** JuanDepEd */
   userReducer: UserReducer,
+  studentReducer: StudentReducer,
   careerReducer: CareerReducer,
 });
