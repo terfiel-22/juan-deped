@@ -10,124 +10,120 @@ const studentSchema = Schema(
     withLRN: { type: Boolean, default: true },
     isReturnee: { type: Boolean, default: false },
 
-    learnerInformation: {
-      isPsaAvailable: { type: Boolean, default: true },
-      psaBirthCertificateNo: {
-        type: String,
-        required: function () {
-          return this.learnerInformation.isPsaAvailable;
-        },
+    // Learner Information
+    isPsaAvailable: { type: Boolean, default: true },
+    psaBirthCertificateNo: {
+      type: String,
+      required: function () {
+        return this.isPsaAvailable;
       },
-      learnerReferenceNo: {
-        type: String,
-        unique: true,
-        required: function () {
-          return this.withLRN;
-        },
+    },
+    learnerReferenceNo: {
+      type: String,
+      unique: true,
+      required: function () {
+        return this.withLRN;
       },
+    },
+    lastName: { type: String, required: true },
+    firstName: { type: String, required: true },
+    middleName: { type: String, required: true },
+    extensionName: String,
+    birthDate: { type: Date, required: true },
+    sex: { type: String, required: true, enum: ["male", "female"] },
+    age: { type: Number, required: true },
+    placeOfBirth: { type: String, required: true },
+    motherTongue: { type: String, required: true },
+    isIndigenousPeople: { type: Boolean, default: false },
+    indigenousPeople: {
+      type: String,
+      required: function () {
+        return this.isIndigenousPeople;
+      },
+    },
+    isFourPsBeneficiary: { type: Boolean, default: false },
+    fourPsHouseHoldId: {
+      type: String,
+      required: function () {
+        return this.isFourPsBenificiary;
+      },
+    },
+
+    // Current Address
+    currentHouseNoStreet: { type: String, required: true },
+    currentStreetName: { type: String, required: true },
+    currentBarangay: { type: String, required: true },
+    currentMunicipalityCity: { type: String, required: true },
+    currentProvince: { type: String, required: true },
+    currentCountry: { type: String, required: true },
+    currentZipCode: { type: String, required: true },
+
+    // Permanent Address
+    isSameAsCurrentAddress: { type: Boolean, default: false },
+    houseNoStreet: {
+      type: String,
+      default: function () {
+        return this.isSameAsCurrentAddress ? this.currentHouseNoStreet : "";
+      },
+    },
+    streetName: {
+      type: String,
+      default: function () {
+        return this.isSameAsCurrentAddress ? this.currentStreetName : "";
+      },
+    },
+    barangay: {
+      type: String,
+      default: function () {
+        return this.isSameAsCurrentAddress ? this.currentBarangay : "";
+      },
+    },
+    municipalityCity: {
+      type: String,
+      default: function () {
+        return this.isSameAsCurrentAddress ? this.currentMunicipalityCity : "";
+      },
+    },
+    province: {
+      type: String,
+      default: function () {
+        return this.isSameAsCurrentAddress ? this.currentProvince : "";
+      },
+    },
+    country: {
+      type: String,
+      default: function () {
+        return this.isSameAsCurrentAddress ? this.currentCountry : "";
+      },
+    },
+    zipCode: {
+      type: String,
+      default: function () {
+        return this.isSameAsCurrentAddress ? this.currentZipCode : "";
+      },
+    },
+
+    // Parents or Guardians
+    father: {
       lastName: { type: String, required: true },
       firstName: { type: String, required: true },
       middleName: { type: String, required: true },
-      extensionName: String,
-      birthDate: { type: Date, required: true },
-      sex: { type: String, required: true, enum: ["male", "female"] },
-      age: { type: Number, required: true },
-      placeOfBirth: { type: String, required: true },
-      motherTongue: { type: String, required: true },
-      isIndigenousPeople: { type: Boolean, default: false },
-      indigenousPeople: {
-        type: String,
-        required: function () {
-          return this.learnerInformation.isIndigenousPeople;
-        },
-      },
-      isFourPsBeneficiary: { type: Boolean, default: false },
-      fourPsHouseHoldId: {
-        type: String,
-        required: function () {
-          return this.learnerInformation.isFourPsBenificiary;
-        },
-      },
+      contactNumber: { type: String, required: true },
+      email: { type: String, required: true },
     },
-
-    currentAddress: {
-      houseNoStreet: { type: String, required: true },
-      streetName: { type: String, required: true },
-      barangay: { type: String, required: true },
-      municipalityCity: { type: String, required: true },
-      province: { type: String, required: true },
-      country: { type: String, required: true },
-      zipCode: { type: String, required: true },
+    mother: {
+      lastName: { type: String, required: true },
+      firstName: { type: String, required: true },
+      middleName: { type: String, required: true },
+      contactNumber: { type: String, required: true },
+      email: { type: String, required: true },
     },
-
-    permanentAddress: {
-      isSameAsCurrent: { type: Boolean, default: false },
-      houseNoStreet: {
-        type: String,
-        required: function () {
-          return !this.permanentAddress.isSameAsCurrent;
-        },
-      },
-      streetName: {
-        type: String,
-        required: function () {
-          return !this.permanentAddress.isSameAsCurrent;
-        },
-      },
-      barangay: {
-        type: String,
-        required: function () {
-          return !this.permanentAddress.isSameAsCurrent;
-        },
-      },
-      municipalityCity: {
-        type: String,
-        required: function () {
-          return !this.permanentAddress.isSameAsCurrent;
-        },
-      },
-      province: {
-        type: String,
-        required: function () {
-          return !this.permanentAddress.isSameAsCurrent;
-        },
-      },
-      country: {
-        type: String,
-        required: function () {
-          return !this.permanentAddress.isSameAsCurrent;
-        },
-      },
-      zipCode: {
-        type: String,
-        required: function () {
-          return !this.permanentAddress.isSameAsCurrent;
-        },
-      },
-    },
-
-    parentsOrGuardians: {
-      father: {
-        lastName: { type: String, required: true },
-        firstName: { type: String, required: true },
-        middleName: { type: String, required: true },
-        contactNumber: { type: String, required: true },
-        email: { type: String, required: true },
-      },
-      mother: {
-        lastName: { type: String, required: true },
-        firstName: { type: String, required: true },
-        middleName: { type: String, required: true },
-        contactNumber: { type: String, required: true },
-        email: { type: String, required: true },
-      },
-      guardian: {
-        lastName: { type: String, required: true },
-        firstName: { type: String, required: true },
-        middleName: { type: String, required: true },
-        contactNumber: { type: String, required: true },
-        email: { type: String, required: true },
-      },
+    guardian: {
+      lastName: { type: String, required: true },
+      firstName: { type: String, required: true },
+      middleName: { type: String, required: true },
+      contactNumber: { type: String, required: true },
+      email: { type: String, required: true },
     },
 
     returningLearner: {
@@ -195,124 +191,122 @@ const studentSchema = Schema(
       },
     },
 
-    shsEligibility: {
-      hsCompleter: {
-        isHsCompleter: { type: Boolean, default: false },
-        genAve: {
-          type: String,
-          required: function () {
-            return this.shsEligibility.hsCompleter.isHsCompleter;
-          },
-        },
-        graduationDate: {
-          type: String,
-          required: function () {
-            return this.shsEligibility.hsCompleter.isHsCompleter;
-          },
-        },
-        schoolAddress: {
-          type: String,
-          required: function () {
-            return this.shsEligibility.hsCompleter.isHsCompleter;
-          },
+    // SHS Eligibility
+    hsCompleter: {
+      isHsCompleter: { type: Boolean, default: false },
+      genAve: {
+        type: String,
+        required: function () {
+          return this.hsCompleter.isHsCompleter;
         },
       },
-      jhsCompleter: {
-        isJhsCompleter: { type: Boolean, default: false },
-        genAve: {
-          type: String,
-          required: function () {
-            return this.shsEligibility.jhsCompleter.isJhsCompleter;
-          },
-        },
-        graduationDate: {
-          type: String,
-          required: function () {
-            return this.shsEligibility.jhsCompleter.isJhsCompleter;
-          },
-        },
-        schoolAddress: {
-          type: String,
-          required: function () {
-            return this.shsEligibility.jhsCompleter.isJhsCompleter;
-          },
+      graduationDate: {
+        type: String,
+        required: function () {
+          return this.hsCompleter.isHsCompleter;
         },
       },
-      peptPasser: {
-        isPeptPasser: { type: Boolean, default: false },
-        examDate: {
-          type: String,
-          required: function () {
-            return this.shsEligibility.peptPasser.isPeptPasser;
-          },
-        },
-        learningCenterName: {
-          type: String,
-          required: function () {
-            return this.shsEligibility.peptPasser.isPeptPasser;
-          },
-        },
-        learningCenterAddress: {
-          type: String,
-          required: function () {
-            return this.shsEligibility.peptPasser.isPeptPasser;
-          },
+      schoolAddress: {
+        type: String,
+        required: function () {
+          return this.hsCompleter.isHsCompleter;
         },
       },
-      alsPasser: {
-        isAlsPasser: { type: Boolean, default: false },
-        examDate: {
-          type: String,
-          required: function () {
-            return this.shsEligibility.alsPasser.isAlsPasser;
-          },
-        },
-        learningCenterName: {
-          type: String,
-          required: function () {
-            return this.shsEligibility.alsPasser.isAlsPasser;
-          },
-        },
-        learningCenterAddress: {
-          type: String,
-          required: function () {
-            return this.shsEligibility.alsPasser.isAlsPasser;
-          },
+    },
+    jhsCompleter: {
+      isJhsCompleter: { type: Boolean, default: false },
+      genAve: {
+        type: String,
+        required: function () {
+          return this.jhsCompleter.isJhsCompleter;
         },
       },
-      others: {
-        isOtherExamPasser: { type: Boolean, default: false },
-        examType: {
-          type: String,
-          required: function () {
-            return this.shsEligibility.others.isOtherExamPasser;
-          },
+      graduationDate: {
+        type: String,
+        required: function () {
+          return this.jhsCompleter.isJhsCompleter;
         },
-        examDate: {
-          type: String,
-          required: function () {
-            return this.shsEligibility.others.isOtherExamPasser;
-          },
+      },
+      schoolAddress: {
+        type: String,
+        required: function () {
+          return this.jhsCompleter.isJhsCompleter;
         },
-        learningCenterName: {
-          type: String,
-          required: function () {
-            return this.shsEligibility.others.isOtherExamPasser;
-          },
+      },
+    },
+    peptPasser: {
+      isPeptPasser: { type: Boolean, default: false },
+      examDate: {
+        type: String,
+        required: function () {
+          return this.peptPasser.isPeptPasser;
         },
-        learningCenterAddress: {
-          type: String,
-          required: function () {
-            return this.shsEligibility.others.isOtherExamPasser;
-          },
+      },
+      learningCenterName: {
+        type: String,
+        required: function () {
+          return this.peptPasser.isPeptPasser;
+        },
+      },
+      learningCenterAddress: {
+        type: String,
+        required: function () {
+          return this.peptPasser.isPeptPasser;
+        },
+      },
+    },
+    alsPasser: {
+      isAlsPasser: { type: Boolean, default: false },
+      examDate: {
+        type: String,
+        required: function () {
+          return this.alsPasser.isAlsPasser;
+        },
+      },
+      learningCenterName: {
+        type: String,
+        required: function () {
+          return this.alsPasser.isAlsPasser;
+        },
+      },
+      learningCenterAddress: {
+        type: String,
+        required: function () {
+          return this.alsPasser.isAlsPasser;
+        },
+      },
+    },
+    otherExams: {
+      isOtherExamPasser: { type: Boolean, default: false },
+      examType: {
+        type: String,
+        required: function () {
+          return this.otherExams.isOtherExamPasser;
+        },
+      },
+      examDate: {
+        type: String,
+        required: function () {
+          return this.otherExams.isOtherExamPasser;
+        },
+      },
+      learningCenterName: {
+        type: String,
+        required: function () {
+          return this.otherExams.isOtherExamPasser;
+        },
+      },
+      learningCenterAddress: {
+        type: String,
+        required: function () {
+          return this.otherExams.isOtherExamPasser;
         },
       },
     },
 
-    additional: {
-      weightKg: Number,
-      heightM: Number,
-    },
+    // Additional
+    weightKg: Number,
+    heightM: Number,
   },
   { timestamps: true }
 );
