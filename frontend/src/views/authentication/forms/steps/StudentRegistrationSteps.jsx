@@ -1,14 +1,14 @@
 import { lazy } from "react";
 import Loadable from "../../../../layouts/full/shared/loadable/Loadable";
-const PersonalInformation = Loadable(lazy(() => import('../registration-step-forms/PersonalInformation')))
-const AdditionalInformation = Loadable(lazy(() => import('../registration-step-forms/AdditionalInformation')))
-const AddressInformation = Loadable(lazy(() => import('../registration-step-forms/AddressInformation')))
-const GuardianInformation = Loadable(lazy(() => import('../registration-step-forms/GuardianInformation')))
-const IdentificationInformation = Loadable(lazy(() => import('../registration-step-forms/IdentificationInformation')))
-const StudentInformation = Loadable(lazy(() => import('../registration-step-forms/StudentInformation')))
+const BasicInformation = Loadable(lazy(() => import('../student-form-steps/BasicInformation')))
+const AdditionalInformation = Loadable(lazy(() => import('../student-form-steps/AdditionalInformation')))
+const AddressInformation = Loadable(lazy(() => import('../student-form-steps/AddressInformation')))
+const GuardianInformation = Loadable(lazy(() => import('../student-form-steps/GuardianInformation')))
+const IdentificationInformation = Loadable(lazy(() => import('../student-form-steps/IdentificationInformation')))
+const StudentInformation = Loadable(lazy(() => import('../student-form-steps/StudentInformation')))
 
 export const steps = [
-    { component: <PersonalInformation /> },
+    { component: <BasicInformation /> },
     { component: <StudentInformation /> },
     { component: <IdentificationInformation /> },
     { component: <AddressInformation /> },
