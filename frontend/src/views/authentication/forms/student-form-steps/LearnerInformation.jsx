@@ -4,11 +4,7 @@ import CustomTextField from '../../../../components/forms/theme-elements/CustomT
 import { FormControlLabel, Grid, RadioGroup } from '@mui/material'
 import CustomRadio from '../../../../components/forms/theme-elements/CustomRadio'
 
-const BasicInformation = ({ handleChange, formFields }) => {
-    if (!formFields) return;
-
-    const { email, mobile, schoolYear, gradeLevelToEnroll, withLRN, isReturnee } = formFields;
-
+const LearnerInformation = ({ handleChange }) => {
     return (
         <Box>
             <Grid container spacing={2}>
@@ -19,7 +15,6 @@ const BasicInformation = ({ handleChange, formFields }) => {
                         name="email"
                         type="email"
                         onChange={handleChange}
-                        value={email}
                         placeholder="Enter email"
                         variant="outlined"
                         fullWidth
@@ -32,7 +27,6 @@ const BasicInformation = ({ handleChange, formFields }) => {
                         id="mobile"
                         name="mobile"
                         onChange={handleChange}
-                        value={mobile}
                         placeholder="Enter mobile"
                         variant="outlined"
                         fullWidth
@@ -45,7 +39,6 @@ const BasicInformation = ({ handleChange, formFields }) => {
                         id="schoolYear"
                         name="schoolYear"
                         onChange={handleChange}
-                        value={schoolYear}
                         placeholder="Enter school year"
                         variant="outlined"
                         fullWidth
@@ -54,21 +47,21 @@ const BasicInformation = ({ handleChange, formFields }) => {
                 </Grid>
                 <Grid item xs={12} sm={12} lg={4}>
                     <CustomFormLabel htmlFor="gradeLevelToEnroll">Grade Level</CustomFormLabel>
-                    <RadioGroup row aria-label="gradeLevelToEnroll" name="gradeLevelToEnroll" id="gradeLevelToEnroll" onChange={handleChange} value={gradeLevelToEnroll} >
+                    <RadioGroup row aria-label="gradeLevelToEnroll" name="gradeLevelToEnroll" id="gradeLevelToEnroll" onChange={handleChange} >
                         <FormControlLabel value="11" control={<CustomRadio />} label="11" />
                         <FormControlLabel value="12" control={<CustomRadio />} label="12" />
                     </RadioGroup>
                 </Grid>
                 <Grid item xs={12} sm={12} lg={4}>
                     <CustomFormLabel htmlFor="withLRN">Is with LRN?</CustomFormLabel>
-                    <RadioGroup row aria-label="withLRN" name="withLRN" id="withLRN" onChange={handleChange} value={withLRN}>
+                    <RadioGroup row aria-label="withLRN" name="withLRN" id="withLRN" onChange={handleChange} >
                         <FormControlLabel value={true} control={<CustomRadio />} label="Yes" />
                         <FormControlLabel value={false} control={<CustomRadio />} label="No" />
                     </RadioGroup>
                 </Grid>
                 <Grid item xs={12} sm={12} lg={4}>
                     <CustomFormLabel htmlFor="isReturnee">Is Returnee?</CustomFormLabel>
-                    <RadioGroup row aria-label="isReturnee" name="isReturnee" onChange={handleChange} value={isReturnee}>
+                    <RadioGroup row aria-label="isReturnee" name="isReturnee" onChange={handleChange} >
                         <FormControlLabel value={true} control={<CustomRadio />} label="Yes" />
                         <FormControlLabel value={false} control={<CustomRadio />} label="No" />
                     </RadioGroup>
@@ -78,4 +71,4 @@ const BasicInformation = ({ handleChange, formFields }) => {
     )
 }
 
-export default BasicInformation
+export default LearnerInformation
