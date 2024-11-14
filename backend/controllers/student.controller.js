@@ -1,36 +1,13 @@
-import bcrypt from "bcryptjs";
-import Auth from "../models/auth.model.js";
 import HttpError from "../utils/HttpError.utils.js";
 import Student from "../models/student.model.js";
 
 export const studentRegistration = async (req, res, next) => {
   try {
-    const {
-      email,
-      password,
-      learnerInformation: { learnerReferenceNo, firstName, lastName },
-    } = req.body;
-
-    // Create an authentication
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
-
-    const newAuth = new Auth({
-      username: `${firstName} ${lastName}`,
-      email,
-      password: hashedPassword,
-      learnerReferenceNo,
-      role: "Student",
-    });
-
-    if (!newAuth) {
-      throw new HttpError("Creating new student account failed.", 400);
-    }
-    await newAuth.save();
+    const authId = "6734774937a62118e7057df9"; // Change after fixing middleware
 
     // Create the student record.
     const newStudentData = {
-      authId: newAuth._id,
+      authId,
       ...req.body,
     };
     const newStudent = new Student(newStudentData);
