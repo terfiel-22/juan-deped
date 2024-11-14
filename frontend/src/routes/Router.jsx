@@ -151,9 +151,11 @@ const PagePricing = Loadable(lazy(() => import('../views/pages/frontend-pages/Pr
 const BlogPage = Loadable(lazy(() => import('../views/pages/frontend-pages/Blog')));
 const BlogPost = Loadable(lazy(() => import('../views/pages/frontend-pages/BlogPost')));
 
-/** Juan DepEd */
+/** Authentication */
 const Authentication = Loadable(lazy(() => import('../views/authentication/Authentication')));
 const ForgotPassword = Loadable(lazy(() => import('../views/authentication/ForgotPassword')));
+const StudentDetailForm = Loadable(lazy(() => import('../views/authentication/StudentDetailForm')));
+
 
 /** Middleware */
 const GuestRoute = Loadable(lazy(() => import('./middlewares/GuestRoute')));
@@ -291,7 +293,13 @@ const Router = [
   },
 
   /** Juan DepEd */
-  { path: '/404', element: <PageNotFound /> },
+  {
+    path: "/",
+    children: [
+      { path: '/404', element: <PageNotFound /> },
+      { path: '/student-detail-form', element: <StudentDetailForm /> },
+    ]
+  },
   {
     path: "/",
     element: <GuestRoute />,
