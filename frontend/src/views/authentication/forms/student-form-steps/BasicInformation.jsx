@@ -11,7 +11,7 @@ const BasicInformation = () => {
         email: "",
         mobile: "",
         schoolYear: "",
-        gradeLevelToEnroll: "",
+        gradeLevelToEnroll: "11",
         withLRN: true,
         isReturnee: false,
 
@@ -23,6 +23,8 @@ const BasicInformation = () => {
             ...formFields,
             [name]: type === 'checkbox' ? checked : (value === 'true' || value === 'false' ? value === 'true' : value)
         })
+
+        console.log(formFields)
     }
 
     return (
@@ -67,33 +69,24 @@ const BasicInformation = () => {
                 </Grid>
                 <Grid item xs={12} sm={12} lg={4}>
                     <CustomFormLabel htmlFor="gradeLevelToEnroll">Grade Level</CustomFormLabel>
-                    <CustomTextField
-                        id="gradeLevelToEnroll"
-                        name="gradeLevelToEnroll"
-                        onChange={handleChange}
-                        placeholder="Enter grade level"
-                        variant="outlined"
-                        fullWidth
-                        size="small"
-                    />
+                    <RadioGroup row aria-label="gradeLevelToEnroll" name="gradeLevelToEnroll" id="gradeLevelToEnroll" onChange={handleChange} value={formFields.gradeLevelToEnroll}>
+                        <FormControlLabel value="11" control={<CustomRadio />} label="11" />
+                        <FormControlLabel value="12" control={<CustomRadio />} label="12" />
+                    </RadioGroup>
                 </Grid>
                 <Grid item xs={12} sm={12} lg={4}>
                     <CustomFormLabel htmlFor="withLRN">Is with LRN?</CustomFormLabel>
-                    <Box px={2}>
-                        <RadioGroup row aria-label="withLRN" name="withLRN" id="withLRN" onChange={handleChange} value={formFields.withLRN}>
-                            <FormControlLabel value={true} control={<CustomRadio />} label="Yes" />
-                            <FormControlLabel value={false} control={<CustomRadio />} label="No" />
-                        </RadioGroup>
-                    </Box>
+                    <RadioGroup row aria-label="withLRN" name="withLRN" id="withLRN" onChange={handleChange} value={formFields.withLRN}>
+                        <FormControlLabel value={true} control={<CustomRadio />} label="Yes" />
+                        <FormControlLabel value={false} control={<CustomRadio />} label="No" />
+                    </RadioGroup>
                 </Grid>
                 <Grid item xs={12} sm={12} lg={4}>
                     <CustomFormLabel htmlFor="isReturnee">Is Returnee?</CustomFormLabel>
-                    <Box px={2}>
-                        <RadioGroup row aria-label="isReturnee" name="isReturnee" onChange={handleChange} value={formFields.isReturnee}>
-                            <FormControlLabel value={true} control={<CustomRadio />} label="Yes" />
-                            <FormControlLabel value={false} control={<CustomRadio />} label="No" />
-                        </RadioGroup>
-                    </Box>
+                    <RadioGroup row aria-label="isReturnee" name="isReturnee" onChange={handleChange} value={formFields.isReturnee}>
+                        <FormControlLabel value={true} control={<CustomRadio />} label="Yes" />
+                        <FormControlLabel value={false} control={<CustomRadio />} label="No" />
+                    </RadioGroup>
                 </Grid>
             </Grid>
         </Box>
