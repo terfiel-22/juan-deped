@@ -1,6 +1,5 @@
 import { Box } from '@mui/system'
 import CustomFormLabel from '../../../../components/forms/theme-elements/CustomFormLabel'
-import CustomTextField from '../../../../components/forms/theme-elements/CustomTextField'
 import { FormControlLabel, Grid, MenuItem, RadioGroup, Select } from '@mui/material'
 import useStudentDetailForm from '../../../../hooks/student/useStudentDetailForm'
 import CustomRadio from '../../../../components/forms/theme-elements/CustomRadio'

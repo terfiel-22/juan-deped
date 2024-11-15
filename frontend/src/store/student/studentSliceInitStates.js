@@ -73,4 +73,15 @@ export const currentStudentInitState = {
     track: '',
     strand: '',
   },
+
+  preferredDistanceLearningModalities: {
+    isModularPrint: false,
+    isOnline: false,
+    isRadioBased: false,
+    isBlended: false,
+    isModularDigital: false,
+    isEducationTV: false,
+    isHomeschooling: false,
+    isFaceToFace: false,
+  },
 };
