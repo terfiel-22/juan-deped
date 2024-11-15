@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentStudent, setCurrentStudent } from '../../store/student/StudentSlice';
 
@@ -6,7 +6,8 @@ const useStudentDetailForm = () => {
   const dispatch = useDispatch();
   const currentStudent = useSelector(selectCurrentStudent);
 
-  const [formFields, setFormFields] = useState(currentStudent);
+  // const [formFields, setFormFields] = useState(currentStudent);
+  const formFields = useMemo(() => currentStudent, [currentStudent]);
 
   const handleChange = useCallback(
     (e) => {
@@ -18,18 +19,14 @@ const useStudentDetailForm = () => {
           ? value === 'true'
           : value;
 
-      setFormFields({
-        ...formFields,
+      const updatedFormFields = {
+        ...currentStudent,
         [name]: _value,
-      });
-      dispatch(
-        setCurrentStudent({
-          ...formFields,
-          [name]: _value,
-        }),
-      );
+      };
+
+      dispatch(setCurrentStudent(updatedFormFields));
     },
-    [setFormFields, formFields],
+    [currentStudent],
   );
 
   const handleNestedChange = useCallback(
@@ -38,13 +35,12 @@ const useStudentDetailForm = () => {
       const _value =
         type === 'checkbox' ? checked : value === 'true' ? true : value === 'false' ? false : value;
 
-      const updatedField = { ...formFields[field], [name]: _value };
-      const updatedFormFields = { ...formFields, [field]: updatedField };
+      const updatedField = { ...currentStudent[field], [name]: _value };
+      const updatedFormFields = { ...currentStudent, [field]: updatedField }; //Error here
 
-      setFormFields(updatedFormFields);
       dispatch(setCurrentStudent(updatedFormFields));
     },
-    [setFormFields, formFields],
+    [currentStudent],
   );
 
   const handleSubmit = useCallback(() => {}, []);
