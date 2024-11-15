@@ -40,12 +40,10 @@ const SHSLearner = () => {
                         name="track"
                         onChange={handleChange}
                         value={track}
-                        placeholder="Enter track"
                         variant="outlined"
                         fullWidth
                         size="small"
                     >
-                        <MenuItem value={0}>--Select Track--</MenuItem>
                         {
                             tracks.map(({ _id, name }) => <MenuItem key={_id} value={_id}>{name}</MenuItem>)
                         }
@@ -59,12 +57,10 @@ const SHSLearner = () => {
                         onChange={handleChange}
                         value={strand}
                         disabled={!track}
-                        placeholder="Enter strand"
                         variant="outlined"
                         fullWidth
                         size="small"
                     >
-                        <MenuItem value={0}>--Select Strand--</MenuItem>
                         {
                             strands.map(({ _id, name }) => <MenuItem key={_id} value={_id}>{name}</MenuItem>)
                         }

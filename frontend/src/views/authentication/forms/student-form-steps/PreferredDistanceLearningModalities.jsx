@@ -1,6 +1,5 @@
 import { Box } from '@mui/system'
-import CustomFormLabel from '../../../../components/forms/theme-elements/CustomFormLabel'
-import { Checkbox, FormControlLabel, Grid, MenuItem, Select } from '@mui/material'
+import { Checkbox, FormControlLabel, Grid } from '@mui/material'
 import useStudentDetailForm from '../../../../hooks/student/useStudentDetailForm'
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
@@ -15,8 +14,8 @@ const PreferredDistanceLearningModalities = () => {
 
     return (
         <Box>
-            <Grid container spacing={2}>
-                <Grid item xs={12} sm={12} lg={3}>
+            <Grid container spacing={2} justifyContent={{ lg: "center", xs: "start" }} py={5}>
+                <Grid item xs="auto">
                     <FormControlLabel
                         control={
                             <Checkbox color="primary"
@@ -31,7 +30,7 @@ const PreferredDistanceLearningModalities = () => {
                         label="Modular (Print)"
                     />
                 </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                <Grid item xs="auto">
                     <FormControlLabel
                         control={
                             <Checkbox color="primary"
@@ -46,7 +45,7 @@ const PreferredDistanceLearningModalities = () => {
                         label="Online"
                     />
                 </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                <Grid item xs="auto">
                     <FormControlLabel
                         control={
                             <Checkbox color="primary"
@@ -61,7 +60,7 @@ const PreferredDistanceLearningModalities = () => {
                         label="Radio Based Instruction"
                     />
                 </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                <Grid item xs="auto">
                     <FormControlLabel
                         control={
                             <Checkbox color="primary"
@@ -77,7 +76,7 @@ const PreferredDistanceLearningModalities = () => {
                     />
                 </Grid>
 
-                <Grid item xs={12} sm={12} lg={3}>
+                <Grid item xs="auto">
                     <FormControlLabel
                         control={
                             <Checkbox color="primary"
@@ -92,7 +91,7 @@ const PreferredDistanceLearningModalities = () => {
                         label="Modular (Digital)"
                     />
                 </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                <Grid item xs="auto">
                     <FormControlLabel
                         control={
                             <Checkbox color="primary"
@@ -107,7 +106,7 @@ const PreferredDistanceLearningModalities = () => {
                         label="Educational Television"
                     />
                 </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                <Grid item xs="auto">
                     <FormControlLabel
                         control={
                             <Checkbox color="primary"
@@ -122,7 +121,7 @@ const PreferredDistanceLearningModalities = () => {
                         label="Homeschooling"
                     />
                 </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                <Grid item xs="auto">
                     <FormControlLabel
                         control={
                             <Checkbox color="primary"

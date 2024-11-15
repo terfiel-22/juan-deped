@@ -7,7 +7,7 @@ import useStudentDetailForm from '../../../../hooks/student/useStudentDetailForm
 
 const HSCompleter
     = () => {
-        const fieldName = "ncPasser";
+        const fieldName = "hsCompleter";
         const { formFields, handleNestedChange } = useStudentDetailForm()
         const { isHsCompleter, genAve, schoolAddress, graduationDate } = formFields[fieldName];
 

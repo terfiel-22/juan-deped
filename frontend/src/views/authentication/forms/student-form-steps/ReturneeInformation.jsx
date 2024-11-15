@@ -15,7 +15,7 @@ const ReturneeInformation = () => {
     return (
         <Box>
             <Grid container spacing={2}>
-                <Grid item xs={12} sm={12} lg={6}>
+                <Grid item xs={12} sm={12} lg={3}>
                     <CustomFormLabel htmlFor="lastGradeLevelCompleted">Last Grade Level</CustomFormLabel>
                     <CustomTextField
                         id="lastGradeLevelCompleted"
@@ -29,7 +29,7 @@ const ReturneeInformation = () => {
                         size="small"
                     />
                 </Grid>
-                <Grid item xs={12} sm={12} lg={6}>
+                <Grid item xs={12} sm={12} lg={3}>
                     <CustomFormLabel htmlFor="lastSchoolYearCompleted">Last School Year Completed</CustomFormLabel>
                     <CustomTextField
                         id="lastSchoolYearCompleted"
@@ -43,7 +43,7 @@ const ReturneeInformation = () => {
                         size="small"
                     />
                 </Grid>
-                <Grid item xs={12} sm={12} lg={6}>
+                <Grid item xs={12} sm={12} lg={3}>
                     <CustomFormLabel htmlFor="lastSchoolAttended">Last School Attended</CustomFormLabel>
                     <CustomTextField
                         id="lastSchoolAttended"
@@ -57,7 +57,7 @@ const ReturneeInformation = () => {
                         size="small"
                     />
                 </Grid>
-                <Grid item xs={12} sm={12} lg={6}>
+                <Grid item xs={12} sm={12} lg={3}>
                     <CustomFormLabel htmlFor="schoolID">School ID</CustomFormLabel>
                     <CustomTextField
                         id="schoolID"
