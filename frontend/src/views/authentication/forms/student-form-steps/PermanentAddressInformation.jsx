@@ -27,6 +27,7 @@ const PermanentAddressInformation = () => {
                         name="houseNoStreet"
                         onChange={handleChange}
                         value={isSameAsCurrentAddress ? currentHouseNoStreet : houseNoStreet}
+                        disabled={isSameAsCurrentAddress}
                         placeholder="Enter house street number"
                         variant="outlined"
                         fullWidth
@@ -40,6 +41,7 @@ const PermanentAddressInformation = () => {
                         name="streetName"
                         onChange={handleChange}
                         value={isSameAsCurrentAddress ? currentStreetName : streetName}
+                        disabled={isSameAsCurrentAddress}
                         placeholder="Enter street name"
                         variant="outlined"
                         fullWidth
@@ -53,6 +55,7 @@ const PermanentAddressInformation = () => {
                         name="barangay"
                         onChange={handleChange}
                         value={isSameAsCurrentAddress ? currentBarangay : barangay}
+                        disabled={isSameAsCurrentAddress}
                         placeholder="Enter barangay"
                         variant="outlined"
                         fullWidth
@@ -66,6 +69,7 @@ const PermanentAddressInformation = () => {
                         name="municipalityCity"
                         onChange={handleChange}
                         value={isSameAsCurrentAddress ? currentMunicipalityCity : municipalityCity}
+                        disabled={isSameAsCurrentAddress}
                         placeholder="Enter municipality/city"
                         variant="outlined"
                         fullWidth
@@ -79,6 +83,7 @@ const PermanentAddressInformation = () => {
                         name="province"
                         onChange={handleChange}
                         value={isSameAsCurrentAddress ? currentProvince : province}
+                        disabled={isSameAsCurrentAddress}
                         placeholder="Enter province"
                         variant="outlined"
                         fullWidth
@@ -92,6 +97,7 @@ const PermanentAddressInformation = () => {
                         name="country"
                         onChange={handleChange}
                         value={isSameAsCurrentAddress ? currentCountry : country}
+                        disabled={isSameAsCurrentAddress}
                         placeholder="Enter country"
                         variant="outlined"
                         fullWidth
@@ -105,6 +111,7 @@ const PermanentAddressInformation = () => {
                         name="zipCode"
                         onChange={handleChange}
                         value={isSameAsCurrentAddress ? currentZipCode : zipCode}
+                        disabled={isSameAsCurrentAddress}
                         placeholder="Enter zip code"
                         variant="outlined"
                         fullWidth
