@@ -173,6 +173,7 @@ const LearnerInformation = () => {
                         name="indigenousPeople"
                         onChange={handleChange}
                         value={indigenousPeople}
+                        disabled={!isIndigenousPeople}
                         placeholder="Enter indigenous community"
                         variant="outlined"
                         fullWidth
@@ -193,6 +194,7 @@ const LearnerInformation = () => {
                         name="fourPsHouseHoldId"
                         onChange={handleChange}
                         value={fourPsHouseHoldId}
+                        disabled={!isFourPsBeneficiary}
                         placeholder="Enter household ID"
                         variant="outlined"
                         fullWidth
