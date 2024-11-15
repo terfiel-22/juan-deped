@@ -34,7 +34,7 @@ const headCells = [
 
 const TrackTableList = () => {
     /** Fetch Tracks */
-    const [data, error, resetError] = useFetchAndDispatch({
+    const { data, error, resetError } = useFetchAndDispatch({
         url: "/tracks", setter: setTracks, selector: selectTracks
     });
     const [rows, setRows] = useState(data);

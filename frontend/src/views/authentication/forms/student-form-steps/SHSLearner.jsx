@@ -1,17 +1,28 @@
 import { Box } from '@mui/system'
 import CustomFormLabel from '../../../../components/forms/theme-elements/CustomFormLabel'
 import CustomTextField from '../../../../components/forms/theme-elements/CustomTextField'
-import { FormControlLabel, Grid, RadioGroup } from '@mui/material'
+import { FormControlLabel, Grid, MenuItem, RadioGroup, Select } from '@mui/material'
 import useStudentDetailForm from '../../../../hooks/student/useStudentDetailForm'
 import CustomRadio from '../../../../components/forms/theme-elements/CustomRadio'
+import useFetchAndDispatch from '../../../../hooks/shared/useFetchAndDispatch'
+import { selectStrands, selectTracks, setStrands, setTracks } from '../../../../store/career/CareerSlice'
 
 const SHSLearner = () => {
-
     const fieldName = "seniorHighSchool";
     const { formFields, handleNestedChange } = useStudentDetailForm()
     const { semester, track, strand } = formFields[fieldName];
 
     const handleChange = (e) => handleNestedChange(e, fieldName);
+
+    /** Fetch Tracks */
+    const { data: tracks } = useFetchAndDispatch({
+        url: "/tracks", setter: setTracks, selector: selectTracks
+    });
+
+    /** Fetch Strands */
+    const { data: strands } = useFetchAndDispatch({
+        url: `/strands/track/${track}`, setter: setStrands, selector: selectStrands
+    });
 
     return (
         <Box>
@@ -25,7 +36,7 @@ const SHSLearner = () => {
                 </Grid>
                 <Grid item xs={12} sm={12} lg={4}>
                     <CustomFormLabel htmlFor="track">Track</CustomFormLabel>
-                    <CustomTextField
+                    <Select
                         id="track"
                         name="track"
                         onChange={handleChange}
@@ -34,20 +45,31 @@ const SHSLearner = () => {
                         variant="outlined"
                         fullWidth
                         size="small"
-                    />
+                    >
+                        <MenuItem value={0}>--Select Track--</MenuItem>
+                        {
+                            tracks.map(({ _id, name }) => <MenuItem key={_id} value={_id}>{name}</MenuItem>)
+                        }
+                    </Select>
                 </Grid>
                 <Grid item xs={12} sm={12} lg={4}>
                     <CustomFormLabel htmlFor="strand">Strand</CustomFormLabel>
-                    <CustomTextField
+                    <Select
                         id="strand"
                         name="strand"
                         onChange={handleChange}
                         value={strand}
+                        disabled={!track}
                         placeholder="Enter strand"
                         variant="outlined"
                         fullWidth
                         size="small"
-                    />
+                    >
+                        <MenuItem value={0}>--Select Strand--</MenuItem>
+                        {
+                            strands.map(({ _id, name }) => <MenuItem key={_id} value={_id}>{name}</MenuItem>)
+                        }
+                    </Select>
                 </Grid>
             </Grid>
         </Box>

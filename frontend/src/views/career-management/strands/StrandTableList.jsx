@@ -40,7 +40,7 @@ const headCells = [
 
 const StrandTableList = () => {
     /** Fetch Strands */
-    const [data, error, resetError] = useFetchAndDispatch({
+    const { data, error, resetError } = useFetchAndDispatch({
         url: "/strands", setter: setStrands, selector: selectStrands
     });
     const [rows, setRows] = useState(data);

@@ -46,7 +46,7 @@ const headCells = [
 
 const SpecializationTableList = () => {
     /** Fetch Specializations */
-    const [data, error, resetError] = useFetchAndDispatch({
+    const { data, error, resetError } = useFetchAndDispatch({
         url: "/specializations", setter: setSpecializations, selector: selectSpecializations
     });
     const [rows, setRows] = useState(data);

@@ -30,7 +30,7 @@ const useFetchAndDispatch = ({ url, setter, selector }) => {
       });
   }, [url]);
 
-  return [data, error, resetError, loading];
+  return { data, error, resetError, loading };
 };
 
 export default useFetchAndDispatch;
