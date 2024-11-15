@@ -84,4 +84,46 @@ export const currentStudentInitState = {
     isHomeschooling: false,
     isFaceToFace: false,
   },
+
+  ncPasser: {
+    isNcPasser: false,
+    certificateNo: '',
+    specialization: '',
+    validUntil: '',
+  },
+
+  hsCompleter: {
+    isHsCompleter: false,
+    genAve: '',
+    graduationDate: '',
+    schoolAddress: '',
+  },
+  jhsCompleter: {
+    isJhsCompleter: false,
+    genAve: '',
+    graduationDate: '',
+    schoolAddress: '',
+  },
+  peptPasser: {
+    isPeptPasser: false,
+    examDate: '',
+    learningCenterName: '',
+    learningCenterAddress: '',
+  },
+  alsPasser: {
+    isAlsPasser: false,
+    examDate: '',
+    learningCenterName: '',
+    learningCenterAddress: '',
+  },
+  otherExams: {
+    isOtherExamPasser: false,
+    examType: '',
+    examDate: '',
+    learningCenterName: '',
+    learningCenterAddress: '',
+  },
+
+  weightKg: 0,
+  heightM: 0,
 };

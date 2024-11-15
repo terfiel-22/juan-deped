@@ -14,6 +14,7 @@ const ParentInformation = Loadable(lazy(() => import('../student-form-steps/Pare
 const ReturneeInformation = Loadable(lazy(() => import('../student-form-steps/ReturneeInformation')))
 const SHSLearner = Loadable(lazy(() => import('../student-form-steps/SHSLearner')))
 const PreferredDistanceLearningModalities = Loadable(lazy(() => import('../student-form-steps/PreferredDistanceLearningModalities')))
+const NCPasser = Loadable(lazy(() => import('../student-form-steps/NCPasser')))
 
 const RegStudent = () => {
     const { handleSubmit } = useStudentDetailForm();
@@ -28,6 +29,7 @@ const RegStudent = () => {
         { name: "Returnee Information", component: <ReturneeInformation /> },
         { name: "SHS Learner Information", component: <SHSLearner /> },
         { name: "Preferred Distance Learning Modality/ies", component: <PreferredDistanceLearningModalities /> },
+        { name: "For NC Passer", component: <NCPasser /> },
     ];
     const optionals = new Set([])
 
