@@ -12,7 +12,7 @@ const CurrentAddressInformation = Loadable(lazy(() => import('../student-form-st
 const PermanentAddressInformation = Loadable(lazy(() => import('../student-form-steps/PermanentAddressInformation')))
 const ParentInformation = Loadable(lazy(() => import('../student-form-steps/ParentInformation')))
 const ReturneeInformation = Loadable(lazy(() => import('../student-form-steps/ReturneeInformation')))
-const AdditionalInformation = Loadable(lazy(() => import('../student-form-steps/AdditionalInformation')))
+const SHSLearner = Loadable(lazy(() => import('../student-form-steps/SHSLearner')))
 
 const RegStudent = () => {
     const { handleSubmit } = useStudentDetailForm();
@@ -25,7 +25,7 @@ const RegStudent = () => {
         { name: "Permanent Address", component: <PermanentAddressInformation /> },
         { name: "Parent Information", component: <ParentInformation /> },
         { name: "Returnee Information", component: <ReturneeInformation /> },
-        { component: <AdditionalInformation /> },
+        { name: "SHS Learner Information", component: <SHSLearner /> },
     ];
     const optionals = new Set([])
 

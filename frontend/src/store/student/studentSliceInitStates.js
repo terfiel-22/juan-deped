@@ -67,4 +67,10 @@ export const currentStudentInitState = {
     lastSchoolAttended: '',
     schoolID: '',
   },
+
+  seniorHighSchool: {
+    semester: '1st Sem',
+    track: '',
+    strand: '',
+  },
 };
