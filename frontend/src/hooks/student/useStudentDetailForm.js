@@ -32,9 +32,39 @@ const useStudentDetailForm = () => {
     [setFormFields, formFields],
   );
 
+  const handleNestedChange = useCallback(
+    (e, field) => {
+      const { name, value, type, checked } = e.target;
+      const _value =
+        type === 'checkbox'
+          ? checked
+          : value === 'true' || value === 'false'
+          ? value === 'true'
+          : value;
+
+      setFormFields({
+        ...formFields,
+        [field]: {
+          ...formFields[field],
+          [name]: _value,
+        },
+      });
+      dispatch(
+        setCurrentStudent({
+          ...formFields,
+          [field]: {
+            ...formFields[field],
+            [name]: _value,
+          },
+        }),
+      );
+    },
+    [setFormFields, formFields],
+  );
+
   const handleSubmit = useCallback(() => {}, []);
 
-  return { formFields, handleChange, handleSubmit };
+  return { formFields, handleChange, handleNestedChange, handleSubmit };
 };
 
 export default useStudentDetailForm;

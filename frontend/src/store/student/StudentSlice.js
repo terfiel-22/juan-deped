@@ -1,32 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createSelector } from 'reselect';
+import { currentStudentInitState } from './currentStudentInitState';
 
 const initialState = {
-  currentStudent: {
-    email: '',
-    mobile: '',
-    schoolYear: '',
-    gradeLevelToEnroll: '11',
-    withLRN: true,
-    isReturnee: false,
-
-    isPsaAvailable: true,
-    psaBirthCertificateNo: '',
-    learnerReferenceNo: '',
-    lastName: '',
-    firstName: '',
-    middleName: '',
-    extensionName: '',
-    birthDate: '',
-    sex: '',
-    age: '',
-    placeOfBirth: '',
-    motherTongue: '',
-    isIndigenousPeople: false,
-    indigenousPeople: '',
-    isFourPsBeneficiary: false,
-    fourPsHouseHoldId: '',
-  },
+  currentStudent: currentStudentInitState,
 };
 
 export const StudentSlice = createSlice({

@@ -7,21 +7,23 @@ import { lazy } from "react";
 import Loadable from "../../../../layouts/full/shared/loadable/Loadable";
 import useStudentDetailForm from '../../../../hooks/student/useStudentDetailForm';
 const BasicInformation = Loadable(lazy(() => import('../student-form-steps/BasicInformation')))
+const LearnerInformation = Loadable(lazy(() => import('../student-form-steps/LearnerInformation')))
+const CurrentAddressInformation = Loadable(lazy(() => import('../student-form-steps/CurrentAddressInformation')))
+const PermanentAddressInformation = Loadable(lazy(() => import('../student-form-steps/PermanentAddressInformation')))
 const AdditionalInformation = Loadable(lazy(() => import('../student-form-steps/AdditionalInformation')))
-const AddressInformation = Loadable(lazy(() => import('../student-form-steps/AddressInformation')))
 const GuardianInformation = Loadable(lazy(() => import('../student-form-steps/GuardianInformation')))
 const IdentificationInformation = Loadable(lazy(() => import('../student-form-steps/IdentificationInformation')))
-const LearnerInformation = Loadable(lazy(() => import('../student-form-steps/LearnerInformation')))
 
 const RegStudent = () => {
     const { handleSubmit } = useStudentDetailForm();
 
     // For Stepper
     const steps = [
-        { component: <BasicInformation /> },
-        { component: <LearnerInformation /> },
+        { name: "Basic Information", component: <BasicInformation /> },
+        { name: "Learner Information", component: <LearnerInformation /> },
+        { name: "Current Address", component: <CurrentAddressInformation /> },
+        { name: "Permanent Address", component: <PermanentAddressInformation /> },
         { component: <IdentificationInformation /> },
-        { component: <AddressInformation /> },
         { component: <GuardianInformation /> },
         { component: <AdditionalInformation /> },
     ];

@@ -15,10 +15,8 @@ const WebStepper = ({ steps, activeStep, isStepOptional, isStepSkipped }) => {
                 }
                 return (
                     <Step key={index} {...stepProps}>
-                        {name ?
-                            <StepLabel {...labelProps}>{name}</StepLabel>
-                            :
-                            <StepLabel {...labelProps} />
+                        {
+                            <StepLabel {...labelProps}>{activeStep === index && name ? name : ""}</StepLabel>
                         }
                     </Step>
                 );
