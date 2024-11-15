@@ -26,7 +26,8 @@ const LearnerInformation = () => {
                         id="psaBirthCertificateNo"
                         name="psaBirthCertificateNo"
                         onChange={handleChange}
-                        value={psaBirthCertificateNo}
+                        value={isPsaAvailable ? psaBirthCertificateNo : "To-Follow"}
+                        disabled={!isPsaAvailable}
                         placeholder="Enter birth certificate no"
                         variant="outlined"
                         fullWidth
