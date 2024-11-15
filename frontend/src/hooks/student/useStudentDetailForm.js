@@ -36,28 +36,13 @@ const useStudentDetailForm = () => {
     (e, field) => {
       const { name, value, type, checked } = e.target;
       const _value =
-        type === 'checkbox'
-          ? checked
-          : value === 'true' || value === 'false'
-          ? value === 'true'
-          : value;
+        type === 'checkbox' ? checked : value === 'true' ? true : value === 'false' ? false : value;
 
-      setFormFields({
-        ...formFields,
-        [field]: {
-          ...formFields[field],
-          [name]: _value,
-        },
-      });
-      dispatch(
-        setCurrentStudent({
-          ...formFields,
-          [field]: {
-            ...formFields[field],
-            [name]: _value,
-          },
-        }),
-      );
+      const updatedField = { ...formFields[field], [name]: _value };
+      const updatedFormFields = { ...formFields, [field]: updatedField };
+
+      setFormFields(updatedFormFields);
+      dispatch(setCurrentStudent(updatedFormFields));
     },
     [setFormFields, formFields],
   );

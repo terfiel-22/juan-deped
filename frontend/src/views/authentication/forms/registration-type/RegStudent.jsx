@@ -12,7 +12,7 @@ const CurrentAddressInformation = Loadable(lazy(() => import('../student-form-st
 const PermanentAddressInformation = Loadable(lazy(() => import('../student-form-steps/PermanentAddressInformation')))
 const AdditionalInformation = Loadable(lazy(() => import('../student-form-steps/AdditionalInformation')))
 const GuardianInformation = Loadable(lazy(() => import('../student-form-steps/GuardianInformation')))
-const IdentificationInformation = Loadable(lazy(() => import('../student-form-steps/IdentificationInformation')))
+const ParentInformation = Loadable(lazy(() => import('../student-form-steps/ParentInformation')))
 
 const RegStudent = () => {
     const { handleSubmit } = useStudentDetailForm();
@@ -23,7 +23,7 @@ const RegStudent = () => {
         { name: "Learner Information", component: <LearnerInformation /> },
         { name: "Current Address", component: <CurrentAddressInformation /> },
         { name: "Permanent Address", component: <PermanentAddressInformation /> },
-        { component: <IdentificationInformation /> },
+        { name: "Parent Information", component: <ParentInformation /> },
         { component: <GuardianInformation /> },
         { component: <AdditionalInformation /> },
     ];

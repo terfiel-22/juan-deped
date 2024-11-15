@@ -38,4 +38,26 @@ export const currentStudentInitState = {
   province: '',
   country: '',
   zipCode: '',
+
+  father: {
+    lastName: '',
+    firstName: '',
+    middleName: '',
+    contactNumber: '',
+    email: '',
+  },
+  mother: {
+    lastName: '',
+    firstName: '',
+    middleName: '',
+    contactNumber: '',
+    email: '',
+  },
+  guardian: {
+    lastName: '',
+    firstName: '',
+    middleName: '',
+    contactNumber: '',
+    email: '',
+  },
 };
