@@ -155,7 +155,8 @@ const studentSchema = Schema(
 
     seniorHighSchool: {
       semester: { type: String, enum: ["1st Sem", "2nd Sem"] },
-      trackStrand: { type: String, required: true },
+      track: { type: String, required: true },
+      strand: { type: String, required: true },
     },
 
     preferredDistanceLearningModalities: {
