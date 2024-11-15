@@ -192,117 +192,49 @@ const studentSchema = Schema(
       },
     },
 
-    // SHS Eligibility
-    hsCompleter: {
+    shsEligibility: {
       isHsCompleter: { type: Boolean, default: false },
-      genAve: {
+      hsGenAve: {
         type: String,
         required: function () {
-          return this.hsCompleter.isHsCompleter;
+          return this.shsEligibility.isHsCompleter;
         },
       },
-      graduationDate: {
-        type: String,
-        required: function () {
-          return this.hsCompleter.isHsCompleter;
-        },
-      },
-      schoolAddress: {
-        type: String,
-        required: function () {
-          return this.hsCompleter.isHsCompleter;
-        },
-      },
-    },
-    jhsCompleter: {
       isJhsCompleter: { type: Boolean, default: false },
-      genAve: {
+      jhsGenAve: {
         type: String,
         required: function () {
-          return this.jhsCompleter.isJhsCompleter;
+          return this.shsEligibility.isJhsCompleter;
         },
       },
-      graduationDate: {
-        type: String,
-        required: function () {
-          return this.jhsCompleter.isJhsCompleter;
-        },
-      },
-      schoolAddress: {
-        type: String,
-        required: function () {
-          return this.jhsCompleter.isJhsCompleter;
-        },
-      },
-    },
-    peptPasser: {
+      graduationDate: Date,
+      schoolName: String,
+      schoolAddress: String,
+
       isPeptPasser: { type: Boolean, default: false },
-      examDate: {
+      peptRating: {
         type: String,
         required: function () {
-          return this.peptPasser.isPeptPasser;
+          return this.shsEligibility.isPeptPasser;
         },
       },
-      learningCenterName: {
-        type: String,
-        required: function () {
-          return this.peptPasser.isPeptPasser;
-        },
-      },
-      learningCenterAddress: {
-        type: String,
-        required: function () {
-          return this.peptPasser.isPeptPasser;
-        },
-      },
-    },
-    alsPasser: {
       isAlsPasser: { type: Boolean, default: false },
-      examDate: {
+      alsRating: {
         type: String,
         required: function () {
-          return this.alsPasser.isAlsPasser;
+          return this.shsEligibility.isAlsPasser;
         },
       },
-      learningCenterName: {
-        type: String,
-        required: function () {
-          return this.alsPasser.isAlsPasser;
-        },
-      },
-      learningCenterAddress: {
-        type: String,
-        required: function () {
-          return this.alsPasser.isAlsPasser;
-        },
-      },
-    },
-    otherExams: {
       isOtherExamPasser: { type: Boolean, default: false },
-      examType: {
+      otherExam: {
         type: String,
         required: function () {
-          return this.otherExams.isOtherExamPasser;
+          return this.shsEligibility.isOtherExamPasser;
         },
       },
-      examDate: {
-        type: String,
-        required: function () {
-          return this.otherExams.isOtherExamPasser;
-        },
-      },
-      learningCenterName: {
-        type: String,
-        required: function () {
-          return this.otherExams.isOtherExamPasser;
-        },
-      },
-      learningCenterAddress: {
-        type: String,
-        required: function () {
-          return this.otherExams.isOtherExamPasser;
-        },
-      },
+      examDate: Date,
+      learningCenterName: String,
+      learningCenterAddress: String,
     },
 
     // Additional

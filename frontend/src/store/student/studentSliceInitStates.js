@@ -92,33 +92,20 @@ export const currentStudentInitState = {
     validUntil: '',
   },
 
-  hsCompleter: {
+  shsEligibility: {
     isHsCompleter: false,
-    genAve: '',
-    graduationDate: '',
-    schoolAddress: '',
-  },
-  jhsCompleter: {
+    hsGenAve: '',
     isJhsCompleter: false,
-    genAve: '',
+    jhsGenAve: '',
     graduationDate: '',
+    schoolName: '',
     schoolAddress: '',
-  },
-  peptPasser: {
     isPeptPasser: false,
-    examDate: '',
-    learningCenterName: '',
-    learningCenterAddress: '',
-  },
-  alsPasser: {
+    peptRating: '',
     isAlsPasser: false,
-    examDate: '',
-    learningCenterName: '',
-    learningCenterAddress: '',
-  },
-  otherExams: {
+    alsRating: '',
     isOtherExamPasser: false,
-    examType: '',
+    otherExam: '',
     examDate: '',
     learningCenterName: '',
     learningCenterAddress: '',
