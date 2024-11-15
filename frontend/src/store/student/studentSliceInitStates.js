@@ -60,4 +60,11 @@ export const currentStudentInitState = {
     contactNumber: '',
     email: '',
   },
+
+  returningLearner: {
+    lastGradeLevelCompleted: '',
+    lastSchoolYearCompleted: '',
+    lastSchoolAttended: '',
+    schoolID: '',
+  },
 };

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createSelector } from 'reselect';
-import { currentStudentInitState } from './currentStudentInitState';
+import { currentStudentInitState } from './studentSliceInitStates';
 
 const initialState = {
   currentStudent: currentStudentInitState,
