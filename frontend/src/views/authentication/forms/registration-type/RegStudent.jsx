@@ -16,6 +16,7 @@ const SHSLearner = Loadable(lazy(() => import('../student-form-steps/SHSLearner'
 const PreferredDistanceLearningModalities = Loadable(lazy(() => import('../student-form-steps/PreferredDistanceLearningModalities')))
 const NCPasser = Loadable(lazy(() => import('../student-form-steps/NCPasser')))
 const SHSEligibility = Loadable(lazy(() => import('../student-form-steps/SHSEligibility')))
+const HealthReport = Loadable(lazy(() => import('../student-form-steps/HealthReport')))
 
 const RegStudent = () => {
     const { handleSubmit } = useStudentDetailForm();
@@ -32,6 +33,7 @@ const RegStudent = () => {
         { name: "Preferred Distance Learning Modality/ies", component: <PreferredDistanceLearningModalities /> },
         { name: "For NC Passer", component: <NCPasser /> },
         { name: "For SHS Eligibility", component: <SHSEligibility /> },
+        { name: "For Learner's Health", component: <HealthReport /> },
     ];
     const optionals = new Set([])
 
