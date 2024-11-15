@@ -33,9 +33,62 @@ export const fetchStrands = async (req, res, next) => {
   }
 };
 
+export const fetchStrandsByTrackId = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const strandList = await Strand.find({ track: id })
+      .populate("track")
+      .exec();
+
+    let strands = [];
+    strandList.forEach(({ _id, name, track }) => {
+      strands.push({
+        _id,
+        name,
+        track: track.name,
+      });
+    });
+
+    res.status(200).json(strands);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const fetchSpecializations = async (req, res, next) => {
   try {
     const specializationList = await Specialization.find({})
+      .populate({
+        path: "strand",
+        populate: {
+          path: "track",
+          model: "Track",
+        },
+      })
+      .exec();
+
+    let specializations = [];
+    specializationList.forEach(({ _id, name, strand }) => {
+      specializations.push({
+        _id,
+        name,
+        strand: strand.name,
+        track: strand.track.name,
+      });
+    });
+
+    res.status(200).json(specializations);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const fetchSpecializationsByStrandId = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const specializationList = await Specialization.find({ strand: id })
       .populate({
         path: "strand",
         populate: {
