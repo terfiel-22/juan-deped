@@ -3,6 +3,7 @@ import { Navigate } from "react-router-dom";
 import { selectCurrentUser } from "../../store/user/UserSlice";
 import Loadable from "../../layouts/full/shared/loadable/Loadable";
 import { lazy } from "react";
+import { USER_ROLES } from "../../enums/UserRole";
 
 const FullLayout = Loadable(lazy(() => import("../../layouts/full/FullLayout")));
 const StudentDetailForm = Loadable(lazy(() => import('../../views/authentication/StudentDetailForm')));
@@ -14,7 +15,7 @@ const StudentRoute = () => {
         return <Navigate to="/auth" />;
     }
 
-    if (currentUser.role !== "Student") {
+    if (currentUser.role !== USER_ROLES.Student) {
         return <Navigate to="/" />;
     }
 

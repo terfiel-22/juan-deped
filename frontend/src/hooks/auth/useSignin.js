@@ -4,6 +4,7 @@ import axiosClient from '../../utils/axiosClient';
 import { selectCredentials, setCredentials, setCurrentUser } from '../../store/user/UserSlice';
 import { credentialsInitState } from '../../store/user/UserSliceInitStates';
 import { setCurrentStudentEmail, setCurrentStudentLRN } from '../../store/student/StudentSlice';
+import { USER_ROLES } from '../../enums/UserRole';
 
 const useSignin = () => {
   const dispatch = useDispatch();
@@ -53,7 +54,7 @@ const useSignin = () => {
       .post('/auth/login', formData)
       .then(({ data }) => {
         dispatch(setCurrentUser(data));
-        if (data.role === 'Student') {
+        if (data.role === USER_ROLES.Student) {
           dispatch(setCurrentStudentEmail(data.email));
           dispatch(setCurrentStudentLRN(data.learnerReferenceNo));
         }
