@@ -21,6 +21,10 @@ const useStepper = ({ steps, optionals }) => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   }, []);
 
+  const handleGoTo = useCallback((stepIndex) => {
+    setActiveStep(stepIndex);
+  }, []);
+
   const handleSkip = useCallback(() => {
     if (!isStepOptional(activeStep)) {
       // You probably want to guard against something like this,
@@ -51,6 +55,7 @@ const useStepper = ({ steps, optionals }) => {
     isStepSkipped,
     handleNext,
     handleBack,
+    handleGoTo,
     handleSkip,
     handleSteps,
     handleReset,

@@ -43,6 +43,7 @@ const RegStudent = () => {
         isStepSkipped,
         handleNext,
         handleBack,
+        handleGoTo,
         handleSkip,
         handleSteps } = useStepper({ steps, optionals })
 
@@ -50,7 +51,7 @@ const RegStudent = () => {
         <Grid container spacing={3}>
             <Grid item xs={12} lg={12}>
                 <Box width="100%" px={2}>
-                    <WebStepper steps={steps} activeStep={activeStep} isStepOptional={isStepOptional} isStepSkipped={isStepSkipped} />
+                    <WebStepper steps={steps} activeStep={activeStep} isStepOptional={isStepOptional} isStepSkipped={isStepSkipped} handleGoTo={handleGoTo} />
                     {activeStep === steps.length ? (
                         <>
                             <Stack spacing={2} mt={3}>
