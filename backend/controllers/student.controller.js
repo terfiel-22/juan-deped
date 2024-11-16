@@ -11,10 +11,10 @@ export const addStudentForm = async (req, res, next) => {
 
     // Create the student record.
     const newStudentFormData = {
+      ...req.body,
       authId,
       email,
       learnerReferenceNo,
-      ...req.body,
     };
     const studentForm = new StudentForm(newStudentFormData);
 
