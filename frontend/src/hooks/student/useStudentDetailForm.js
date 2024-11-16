@@ -54,9 +54,8 @@ const useStudentDetailForm = () => {
 
   const handleSubmit = useCallback(() => {
     setLoading(true);
-
     axiosClient
-      .post('/student/form', currentStudent)
+      .post('/student/form', { ...currentStudent })
       .then(({ data }) => {
         console.log(data);
       })

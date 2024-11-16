@@ -6,7 +6,7 @@ const studentFormSchema = Schema(
     email: { type: String, required: true },
     mobile: { type: String, required: true },
     schoolYear: { type: String, required: true },
-    gradeLevelToEnroll: { type: Number, required: true, enum: ["11", "12"] },
+    gradeLevelToEnroll: { type: Number, required: true, enum: [11, 12] },
     withLRN: { type: Boolean, default: true },
     isReturnee: { type: Boolean, default: false },
 
