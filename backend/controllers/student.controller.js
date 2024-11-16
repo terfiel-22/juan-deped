@@ -1,10 +1,11 @@
 import HttpError from "../utils/HttpError.utils.js";
 import { StudentForm } from "../models/student.model.js";
 import { cameltoTitleCase } from "../utils/textFormatter.js";
+import get from "lodash/get.js";
 
 export const addStudentForm = async (req, res, next) => {
   try {
-    const authId = "6734774937a62118e7057df9"; // Change after fixing middleware
+    const authId = get(req, "user._id");
 
     // Create the student record.
     const newStudentFormData = {
