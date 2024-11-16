@@ -3,7 +3,7 @@ import { model, Schema, Types } from "mongoose";
 const studentFormSchema = Schema(
   {
     authId: { type: Types.ObjectId, ref: "Auth", required: true },
-    email: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
     mobile: { type: String, required: true },
     schoolYear: { type: String, required: true },
     gradeLevelToEnroll: { type: Number, required: true, enum: [11, 12] },
