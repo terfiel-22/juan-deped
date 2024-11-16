@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-const useStepper = (steps, optionals) => {
+const useStepper = ({ steps, optionals }) => {
   const [activeStep, setActiveStep] = useState(0);
   const [skipped, setSkipped] = useState(new Set());
 
@@ -45,7 +45,7 @@ const useStepper = (steps, optionals) => {
     setActiveStep(0);
   }, []);
 
-  return [
+  return {
     activeStep,
     isStepOptional,
     isStepSkipped,
@@ -54,7 +54,7 @@ const useStepper = (steps, optionals) => {
     handleSkip,
     handleSteps,
     handleReset,
-  ];
+  };
 };
 
 export default useStepper;

@@ -6,6 +6,7 @@ import useStepper from "../../../../hooks/ui/useStepper";
 import { lazy } from "react";
 import Loadable from "../../../../layouts/full/shared/loadable/Loadable";
 import useStudentDetailForm from '../../../../hooks/student/useStudentDetailForm';
+import { LoadingButton } from '@mui/lab';
 const BasicInformation = Loadable(lazy(() => import('../student-form-steps/BasicInformation')))
 const LearnerInformation = Loadable(lazy(() => import('../student-form-steps/LearnerInformation')))
 const CurrentAddressInformation = Loadable(lazy(() => import('../student-form-steps/CurrentAddressInformation')))
@@ -19,7 +20,7 @@ const SHSEligibility = Loadable(lazy(() => import('../student-form-steps/SHSElig
 const HealthReport = Loadable(lazy(() => import('../student-form-steps/HealthReport')))
 
 const RegStudent = () => {
-    const { handleSubmit } = useStudentDetailForm();
+    const { handleSubmit, error, resetError, loading } = useStudentDetailForm();
 
     // For Stepper
     const steps = [
@@ -37,16 +38,13 @@ const RegStudent = () => {
     ];
     const optionals = new Set([])
 
-    const [
-        activeStep,
+    const { activeStep,
         isStepOptional,
         isStepSkipped,
         handleNext,
         handleBack,
         handleSkip,
-        handleSteps,
-        handleReset,
-    ] = useStepper(steps, optionals)
+        handleSteps } = useStepper({ steps, optionals })
 
     return (
         <Grid container spacing={3}>
@@ -56,17 +54,26 @@ const RegStudent = () => {
                     {activeStep === steps.length ? (
                         <>
                             <Stack spacing={2} mt={3}>
+                                {error &&
+                                    <Alert variant="filled" severity="error" onClose={resetError} mt={2}>
+                                        {error}
+                                    </Alert>
+                                }
                                 <Alert severity="success" mt={2}>
-                                    All steps completed - you&apos;re finished
+                                    All steps are completed - you&apos;re finished
                                 </Alert>
 
                                 <Box textAlign="right">
-                                    <Button onClick={handleSubmit} variant="contained" color="primary">
-                                        Submit
-                                    </Button>
-                                    <Button onClick={handleReset} variant="contained" color="error">
-                                        Reset
-                                    </Button>
+                                    <LoadingButton
+                                        loading={loading}
+                                        variant="contained"
+                                        color="primary"
+                                        size="medium"
+                                        type="button"
+                                        onClick={handleSubmit}
+                                    >
+                                        Save Student Form
+                                    </LoadingButton>
                                 </Box>
                             </Stack>
                         </>

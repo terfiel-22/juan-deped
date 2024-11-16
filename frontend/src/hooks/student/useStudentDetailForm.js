@@ -1,12 +1,21 @@
 import { useCallback, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentStudent, setCurrentStudent } from '../../store/student/StudentSlice';
+import axiosClient from '../../utils/axiosClient';
 
 const useStudentDetailForm = () => {
+  // Error
+  const [error, setError] = useState(null);
+  const resetError = () => {
+    setError(null);
+  };
+
+  // Loading
+  const [loading, setLoading] = useState(false);
+
   const dispatch = useDispatch();
   const currentStudent = useSelector(selectCurrentStudent);
 
-  // const [formFields, setFormFields] = useState(currentStudent);
   const formFields = useMemo(() => currentStudent, [currentStudent]);
 
   const handleChange = useCallback(
@@ -43,9 +52,23 @@ const useStudentDetailForm = () => {
     [currentStudent],
   );
 
-  const handleSubmit = useCallback(() => {}, []);
+  const handleSubmit = useCallback(() => {
+    setLoading(true);
 
-  return { formFields, handleChange, handleNestedChange, handleSubmit };
+    axiosClient
+      .post('/student/form', currentStudent)
+      .then(({ data }) => {
+        console.log(data);
+      })
+      .catch(({ response: { data } }) => {
+        setError(data.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
+  return { formFields, handleChange, handleNestedChange, handleSubmit, error, resetError, loading };
 };
 
 export default useStudentDetailForm;

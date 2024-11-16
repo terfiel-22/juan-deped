@@ -1,6 +1,6 @@
 import { model, Schema, Types } from "mongoose";
 
-const studentSchema = Schema(
+const studentFormSchema = Schema(
   {
     authId: { type: Types.ObjectId, ref: "Auth", required: true },
     email: { type: String, required: true },
@@ -155,8 +155,8 @@ const studentSchema = Schema(
 
     seniorHighSchool: {
       semester: { type: String, enum: ["1st Sem", "2nd Sem"] },
-      track: { type: String, required: true },
-      strand: { type: String, required: true },
+      track: { type: Types.ObjectId, ref: "Track", required: true },
+      strand: { type: Types.ObjectId, ref: "Strand", required: true },
     },
 
     preferredDistanceLearningModalities: {
@@ -245,6 +245,4 @@ const studentSchema = Schema(
 );
 
 // Export Student Model
-const Student = model("Student", studentSchema);
-
-export default Student;
+export const StudentForm = model("Student", studentFormSchema);

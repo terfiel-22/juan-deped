@@ -1,5 +1,5 @@
-import { studentRegistration } from "../controllers/student.controller.js";
+import { addStudentForm } from "../controllers/student.controller.js";
 
 export default (router) => {
-  router.post("/students", studentRegistration);
+  router.post("/student/form", addStudentForm);
 };

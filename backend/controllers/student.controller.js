@@ -1,23 +1,25 @@
 import HttpError from "../utils/HttpError.utils.js";
-import Student from "../models/student.model.js";
+import { StudentForm } from "../models/student.model.js";
 
-export const studentRegistration = async (req, res, next) => {
+export const addStudentForm = async (req, res, next) => {
   try {
     const authId = "6734774937a62118e7057df9"; // Change after fixing middleware
 
     // Create the student record.
-    const newStudentData = {
+    const newStudentFormData = {
       authId,
       ...req.body,
     };
-    const newStudent = new Student(newStudentData);
+    const studentForm = new StudentForm(newStudentFormData);
 
-    if (!newStudent) {
-      throw new HttpError("Creating new student record failed.", 400);
+    const error = studentForm.validateSync();
+    if (error) {
+      throw new HttpError("Creating new student form failed.", 400);
     }
-    await newStudent.save();
 
-    res.status(200).json(newStudent);
+    await studentForm.save();
+
+    res.status(200).json(studentForm);
   } catch (error) {
     next(error);
   }
