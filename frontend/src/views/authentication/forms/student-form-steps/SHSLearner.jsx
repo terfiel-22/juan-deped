@@ -1,9 +1,10 @@
 import { Box } from '@mui/system'
-import CustomFormLabel from '../../../../components/forms/theme-elements/CustomFormLabel'
-import { FormControlLabel, Grid, MenuItem, RadioGroup, Select } from '@mui/material'
-import useStudentDetailForm from '../../../../hooks/student/useStudentDetailForm'
+import { FormControlLabel, Grid, MenuItem, RadioGroup } from '@mui/material'
 import CustomRadio from '../../../../components/forms/theme-elements/CustomRadio'
+import CustomSelect from '../../../../components/forms/theme-elements/CustomSelect'
+import CustomFormLabel from '../../../../components/forms/theme-elements/CustomFormLabel'
 import useFetchAndDispatch from '../../../../hooks/shared/useFetchAndDispatch'
+import useStudentDetailForm from '../../../../hooks/student/useStudentDetailForm'
 import { selectStrands, selectTracks, setStrands, setTracks } from '../../../../store/career/CareerSlice'
 
 const SHSLearner = () => {
@@ -35,7 +36,7 @@ const SHSLearner = () => {
                 </Grid>
                 <Grid item xs={12} sm={12} lg={4}>
                     <CustomFormLabel htmlFor="track">Track</CustomFormLabel>
-                    <Select
+                    <CustomSelect
                         id="track"
                         name="track"
                         onChange={handleChange}
@@ -44,14 +45,17 @@ const SHSLearner = () => {
                         fullWidth
                         size="small"
                     >
+                        <MenuItem value="">
+                            <em>None</em>
+                        </MenuItem>
                         {
                             tracks.map(({ _id, name }) => <MenuItem key={_id} value={_id}>{name}</MenuItem>)
                         }
-                    </Select>
+                    </CustomSelect>
                 </Grid>
                 <Grid item xs={12} sm={12} lg={4}>
                     <CustomFormLabel htmlFor="strand">Strand</CustomFormLabel>
-                    <Select
+                    <CustomSelect
                         id="strand"
                         name="strand"
                         onChange={handleChange}
@@ -61,10 +65,13 @@ const SHSLearner = () => {
                         fullWidth
                         size="small"
                     >
+                        <MenuItem value="">
+                            <em>None</em>
+                        </MenuItem>
                         {
                             strands.map(({ _id, name }) => <MenuItem key={_id} value={_id}>{name}</MenuItem>)
                         }
-                    </Select>
+                    </CustomSelect>
                 </Grid>
             </Grid>
         </Box>
