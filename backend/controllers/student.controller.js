@@ -1,5 +1,6 @@
 import HttpError from "../utils/HttpError.utils.js";
 import { StudentForm } from "../models/student.model.js";
+import { cameltoTitleCase } from "../utils/textFormatter.js";
 
 export const addStudentForm = async (req, res, next) => {
   try {
@@ -14,8 +15,13 @@ export const addStudentForm = async (req, res, next) => {
 
     const error = studentForm.validateSync();
     if (error) {
-      // TODO: Display Validation Error on Frontend
-      throw new HttpError("Creating new student form failed.", 400);
+      const errorMessages = Object.values(error.errors).map(({ path }) =>
+        cameltoTitleCase(path)
+      );
+      throw new HttpError(
+        `Fill all required data: [${errorMessages.join(", ")}]`,
+        400
+      );
     }
 
     await studentForm.save();
