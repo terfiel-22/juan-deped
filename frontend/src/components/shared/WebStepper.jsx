@@ -17,10 +17,8 @@ const WebStepper = ({ steps, activeStep, isStepOptional, isStepSkipped, handleGo
                     stepProps.completed = false;
                 }
                 return (
-                    <Step key={index} {...stepProps} onClick={() => handleClick(index)}>
-                        {
-                            <StepLabel {...labelProps}>{activeStep === index && name ? name : ""}</StepLabel>
-                        }
+                    <Step key={index} {...stepProps} onClick={() => handleClick(index)} sx={{ cursor: "pointer" }}>
+                        <StepLabel {...labelProps}>{activeStep === index && name ? name : ""}</StepLabel>
                     </Step>
                 );
             })}
