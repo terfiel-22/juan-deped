@@ -1,16 +1,19 @@
 import { Box } from '@mui/system'
+import { useMemo } from 'react'
+import { Grid } from '@mui/material'
 import CustomFormLabel from '../../../../components/forms/theme-elements/CustomFormLabel'
 import CustomTextField from '../../../../components/forms/theme-elements/CustomTextField'
-import { Grid } from '@mui/material'
 import useStudentDetailForm from '../../../../hooks/student/useStudentDetailForm'
-import { useMemo } from 'react'
 
 const HealthReport = () => {
     const { formFields, handleChange } = useStudentDetailForm()
 
     const { weightKg, heightM } = formFields;
 
-    const handleBMI = useMemo(() => parseFloat((weightKg / (heightM ** 2)).toFixed(2)), [weightKg, heightM])
+    const handleBMI = useMemo(() => {
+        const bmi = (weightKg / (heightM ** 2)).toFixed(2);
+        return isNaN(bmi) ? 0 : bmi;
+    }, [weightKg, heightM]);
 
     return (
         <Box>
