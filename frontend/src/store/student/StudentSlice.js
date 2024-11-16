@@ -10,6 +10,12 @@ export const StudentSlice = createSlice({
   name: 'Student',
   initialState,
   reducers: {
+    setCurrentStudentEmail: (state, action) => {
+      state.currentStudent.email = action.payload;
+    },
+    setCurrentStudentLRN: (state, action) => {
+      state.currentStudent.learnerReferenceNo = action.payload;
+    },
     setCurrentStudent: (state, action) => {
       state.currentStudent = action.payload;
     },
@@ -19,7 +25,8 @@ export const StudentSlice = createSlice({
 export const StudentReducer = StudentSlice.reducer;
 
 // Actions
-export const { setCurrentStudent } = StudentSlice.actions;
+export const { setCurrentStudent, setCurrentStudentEmail, setCurrentStudentLRN } =
+  StudentSlice.actions;
 
 // Selector
 export const selectStudentReducer = (state) => state.studentReducer;

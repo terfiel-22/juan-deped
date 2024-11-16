@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import axiosClient from '../../utils/axiosClient';
 import { selectCredentials, setCredentials, setCurrentUser } from '../../store/user/UserSlice';
 import { credentialsInitState } from '../../store/user/UserSliceInitStates';
+import { setCurrentStudentEmail, setCurrentStudentLRN } from '../../store/student/StudentSlice';
 
 const useSignin = () => {
   const dispatch = useDispatch();
@@ -52,6 +53,10 @@ const useSignin = () => {
       .post('/auth/login', formData)
       .then(({ data }) => {
         dispatch(setCurrentUser(data));
+        if (data.role === 'Student') {
+          dispatch(setCurrentStudentEmail(data.email));
+          dispatch(setCurrentStudentLRN(data.learnerReferenceNo));
+        }
       })
       .catch(({ response: { data } }) => {
         setError(data.message);
