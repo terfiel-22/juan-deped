@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createSelector } from 'reselect';
+import { credentialsInitState } from './UserSliceInitStates';
 
 const initialState = {
-  credentials: {},
+  credentials: credentialsInitState,
   currentUser: null,
   personnels: [],
 };

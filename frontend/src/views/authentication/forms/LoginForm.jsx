@@ -12,7 +12,8 @@ import { LoadingButton } from '@mui/lab'
 
 
 const LoginForm = () => {
-    const [formData, remembered, handleRemembered, error, resetError, loading, handleChange, handleSubmit] = useSignin()
+    const { formData, error, resetError, loading, handleChange, handleSubmit } = useSignin()
+    const { email, password, remembered } = formData;
 
     const [showPassword, handleClickShowPassword, handleMouseDownPassword] = usePasswordVisibility()
 
@@ -30,7 +31,7 @@ const LoginForm = () => {
                         id="email"
                         name="email"
                         placeholder="Email or LRN"
-                        value={formData.email}
+                        value={email}
                         onChange={handleChange}
                         fullWidth
                     />
@@ -54,7 +55,7 @@ const LoginForm = () => {
                         id="password"
                         name="password"
                         placeholder="******"
-                        value={formData.password}
+                        value={password}
                         onChange={handleChange}
                         fullWidth
                     />
@@ -62,7 +63,7 @@ const LoginForm = () => {
                 <Grid container justifyContent="space-between" direction="row" alignItems="center" my={2}>
                     <FormGroup>
                         <FormControlLabel
-                            control={<CustomCheckbox name="remembered" checked={remembered} onChange={handleRemembered} />}
+                            control={<CustomCheckbox name="remembered" checked={remembered} onChange={handleChange} />}
                             label="Remeber this Device"
                         />
                     </FormGroup>
