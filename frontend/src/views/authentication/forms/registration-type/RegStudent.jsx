@@ -54,16 +54,26 @@ const RegStudent = () => {
                     {activeStep === steps.length ? (
                         <>
                             <Stack spacing={2} mt={3}>
-                                {error &&
-                                    <Alert variant="filled" severity="error" onClose={resetError} mt={2}>
+                                {error ?
+                                    <Alert variant="filled" severity="error" onClose={resetError} mt={2} >
                                         {error}
                                     </Alert>
+                                    :
+                                    <Alert severity="success" mt={2}>
+                                        All steps are completed - you're ready to submit error.
+                                    </Alert>
                                 }
-                                <Alert severity="success" mt={2}>
-                                    All steps are completed - you&apos;re finished
-                                </Alert>
 
-                                <Box textAlign="right">
+                                <Box display="flex" justifyContent="space-between" mt={3}>
+                                    <Button
+                                        color="inherit"
+                                        variant="contained"
+                                        disabled={activeStep === 0}
+                                        onClick={handleBack}
+                                        sx={{ mr: 1 }}
+                                    >
+                                        Back
+                                    </Button>
                                     <LoadingButton
                                         loading={loading}
                                         variant="contained"
@@ -112,7 +122,7 @@ const RegStudent = () => {
                     <ProgressMobileStepper steps={steps} activeStep={activeStep} />
                 </Box>
             </Grid>
-        </Grid>
+        </Grid >
     )
 }
 

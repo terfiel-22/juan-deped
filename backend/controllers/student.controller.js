@@ -14,6 +14,7 @@ export const addStudentForm = async (req, res, next) => {
 
     const error = studentForm.validateSync();
     if (error) {
+      // TODO: Display Validation Error on Frontend
       throw new HttpError("Creating new student form failed.", 400);
     }
 
