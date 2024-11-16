@@ -6,10 +6,14 @@ import get from "lodash/get.js";
 export const addStudentForm = async (req, res, next) => {
   try {
     const authId = get(req, "user._id");
+    const email = get(req, "user.email");
+    const learnerReferenceNo = get(req, "user.learnerReferenceNo");
 
     // Create the student record.
     const newStudentFormData = {
       authId,
+      email,
+      learnerReferenceNo,
       ...req.body,
     };
     const studentForm = new StudentForm(newStudentFormData);
