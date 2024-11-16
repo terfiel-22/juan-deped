@@ -11,8 +11,8 @@ const AuthRoute = () => {
         return <Navigate to="/auth" />;
     }
 
-    if (currentUser.role === "Student" && !currentUser.isApproved) {
-        return <Navigate to="/student-detail-form" />;
+    if (currentUser.role === "Student") {
+        return <Navigate to="/student" />;
     }
 
     return <FullLayout />;

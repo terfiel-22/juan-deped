@@ -154,12 +154,12 @@ const BlogPost = Loadable(lazy(() => import('../views/pages/frontend-pages/BlogP
 /** Authentication */
 const Authentication = Loadable(lazy(() => import('../views/authentication/Authentication')));
 const ForgotPassword = Loadable(lazy(() => import('../views/authentication/ForgotPassword')));
-const StudentDetailForm = Loadable(lazy(() => import('../views/authentication/StudentDetailForm')));
 
 
 /** Middleware */
 const GuestRoute = Loadable(lazy(() => import('./middlewares/GuestRoute')));
 const AuthRoute = Loadable(lazy(() => import('./middlewares/AuthRoute')));
+const StudentRoute = Loadable(lazy(() => import('./middlewares/StudentRoute')));
 
 /** User Management */
 const Personnels = Loadable(lazy(() => import('../views/user-management/personnels/Personnels')));
@@ -173,6 +173,46 @@ const Specializations = Loadable(lazy(() => import('../views/career-management/s
 const PageNotFound = Loadable(lazy(() => import('../views/errors/PageNotFound')))
 
 const Router = [
+  /** Juan DepEd */
+  {
+    path: "/",
+    children: [
+      { path: '/', element: <Navigate to="/dashboard" /> },
+      { path: '/404', element: <PageNotFound /> },
+    ]
+  },
+  {
+    path: "/",
+    element: <GuestRoute />,
+    children: [
+      { path: '/auth', element: <Authentication /> },
+      { path: '/forgot-password', element: <ForgotPassword /> },
+      { path: '*', element: <Navigate to="/404" /> },
+    ]
+  },
+  {
+    path: "/",
+    element: <AuthRoute />,
+    children: [
+      { path: '/', element: <Navigate to="/dashboard" /> },
+      { path: '/dashboard', element: <ModernDash /> },
+      { path: '/personnels', element: <Personnels /> },
+      { path: '/tracks', element: <Tracks /> },
+      { path: '/strands', element: <Strands /> },
+      { path: '/specializations', element: <Specializations /> },
+      { path: '*', element: <Navigate to="/404" /> },
+    ]
+  },
+  {
+    path: "/student",
+    element: <StudentRoute />,
+    children: [
+      { path: '/student', element: <Navigate to="/student/dashboard" /> },
+      { path: '/student/dashboard', element: <ModernDash /> },
+    ]
+  },
+
+  /** Template */
   {
     path: '/',
     element: <FullLayout />,
@@ -291,37 +331,6 @@ const Router = [
 
     ],
   },
-
-  /** Juan DepEd */
-  {
-    path: "/",
-    children: [
-      { path: '/404', element: <PageNotFound /> },
-      { path: '/student-detail-form', element: <StudentDetailForm /> },
-    ]
-  },
-  {
-    path: "/",
-    element: <GuestRoute />,
-    children: [
-      { path: '/auth', element: <Authentication /> },
-      { path: '/forgot-password', element: <ForgotPassword /> },
-      { path: '*', element: <Navigate to="/404" /> },
-    ]
-  },
-  {
-    path: "/",
-    element: <AuthRoute />,
-    children: [
-      { path: '/', element: <Navigate to="/dashboard" /> },
-      { path: '/dashboard', element: <ModernDash /> },
-      { path: '/personnels', element: <Personnels /> },
-      { path: '/tracks', element: <Tracks /> },
-      { path: '/strands', element: <Strands /> },
-      { path: '/specializations', element: <Specializations /> },
-      { path: '*', element: <Navigate to="/404" /> },
-    ]
-  }
 ];
 
 export default Router;

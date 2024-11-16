@@ -27,6 +27,7 @@ export const login = async (req, res, next) => {
       email: user.email,
       learnerReferenceNo: user.learnerReferenceNo,
       role: user.role,
+      isApproved: user.isApproved,
     });
   } catch (error) {
     next(error);
