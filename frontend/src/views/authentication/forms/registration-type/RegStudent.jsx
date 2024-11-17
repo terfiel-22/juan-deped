@@ -1,9 +1,10 @@
 import { Button, Grid, Alert } from '@mui/material'
 import { Box, Stack } from '@mui/system'
+import { useReactToPrint } from "react-to-print";
 import ProgressMobileStepper from '../../../../components/shared/ProgressMobileStepper'
 import WebStepper from "../../../../components/shared/WebStepper";
 import useStepper from "../../../../hooks/ui/useStepper";
-import { lazy } from "react";
+import { lazy, useRef } from "react";
 import Loadable from "../../../../layouts/full/shared/loadable/Loadable";
 import useStudentDetailForm from '../../../../hooks/student/useStudentDetailForm';
 import { LoadingButton } from '@mui/lab';
@@ -22,6 +23,9 @@ const HealthReport = Loadable(lazy(() => import('../student-form-steps/HealthRep
 
 const RegStudent = () => {
     const { handleSubmit, error, resetError, loading } = useStudentDetailForm();
+
+    const contentRef = useRef(null);
+    const reactToPrintFn = useReactToPrint({ contentRef })
 
     // For Stepper
     const steps = [
@@ -61,7 +65,7 @@ const RegStudent = () => {
                                         {error}
                                     </Alert>
                                     :
-                                    <StudentPreEnrollmentData />
+                                    <StudentPreEnrollmentData ref={contentRef} />
                                 }
 
                                 <Box display="flex" justifyContent="space-between" mt={3}>
@@ -73,6 +77,15 @@ const RegStudent = () => {
                                         sx={{ mr: 1 }}
                                     >
                                         Back
+                                    </Button>
+                                    <Button
+                                        color="inherit"
+                                        variant="contained"
+                                        disabled={activeStep === 0}
+                                        onClick={reactToPrintFn}
+                                        sx={{ mr: 1 }}
+                                    >
+                                        Print
                                     </Button>
                                     <LoadingButton
                                         loading={loading}
