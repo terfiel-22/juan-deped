@@ -19,9 +19,14 @@ const StudentPreEnrollmentData = forwardRef((_, ref) => {
             height: '50vh', display: 'flex', flexDirection: 'column'
         }} className="print-container" ref={ref}>
             <Paper elevation={3} sx={{ padding: 3, marginTop: 2, overflow: 'auto' }} className='paper'>
-                <Typography variant="h4" gutterBottom>
-                    Student Pre-Enrollment Data
-                </Typography>
+                <Grid container justifyContent="space-between">
+                    <Typography variant="h4" gutterBottom>
+                        Student Pre-Enrollment Data
+                    </Typography>
+                    {studentData.createdAt &&
+                        <Typography><strong>Submitted At:</strong> {new Date(studentData.createdAt).toDateString()}</Typography>
+                    }
+                </Grid>
                 <Divider />
 
                 {/* General Information */}

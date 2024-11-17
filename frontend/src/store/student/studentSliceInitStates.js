@@ -113,4 +113,6 @@ export const currentStudentInitState = {
 
   weightKg: 0,
   heightM: 0,
+
+  createdAt: null,
 };

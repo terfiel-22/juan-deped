@@ -58,6 +58,7 @@ const useStudentDetailForm = () => {
     axiosClient
       .post('/student/form', { ...currentStudent })
       .then(({ data }) => {
+        dispatch(setCurrentStudent(data));
         toastSuccess('Your application was sent successfully.');
       })
       .catch(({ response: { data } }) => {
