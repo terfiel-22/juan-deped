@@ -8,6 +8,7 @@ import { persistor, store } from './store/Store';
 import Spinner from './views/spinner/Spinner';
 import './_mockApis';
 import './utils/i18n';
+import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>

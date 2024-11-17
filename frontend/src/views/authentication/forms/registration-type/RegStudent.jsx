@@ -7,7 +7,7 @@ import { lazy } from "react";
 import Loadable from "../../../../layouts/full/shared/loadable/Loadable";
 import useStudentDetailForm from '../../../../hooks/student/useStudentDetailForm';
 import { LoadingButton } from '@mui/lab';
-import FinishedFormData from '../student-form-steps/FinishedFormData';
+import StudentPreEnrollmentData from '../student-form-steps/StudentPreEnrollmentData';
 const GeneralInformation = Loadable(lazy(() => import('../student-form-steps/GeneralInformation')))
 const LearnerInformation = Loadable(lazy(() => import('../student-form-steps/LearnerInformation')))
 const CurrentAddressInformation = Loadable(lazy(() => import('../student-form-steps/CurrentAddressInformation')))
@@ -61,7 +61,7 @@ const RegStudent = () => {
                                         {error}
                                     </Alert>
                                     :
-                                    <FinishedFormData />
+                                    <StudentPreEnrollmentData />
                                 }
 
                                 <Box display="flex" justifyContent="space-between" mt={3}>

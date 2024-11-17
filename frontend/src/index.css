@@ -1,0 +1,23 @@
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .print-container,
+  .print-container * {
+    visibility: visible;
+  }
+  .print-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  .print-container .paper {
+    overflow: visible !important;
+    height: auto !important;
+    box-shadow: none !important;
+  }
+  .print-container .print-hidden {
+    visibility: hidden;
+  }
+}

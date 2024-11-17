@@ -1,26 +1,34 @@
-import { Box, Typography, Divider, Paper } from '@mui/material';
-import { useSelector } from 'react-redux';
+import { Box, Typography, Divider, Paper, Button, Grid } from '@mui/material';
+import { useSelector } from 'react-redux';;
 import { selectCurrentStudent } from '../../../../store/student/StudentSlice';
 import useFetch from '../../../../hooks/shared/useFetch';
+import { useRef } from 'react';
+import { useReactToPrint } from "react-to-print";
 
-const FinishedFormData = () => {
+const StudentPreEnrollmentData = () => {
+    const contentRef = useRef(null);
+    const reactToPrintFn = useReactToPrint({ contentRef })
+
     const studentData = useSelector(selectCurrentStudent);
     const track = useFetch({ url: `/track/${studentData.seniorHighSchool.track}` })
     const strand = useFetch({ url: `/strand/${studentData.seniorHighSchool.strand}` })
 
-    if (!studentData) {
+    if (!studentData || !track.data || !strand.data) {
         return <Typography>Loading...</Typography>;
     }
-
 
     return (
         <Box sx={{
             height: '50vh', display: 'flex', flexDirection: 'column'
-        }}>
-            <Paper elevation={3} sx={{ padding: 3, marginTop: 2, overflow: 'auto' }}>
-                <Typography variant="h4" gutterBottom>
-                    Student Bio Data
-                </Typography>
+        }} className="print-container" ref={contentRef}>
+            <Paper elevation={3} sx={{ padding: 3, marginTop: 2, overflow: 'auto' }} className='paper'>
+                <Grid container justifyContent="space-between" >
+                    <Typography variant="h4" gutterBottom>
+                        Student Pre-Enrollment Data
+                    </Typography>
+
+                    <Button variant="contained" color="primary" onClick={reactToPrintFn} sx={{ mb: 2 }} className='print-hidden'> Print </Button>
+                </Grid>
                 <Divider />
 
                 {/* General Information */}
@@ -178,4 +186,4 @@ const FinishedFormData = () => {
     );
 };
 
-export default FinishedFormData;
+export default StudentPreEnrollmentData;
