@@ -75,13 +75,13 @@ const FinishedFormData = () => {
                 {/* Permanent Address */}
                 <Box sx={{ marginTop: 2 }}>
                     <Typography variant="h6">Permanent Address</Typography>
-                    <Typography><strong>House No:</strong> {studentData.houseNoStreet}</Typography>
-                    <Typography><strong>Street Name:</strong> {studentData.streetName}</Typography>
-                    <Typography><strong>Barangay:</strong> {studentData.barangay}</Typography>
-                    <Typography><strong>Municipality/City:</strong> {studentData.municipalityCity}</Typography>
-                    <Typography><strong>Province:</strong> {studentData.province}</Typography>
-                    <Typography><strong>Country:</strong> {studentData.country}</Typography>
-                    <Typography><strong>Zip Code:</strong> {studentData.zipCode}</Typography>
+                    <Typography><strong>House No:</strong> {studentData.isSameAsCurrentAddress ? studentData.currentHouseNoStreet : studentData.houseNoStreet}</Typography>
+                    <Typography><strong>Street Name:</strong> {studentData.isSameAsCurrentAddress ? studentData.currentStreetName : studentData.streetName}</Typography>
+                    <Typography><strong>Barangay:</strong> {studentData.isSameAsCurrentAddress ? studentData.currentBarangay : studentData.barangay}</Typography>
+                    <Typography><strong>Municipality/City:</strong> {studentData.isSameAsCurrentAddress ? studentData.currentMunicipalityCity : studentData.municipalityCity}</Typography>
+                    <Typography><strong>Province:</strong> {studentData.isSameAsCurrentAddress ? studentData.currentProvince : studentData.province}</Typography>
+                    <Typography><strong>Country:</strong> {studentData.isSameAsCurrentAddress ? studentData.currentCountry : studentData.country}</Typography>
+                    <Typography><strong>Zip Code:</strong> {studentData.isSameAsCurrentAddress ? studentData.currentZipCode : studentData.zipCode}</Typography>
                 </Box>
                 <Divider />
 
