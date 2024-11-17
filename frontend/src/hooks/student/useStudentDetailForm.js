@@ -2,6 +2,7 @@ import { useCallback, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentStudent, setCurrentStudent } from '../../store/student/StudentSlice';
 import axiosClient from '../../utils/axiosClient';
+import { toastSuccess } from '../../utils/toastEmitter';
 
 const useStudentDetailForm = () => {
   // Error
@@ -57,8 +58,7 @@ const useStudentDetailForm = () => {
     axiosClient
       .post('/student/form', { ...currentStudent })
       .then(({ data }) => {
-        console.log(data);
-        // TODO: Display a pre enrollment form and print
+        toastSuccess('Your application was sent successfully.');
       })
       .catch(({ response: { data } }) => {
         setError(data.message);
