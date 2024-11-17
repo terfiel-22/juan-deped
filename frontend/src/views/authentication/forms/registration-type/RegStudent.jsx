@@ -1,14 +1,14 @@
 import { Button, Grid, Alert } from '@mui/material'
 import { Box, Stack } from '@mui/system'
 import { useReactToPrint } from "react-to-print";
+import PrintIcon from '@mui/icons-material/Print';
+import { LoadingButton } from '@mui/lab';
 import ProgressMobileStepper from '../../../../components/shared/ProgressMobileStepper'
 import WebStepper from "../../../../components/shared/WebStepper";
 import useStepper from "../../../../hooks/ui/useStepper";
 import { lazy, useRef } from "react";
 import Loadable from "../../../../layouts/full/shared/loadable/Loadable";
 import useStudentDetailForm from '../../../../hooks/student/useStudentDetailForm';
-import { LoadingButton } from '@mui/lab';
-import StudentPreEnrollmentData from '../student-form-steps/StudentPreEnrollmentData';
 const GeneralInformation = Loadable(lazy(() => import('../student-form-steps/GeneralInformation')))
 const LearnerInformation = Loadable(lazy(() => import('../student-form-steps/LearnerInformation')))
 const CurrentAddressInformation = Loadable(lazy(() => import('../student-form-steps/CurrentAddressInformation')))
@@ -20,6 +20,8 @@ const PreferredDistanceLearningModalities = Loadable(lazy(() => import('../stude
 const NCPasser = Loadable(lazy(() => import('../student-form-steps/NCPasser')))
 const SHSEligibility = Loadable(lazy(() => import('../student-form-steps/SHSEligibility')))
 const HealthReport = Loadable(lazy(() => import('../student-form-steps/HealthReport')))
+
+import StudentPreEnrollmentData from '../student-form-steps/StudentPreEnrollmentData';
 
 const RegStudent = () => {
     const { handleSubmit, error, resetError, loading } = useStudentDetailForm();
@@ -78,25 +80,25 @@ const RegStudent = () => {
                                     >
                                         Back
                                     </Button>
-                                    <Button
-                                        color="inherit"
-                                        variant="contained"
-                                        disabled={activeStep === 0}
-                                        onClick={reactToPrintFn}
-                                        sx={{ mr: 1 }}
-                                    >
-                                        Print
-                                    </Button>
-                                    <LoadingButton
-                                        loading={loading}
-                                        variant="contained"
-                                        color="primary"
-                                        size="medium"
-                                        type="button"
-                                        onClick={handleSubmit}
-                                    >
-                                        Save Student Form
-                                    </LoadingButton>
+                                    <Box display="flex" justifyContent="space-between" gap={2}>
+                                        <Button
+                                            color="success"
+                                            variant="contained"
+                                            onClick={reactToPrintFn}
+                                            title='Print'
+                                        >
+                                            <PrintIcon />
+                                        </Button>
+                                        <LoadingButton
+                                            loading={loading}
+                                            variant="contained"
+                                            color="primary"
+                                            size="medium"
+                                            onClick={handleSubmit}
+                                        >
+                                            Submit
+                                        </LoadingButton>
+                                    </Box>
                                 </Box>
                             </Stack>
                         </>
