@@ -7,6 +7,7 @@ import { lazy } from "react";
 import Loadable from "../../../../layouts/full/shared/loadable/Loadable";
 import useStudentDetailForm from '../../../../hooks/student/useStudentDetailForm';
 import { LoadingButton } from '@mui/lab';
+import FinishedFormData from '../student-form-steps/FinishedFormData';
 const BasicInformation = Loadable(lazy(() => import('../student-form-steps/BasicInformation')))
 const LearnerInformation = Loadable(lazy(() => import('../student-form-steps/LearnerInformation')))
 const CurrentAddressInformation = Loadable(lazy(() => import('../student-form-steps/CurrentAddressInformation')))
@@ -60,9 +61,7 @@ const RegStudent = () => {
                                         {error}
                                     </Alert>
                                     :
-                                    <Alert severity="success" mt={2}>
-                                        All steps are completed - you're ready to submit error.
-                                    </Alert>
+                                    <FinishedFormData />
                                 }
 
                                 <Box display="flex" justifyContent="space-between" mt={3}>

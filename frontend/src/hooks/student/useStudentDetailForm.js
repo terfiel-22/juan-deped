@@ -58,6 +58,7 @@ const useStudentDetailForm = () => {
       .post('/student/form', { ...currentStudent })
       .then(({ data }) => {
         console.log(data);
+        // TODO: Display a pre enrollment form and print
       })
       .catch(({ response: { data } }) => {
         setError(data.message);
