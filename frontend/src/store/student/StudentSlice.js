@@ -34,3 +34,7 @@ export const selectCurrentStudent = createSelector(
   [selectStudentReducer],
   (student) => student.currentStudent,
 );
+export const selectIsFromSubmitted = createSelector(
+  [selectCurrentStudent],
+  (currentStudent) => !!currentStudent.createdAt,
+);
