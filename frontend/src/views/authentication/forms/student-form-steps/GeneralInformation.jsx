@@ -5,7 +5,7 @@ import { FormControlLabel, Grid, RadioGroup } from '@mui/material'
 import CustomRadio from '../../../../components/forms/theme-elements/CustomRadio'
 import useStudentDetailForm from '../../../../hooks/student/useStudentDetailForm'
 
-const BasicInformation = () => {
+const GeneralInformation = () => {
     const { formFields, handleChange } = useStudentDetailForm()
 
     const { email, mobile, schoolYear, gradeLevelToEnroll, withLRN, isReturnee } = formFields;
@@ -79,4 +79,4 @@ const BasicInformation = () => {
     )
 }
 
-export default BasicInformation
+export default GeneralInformation

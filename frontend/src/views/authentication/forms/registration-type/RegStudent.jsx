@@ -8,7 +8,7 @@ import Loadable from "../../../../layouts/full/shared/loadable/Loadable";
 import useStudentDetailForm from '../../../../hooks/student/useStudentDetailForm';
 import { LoadingButton } from '@mui/lab';
 import FinishedFormData from '../student-form-steps/FinishedFormData';
-const BasicInformation = Loadable(lazy(() => import('../student-form-steps/BasicInformation')))
+const GeneralInformation = Loadable(lazy(() => import('../student-form-steps/GeneralInformation')))
 const LearnerInformation = Loadable(lazy(() => import('../student-form-steps/LearnerInformation')))
 const CurrentAddressInformation = Loadable(lazy(() => import('../student-form-steps/CurrentAddressInformation')))
 const PermanentAddressInformation = Loadable(lazy(() => import('../student-form-steps/PermanentAddressInformation')))
@@ -25,7 +25,7 @@ const RegStudent = () => {
 
     // For Stepper
     const steps = [
-        { name: "Basic Information", component: <BasicInformation /> },
+        { name: "General Information", component: <GeneralInformation /> },
         { name: "Learner Information", component: <LearnerInformation /> },
         { name: "Current Address", component: <CurrentAddressInformation /> },
         { name: "Permanent Address", component: <PermanentAddressInformation /> },

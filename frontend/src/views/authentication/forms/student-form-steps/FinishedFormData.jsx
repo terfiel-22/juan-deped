@@ -40,6 +40,18 @@ const FinishedFormData = () => {
                     <Typography><strong>Age:</strong> {studentData.age}</Typography>
                     <Typography><strong>Place of Birth:</strong> {studentData.placeOfBirth}</Typography>
                     <Typography><strong>Mother Tongue:</strong> {studentData.motherTongue}</Typography>
+                    {studentData.isPsaAvailable && (
+                        <Typography><strong>PSA Birth Certificate No:</strong> {studentData.psaBirthCertificateNo}</Typography>
+                    )}
+                    {studentData.withLRN && (
+                        <Typography><strong>Learner Reference No:</strong> {studentData.learnerReferenceNo}</Typography>
+                    )}
+                    {studentData.isIndigenousPeople && (
+                        <Typography><strong>Indigenous People:</strong> {studentData.indigenousPeople}</Typography>
+                    )}
+                    {studentData.isFourPsBeneficiary && (
+                        <Typography><strong>Four Ps Household ID:</strong> {studentData.fourPsHouseHoldId}</Typography>
+                    )}
                 </Box>
                 <Divider />
 
@@ -84,6 +96,74 @@ const FinishedFormData = () => {
                 </Box>
                 <Divider />
 
+                {/* Returning Learner */}
+                {studentData.isReturnee && (
+                    <>
+                        <Box sx={{ marginTop: 2 }}>
+                            <Typography variant="h6">Returning Learner Information</Typography>
+                            <Typography><strong>Last Grade Level Completed:</strong> {studentData.returningLearner.lastGradeLevelCompleted}</Typography>
+                            <Typography><strong>Last School Year Completed:</strong> {studentData.returningLearner.lastSchoolYearCompleted}</Typography>
+                            <Typography><strong>Last School Attended:</strong> {studentData.returningLearner.lastSchoolAttended}</Typography>
+                            <Typography><strong>School ID:</strong> {studentData.returningLearner.schoolID}</Typography>
+                        </Box>
+                        <Divider />
+                    </>
+                )}
+
+                {/* Senior High School */}
+                <Box sx={{ marginTop: 2 }}>
+                    <Typography variant="h6">Senior High School Information</Typography>
+                    <Typography><strong>Semester:</strong> {studentData.seniorHighSchool.semester}</Typography>
+                    <Typography><strong>Track:</strong> {studentData.seniorHighSchool.track}</Typography>
+                    <Typography><strong>Strand:</strong> {studentData.seniorHighSchool.strand}</Typography>
+                </Box>
+                <Divider />
+
+                {/* Preferred Distance Learning Modalities */}
+                <Box sx={{ marginTop: 2 }}>
+                    <Typography variant="h6">Preferred Distance Learning Modalities</Typography>
+                    {studentData.preferredDistanceLearningModalities.isModularPrint && <Typography>Modular (Print)</Typography>}
+                    {studentData.preferredDistanceLearningModalities.isOnline && <Typography>Online</Typography>}
+                    {studentData.preferredDistanceLearningModalities.isRadioBased && <Typography>Radio-Based Instruction</Typography>}
+                    {studentData.preferredDistanceLearningModalities.isBlended && <Typography>Blended Learning</Typography>}
+                    {studentData.preferredDistanceLearningModalities.isModularDigital && <Typography>Modular (Digital)</Typography>}
+                    {studentData.preferredDistanceLearningModalities.isEducationTV && <Typography>Educational TV</Typography>}
+                    {studentData.preferredDistanceLearningModalities.isHomeschooling && <Typography>Homeschooling</Typography>}
+                    {studentData.preferredDistanceLearningModalities.isFaceToFace && <Typography>Face-to-Face</Typography>}
+                </Box>
+                <Divider />
+
+                {/* NC Passer */}
+                {studentData.ncPasser.isNcPasser && (
+                    <>
+                        <Box sx={{ marginTop: 2 }}>
+                            <Typography variant="h6">NC Passer Information</Typography>
+                            <Typography><strong>Certificate No:</strong> {studentData.ncPasser.certificateNo}</Typography>
+                            <Typography><strong>Specialization:</strong> {studentData.ncPasser.specialization}</Typography>
+                            <Typography><strong>Valid Until:</strong> {new Date(studentData.ncPasser.validUntil).toLocaleDateString()}</Typography>
+                        </Box>
+                        <Divider />
+                    </>
+                )}
+
+                {/* SHS Eligibility */}
+                <Box sx={{ marginTop: 2 }}>
+                    <Typography variant="h6">SHS Eligibility</Typography>
+                    {studentData.shsEligibility.isHsCompleter && <Typography><strong>High School General Average:</strong> {studentData.shsEligibility.hsGenAve}</Typography>}
+                    {studentData.shsEligibility.isJhsCompleter && <Typography><strong>Junior High School General Average:</strong> {studentData.shsEligibility.jhsGenAve}</Typography>}
+                    {studentData.shsEligibility.graduationDate && <Typography><strong>Graduation Date:</strong> {new Date(studentData.shsEligibility.graduationDate).toLocaleDateString()}</Typography>}
+                    {studentData.shsEligibility.graduationDate && <Typography><strong>Graduation Date:</strong> {new Date(studentData.shsEligibility.graduationDate).toLocaleDateString()}</Typography>}
+                    {studentData.shsEligibility.schoolName && <Typography><strong>School Name:</strong> {studentData.shsEligibility.schoolName}</Typography>}
+                    {studentData.shsEligibility.schoolAddress && <Typography><strong>School Address:</strong> {studentData.shsEligibility.schoolAddress}</Typography>}
+                    {studentData.shsEligibility.isPeptPasser && <Typography><strong>PEPT Rating:</strong> {studentData.shsEligibility.peptRating}</Typography>}
+                    {studentData.shsEligibility.isAlsPasser && <Typography><strong>ALS Rating:</strong> {studentData.shsEligibility.alsRating}</Typography>}
+                    {studentData.shsEligibility.isOtherExamPasser && <Typography><strong>Other Exam:</strong> {studentData.shsEligibility.otherExam}</Typography>}
+                    {studentData.shsEligibility.examDate && <Typography><strong>Exam Date:</strong> {new Date(studentData.shsEligibility.examDate).toLocaleDateString()}</Typography>}
+                    {studentData.shsEligibility.learningCenterName && <Typography><strong>Learning Center Name:</strong> {studentData.shsEligibility.learningCenterName}</Typography>}
+                    {studentData.shsEligibility.learningCenterAddress && <Typography><strong>Learning Center Address:</strong> {studentData.shsEligibility.learningCenterAddress}</Typography>}
+                </Box>
+                <Divider />
+
                 {/* Additional Information */}
                 <Box sx={{ marginTop: 2 }}>
                     <Typography variant="h6">Additional Information</Typography>
@@ -91,7 +171,7 @@ const FinishedFormData = () => {
                     <Typography><strong>Height (m):</strong> {studentData.heightM}</Typography>
                 </Box>
             </Paper>
-        </Box >
+        </Box>
     );
 };
 
