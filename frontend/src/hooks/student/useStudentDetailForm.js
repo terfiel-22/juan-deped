@@ -60,6 +60,7 @@ const useStudentDetailForm = () => {
       .then(({ data }) => {
         dispatch(setCurrentStudent(data));
         toastSuccess('Your application was sent successfully.');
+        toastSuccess('Print the registration slip.');
       })
       .catch(({ response: { data } }) => {
         setError(data.message);
