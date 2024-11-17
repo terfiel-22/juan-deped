@@ -3,7 +3,9 @@ import {
   Strand,
   Track,
 } from "../models/track-strand-specialization.model.js";
+import HttpError from "../utils/HttpError.utils.js";
 
+/** TRACKS */
 export const fetchTracks = async (req, res, next) => {
   try {
     const tracks = await Track.find({});
@@ -13,7 +15,20 @@ export const fetchTracks = async (req, res, next) => {
     next(error);
   }
 };
+export const fetchTrackById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
 
+    const track = await Track.findById(id);
+    if (!track) throw new HttpError("Track not found.", 404);
+
+    res.status(200).json(track);
+  } catch (error) {
+    next(error);
+  }
+};
+
+/** STRANDS */
 export const fetchStrands = async (req, res, next) => {
   try {
     const strandList = await Strand.find({}).populate("track").exec();
@@ -32,7 +47,18 @@ export const fetchStrands = async (req, res, next) => {
     next(error);
   }
 };
+export const fetchStrandById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
 
+    const strand = await Strand.findById(id);
+    if (!strand) throw new HttpError("Strand not found.", 404);
+
+    res.status(200).json(strand);
+  } catch (error) {
+    next(error);
+  }
+};
 export const fetchStrandsByTrackId = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -56,6 +82,7 @@ export const fetchStrandsByTrackId = async (req, res, next) => {
   }
 };
 
+/** SPECIALIZATIONS */
 export const fetchSpecializations = async (req, res, next) => {
   try {
     const specializationList = await Specialization.find({})
@@ -83,7 +110,18 @@ export const fetchSpecializations = async (req, res, next) => {
     next(error);
   }
 };
+export const fetchSpecializationById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
 
+    const specialization = await Specialization.findById(id);
+    if (!specialization) throw new HttpError("Specialization not found.", 404);
+
+    res.status(200).json(specialization);
+  } catch (error) {
+    next(error);
+  }
+};
 export const fetchSpecializationsByStrandId = async (req, res, next) => {
   try {
     const { id } = req.params;

@@ -1,13 +1,17 @@
 import { Box, Typography, Divider, Paper } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { selectCurrentStudent } from '../../../../store/student/StudentSlice';
+import useFetch from '../../../../hooks/shared/useFetch';
 
 const FinishedFormData = () => {
     const studentData = useSelector(selectCurrentStudent);
+    const track = useFetch({ url: `/track/${studentData.seniorHighSchool.track}` })
+    const strand = useFetch({ url: `/strand/${studentData.seniorHighSchool.strand}` })
 
     if (!studentData) {
         return <Typography>Loading...</Typography>;
     }
+
 
     return (
         <Box sx={{
@@ -114,8 +118,8 @@ const FinishedFormData = () => {
                 <Box sx={{ marginTop: 2 }}>
                     <Typography variant="h6">Senior High School Information</Typography>
                     <Typography><strong>Semester:</strong> {studentData.seniorHighSchool.semester}</Typography>
-                    <Typography><strong>Track:</strong> {studentData.seniorHighSchool.track}</Typography>
-                    <Typography><strong>Strand:</strong> {studentData.seniorHighSchool.strand}</Typography>
+                    <Typography><strong>Track:</strong> {track.data.name}</Typography>
+                    <Typography><strong>Strand:</strong> {strand.data.name}</Typography>
                 </Box>
                 <Divider />
 
@@ -151,7 +155,6 @@ const FinishedFormData = () => {
                     <Typography variant="h6">SHS Eligibility</Typography>
                     {studentData.shsEligibility.isHsCompleter && <Typography><strong>High School General Average:</strong> {studentData.shsEligibility.hsGenAve}</Typography>}
                     {studentData.shsEligibility.isJhsCompleter && <Typography><strong>Junior High School General Average:</strong> {studentData.shsEligibility.jhsGenAve}</Typography>}
-                    {studentData.shsEligibility.graduationDate && <Typography><strong>Graduation Date:</strong> {new Date(studentData.shsEligibility.graduationDate).toLocaleDateString()}</Typography>}
                     {studentData.shsEligibility.graduationDate && <Typography><strong>Graduation Date:</strong> {new Date(studentData.shsEligibility.graduationDate).toLocaleDateString()}</Typography>}
                     {studentData.shsEligibility.schoolName && <Typography><strong>School Name:</strong> {studentData.shsEligibility.schoolName}</Typography>}
                     {studentData.shsEligibility.schoolAddress && <Typography><strong>School Address:</strong> {studentData.shsEligibility.schoolAddress}</Typography>}
