@@ -37,6 +37,7 @@
     "formik": "^2.4.5",
     "framer-motion": "^10.16.4",
     "fslightbox-react": "^1.7.6",
+    "html2pdf.js": "^0.10.2",
     "i18next": "^22.0.6",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",

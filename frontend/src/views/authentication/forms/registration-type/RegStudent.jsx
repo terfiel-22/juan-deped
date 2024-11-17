@@ -22,12 +22,13 @@ const SHSEligibility = Loadable(lazy(() => import('../student-form-steps/SHSElig
 const HealthReport = Loadable(lazy(() => import('../student-form-steps/HealthReport')))
 
 import StudentPreEnrollmentData from '../student-form-steps/StudentPreEnrollmentData';
+import useComponentPrinter from '../../../../hooks/ui/useComponentPrinter';
 
 const RegStudent = () => {
     const { handleSubmit, error, resetError, loading } = useStudentDetailForm();
 
-    const contentRef = useRef(null);
-    const reactToPrintFn = useReactToPrint({ contentRef })
+    const contentRef = useRef();
+    const { handlePrint: reactToPrintFn } = useComponentPrinter({ contentRef, fileName: "Student Form" })
 
     // For Stepper
     const steps = [
