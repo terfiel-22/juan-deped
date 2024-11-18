@@ -1,4 +1,5 @@
 import { body, validationResult } from "express-validator";
+import HttpError from "../utils/HttpError.utils.js";
 
 export const studentFormValidationRules = [
   body("email")
@@ -172,12 +173,11 @@ export const studentFormValidationRules = [
 export const validateStudentForm = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res
-      .status(400)
-      .json({
-        message: "Validation failed. Check your inputs.",
-        errors: errors.array(),
-      });
+    throw new HttpError(
+      "Validation failed. Check your inputs.",
+      400,
+      errors.array()
+    );
   }
   next();
 };
