@@ -6,7 +6,6 @@ import {
     TableContainer,
     Typography,
     Paper,
-    Alert,
     TableRow,
     TablePagination,
 } from '@mui/material';
@@ -46,7 +45,7 @@ const headCells = [
 
 const SpecializationTableList = () => {
     /** Fetch Specializations */
-    const { data, error, resetError } = useFetchAndDispatch({
+    const { data } = useFetchAndDispatch({
         url: "/specializations", setter: setSpecializations, selector: selectSpecializations
     });
     const [rows, setRows] = useState(data);
@@ -90,103 +89,97 @@ const SpecializationTableList = () => {
 
     return (
         <Box>
-            {error ?
-                <Alert variant="filled" severity="error" onClose={resetError}>
-                    {error}
-                </Alert>
-                :
+            <Box>
                 <Box>
-                    <Box>
-                        <EnhancedTableToolbar
-                            numSelected={selected.length}
-                            search={search}
-                            handleSearch={handleSearch}
-                            searchField={SEARCH_FIELD}
-                        />
-                        <Paper variant="outlined" sx={{ mx: 2, mt: 1 }}>
-                            <TableContainer>
-                                <Table
-                                    sx={{ minWidth: 750 }}
-                                    aria-labelledby="tableTitle"
-                                    size={dense ? 'small' : 'medium'}
-                                >
-                                    <EnhancedTableHead
-                                        headCells={headCells}
-                                        numSelected={selected.length}
-                                        order={order}
-                                        orderBy={orderBy}
-                                        onSelectAllClick={handleSelectAllClick}
-                                        onRequestSort={handleRequestSort}
-                                        rowCount={rows.length}
-                                    />
-                                    <TableBody>
-                                        {stableSort(pageData, getComparator()).map((specialization, index) => {
-                                            const isItemSelected = isSelected(specialization[FIELD_NAME]);
-                                            const labelId = `enhanced-table-checkbox-${index}`;
+                    <EnhancedTableToolbar
+                        numSelected={selected.length}
+                        search={search}
+                        handleSearch={handleSearch}
+                        searchField={SEARCH_FIELD}
+                    />
+                    <Paper variant="outlined" sx={{ mx: 2, mt: 1 }}>
+                        <TableContainer>
+                            <Table
+                                sx={{ minWidth: 750 }}
+                                aria-labelledby="tableTitle"
+                                size={dense ? 'small' : 'medium'}
+                            >
+                                <EnhancedTableHead
+                                    headCells={headCells}
+                                    numSelected={selected.length}
+                                    order={order}
+                                    orderBy={orderBy}
+                                    onSelectAllClick={handleSelectAllClick}
+                                    onRequestSort={handleRequestSort}
+                                    rowCount={rows.length}
+                                />
+                                <TableBody>
+                                    {stableSort(pageData, getComparator()).map((specialization, index) => {
+                                        const isItemSelected = isSelected(specialization[FIELD_NAME]);
+                                        const labelId = `enhanced-table-checkbox-${index}`;
 
-                                            return (
-                                                <TableRow
-                                                    hover
-                                                    onClick={() => handleClick(specialization[FIELD_NAME])}
-                                                    role="checkbox"
-                                                    aria-checked={isItemSelected}
-                                                    tabIndex={-1}
-                                                    key={specialization._id}
-                                                    selected={isItemSelected}
-                                                >
-                                                    <TableCell padding="checkbox">
-                                                        <CustomCheckbox
-                                                            color="primary"
-                                                            checked={isItemSelected}
-                                                            inputprops={{
-                                                                'aria-labelledby': labelId,
-                                                            }}
-                                                        />
-                                                    </TableCell>
-                                                    <TableCell>
-                                                        <Typography color="textSecondary" variant="h6" fontWeight="400">
-                                                            {specialization.name}
-                                                        </Typography>
-                                                    </TableCell>
-                                                    <TableCell>
-                                                        <Typography color="textSecondary" variant="h6" fontWeight="400">
-                                                            {specialization.strand}
-                                                        </Typography>
-                                                    </TableCell>
-                                                    <TableCell>
-                                                        <Typography color="textSecondary" variant="h6" fontWeight="400">
-                                                            {specialization.track}
-                                                        </Typography>
-                                                    </TableCell>
-                                                </TableRow>
-                                            );
-                                        })}
-                                        {emptyRows > 0 && (
+                                        return (
                                             <TableRow
-                                                style={{
-                                                    height: (dense ? 33 : 53) * emptyRows,
-                                                }}
+                                                hover
+                                                onClick={() => handleClick(specialization[FIELD_NAME])}
+                                                role="checkbox"
+                                                aria-checked={isItemSelected}
+                                                tabIndex={-1}
+                                                key={specialization._id}
+                                                selected={isItemSelected}
                                             >
-                                                <TableCell colSpan={6} />
+                                                <TableCell padding="checkbox">
+                                                    <CustomCheckbox
+                                                        color="primary"
+                                                        checked={isItemSelected}
+                                                        inputprops={{
+                                                            'aria-labelledby': labelId,
+                                                        }}
+                                                    />
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Typography color="textSecondary" variant="h6" fontWeight="400">
+                                                        {specialization.name}
+                                                    </Typography>
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Typography color="textSecondary" variant="h6" fontWeight="400">
+                                                        {specialization.strand}
+                                                    </Typography>
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Typography color="textSecondary" variant="h6" fontWeight="400">
+                                                        {specialization.track}
+                                                    </Typography>
+                                                </TableCell>
                                             </TableRow>
-                                        )}
-                                    </TableBody>
-                                </Table>
-                            </TableContainer>
-                            <TablePagination
-                                rowsPerPageOptions={rowsPerPageOptions}
-                                component="div"
-                                count={rowsCount}
-                                rowsPerPage={rowsPerPage}
-                                page={page}
-                                onPageChange={handleChangePage}
-                                onRowsPerPageChange={handleChangeRowsPerPage}
-                            />
-                        </Paper>
-                        <TableDenseToggle dense={dense} handleChangeDense={handleChangeDense} />
-                    </Box>
+                                        );
+                                    })}
+                                    {emptyRows > 0 && (
+                                        <TableRow
+                                            style={{
+                                                height: (dense ? 33 : 53) * emptyRows,
+                                            }}
+                                        >
+                                            <TableCell colSpan={6} />
+                                        </TableRow>
+                                    )}
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+                        <TablePagination
+                            rowsPerPageOptions={rowsPerPageOptions}
+                            component="div"
+                            count={rowsCount}
+                            rowsPerPage={rowsPerPage}
+                            page={page}
+                            onPageChange={handleChangePage}
+                            onRowsPerPageChange={handleChangeRowsPerPage}
+                        />
+                    </Paper>
+                    <TableDenseToggle dense={dense} handleChangeDense={handleChangeDense} />
                 </Box>
-            }
+            </Box>
         </Box>
     );
 }
