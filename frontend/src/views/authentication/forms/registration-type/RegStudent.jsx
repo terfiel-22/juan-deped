@@ -27,7 +27,7 @@ import { useSelector } from 'react-redux';
 import { selectIsFromSubmitted } from '../../../../store/student/StudentSlice';
 
 const RegStudent = () => {
-    const { handleSubmit, error, resetError, loading } = useStudentDetailForm();
+    const { handleSubmit, loading } = useStudentDetailForm();
 
     const contentRef = useRef();
     const { handlePrint: reactToPrintFn } = useComponentPrinter({ contentRef, fileName: "Student Form" })
@@ -67,13 +67,7 @@ const RegStudent = () => {
                     {activeStep === steps.length ? (
                         <>
                             <Stack spacing={2} mt={3}>
-                                {error ?
-                                    <Alert variant="filled" severity="error" onClose={resetError} mt={2} >
-                                        {error}
-                                    </Alert>
-                                    :
-                                    <StudentPreEnrollmentData ref={contentRef} />
-                                }
+                                <StudentPreEnrollmentData ref={contentRef} />
 
                                 <Box display="flex" justifyContent="space-between" mt={3}>
                                     <Button

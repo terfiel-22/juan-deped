@@ -2,15 +2,9 @@ import { useCallback, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentStudent, setCurrentStudent } from '../../store/student/StudentSlice';
 import axiosClient from '../../utils/axiosClient';
-import { toastSuccess } from '../../utils/toastEmitter';
+import { toastError, toastSuccess } from '../../utils/toastEmitter';
 
 const useStudentDetailForm = () => {
-  // Error
-  const [error, setError] = useState(null);
-  const resetError = () => {
-    setError(null);
-  };
-
   // Loading
   const [loading, setLoading] = useState(false);
 
@@ -63,14 +57,15 @@ const useStudentDetailForm = () => {
         toastSuccess('Print the registration slip.');
       })
       .catch(({ response: { data } }) => {
-        setError(data.message);
+        toastError(data.message);
+        console.error(data.errors);
       })
       .finally(() => {
         setLoading(false);
       });
   }, []);
 
-  return { formFields, handleChange, handleNestedChange, handleSubmit, error, resetError, loading };
+  return { formFields, handleChange, handleNestedChange, handleSubmit, loading };
 };
 
 export default useStudentDetailForm;
