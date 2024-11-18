@@ -6,7 +6,6 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { persistor, store } from './store/Store';
 import Spinner from './views/spinner/Spinner';
-import './_mockApis';
 import './utils/i18n';
 import './index.css';
 
