@@ -1,17 +1,12 @@
 import { useEffect, useState } from 'react';
 import axiosClient from '../../utils/axiosClient';
 import { useDispatch, useSelector } from 'react-redux';
+import { toastError } from '../../utils/toastEmitter';
 
 const useFetchAndDispatch = ({ url, setter, selector }) => {
   /** Dispatch/Select */
   const dispatch = useDispatch();
   const data = useSelector(selector);
-
-  // Error
-  const [error, setError] = useState(null);
-  const resetError = () => {
-    setError(null);
-  };
 
   // Loading
   const [loading, setLoading] = useState(true);
@@ -23,14 +18,14 @@ const useFetchAndDispatch = ({ url, setter, selector }) => {
         dispatch(setter(data));
       })
       .catch(({ response: { data } }) => {
-        setError(data.message);
+        toastError(data.message);
       })
       .finally(() => {
         setLoading(false);
       });
   }, [url]);
 
-  return { data, error, resetError, loading };
+  return { data, loading };
 };
 
 export default useFetchAndDispatch;
