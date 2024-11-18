@@ -3,10 +3,7 @@ import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 
 import Header from './vertical/header/Header';
-import HorizontalHeader from './horizontal/header/Header';
 import Sidebar from './vertical/sidebar/Sidebar';
-import Customizer from './shared/customizer/Customizer';
-import Navigation from './horizontal/navbar/Navbar';
 
 const MainWrapper = styled('div')(() => ({
   display: 'flex',
@@ -36,7 +33,7 @@ const FullLayout = () => {
       {/* ------------------------------------------- */}
       {/* Sidebar */}
       {/* ------------------------------------------- */}
-      {customizer.isHorizontal ? '' : <Sidebar />}
+      <Sidebar />
       {/* ------------------------------------------- */}
       {/* Main Wrapper */}
       {/* ------------------------------------------- */}
@@ -48,14 +45,7 @@ const FullLayout = () => {
           }),
         }}
       >
-        {/* ------------------------------------------- */}
-        {/* Header */}
-        {/* ------------------------------------------- */}
-        {customizer.isHorizontal ? <HorizontalHeader /> : <Header />}
-        {/* ------------------------------------------- */}
-        {/* PageContent */}
-        {/* ------------------------------------------- */}
-        {customizer.isHorizontal ? <Navigation /> : ''}
+        <Header />
         <Container
           sx={{
             pt: '30px',

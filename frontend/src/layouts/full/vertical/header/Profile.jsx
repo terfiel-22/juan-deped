@@ -7,7 +7,6 @@ import { IconMail } from '@tabler/icons';
 import { Stack } from '@mui/system';
 
 import ProfileImg from 'src/assets/images/profile/user-1.jpg';
-import unlimitedImg from 'src/assets/images/backgrounds/unlimited-bg.png';
 import Scrollbar from 'src/components/custom-scroll/Scrollbar';
 import useLogout from '../../../../hooks/auth/useLogout';
 
@@ -143,20 +142,6 @@ const Profile = () => {
               </Box>
             ))}
             <Box mt={2}>
-              <Box bgcolor="primary.light" p={3} mb={3} overflow="hidden" position="relative">
-                <Box display="flex" justifyContent="space-between">
-                  <Box>
-                    <Typography variant="h5" mb={2}>
-                      Unlimited <br />
-                      Access
-                    </Typography>
-                    <Button variant="contained" color="primary">
-                      Upgrade
-                    </Button>
-                  </Box>
-                  <img src={unlimitedImg} alt="unlimited" className="signup-bg"></img>
-                </Box>
-              </Box>
               <Button
                 variant="outlined"
                 color="primary"

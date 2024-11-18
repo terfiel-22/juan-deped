@@ -1,8 +1,9 @@
-import * as React from 'react';
+
 import { Snackbar, Alert, AlertTitle } from '@mui/material';
+import { useEffect, useState } from 'react';
 
 const Welcome = () => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleClick = () => {
     setOpen(true);
@@ -14,7 +15,7 @@ const Welcome = () => {
     }
     setOpen(false);
   };
-  React.useEffect(() => {
+  useEffect(() => {
     // Update the document title using the browser API
     const timer = setTimeout(() => {
       handleClick();
@@ -24,7 +25,7 @@ const Welcome = () => {
   }, []);
 
   return (
-    <React.Fragment>
+    <>
       <Snackbar
         open={open}
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
@@ -37,11 +38,10 @@ const Welcome = () => {
           variant="filled"
           sx={{ width: '100%', color: 'white' }}
         >
-          <AlertTitle>Welcome To Modernize</AlertTitle>
-          Easy to customize the Template!!!
+          <AlertTitle>Welcome To JuanDeped Dashboard</AlertTitle>
         </Alert>
       </Snackbar>
-    </React.Fragment>
+    </>
   );
 };
 

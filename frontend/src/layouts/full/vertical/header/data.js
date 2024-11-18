@@ -67,19 +67,19 @@ const notifications = [
 //
 const profile = [
   {
-    href: '/user-profile',
+    href: '#',
     title: 'My Profile',
     subtitle: 'Account Settings',
     icon: icon1,
   },
   {
-    href: '/apps/email',
+    href: '#',
     title: 'My Inbox',
     subtitle: 'Messages & Emails',
     icon: icon2,
   },
   {
-    href: '/apps/notes',
+    href: '#',
     title: 'My Tasks',
     subtitle: 'To-do and Daily Tasks',
     icon: icon3,
