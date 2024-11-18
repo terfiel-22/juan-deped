@@ -1,6 +1,5 @@
 import HttpError from "../utils/HttpError.utils.js";
 import { StudentForm } from "../models/student.model.js";
-import { cameltoTitleCase } from "../utils/textFormatter.js";
 import get from "lodash/get.js";
 
 export const addStudentForm = async (req, res, next) => {
@@ -8,6 +7,13 @@ export const addStudentForm = async (req, res, next) => {
     const authId = get(req, "user._id");
     const email = get(req, "user.email");
     const learnerReferenceNo = get(req, "user.learnerReferenceNo");
+
+    /** Error if student already submitted a form */
+    const existingAuthId = await StudentForm.findOne({ authId });
+    const existingEmail = await StudentForm.findOne({ email });
+    const existingLRN = await StudentForm.findOne({ learnerReferenceNo });
+    if (existingAuthId || existingEmail || existingLRN)
+      throw new HttpError("You already submitted a form.", 400);
 
     // Create the student record.
     const newStudentFormData = {
@@ -20,13 +26,7 @@ export const addStudentForm = async (req, res, next) => {
 
     const error = studentForm.validateSync();
     if (error) {
-      const errorMessages = Object.values(error.errors).map(({ path }) =>
-        cameltoTitleCase(path)
-      );
-      throw new HttpError(
-        `Fill all required data: [${errorMessages.join(", ")}]`,
-        400
-      );
+      throw new HttpError("Saving student form failed.", 400);
     }
 
     await studentForm.save();
