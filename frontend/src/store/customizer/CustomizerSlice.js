@@ -11,7 +11,6 @@ const initialState = {
   isCollapse: false, // to make sidebar Mini by default
   isSidebarHover: false,
   isMobileSidebar: false,
-  isHorizontal: false,
   isLanguage: 'en',
   isCardShadow: true,
   borderRadius: 7,
@@ -48,9 +47,6 @@ export const CustomizerSlice = createSlice({
     toggleLayout: (state, action) => {
       state.isLayout = action.payload;
     },
-    toggleHorizontal: (state, action) => {
-      state.isHorizontal = action.payload;
-    },
     setBorderRadius: (state, action) => {
       state.borderRadius = action.payload;
     },
@@ -66,7 +62,6 @@ export const {
   toggleMobileSidebar,
   toggleLayout,
   setBorderRadius,
-  toggleHorizontal,
   setLanguage,
   setCardShadow,
 } = CustomizerSlice.actions;
