@@ -68,7 +68,7 @@ const headCells = [
 
 const PersonnelTableList = () => {
     /** Fetch Personnels */
-    const [data, error, resetError] = useFetchAndDispatch({
+    const { data, error, resetError } = useFetchAndDispatch({
         url: "/personnels", setter: setPersonnels, selector: selectPersonnels
     });
     const [rows, setRows] = useState(data);
