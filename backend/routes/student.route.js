@@ -1,4 +1,7 @@
-import { addStudentForm } from "../controllers/student.controller.js";
+import {
+  addStudentForm,
+  fetchStudentFormByAuthId,
+} from "../controllers/student.controller.js";
 import { isAuthenticated } from "../middlewares/roleHandler.js";
 import {
   studentFormValidationRules,
@@ -6,6 +9,7 @@ import {
 } from "../validators/validateStudentForm.js";
 
 export default (router) => {
+  router.get("/student/form/:authId", fetchStudentFormByAuthId);
   router.post(
     "/student/form",
     isAuthenticated,

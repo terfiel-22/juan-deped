@@ -20,7 +20,7 @@ const StudentRoute = () => {
     }
 
     if (!currentUser.isApproved) {
-        return <StudentDetailForm />;
+        return <StudentDetailForm studentAuthId={currentUser._id} />;
     }
 
     return <FullLayout />

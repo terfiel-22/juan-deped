@@ -46,7 +46,7 @@ export const studentFormValidationRules = [
   body("sex")
     .notEmpty()
     .withMessage("Sex is required")
-    .isIn(["male", "female"])
+    .isIn(["Male", "Female"])
     .withMessage("Sex must be either male or female"),
   body("age")
     .notEmpty()

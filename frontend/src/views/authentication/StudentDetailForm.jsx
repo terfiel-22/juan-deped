@@ -3,8 +3,16 @@ import PageContainer from 'src/components/container/PageContainer';
 import Logo from 'src/layouts/full/shared/logo/Logo';
 import BlankCard from '../../components/shared/BlankCard';
 import RegStudent from './forms/registration-type/RegStudent';
+import useFetchAndDispatch from '../../hooks/shared/useFetchAndDispatch';
+import { selectCurrentStudent, setCurrentStudent } from '../../store/student/StudentSlice';
 
-const StudentDetailForm = () => {
+const StudentDetailForm = ({ studentAuthId }) => {
+    useFetchAndDispatch({
+        url: `/student/form/${studentAuthId}`,
+        setter: setCurrentStudent,
+        selector: selectCurrentStudent
+    });
+
     return (
         <PageContainer title="JuanDepEd | Student Form" description="Juan DepEd Authentication Page">
             <Box

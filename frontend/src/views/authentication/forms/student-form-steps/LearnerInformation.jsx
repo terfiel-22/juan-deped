@@ -4,6 +4,7 @@ import CustomTextField from '../../../../components/forms/theme-elements/CustomT
 import { FormControlLabel, Grid, RadioGroup } from '@mui/material'
 import CustomRadio from '../../../../components/forms/theme-elements/CustomRadio'
 import useStudentDetailForm from '../../../../hooks/student/useStudentDetailForm'
+import { formatDate } from '../../../../utils/dateFormatter'
 
 const LearnerInformation = () => {
     const { formFields, handleChange } = useStudentDetailForm()
@@ -106,7 +107,7 @@ const LearnerInformation = () => {
                         name="birthDate"
                         type="date"
                         onChange={handleChange}
-                        value={birthDate}
+                        value={formatDate(birthDate)}
                         placeholder="dd/mm/yyyy"
                         variant="outlined"
                         fullWidth

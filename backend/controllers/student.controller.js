@@ -36,3 +36,16 @@ export const addStudentForm = async (req, res, next) => {
     next(error);
   }
 };
+
+export const fetchStudentFormByAuthId = async (req, res, next) => {
+  try {
+    const { authId } = req.params;
+
+    const studentForm = await StudentForm.findOne({ authId });
+    if (!studentForm) throw new HttpError("Student form not found.", 404);
+
+    res.status(200).json(studentForm);
+  } catch (error) {
+    next(error);
+  }
+};
