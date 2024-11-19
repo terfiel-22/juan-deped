@@ -1,5 +1,6 @@
 import { config } from "dotenv";
 import express from "express";
+import path from "path";
 import cookieParser from "cookie-parser";
 import connectToMongoDB from "./db/connectToMongoDB.js";
 import apiRoute from "./routes/api.route.js";
@@ -18,8 +19,17 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/api", apiRoute());
-app.use(unsupportedRoutes);
-app.use(errorHandler);
+
+/** Modify this before deploying */
+app.use(unsupportedRoutes); // This will prevent accessing frontend files
+app.use(errorHandler); // This will catch an error provided by apiRoutes and will prevent reaching the front end side
+
+/** Connect the Frontend */
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+});
 
 app.listen(PORT, () => {
   connectToMongoDB();

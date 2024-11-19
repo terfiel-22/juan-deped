@@ -39,6 +39,7 @@
     "fslightbox-react": "^1.7.6",
     "html2pdf.js": "^0.10.2",
     "i18next": "^22.0.6",
+    "juan-deped": "file:..",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "path-browserify": "^1.0.1",
