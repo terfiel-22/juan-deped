@@ -6,7 +6,6 @@ import * as dropdownData from './data';
 import { IconMail } from '@tabler/icons';
 import { Stack } from '@mui/system';
 
-import ProfileImg from 'src/assets/images/profile/user-1.jpg';
 import Scrollbar from 'src/components/custom-scroll/Scrollbar';
 import useLogout from '../../../../hooks/auth/useLogout';
 
@@ -68,7 +67,7 @@ const Profile = () => {
           <Box p={3}>
             <Typography variant="h5">User Profile</Typography>
             <Stack direction="row" py={3} spacing={2} alignItems="center">
-              <Avatar src={ProfileImg} alt={ProfileImg} sx={{ width: 95, height: 95 }} />
+              <Avatar src={user.profilePic} alt={user.username} sx={{ width: 95, height: 95 }} />
               <Box>
                 <Typography variant="subtitle2" color="textPrimary" fontWeight={600}>
                   {user.username}
