@@ -94,3 +94,12 @@ export const logout = async (req, res, next) => {
     next(error);
   }
 };
+
+export const fetchAuths = async (req, res, next) => {
+  try {
+    const auths = await Auth.find({});
+    res.status(200).json(auths);
+  } catch (error) {
+    next(error);
+  }
+};
