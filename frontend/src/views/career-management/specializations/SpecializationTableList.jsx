@@ -16,7 +16,7 @@ import useEnhancedTableSort from '../../../hooks/ui/useEnhancedTableSort';
 import useTableDenseToggle from '../../../hooks/ui/useTableDenseToggle';
 import EnhancedTableToolbar from '../../../components/shared/EnhancedTableToolbar';
 import EnhancedTableHead from '../../../components/shared/EnhancedTableHead';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TableDenseToggle from '../../../components/shared/TableDenseToggle';
 import CustomCheckbox from '../../../components/forms/theme-elements/CustomCheckbox';
 import { selectSpecializations, setSpecializations } from '../../../store/career/CareerSlice';
@@ -48,7 +48,10 @@ const SpecializationTableList = () => {
     const { data } = useFetchAndDispatch({
         url: "/specializations", setter: setSpecializations, selector: selectSpecializations
     });
-    const [rows, setRows] = useState(data);
+    const [rows, setRows] = useState([]);
+    useEffect(() => {
+        setRows(data)
+    }, [data])
 
     // This is for pagination
     const [

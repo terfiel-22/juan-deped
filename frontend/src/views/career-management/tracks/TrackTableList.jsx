@@ -17,7 +17,7 @@ import useEnhancedTableSort from '../../../hooks/ui/useEnhancedTableSort';
 import useTableDenseToggle from '../../../hooks/ui/useTableDenseToggle';
 import EnhancedTableToolbar from '../../../components/shared/EnhancedTableToolbar';
 import EnhancedTableHead from '../../../components/shared/EnhancedTableHead';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TableDenseToggle from '../../../components/shared/TableDenseToggle';
 import CustomCheckbox from '../../../components/forms/theme-elements/CustomCheckbox';
 import { selectTracks, setTracks } from '../../../store/career/CareerSlice';
@@ -36,7 +36,10 @@ const TrackTableList = () => {
     const { data } = useFetchAndDispatch({
         url: "/tracks", setter: setTracks, selector: selectTracks
     });
-    const [rows, setRows] = useState(data);
+    const [rows, setRows] = useState([]);
+    useEffect(() => {
+        setRows(data)
+    }, [data])
 
     // This is for pagination
     const [

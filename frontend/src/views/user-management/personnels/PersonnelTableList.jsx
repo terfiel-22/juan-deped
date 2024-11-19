@@ -20,7 +20,7 @@ import useEnhancedTableSearch from '../../../hooks/ui/useEnhancedTableSearch';
 import useEnhancedTableSelect from '../../../hooks/ui/useEnhancedTableSelect';
 import useEnhancedTableSort from '../../../hooks/ui/useEnhancedTableSort';
 import useTableDenseToggle from '../../../hooks/ui/useTableDenseToggle';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TableDenseToggle from '../../../components/shared/TableDenseToggle';
 import CustomCheckbox from '../../../components/forms/theme-elements/CustomCheckbox';
 import { IconDotsVertical } from '@tabler/icons';
@@ -70,7 +70,10 @@ const PersonnelTableList = () => {
     const { data } = useFetchAndDispatch({
         url: "/personnels", setter: setPersonnels, selector: selectPersonnels
     });
-    const [rows, setRows] = useState(data);
+    const [rows, setRows] = useState([]);
+    useEffect(() => {
+        setRows(data)
+    }, [data])
 
     // This is for pagination
     const [
