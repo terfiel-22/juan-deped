@@ -2,6 +2,7 @@ import React, { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
 
 import Loadable from '../layouts/full/shared/loadable/Loadable';
+import { element } from 'prop-types';
 
 /* ***Layouts**** */
 const FullLayout = Loadable(lazy(() => import('../layouts/full/FullLayout')));
@@ -35,9 +36,10 @@ const Router = [
   /** Juan DepEd */
   {
     path: "/",
+    element: <BlankLayout />,
     children: [
-      { path: '/', element: <Navigate to="/dashboard" /> },
       { path: '/404', element: <PageNotFound /> },
+      { path: '*', element: <Navigate to="/404" /> },
     ]
   },
   {
@@ -46,7 +48,6 @@ const Router = [
     children: [
       { path: '/auth', element: <Authentication /> },
       { path: '/forgot-password', element: <ForgotPassword /> },
-      { path: '*', element: <Navigate to="/404" /> },
     ]
   },
   {
@@ -59,7 +60,6 @@ const Router = [
       { path: '/tracks', element: <Tracks /> },
       { path: '/strands', element: <Strands /> },
       { path: '/specializations', element: <Specializations /> },
-      { path: '*', element: <Navigate to="/404" /> },
     ]
   },
   {
