@@ -39,8 +39,8 @@ const Profile = () => {
         onClick={handleClick2}
       >
         <Avatar
-          src={ProfileImg}
-          alt={ProfileImg}
+          src={user.profilePic}
+          alt={user.username}
           sx={{
             width: 35,
             height: 35,

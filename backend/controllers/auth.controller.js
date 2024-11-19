@@ -2,6 +2,7 @@ import bcrypt from "bcryptjs";
 import generateTokenAndSetCookie from "../utils/generateTokenAndSetCookie.js";
 import Auth from "../models/auth.model.js";
 import HttpError from "../utils/HttpError.utils.js";
+import { profilePic } from "../_mockData/default_data_fields.js";
 
 export const login = async (req, res, next) => {
   try {
@@ -25,6 +26,7 @@ export const login = async (req, res, next) => {
       _id: user._id,
       username: user.username,
       email: user.email,
+      profilePic,
       learnerReferenceNo: user.learnerReferenceNo,
       role: user.role,
       isApproved: user.isApproved,
@@ -59,6 +61,7 @@ export const register = async (req, res, next) => {
       username,
       email,
       password: hashedPassword,
+      profilePic,
       learnerReferenceNo,
       role,
     });
@@ -74,6 +77,7 @@ export const register = async (req, res, next) => {
       _id: user._id,
       username: user.username,
       email: user.email,
+      profilePic,
       learnerReferenceNo: user.learnerReferenceNo,
       role: user.role,
     });

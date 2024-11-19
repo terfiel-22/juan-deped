@@ -21,6 +21,7 @@ import {
   Strand,
   Track,
 } from "../models/track-strand-specialization.model.js";
+import { profilePic } from "../_mockData/default_data_fields.js";
 
 export const initTrackStrandSpecialization = async (req, res, next) => {
   try {
@@ -104,7 +105,6 @@ export const initPersonnels = async (req, res, next) => {
 export const initAdminAccount = async (req, res, next) => {
   try {
     await Auth.deleteMany({});
-
     const { username, email, password, role } = admin;
 
     const salt = await bcrypt.genSalt(10);
@@ -114,6 +114,7 @@ export const initAdminAccount = async (req, res, next) => {
       username,
       email,
       password: hashedPassword,
+      profilePic,
       role,
       isApproved: true,
     });

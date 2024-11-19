@@ -6,6 +6,7 @@ const authSchema = Schema(
     email: { type: String, unique: true, required: true },
     password: { type: String, required: true },
     learnerReferenceNo: String,
+    profilePic: { type: String, required: true },
     role: {
       type: String,
       required: true,
