@@ -116,8 +116,8 @@ const LearnerInformation = () => {
                 <Grid item xs={12} sm={12} lg={3}>
                     <CustomFormLabel htmlFor="sex">Sex</CustomFormLabel>
                     <RadioGroup row aria-label="sex" name="sex" onChange={handleChange} value={sex}>
-                        <FormControlLabel value="male" control={<CustomRadio />} label="Male" />
-                        <FormControlLabel value="female" control={<CustomRadio />} label="Female" />
+                        <FormControlLabel value="Male" control={<CustomRadio />} label="Male" />
+                        <FormControlLabel value="Female" control={<CustomRadio />} label="Female" />
                     </RadioGroup>
                 </Grid>
                 <Grid item xs={12} sm={12} lg={3}>

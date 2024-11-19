@@ -30,7 +30,7 @@ const studentFormSchema = Schema(
     middleName: { type: String, required: true },
     extensionName: String,
     birthDate: { type: Date, required: true },
-    sex: { type: String, required: true, enum: ["male", "female"] },
+    sex: { type: String, required: true, enum: ["Male", "Female"] },
     age: { type: Number, required: true },
     placeOfBirth: { type: String, required: true },
     motherTongue: { type: String, required: true },
