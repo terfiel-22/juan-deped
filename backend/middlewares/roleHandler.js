@@ -4,7 +4,7 @@ import { config } from "dotenv";
 import Auth from "../models/auth.model.js";
 import merge from "lodash/merge.js";
 import get from "lodash/get.js";
-import { USER_ROLES } from "../enums/UserRole.js";
+import { USER_ROLES } from "../constants/UserRoles.js";
 config();
 
 const { JWT_SECRET_KEY } = process.env;
@@ -33,7 +33,7 @@ export const isAdmin = async (req, res, next) => {
     const user = get(req, "user");
     if (!user)
       throw new HttpError("Unauthorized - User is not authenticated.", 401);
-    if (user.role != USER_ROLES.Administrator)
+    if (user.role != USER_ROLES.ADMINISTRATOR)
       throw new HttpError("Unauthorized - User is not an admin.", 401);
 
     next();
