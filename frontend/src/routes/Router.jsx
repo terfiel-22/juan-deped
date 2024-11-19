@@ -2,7 +2,6 @@ import React, { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
 
 import Loadable from '../layouts/full/shared/loadable/Loadable';
-import { element } from 'prop-types';
 
 /* ***Layouts**** */
 const FullLayout = Loadable(lazy(() => import('../layouts/full/FullLayout')));
@@ -19,6 +18,8 @@ const ForgotPassword = Loadable(lazy(() => import('../views/authentication/Forgo
 /** Middleware */
 const GuestRoute = Loadable(lazy(() => import('./middlewares/GuestRoute')));
 const AuthRoute = Loadable(lazy(() => import('./middlewares/AuthRoute')));
+const AdminRoute = Loadable(lazy(() => import('./middlewares/AdminRoute')));
+const RegistrarRoute = Loadable(lazy(() => import('./middlewares/RegistrarRoute')));
 const StudentRoute = Loadable(lazy(() => import('./middlewares/StudentRoute')));
 
 /** User Management */
@@ -38,8 +39,8 @@ const Router = [
     path: "/",
     element: <BlankLayout />,
     children: [
+      { path: '/', element: <AuthRoute /> },
       { path: '/404', element: <PageNotFound /> },
-      { path: '*', element: <Navigate to="/404" /> },
     ]
   },
   {
@@ -51,15 +52,23 @@ const Router = [
     ]
   },
   {
-    path: "/",
-    element: <AuthRoute />,
+    path: "/admin",
+    element: <AdminRoute />,
     children: [
-      { path: '/', element: <Navigate to="/dashboard" /> },
-      { path: '/dashboard', element: <ModernDash /> },
-      { path: '/personnels', element: <Personnels /> },
-      { path: '/tracks', element: <Tracks /> },
-      { path: '/strands', element: <Strands /> },
-      { path: '/specializations', element: <Specializations /> },
+      { path: '/admin', element: <Navigate to="/admin/dashboard" /> },
+      { path: '/admin/dashboard', element: <ModernDash /> },
+      { path: '/admin/personnels', element: <Personnels /> },
+      { path: '/admin/tracks', element: <Tracks /> },
+      { path: '/admin/strands', element: <Strands /> },
+      { path: '/admin/specializations', element: <Specializations /> },
+    ]
+  },
+  {
+    path: "/registrar",
+    element: <RegistrarRoute />,
+    children: [
+      { path: '/registrar', element: <Navigate to="/registrar/dashboard" /> },
+      { path: '/registrar/dashboard', element: <ModernDash /> },
     ]
   },
   {
@@ -70,6 +79,7 @@ const Router = [
       { path: '/student/dashboard', element: <ModernDash /> },
     ]
   },
+  { path: '*', element: <Navigate to="/404" /> },
 ];
 
 export default Router;

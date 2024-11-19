@@ -1,8 +1,7 @@
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { selectCurrentUser } from "../../store/user/UserSlice";
-import FullLayout from "../../layouts/full/FullLayout";
-import { USER_ROLES } from "../../enums/UserRole";
+import { ROLE_ROUTES } from "../../enums/RoleRoutes";
 
 const AuthRoute = () => {
 
@@ -11,12 +10,7 @@ const AuthRoute = () => {
     if (!currentUser) {
         return <Navigate to="/auth" />;
     }
-
-    if (currentUser.role === USER_ROLES.Student) {
-        return <Navigate to="/student" />;
-    }
-
-    return <FullLayout />;
+    return <Navigate to={ROLE_ROUTES[currentUser.role]} />;
 };
 
 export default AuthRoute;

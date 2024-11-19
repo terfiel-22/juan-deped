@@ -7,7 +7,7 @@ const GuestRoute = () => {
     const currentUser = useSelector(selectCurrentUser);
 
     if (currentUser) {
-        return <Navigate to="/dashboard" />;
+        return <Navigate to="/" />;
     }
 
     return <Outlet />;
