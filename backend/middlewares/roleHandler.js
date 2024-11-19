@@ -3,7 +3,7 @@ import HttpError from "../utils/HttpError.utils.js";
 import { config } from "dotenv";
 import Auth from "../models/auth.model.js";
 import merge from "lodash/merge.js";
-import get from "lodash/lodash.js";
+import get from "lodash/get.js";
 import { USER_ROLES } from "../enums/UserRole.js";
 config();
 
@@ -33,8 +33,7 @@ export const isAdmin = async (req, res, next) => {
     const user = get(req, "user");
     if (!user)
       throw new HttpError("Unauthorized - User is not authenticated.", 401);
-
-    if (user.role != USER_ROLES.Admin)
+    if (user.role != USER_ROLES.Administrator)
       throw new HttpError("Unauthorized - User is not an admin.", 401);
 
     next();
