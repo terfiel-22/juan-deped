@@ -2,6 +2,7 @@ import axiosClient from '../../utils/axiosClient';
 import { selectCurrentUser, setCurrentUser } from '../../store/user/UserSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
+import { toastError } from '../../utils/toastEmitter';
 
 const useLogout = () => {
   const dispatch = useDispatch();
@@ -13,13 +14,12 @@ const useLogout = () => {
   const handleLogout = () => {
     axiosClient
       .post('/auth/logout')
-      .then(({ data }) => {
-        console.log(data.message);
+      .then(() => {
         navigate('/auth');
         dispatch(setCurrentUser(null));
       })
       .catch(({ response: { data } }) => {
-        alert(data.message);
+        toastError(data.message);
       });
   };
 
