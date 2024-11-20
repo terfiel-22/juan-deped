@@ -3,10 +3,8 @@ import {
   fetchStudentFormByAuthId,
 } from "../controllers/student.controller.js";
 import { isAuthenticated } from "../middlewares/roleHandler.js";
-import {
-  studentFormValidationRules,
-  validateStudentForm,
-} from "../validators/validateStudentForm.js";
+import { studentFormValidationRules } from "../validators/studentFormValidationRules.js";
+import { validateForm } from "../validators/validateForm.js";
 
 export default (router) => {
   router.get("/student/form/:authId", fetchStudentFormByAuthId);
@@ -14,7 +12,7 @@ export default (router) => {
     "/student/form",
     isAuthenticated,
     studentFormValidationRules,
-    validateStudentForm,
+    validateForm,
     addStudentForm
   );
 };

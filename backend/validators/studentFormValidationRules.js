@@ -1,5 +1,4 @@
-import { body, validationResult } from "express-validator";
-import HttpError from "../utils/HttpError.utils.js";
+import { body } from "express-validator";
 
 export const studentFormValidationRules = [
   body("email")
@@ -169,15 +168,3 @@ export const studentFormValidationRules = [
     .isEmail()
     .withMessage("Invalid email format for Guardian's Email"),
 ];
-
-export const validateStudentForm = (req, res, next) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    throw new HttpError(
-      "Validation failed. Check your inputs.",
-      400,
-      errors.array()
-    );
-  }
-  next();
-};
