@@ -1,4 +1,4 @@
-import { Alert, FormControlLabel, Grid, IconButton, InputAdornment, RadioGroup } from '@mui/material'
+import { FormControlLabel, Grid, IconButton, InputAdornment, RadioGroup } from '@mui/material'
 import { Box, Stack } from '@mui/system'
 import { IconEye, IconEyeOff } from '@tabler/icons'
 import { LoadingButton } from '@mui/lab'
@@ -11,22 +11,18 @@ import useSignup from '../../../hooks/auth/useSignup'
 const RegistrationForm = () => {
     const { showPassword, handleClickShowPassword, handleMouseDownPassword } = usePasswordVisibility();
 
-    const { error, resetError, loading, handleChange, handleSubmit } = useSignup();
+    const { formData, loading, handleChange, handleSubmit } = useSignup();
 
     return (
         <>
             <Stack>
-                {error &&
-                    <Alert variant="filled" severity="error" onClose={resetError}>
-                        {error}
-                    </Alert>
-                }
                 <Grid container spacing={1} marginBottom={2}>
                     <Grid item xs={12} sm={12} lg={6}>
                         <CustomFormLabel htmlFor="username">Username</CustomFormLabel>
                         <CustomOutlinedInput
                             name="username"
                             id="username"
+                            value={formData.username}
                             placeholder="Username"
                             fullWidth
                             onChange={handleChange}
@@ -37,6 +33,7 @@ const RegistrationForm = () => {
                         <CustomOutlinedInput
                             name="email"
                             id="email"
+                            value={formData.email}
                             placeholder="Email"
                             fullWidth
                             onChange={handleChange}
@@ -47,6 +44,7 @@ const RegistrationForm = () => {
                         <CustomOutlinedInput
                             name="learnerReferenceNo"
                             id="learnerReferenceNo"
+                            value={formData.learnerReferenceNo}
                             placeholder="Learner Reference No."
                             fullWidth
                             onChange={handleChange}
@@ -54,7 +52,7 @@ const RegistrationForm = () => {
                     </Grid>
                     <Grid item xs={12} sm={12} lg={6}>
                         <CustomFormLabel htmlFor="role">Registration Type</CustomFormLabel>
-                        <RadioGroup row aria-label="position" id="role" name="role" defaultValue="Student" onChange={handleChange} >
+                        <RadioGroup row aria-label="position" id="role" name="role" value={formData.role} onChange={handleChange} >
                             <FormControlLabel value="Student" control={<CustomRadio />} label="Student" />
                             <FormControlLabel value="Alumnus" control={<CustomRadio />} label="Alumnus" />
                         </RadioGroup>
@@ -79,6 +77,7 @@ const RegistrationForm = () => {
                             id="password"
                             placeholder="******"
                             fullWidth
+                            value={formData.password}
                             onChange={handleChange}
                         />
                     </Grid>
@@ -102,6 +101,7 @@ const RegistrationForm = () => {
                             id="cpassword"
                             placeholder="******"
                             fullWidth
+                            value={formData.cpassword}
                             onChange={handleChange}
                         />
                     </Grid>

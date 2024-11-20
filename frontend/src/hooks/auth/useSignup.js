@@ -2,20 +2,23 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import axiosClient from '../../utils/axiosClient';
 import { setCurrentUser } from '../../store/user/UserSlice';
+import { toastError } from '../../utils/toastEmitter';
 
 const useSignup = () => {
   const dispatch = useDispatch();
-  // Error
-  const [error, setError] = useState(null);
-  const resetError = () => {
-    setError(null);
-  };
 
   // Loading
   const [loading, setLoading] = useState(false);
 
   // Handle Form
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    learnerReferenceNo: '',
+    password: '',
+    cpassword: '',
+    role: 'Student',
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,7 +33,7 @@ const useSignup = () => {
     const { username, email, learnerReferenceNo, password, cpassword, role } = formData;
 
     if (!username || !email || !learnerReferenceNo || !password || !cpassword || !role) {
-      setError('Please fill in all required fields!');
+      toastError('Please fill in all missing fields!');
       setLoading(false);
       return;
     }
@@ -48,7 +51,7 @@ const useSignup = () => {
       });
   };
 
-  return { error, resetError, loading, handleChange, handleSubmit };
+  return { formData, loading, handleChange, handleSubmit };
 };
 
 export default useSignup;
