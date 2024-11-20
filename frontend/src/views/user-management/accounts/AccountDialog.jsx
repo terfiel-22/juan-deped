@@ -46,6 +46,7 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, data = data ?
     return (
         <Dialog
             fullScreen={isFullScreen}
+            closeAfterTransition={false}
             open={isOpen}
             onClose={handleClose}
             aria-labelledby="responsive-dialog-title"
