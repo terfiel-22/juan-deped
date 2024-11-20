@@ -22,7 +22,7 @@ const useEnhancedTableSearch = ({ rows, fieldName, setRows, setPage }) => {
     setSearch(keyword);
   }, []);
 
-  return [search, handleSearch];
+  return { search, handleSearch };
 };
 
 export default useEnhancedTableSearch;

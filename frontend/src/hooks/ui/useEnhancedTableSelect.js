@@ -42,7 +42,7 @@ const useEnhancedTableSelect = ({ rows, fieldName }) => {
     [selected],
   );
 
-  return [selected, isSelected, handleSelectAllClick, handleClick];
+  return { selected, isSelected, handleSelectAllClick, handleClick };
 };
 
 export default useEnhancedTableSelect;

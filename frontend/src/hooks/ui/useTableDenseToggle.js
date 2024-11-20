@@ -6,7 +6,7 @@ const useTableDenseToggle = () => {
     setDense(event.target.checked);
   }, []);
 
-  return [dense, handleChangeDense];
+  return { dense, handleChangeDense };
 };
 
 export default useTableDenseToggle;

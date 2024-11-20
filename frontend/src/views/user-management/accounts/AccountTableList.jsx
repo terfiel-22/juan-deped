@@ -23,10 +23,10 @@ import useTableDenseToggle from '../../../hooks/ui/useTableDenseToggle';
 import { useEffect, useState } from 'react';
 import TableDenseToggle from '../../../components/shared/TableDenseToggle';
 import CustomCheckbox from '../../../components/forms/theme-elements/CustomCheckbox';
-import { IconDotsVertical } from '@tabler/icons';
+import { IconEye } from '@tabler/icons';
 import useFetchAndDispatch from '../../../hooks/shared/useFetchAndDispatch';
 import { formatDate } from '../../../utils/dateFormatter';
-import useDialog from '../../../hooks/shared/useDialog';
+import useTableDialog from '../../../hooks/shared/useTableDialog';
 import AccountDialog from './AccountDialog';
 
 const headCells = [
@@ -74,6 +74,14 @@ const headCells = [
     },
 ];
 
+const defaultFormData = {
+    username: "",
+    email: "",
+    password: "",
+    cpassword: "",
+    role: ""
+};
+
 const AccountTableList = () => {
     /** Fetch Auths */
     const { data } = useFetchAndDispatch({
@@ -85,7 +93,7 @@ const AccountTableList = () => {
     }, [data])
 
     // This is for pagination
-    const [
+    const {
         page,
         rowsPerPage,
         pageData,
@@ -95,12 +103,12 @@ const AccountTableList = () => {
         setPage,
         handleChangePage,
         handleChangeRowsPerPage,
-    ] = useTablePagination({ rows });
+    } = useTablePagination({ rows });
 
     // This is for searching
     const FIELD_NAME = 'username';
     const SEARCH_FIELD = 'Username'
-    const [search, handleSearch] = useEnhancedTableSearch({
+    const { search, handleSearch } = useEnhancedTableSearch({
         rows,
         fieldName: FIELD_NAME,
         setRows,
@@ -108,25 +116,25 @@ const AccountTableList = () => {
     });
 
     // This is for selecting
-    const [selected, isSelected, handleSelectAllClick, handleClick] = useEnhancedTableSelect({
+    const { selected, isSelected, handleSelectAllClick } = useEnhancedTableSelect({
         rows,
         fieldName: FIELD_NAME,
     });
 
     // This is for the sorting
-    const [order, orderBy, getComparator, stableSort, handleRequestSort] = useEnhancedTableSort({
+    const { order, orderBy, getComparator, stableSort, handleRequestSort } = useEnhancedTableSort({
         fieldName: FIELD_NAME,
     });
 
     // This is for table density
-    const [dense, handleChangeDense] = useTableDenseToggle();
+    const { dense, handleChangeDense } = useTableDenseToggle();
 
     // This is for add dialog
-    const { isOpen, isFullScreen, handleOpenDialog, handleCloseDialog } = useDialog();
+    const { isOpen, isFullScreen, handleOpenDialog, handleCloseDialog, selectedData, setSelectedData } = useTableDialog({ defaultFormData });
 
     return (
         <Box>
-            <AccountDialog isOpen={isOpen} isFullScreen={isFullScreen} handleClose={handleCloseDialog} />
+            <AccountDialog isOpen={isOpen} isFullScreen={isFullScreen} handleClose={handleCloseDialog} data={selectedData} />
             <Box>
                 <Box>
                     <EnhancedTableToolbar
@@ -160,7 +168,6 @@ const AccountTableList = () => {
                                         return (
                                             <TableRow
                                                 hover
-                                                onClick={() => handleClick(auth[FIELD_NAME])}
                                                 role="checkbox"
                                                 aria-checked={isItemSelected}
                                                 tabIndex={-1}
@@ -207,9 +214,9 @@ const AccountTableList = () => {
                                                     </Typography>
                                                 </TableCell>
                                                 <TableCell>
-                                                    <Tooltip title="Edit">
-                                                        <IconButton size="small">
-                                                            <IconDotsVertical size="1.1rem" />
+                                                    <Tooltip title="View">
+                                                        <IconButton size="small" onClick={() => setSelectedData(auth)}>
+                                                            <IconEye size="1.1rem" />
                                                         </IconButton>
                                                     </Tooltip>
                                                 </TableCell>

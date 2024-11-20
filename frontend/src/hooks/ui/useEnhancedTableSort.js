@@ -39,7 +39,7 @@ const useEnhancedTableSort = ({ initialOrderBy = '' }) => {
     [order, orderBy],
   );
 
-  return [order, orderBy, getComparator, stableSort, handleRequestSort];
+  return { order, orderBy, getComparator, stableSort, handleRequestSort };
 };
 
 export default useEnhancedTableSort;

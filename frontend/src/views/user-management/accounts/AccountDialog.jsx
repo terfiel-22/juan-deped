@@ -2,7 +2,7 @@ import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Grid, IconBu
 import { Stack } from '@mui/system'
 import CustomFormLabel from '../../../components/forms/theme-elements/CustomFormLabel'
 import CustomOutlinedInput from '../../../components/forms/theme-elements/CustomOutlinedInput'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import usePasswordVisibility from '../../../hooks/ui/usePasswordVisibility'
 import { IconEye, IconEyeOff } from '@tabler/icons'
 import CustomSelect from '../../../components/forms/theme-elements/CustomSelect'
@@ -11,7 +11,7 @@ import { setNewAuth } from '../../../store/user/UserSlice';
 import useAddAndDispath from '../../../hooks/shared/useAddAndDispath'
 import { LoadingButton } from '@mui/lab'
 
-const initialForm = {
+const defaultData = {
     username: "",
     email: "",
     password: "",
@@ -19,9 +19,12 @@ const initialForm = {
     role: ""
 };
 
-const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, userData = initialForm }) => {
+const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, data = data ?? defaultData }) => {
     const [showPassword, handleClickShowPassword, handleMouseDownPassword] = usePasswordVisibility();
-    const [formFields, setFormFields] = useState(userData)
+    const [formFields, setFormFields] = useState(data)
+    useEffect(() => {
+        setFormFields(data)
+    }, [data])
 
     const { loading, handleSubmit } = useAddAndDispath({ url: "/auth/add", formFields, setter: setNewAuth })
 
@@ -34,7 +37,7 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, userData = in
         })
     };
     const handleClose = () => {
-        setFormFields(initialForm);
+        setFormFields(defaultData);
         close();
     }
 
@@ -95,7 +98,7 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, userData = in
                                 id="password"
                                 placeholder="******"
                                 fullWidth
-                                value={password}
+                                value={password ?? ""}
                                 onChange={handleChange}
                             />
                         </Grid>
@@ -119,7 +122,7 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, userData = in
                                 id="cpassword"
                                 placeholder="******"
                                 fullWidth
-                                value={cpassword}
+                                value={cpassword ?? ""}
                                 onChange={handleChange}
                             />
                         </Grid>

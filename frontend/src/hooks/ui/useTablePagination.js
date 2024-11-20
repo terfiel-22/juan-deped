@@ -27,7 +27,7 @@ const useTablePagination = ({ rows }) => {
     setPage(0);
   };
 
-  return [
+  return {
     page,
     rowsPerPage,
     pageData,
@@ -37,7 +37,7 @@ const useTablePagination = ({ rows }) => {
     setPage,
     handleChangePage,
     handleChangeRowsPerPage,
-  ];
+  };
 };
 
 export default useTablePagination;
