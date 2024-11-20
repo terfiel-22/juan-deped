@@ -189,3 +189,20 @@ export const editAuth = async (req, res, next) => {
     next(error);
   }
 };
+
+export const deleteAuth = async (req, res, next) => {
+  try {
+    const { _id } = req.body;
+
+    const deletedAuth = await Auth.findByIdAndDelete(_id);
+
+    if (!deletedAuth) throw new HttpError("User not found.", 404);
+
+    return res.status(200).json({
+      message: "Account is successfully deleted.",
+      result: deletedAuth,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
