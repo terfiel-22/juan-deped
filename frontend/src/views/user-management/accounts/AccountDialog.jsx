@@ -1,5 +1,5 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Grid, IconButton, InputAdornment, MenuItem } from '@mui/material'
-import { Stack } from '@mui/system'
+import { Box, Stack } from '@mui/system'
 import { useEffect, useState } from 'react'
 import { IconEye, IconEyeOff } from '@tabler/icons'
 import { LoadingButton } from '@mui/lab'
@@ -41,6 +41,12 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, data = data ?
     const handleClose = () => {
         setFormFields(defaultData);
         close();
+    }
+
+    const handleDelete = () => {
+        if (confirm("Are you sure you want to delete this?")) {
+            alert("User is deleted successfully.")
+        }
     }
 
     const { username, email, password, cpassword, role } = formFields;
@@ -151,13 +157,23 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, data = data ?
                     </Grid>
                 </Stack>
             </DialogContent>
-            <DialogActions>
-                <Button color='error' onClick={handleClose}>
-                    Close
-                </Button>
-                <LoadingButton loading={formFields._id ? editLoading : loading} color='primary' onClick={formFields._id ? handleEditSubmit : handleSubmit}>
-                    Save
-                </LoadingButton>
+            <DialogActions sx={{ justifyContent: 'space-between' }}>
+                {
+                    formFields._id ?
+                        <LoadingButton sx={{ marginLeft: '0', display: 'block' }} loading={loading} color='warning' onClick={handleDelete}>
+                            Delete
+                        </LoadingButton>
+                        :
+                        <Box></Box>
+                }
+                <Box>
+                    <Button color='error' sx={{ marginRight: '10px' }} onClick={handleClose}>
+                        Close
+                    </Button>
+                    <LoadingButton loading={formFields._id ? editLoading : loading} color='primary' onClick={formFields._id ? handleEditSubmit : handleSubmit}>
+                        Save
+                    </LoadingButton>
+                </Box>
             </DialogActions>
         </Dialog>
     )
