@@ -27,7 +27,7 @@ import { IconDotsVertical } from '@tabler/icons';
 import useFetchAndDispatch from '../../../hooks/shared/useFetchAndDispatch';
 import { formatDate } from '../../../utils/dateFormatter';
 import useDialog from '../../../hooks/shared/useDialog';
-import AddAccountDialog from './AddAccountDialog';
+import AccountDialog from './AccountDialog';
 
 const headCells = [
     {
@@ -126,7 +126,7 @@ const AccountTableList = () => {
 
     return (
         <Box>
-            <AddAccountDialog isOpen={isOpen} isFullScreen={isFullScreen} handleClose={handleCloseDialog} />
+            <AccountDialog isOpen={isOpen} isFullScreen={isFullScreen} handleClose={handleCloseDialog} />
             <Box>
                 <Box>
                     <EnhancedTableToolbar
