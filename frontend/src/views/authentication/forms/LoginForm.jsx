@@ -12,7 +12,7 @@ import { LoadingButton } from '@mui/lab'
 
 
 const LoginForm = () => {
-    const { formData, error, resetError, loading, handleChange, handleSubmit } = useSignin()
+    const { formData, loading, handleChange, handleSubmit } = useSignin()
     const { email, password, remembered } = formData;
 
     const { showPassword, handleClickShowPassword, handleMouseDownPassword } = usePasswordVisibility()
@@ -20,11 +20,6 @@ const LoginForm = () => {
     return (
         <>
             <Stack>
-                {error &&
-                    <Alert variant="filled" severity="error" onClose={resetError}>
-                        {error}
-                    </Alert>
-                }
                 <Box>
                     <CustomFormLabel htmlFor="email">Email/LRN</CustomFormLabel>
                     <CustomOutlinedInput

@@ -5,16 +5,11 @@ import { selectCredentials, setCredentials, setCurrentUser } from '../../store/u
 import { credentialsInitState } from '../../store/user/UserSliceInitStates';
 import { setCurrentStudentEmail, setCurrentStudentLRN } from '../../store/student/StudentSlice';
 import { USER_ROLES } from '../../constants/UserRoles';
+import { toastError } from '../../utils/toastEmitter';
 
 const useSignin = () => {
   const dispatch = useDispatch();
   const savedCredentials = useSelector(selectCredentials);
-
-  // Error
-  const [error, setError] = useState(null);
-  const resetError = () => {
-    setError(null);
-  };
 
   // Loading
   const [loading, setLoading] = useState(false);
@@ -45,7 +40,7 @@ const useSignin = () => {
     setLoading(true);
 
     if (!email || !password) {
-      setError('Please fill in all required fields!');
+      toastError('Please fill in all required fields!');
       setLoading(false);
       return;
     }
@@ -60,7 +55,7 @@ const useSignin = () => {
         }
       })
       .catch(({ response: { data } }) => {
-        setError(data.message);
+        toastError(data.message);
       })
       .finally(() => {
         setLoading(false);
@@ -69,8 +64,6 @@ const useSignin = () => {
 
   return {
     formData,
-    error,
-    resetError,
     loading,
     handleChange,
     handleSubmit,
