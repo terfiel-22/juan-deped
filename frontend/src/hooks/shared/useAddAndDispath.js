@@ -4,7 +4,6 @@ import { toastError, toastSuccess } from '../../utils/toastEmitter';
 import { useCallback, useState } from 'react';
 
 const useAddAndDispath = ({ url, formFields, setter }) => {
-  /** Dispatch/Select */
   const dispatch = useDispatch();
 
   // Loading
@@ -15,7 +14,7 @@ const useAddAndDispath = ({ url, formFields, setter }) => {
     axiosClient
       .post(url, formFields)
       .then(({ data }) => {
-        dispatch(setter(data.user));
+        dispatch(setter(data.result));
         toastSuccess(data.message);
       })
       .catch(({ response: { data } }) => {

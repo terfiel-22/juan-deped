@@ -137,7 +137,9 @@ export const addAuth = async (req, res, next) => {
     generateTokenAndSetCookie(user._id, res);
     await user.save();
 
-    res.status(200).json({ message: "Account is successfully added.", user });
+    res
+      .status(200)
+      .json({ message: "Account is successfully added.", result: user });
   } catch (error) {
     next(error);
   }
@@ -179,9 +181,10 @@ export const editAuth = async (req, res, next) => {
     });
     if (!updatedAuth) throw new HttpError("User not found.", 404);
 
-    return res
-      .status(200)
-      .json({ message: "Account is successfully updated.", user: updatedAuth });
+    return res.status(200).json({
+      message: "Account is successfully updated.",
+      result: updatedAuth,
+    });
   } catch (error) {
     next(error);
   }
