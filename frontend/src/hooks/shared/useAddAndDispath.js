@@ -8,9 +8,10 @@ const useAddAndDispath = ({ url, formFields, setter }) => {
   const dispatch = useDispatch();
 
   // Loading
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = useCallback(() => {
+    setLoading(true);
     axiosClient
       .post(url, formFields)
       .then(({ data }) => {

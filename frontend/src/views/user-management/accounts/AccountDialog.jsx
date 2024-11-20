@@ -9,6 +9,7 @@ import CustomSelect from '../../../components/forms/theme-elements/CustomSelect'
 import { USER_ROLES_ARRAY } from '../../../constants/UserRolesArray'
 import { setNewAuth } from '../../../store/user/UserSlice';
 import useAddAndDispath from '../../../hooks/shared/useAddAndDispath'
+import { LoadingButton } from '@mui/lab'
 
 const initialForm = {
     username: "",
@@ -148,9 +149,9 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, userData = in
                 <Button color='error' onClick={handleClose}>
                     Close
                 </Button>
-                <Button color='primary' onClick={handleSubmit} autoFocus>
+                <LoadingButton loading={loading} color='primary' onClick={handleSubmit} autoFocus>
                     Save
-                </Button>
+                </LoadingButton>
             </DialogActions>
         </Dialog>
     )
