@@ -9,9 +9,9 @@ import CustomFormLabel from '../../../components/forms/theme-elements/CustomForm
 import useSignup from '../../../hooks/auth/useSignup'
 
 const RegistrationForm = () => {
-    const [showPassword, handleClickShowPassword, handleMouseDownPassword] = usePasswordVisibility();
+    const { showPassword, handleClickShowPassword, handleMouseDownPassword } = usePasswordVisibility();
 
-    const [error, resetError, loading, handleChange, handleSubmit] = useSignup();
+    const { error, resetError, loading, handleChange, handleSubmit } = useSignup();
 
     return (
         <>

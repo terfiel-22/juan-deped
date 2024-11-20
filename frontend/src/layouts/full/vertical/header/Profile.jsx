@@ -20,7 +20,7 @@ const Profile = () => {
 
 
   // Logout
-  const [user, handleLogout] = useLogout();
+  const { user, handleLogout } = useLogout();
 
   return (
     <Box>

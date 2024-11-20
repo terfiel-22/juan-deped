@@ -48,7 +48,7 @@ const useSignup = () => {
       });
   };
 
-  return [error, resetError, loading, handleChange, handleSubmit];
+  return { error, resetError, loading, handleChange, handleSubmit };
 };
 
 export default useSignup;

@@ -23,7 +23,7 @@ const useLogout = () => {
       });
   };
 
-  return [user, handleLogout];
+  return { user, handleLogout };
 };
 
 export default useLogout;

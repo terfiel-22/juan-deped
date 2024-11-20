@@ -15,7 +15,7 @@ const LoginForm = () => {
     const { formData, error, resetError, loading, handleChange, handleSubmit } = useSignin()
     const { email, password, remembered } = formData;
 
-    const [showPassword, handleClickShowPassword, handleMouseDownPassword] = usePasswordVisibility()
+    const { showPassword, handleClickShowPassword, handleMouseDownPassword } = usePasswordVisibility()
 
     return (
         <>

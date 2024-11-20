@@ -7,7 +7,7 @@ const usePasswordVisibility = () => {
     event.preventDefault();
   };
 
-  return [showPassword, handleClickShowPassword, handleMouseDownPassword];
+  return { showPassword, handleClickShowPassword, handleMouseDownPassword };
 };
 
 export default usePasswordVisibility;

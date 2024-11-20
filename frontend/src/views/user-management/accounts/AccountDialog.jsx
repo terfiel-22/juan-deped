@@ -20,7 +20,7 @@ const defaultData = {
 };
 
 const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, data = data ?? defaultData }) => {
-    const [showPassword, handleClickShowPassword, handleMouseDownPassword] = usePasswordVisibility();
+    const { showPassword, handleClickShowPassword, handleMouseDownPassword } = usePasswordVisibility();
     const [formFields, setFormFields] = useState(data)
     useEffect(() => {
         setFormFields(data)

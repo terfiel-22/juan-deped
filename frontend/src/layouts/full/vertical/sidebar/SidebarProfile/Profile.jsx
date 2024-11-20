@@ -1,7 +1,6 @@
 import React from 'react';
 import { Box, Avatar, Typography, IconButton, Tooltip, useMediaQuery } from '@mui/material';
 import { useSelector } from 'react-redux';
-import img1 from 'src/assets/images/profile/user-1.jpg';
 import { IconPower } from '@tabler/icons';
 import useLogout from '../../../../../hooks/auth/useLogout';
 
@@ -11,7 +10,7 @@ export const Profile = () => {
   const hideMenu = lgUp ? customizer.isCollapse && !customizer.isSidebarHover : '';
 
   // Logout
-  const [user, handleLogout] = useLogout();
+  const { user, handleLogout } = useLogout();
 
   return (
     <Box
