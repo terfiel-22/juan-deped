@@ -41,7 +41,7 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, data = data ?
     }
 
     const { loading, handleSubmit } = useAddAndDispatch({ url: "/auth/add", formFields, setter: setNewAuth })
-    const { loading: editLoading, handleSubmit: handleEditSubmit } = useUpdateAndDispatch({ url: "/auth/edit", formFields, setter: setUpdatedAuth })
+    const { updateLoading, handleUpdate } = useUpdateAndDispatch({ url: "/auth/edit", formFields, setter: setUpdatedAuth })
     const { deleteLoading, handleDelete } = useDeleteAndDispatch({ url: "/auth/delete", formFields, setter: setDeletedAuth })
 
     const { username, email, password, cpassword, role } = formFields;
@@ -165,7 +165,7 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, data = data ?
                     <Button color='error' sx={{ marginRight: '10px' }} onClick={handleClose}>
                         Close
                     </Button>
-                    <LoadingButton loading={formFields._id ? editLoading : loading} color='primary' onClick={formFields._id ? handleEditSubmit : handleSubmit}>
+                    <LoadingButton loading={formFields._id ? updateLoading : loading} color='primary' onClick={formFields._id ? handleUpdate : handleSubmit}>
                         Save
                     </LoadingButton>
                 </Box>

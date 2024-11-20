@@ -7,9 +7,9 @@ const useUpdateAndDispatch = ({ url, formFields, setter }) => {
   const dispatch = useDispatch();
 
   // Loading
-  const [loading, setLoading] = useState(false);
+  const [updateLoading, setLoading] = useState(false);
 
-  const handleSubmit = useCallback(() => {
+  const handleUpdate = useCallback(() => {
     setLoading(true);
     axiosClient
       .put(url, formFields)
@@ -25,7 +25,7 @@ const useUpdateAndDispatch = ({ url, formFields, setter }) => {
       });
   }, [url, formFields]);
 
-  return { loading, handleSubmit };
+  return { updateLoading, handleUpdate };
 };
 
 export default useUpdateAndDispatch;
