@@ -1,69 +1,45 @@
-import { IconButton, InputAdornment, TextField, Toolbar, Tooltip, Typography } from '@mui/material';
-import { alpha, Box } from '@mui/system';
-import { IconFilter, IconPlus, IconSearch, IconTrash } from '@tabler/icons';
-import React from 'react'
-import PropTypes from 'prop-types';
+import { IconButton, InputAdornment, TextField, Toolbar, Tooltip } from '@mui/material';
+import { Box } from '@mui/system';
+import { IconFilter, IconPlus, IconSearch } from '@tabler/icons';
 
 const EnhancedTableToolbar = (props) => {
-    const { numSelected, handleSearch, search, searchField = '', handleOpenDialog = () => { } } = props;
+    const { handleSearch, search, searchField = '', handleOpenDialog = () => { } } = props;
 
     return (
         <Toolbar
             sx={{
                 pl: { sm: 2 },
-                pr: { xs: 1, sm: 1 },
-                ...(numSelected > 0 && {
-                    bgcolor: (theme) =>
-                        alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity),
-                }),
+                pr: { xs: 1, sm: 1 }
             }}
         >
-            {numSelected > 0 ? (
-                <Typography sx={{ flex: '1 1 100%' }} color="inherit" variant="subtitle2" component="div">
-                    {numSelected} selected
-                </Typography>
-            ) : (
-                <Box sx={{ flex: '1 1 100%' }}>
-                    <TextField
-                        InputProps={{
-                            startAdornment: (
-                                <InputAdornment position="start">
-                                    <IconSearch size="1.1rem" />
-                                </InputAdornment>
-                            ),
-                        }}
-                        placeholder={`Search ${searchField}`}
-                        size="small"
-                        onChange={handleSearch}
-                        value={search}
-                    />
-                    <Tooltip title="Filter">
-                        <IconButton>
-                            <IconFilter size="1.2rem" icon="filter" />
-                        </IconButton>
-                    </Tooltip>
-                </Box>
-            )}
-
-            {numSelected > 0 ? (
-                <Tooltip title="Delete">
+            <Box sx={{ flex: '1 1 100%' }}>
+                <TextField
+                    InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                <IconSearch size="1.1rem" />
+                            </InputAdornment>
+                        ),
+                    }}
+                    placeholder={`Search ${searchField}`}
+                    size="small"
+                    onChange={handleSearch}
+                    value={search}
+                />
+                <Tooltip title="Filter">
                     <IconButton>
-                        <IconTrash width="18" />
+                        <IconFilter size="1.2rem" icon="filter" />
                     </IconButton>
                 </Tooltip>
-            ) : (
-                <Tooltip title="Add New">
-                    <IconButton onClick={handleOpenDialog}>
-                        <IconPlus size="1.2rem" icon="plus" />
-                    </IconButton>
-                </Tooltip>
-            )}
+            </Box>
+
+            <Tooltip title="Add New">
+                <IconButton onClick={handleOpenDialog}>
+                    <IconPlus size="1.2rem" icon="plus" />
+                </IconButton>
+            </Tooltip>
         </Toolbar>
     );
-};
-
-EnhancedTableToolbar.propTypes = {
-    numSelected: PropTypes.number.isRequired
 };
 
 export default EnhancedTableToolbar

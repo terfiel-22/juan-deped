@@ -7,10 +7,9 @@ import {
     TableSortLabel,
 } from '@mui/material';
 import { visuallyHidden } from '@mui/utils';
-import CustomCheckbox from '../forms/theme-elements/CustomCheckbox';
 
 const EnhancedTableHead = (props) => {
-    const { headCells, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
+    const { headCells, order, orderBy, onRequestSort } = props;
     const createSortHandler = (property) => (event) => {
         onRequestSort(event, property);
     };
@@ -18,16 +17,6 @@ const EnhancedTableHead = (props) => {
     return (
         <TableHead>
             <TableRow>
-                <TableCell padding="checkbox">
-                    <CustomCheckbox
-                        color="primary"
-                        checked={rowCount > 0 && numSelected === rowCount}
-                        onChange={onSelectAllClick}
-                        inputprops={{
-                            'aria-label': 'select all desserts',
-                        }}
-                    />
-                </TableCell>
                 {headCells.map((headCell) => (
                     <TableCell
                         key={headCell.id}
@@ -55,12 +44,10 @@ const EnhancedTableHead = (props) => {
 }
 
 EnhancedTableHead.propTypes = {
-    numSelected: PropTypes.number.isRequired,
+    headCells: PropTypes.array.isRequired,
     onRequestSort: PropTypes.func.isRequired,
-    onSelectAllClick: PropTypes.func.isRequired,
     order: PropTypes.oneOf(['asc', 'desc']).isRequired,
     orderBy: PropTypes.string.isRequired,
-    rowCount: PropTypes.number.isRequired,
 };
 
 export default EnhancedTableHead;
