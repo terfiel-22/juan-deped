@@ -21,7 +21,7 @@ const SHSLearner = () => {
 
     /** Fetch Strands */
     const { data: strands } = useFetchAndDispatch({
-        url: `/strands/track/${track}`, setter: setStrands, selector: selectStrands
+        url: track ? `/strands/track/${track}` : null, setter: setStrands, selector: selectStrands
     });
 
     return (

@@ -42,7 +42,8 @@ export const fetchStudentFormByAuthId = async (req, res, next) => {
     const { authId } = req.params;
 
     const studentForm = await StudentForm.findOne({ authId });
-    if (!studentForm) throw new HttpError("Student form not found.", 404);
+    if (!studentForm)
+      throw new HttpError("Currently no student data on database.", 404);
 
     res.status(200).json(studentForm);
   } catch (error) {

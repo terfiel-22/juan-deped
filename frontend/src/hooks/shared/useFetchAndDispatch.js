@@ -12,6 +12,8 @@ const useFetchAndDispatch = ({ url, setter, selector }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!url) return;
+
     axiosClient
       .get(url)
       .then(({ data }) => {
