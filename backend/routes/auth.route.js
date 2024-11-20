@@ -8,13 +8,20 @@ import {
   deleteAuth,
 } from "../controllers/auth.controller.js";
 import { isAdmin, isAuthenticated } from "../middlewares/roleHandler.js";
+import { registrationFormValidationRules } from "../validators/registrationFormValidationRules.js";
+import { validateForm } from "../validators/validateForm.js";
 
 export default (router) => {
   router.get("/auths", isAuthenticated, isAdmin, fetchAuths);
   router.post("/auth/add", isAuthenticated, isAdmin, addAuth);
   router.put("/auth/edit", isAuthenticated, isAdmin, editAuth);
   router.delete("/auth/delete/:authId", isAuthenticated, isAdmin, deleteAuth);
-  router.post("/auth/register", register);
+  router.post(
+    "/auth/register",
+    registrationFormValidationRules,
+    validateForm,
+    register
+  );
   router.post("/auth/login", login);
   router.post("/auth/logout", logout);
 };

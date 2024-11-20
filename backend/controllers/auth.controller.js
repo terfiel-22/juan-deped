@@ -42,9 +42,6 @@ export const register = async (req, res, next) => {
       req.body;
 
     /** Validations */
-    if (!username || !email || !password || !learnerReferenceNo || !role)
-      throw new HttpError("Fill all required data.", 400);
-
     if (password !== cpassword)
       throw new HttpError("Password confirmation does not matched.", 400);
 

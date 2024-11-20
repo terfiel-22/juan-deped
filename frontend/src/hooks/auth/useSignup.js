@@ -30,9 +30,9 @@ const useSignup = () => {
 
   const handleSubmit = () => {
     setLoading(true);
-    const { username, email, learnerReferenceNo, password, cpassword, role } = formData;
+    const { username, email, password, cpassword, role } = formData;
 
-    if (!username || !email || !learnerReferenceNo || !password || !cpassword || !role) {
+    if (!username || !email || !password || !cpassword || !role) {
       toastError('Please fill in all missing fields!');
       setLoading(false);
       return;
@@ -44,7 +44,7 @@ const useSignup = () => {
         dispatch(setCurrentUser(data));
       })
       .catch(({ response: { data } }) => {
-        setError(data.message);
+        toastError(data.message);
       })
       .finally(() => {
         setLoading(false);
