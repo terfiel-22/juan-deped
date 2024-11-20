@@ -17,13 +17,11 @@ import useTablePagination from '../../../hooks/ui/useTablePagination';
 import EnhancedTableToolbar from '../../../components/shared/EnhancedTableToolbar';
 import EnhancedTableHead from '../../../components/shared/EnhancedTableHead';
 import useEnhancedTableSearch from '../../../hooks/ui/useEnhancedTableSearch';
-import useEnhancedTableSelect from '../../../hooks/ui/useEnhancedTableSelect';
 import useEnhancedTableSort from '../../../hooks/ui/useEnhancedTableSort';
 import useTableDenseToggle from '../../../hooks/ui/useTableDenseToggle';
 import { useEffect, useState } from 'react';
 import TableDenseToggle from '../../../components/shared/TableDenseToggle';
-import CustomCheckbox from '../../../components/forms/theme-elements/CustomCheckbox';
-import { IconDotsVertical } from '@tabler/icons';
+import { IconEye } from '@tabler/icons';
 import useFetchAndDispatch from '../../../hooks/shared/useFetchAndDispatch';
 
 const headCells = [
@@ -98,12 +96,6 @@ const PersonnelTableList = () => {
         setPage,
     });
 
-    // This is for selecting
-    const { selected, isSelected, handleSelectAllClick, handleClick } = useEnhancedTableSelect({
-        rows,
-        fieldName: FIELD_NAME,
-    });
-
     // This is for the sorting
     const { order, orderBy, getComparator, stableSort, handleRequestSort } = useEnhancedTableSort({
         fieldName: FIELD_NAME,
@@ -117,7 +109,6 @@ const PersonnelTableList = () => {
             <Box>
                 <Box>
                     <EnhancedTableToolbar
-                        numSelected={selected.length}
                         search={search}
                         handleSearch={handleSearch}
                         searchField={SEARCH_FIELD}
@@ -131,37 +122,19 @@ const PersonnelTableList = () => {
                             >
                                 <EnhancedTableHead
                                     headCells={headCells}
-                                    numSelected={selected.length}
                                     order={order}
                                     orderBy={orderBy}
-                                    onSelectAllClick={handleSelectAllClick}
                                     onRequestSort={handleRequestSort}
-                                    rowCount={rows.length}
                                 />
                                 <TableBody>
                                     {stableSort(pageData, getComparator()).map((personnel, index) => {
-                                        const isItemSelected = isSelected(personnel[FIELD_NAME]);
-                                        const labelId = `enhanced-table-checkbox-${index}`;
-
                                         return (
                                             <TableRow
                                                 hover
-                                                onClick={() => handleClick(personnel[FIELD_NAME])}
                                                 role="checkbox"
-                                                aria-checked={isItemSelected}
                                                 tabIndex={-1}
                                                 key={personnel._id}
-                                                selected={isItemSelected}
                                             >
-                                                <TableCell padding="checkbox">
-                                                    <CustomCheckbox
-                                                        color="primary"
-                                                        checked={isItemSelected}
-                                                        inputprops={{
-                                                            'aria-labelledby': labelId,
-                                                        }}
-                                                    />
-                                                </TableCell>
                                                 <TableCell>
                                                     <Typography color="textSecondary" variant="h6" fontWeight="400">
                                                         {personnel.empNo}
@@ -188,9 +161,9 @@ const PersonnelTableList = () => {
                                                     </Typography>
                                                 </TableCell>
                                                 <TableCell>
-                                                    <Tooltip title="Edit">
-                                                        <IconButton size="small">
-                                                            <IconDotsVertical size="1.1rem" />
+                                                    <Tooltip title="View">
+                                                        <IconButton size="small" onClick={() => { }}>
+                                                            <IconEye size="1.1rem" />
                                                         </IconButton>
                                                     </Tooltip>
                                                 </TableCell>
