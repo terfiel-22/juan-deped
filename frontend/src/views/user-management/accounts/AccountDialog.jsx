@@ -1,15 +1,16 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Grid, IconButton, InputAdornment, MenuItem } from '@mui/material'
 import { Stack } from '@mui/system'
+import { useEffect, useState } from 'react'
+import { IconEye, IconEyeOff } from '@tabler/icons'
+import { LoadingButton } from '@mui/lab'
 import CustomFormLabel from '../../../components/forms/theme-elements/CustomFormLabel'
 import CustomOutlinedInput from '../../../components/forms/theme-elements/CustomOutlinedInput'
-import { useEffect, useState } from 'react'
 import usePasswordVisibility from '../../../hooks/ui/usePasswordVisibility'
-import { IconEye, IconEyeOff } from '@tabler/icons'
 import CustomSelect from '../../../components/forms/theme-elements/CustomSelect'
 import { USER_ROLES_ARRAY } from '../../../constants/UserRolesArray'
-import { setNewAuth } from '../../../store/user/UserSlice';
-import useAddAndDispath from '../../../hooks/shared/useAddAndDispath'
-import { LoadingButton } from '@mui/lab'
+import { setNewAuth, setUpdatedAuth } from '../../../store/user/UserSlice';
+import useAddAndDispatch from '../../../hooks/shared/useAddAndDispatch'
+import useUpdateAndDispatch from '../../../hooks/shared/useUpdateAndDispatch'
 
 const defaultData = {
     username: "",
@@ -26,7 +27,8 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, data = data ?
         setFormFields(data)
     }, [data])
 
-    const { loading, handleSubmit } = useAddAndDispath({ url: "/auth/add", formFields, setter: setNewAuth })
+    const { loading, handleSubmit } = useAddAndDispatch({ url: "/auth/add", formFields, setter: setNewAuth })
+    const { loading: editLoading, handleSubmit: handleEditSubmit } = useUpdateAndDispatch({ url: "/auth/edit", formFields, setter: setUpdatedAuth })
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -153,7 +155,7 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, data = data ?
                 <Button color='error' onClick={handleClose}>
                     Close
                 </Button>
-                <LoadingButton loading={loading} color='primary' onClick={handleSubmit} autoFocus>
+                <LoadingButton loading={formFields._id ? editLoading : loading} color='primary' onClick={formFields._id ? handleEditSubmit : handleSubmit}>
                     Save
                 </LoadingButton>
             </DialogActions>

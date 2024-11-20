@@ -178,7 +178,7 @@ export const editAuth = async (req, res, next) => {
     const updatedAuth = await Auth.findByIdAndUpdate(_id, values, {
       new: true,
       runValidators: true,
-    });
+    }).select("-password");
     if (!updatedAuth) throw new HttpError("User not found.", 404);
 
     return res.status(200).json({

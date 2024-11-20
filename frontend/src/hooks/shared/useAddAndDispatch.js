@@ -3,7 +3,7 @@ import axiosClient from '../../utils/axiosClient';
 import { toastError, toastSuccess } from '../../utils/toastEmitter';
 import { useCallback, useState } from 'react';
 
-const useAddAndDispath = ({ url, formFields, setter }) => {
+const useAddAndDispatch = ({ url, formFields, setter }) => {
   const dispatch = useDispatch();
 
   // Loading
@@ -28,4 +28,4 @@ const useAddAndDispath = ({ url, formFields, setter }) => {
   return { loading, handleSubmit };
 };
 
-export default useAddAndDispath;
+export default useAddAndDispatch;

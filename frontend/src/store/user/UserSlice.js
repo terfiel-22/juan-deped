@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createSelector } from 'reselect';
 import { credentialsInitState } from './UserSliceInitStates';
+import { addAuth, updateAuth } from './UserSliceService';
 
 const initialState = {
   credentials: credentialsInitState,
@@ -23,7 +24,10 @@ export const UserSlice = createSlice({
       state.auths = action.payload;
     },
     setNewAuth: (state, action) => {
-      state.auths = [...state.auths, action.payload];
+      state.auths = addAuth(state.auths, action.payload);
+    },
+    setUpdatedAuth: (state, action) => {
+      state.auths = updateAuth(state.auths, action.payload);
     },
     setPersonnels: (state, action) => {
       state.personnels = action.payload;
@@ -34,8 +38,14 @@ export const UserSlice = createSlice({
 export const UserReducer = UserSlice.reducer;
 
 // Actions
-export const { setCurrentUser, setCredentials, setAuths, setNewAuth, setPersonnels } =
-  UserSlice.actions;
+export const {
+  setCurrentUser,
+  setCredentials,
+  setAuths,
+  setNewAuth,
+  setUpdatedAuth,
+  setPersonnels,
+} = UserSlice.actions;
 
 // Selector
 export const selectUserReducer = (state) => state.userReducer;
