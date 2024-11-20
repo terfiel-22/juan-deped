@@ -47,6 +47,12 @@ const headCells = [
         label: 'Email',
     },
     {
+        id: 'role',
+        numeric: false,
+        disablePadding: false,
+        label: 'Role',
+    },
+    {
         id: 'isApproved',
         numeric: false,
         disablePadding: false,
@@ -176,6 +182,11 @@ const AccountTableList = () => {
                                                 <TableCell>
                                                     <Typography color="textSecondary" variant="h6" fontWeight="400">
                                                         {auth.email}
+                                                    </Typography>
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Typography color="textSecondary" variant="h6" fontWeight="400">
+                                                        {auth.role}
                                                     </Typography>
                                                 </TableCell>
                                                 <TableCell>
