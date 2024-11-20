@@ -23,6 +23,7 @@ const RegistrarRoute = Loadable(lazy(() => import('./middlewares/RegistrarRoute'
 const StudentRoute = Loadable(lazy(() => import('./middlewares/StudentRoute')));
 
 /** User Management */
+const Accounts = Loadable(lazy(() => import('../views/user-management/accounts/Accounts')));
 const Personnels = Loadable(lazy(() => import('../views/user-management/personnels/Personnels')));
 
 /** Career Management */
@@ -57,6 +58,7 @@ const Router = [
     children: [
       { path: '/admin', element: <Navigate to="/admin/dashboard" /> },
       { path: '/admin/dashboard', element: <ModernDash /> },
+      { path: '/admin/accounts', element: <Accounts /> },
       { path: '/admin/personnels', element: <Personnels /> },
       { path: '/admin/tracks', element: <Tracks /> },
       { path: '/admin/strands', element: <Strands /> },

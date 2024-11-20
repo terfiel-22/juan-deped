@@ -1,29 +1,29 @@
 import { Box } from "@mui/system"
 import PageContainer from "../../../components/container/PageContainer"
 import Breadcrumb from "../../../layouts/full/shared/breadcrumb/Breadcrumb"
-import PersonnelTableList from "./PersonnelTableList";
+import AccountTableList from "./AccountTableList";
 
 const BCrumb = [
     {
-        to: '/admin/personnels',
+        to: '/admin/accounts',
         title: 'User Management',
     },
     {
-        title: 'Personnels',
+        title: 'Accounts',
     },
 ];
 
-const Personnels = () => {
+const Accounts = () => {
     return (
-        <PageContainer title="JuanDepEd | Personnels" description="this is Personnels page">
+        <PageContainer title="JuanDepEd | Accounts" description="this is Accounts page">
             {/* breadcrumb */}
-            <Breadcrumb title="Personnels" items={BCrumb} />
+            <Breadcrumb title="Accounts" items={BCrumb} />
             {/* end breadcrumb */}
             <Box>
-                <PersonnelTableList />
+                <AccountTableList />
             </Box>
         </PageContainer>
     )
 }
 
-export default Personnels
+export default Accounts
