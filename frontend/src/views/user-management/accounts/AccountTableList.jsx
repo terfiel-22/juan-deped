@@ -26,6 +26,8 @@ import CustomCheckbox from '../../../components/forms/theme-elements/CustomCheck
 import { IconDotsVertical } from '@tabler/icons';
 import useFetchAndDispatch from '../../../hooks/shared/useFetchAndDispatch';
 import { formatDate } from '../../../utils/dateFormatter';
+import useDialog from '../../../hooks/shared/useDialog';
+import AddAccountDialog from './AddAccountDialog';
 
 const headCells = [
     {
@@ -119,8 +121,12 @@ const AccountTableList = () => {
     // This is for table density
     const [dense, handleChangeDense] = useTableDenseToggle();
 
+    // This is for add dialog
+    const { isOpen, isFullScreen, handleOpenDialog, handleCloseDialog } = useDialog();
+
     return (
         <Box>
+            <AddAccountDialog isOpen={isOpen} isFullScreen={isFullScreen} handleClose={handleCloseDialog} />
             <Box>
                 <Box>
                     <EnhancedTableToolbar
@@ -128,6 +134,7 @@ const AccountTableList = () => {
                         search={search}
                         handleSearch={handleSearch}
                         searchField={SEARCH_FIELD}
+                        handleOpenDialog={handleOpenDialog}
                     />
                     <Paper variant="outlined" sx={{ mx: 2, mt: 1 }}>
                         <TableContainer>

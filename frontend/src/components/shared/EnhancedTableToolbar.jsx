@@ -5,7 +5,7 @@ import React from 'react'
 import PropTypes from 'prop-types';
 
 const EnhancedTableToolbar = (props) => {
-    const { numSelected, handleSearch, search, searchField = '' } = props;
+    const { numSelected, handleSearch, search, searchField = '', handleOpenDialog = () => { } } = props;
 
     return (
         <Toolbar
@@ -53,7 +53,7 @@ const EnhancedTableToolbar = (props) => {
                 </Tooltip>
             ) : (
                 <Tooltip title="Add New">
-                    <IconButton>
+                    <IconButton onClick={handleOpenDialog}>
                         <IconPlus size="1.2rem" icon="plus" />
                     </IconButton>
                 </Tooltip>
