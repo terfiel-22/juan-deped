@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { ReactComponent as JuanDepedLogo } from 'src/assets/images/logos/juan-deped-logo.svg';
+import { ReactComponent as JuanDepedLogoDark } from 'src/assets/images/logos/juan-deped-logo-dark.svg';
+import { ReactComponent as JuanDepedLogoLight } from 'src/assets/images/logos/juan-deped-logo-light.svg';
 import { styled } from '@mui/material';
 
 const Logo = () => {
@@ -20,7 +21,11 @@ const Logo = () => {
         alignItems: 'center',
       }}
     >
-      <JuanDepedLogo />
+      {customizer.activeMode === 'dark' ? (
+        <JuanDepedLogoLight />
+      ) : (
+        <JuanDepedLogoDark />
+      )}
     </LinkStyled>
   );
 };
