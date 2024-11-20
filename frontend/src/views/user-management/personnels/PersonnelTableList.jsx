@@ -76,7 +76,7 @@ const PersonnelTableList = () => {
     }, [data])
 
     // This is for pagination
-    const [
+    const {
         page,
         rowsPerPage,
         pageData,
@@ -85,13 +85,13 @@ const PersonnelTableList = () => {
         rowsCount,
         setPage,
         handleChangePage,
-        handleChangeRowsPerPage,
-    ] = useTablePagination({ rows });
+        handleChangeRowsPerPage
+    } = useTablePagination({ rows });
 
     // This is for searching
     const FIELD_NAME = 'empNo';
     const SEARCH_FIELD = 'EMP No.'
-    const [search, handleSearch] = useEnhancedTableSearch({
+    const { search, handleSearch } = useEnhancedTableSearch({
         rows,
         fieldName: FIELD_NAME,
         setRows,
@@ -99,18 +99,18 @@ const PersonnelTableList = () => {
     });
 
     // This is for selecting
-    const [selected, isSelected, handleSelectAllClick, handleClick] = useEnhancedTableSelect({
+    const { selected, isSelected, handleSelectAllClick, handleClick } = useEnhancedTableSelect({
         rows,
         fieldName: FIELD_NAME,
     });
 
     // This is for the sorting
-    const [order, orderBy, getComparator, stableSort, handleRequestSort] = useEnhancedTableSort({
+    const { order, orderBy, getComparator, stableSort, handleRequestSort } = useEnhancedTableSort({
         fieldName: FIELD_NAME,
     });
 
     // This is for table density
-    const [dense, handleChangeDense] = useTableDenseToggle();
+    const { dense, handleChangeDense } = useTableDenseToggle();
 
     return (
         <Box>

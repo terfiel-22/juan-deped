@@ -54,7 +54,7 @@ const SpecializationTableList = () => {
     }, [data])
 
     // This is for pagination
-    const [
+    const {
         page,
         rowsPerPage,
         pageData,
@@ -64,12 +64,12 @@ const SpecializationTableList = () => {
         setPage,
         handleChangePage,
         handleChangeRowsPerPage,
-    ] = useTablePagination({ rows });
+    } = useTablePagination({ rows });
 
     // This is for searching
     const FIELD_NAME = 'name';
     const SEARCH_FIELD = 'Specialization'
-    const [search, handleSearch] = useEnhancedTableSearch({
+    const { search, handleSearch } = useEnhancedTableSearch({
         rows,
         fieldName: FIELD_NAME,
         setRows,
@@ -77,18 +77,18 @@ const SpecializationTableList = () => {
     });
 
     // This is for selecting
-    const [selected, isSelected, handleSelectAllClick, handleClick] = useEnhancedTableSelect({
+    const { selected, isSelected, handleSelectAllClick, handleClick } = useEnhancedTableSelect({
         rows,
         fieldName: FIELD_NAME,
     });
 
     // This is for the sorting
-    const [order, orderBy, getComparator, stableSort, handleRequestSort] = useEnhancedTableSort({
+    const { order, orderBy, getComparator, stableSort, handleRequestSort } = useEnhancedTableSort({
         fieldName: FIELD_NAME,
     });
 
     // This is for table density
-    const [dense, handleChangeDense] = useTableDenseToggle();
+    const { dense, handleChangeDense } = useTableDenseToggle();
 
     return (
         <Box>
