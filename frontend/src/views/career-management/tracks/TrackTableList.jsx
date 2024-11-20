@@ -36,7 +36,7 @@ const TrackTableList = () => {
     const { data } = useFetchAndDispatch({
         url: "/tracks", setter: setTracks, selector: selectTracks
     });
-    const [rows, setRows] = useState([]);
+    const [rows, setRows] = useState(data);
     useEffect(() => {
         setRows(data)
     }, [data])

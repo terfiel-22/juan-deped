@@ -70,7 +70,7 @@ const PersonnelTableList = () => {
     const { data } = useFetchAndDispatch({
         url: "/personnels", setter: setPersonnels, selector: selectPersonnels
     });
-    const [rows, setRows] = useState([]);
+    const [rows, setRows] = useState(data);
     useEffect(() => {
         setRows(data)
     }, [data])

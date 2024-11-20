@@ -71,7 +71,7 @@ const AccountTableList = () => {
     const { data } = useFetchAndDispatch({
         url: "/auths", setter: setAuths, selector: selectAuths
     });
-    const [rows, setRows] = useState([]);
+    const [rows, setRows] = useState(data);
     useEffect(() => {
         setRows(data)
     }, [data])

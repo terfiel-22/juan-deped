@@ -48,7 +48,7 @@ const SpecializationTableList = () => {
     const { data } = useFetchAndDispatch({
         url: "/specializations", setter: setSpecializations, selector: selectSpecializations
     });
-    const [rows, setRows] = useState([]);
+    const [rows, setRows] = useState(data);
     useEffect(() => {
         setRows(data)
     }, [data])

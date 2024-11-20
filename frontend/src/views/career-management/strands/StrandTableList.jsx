@@ -42,7 +42,7 @@ const StrandTableList = () => {
     const { data } = useFetchAndDispatch({
         url: "/strands", setter: setStrands, selector: selectStrands
     });
-    const [rows, setRows] = useState([]);
+    const [rows, setRows] = useState(data);
     useEffect(() => {
         setRows(data)
     }, [data])
