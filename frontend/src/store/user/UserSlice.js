@@ -5,6 +5,7 @@ import { credentialsInitState } from './UserSliceInitStates';
 const initialState = {
   credentials: credentialsInitState,
   currentUser: null,
+  auths: [],
   personnels: [],
 };
 
@@ -18,6 +19,9 @@ export const UserSlice = createSlice({
     setCredentials: (state, action) => {
       state.credentials = action.payload;
     },
+    setAuths: (state, action) => {
+      state.auths = action.payload;
+    },
     setPersonnels: (state, action) => {
       state.personnels = action.payload;
     },
@@ -27,7 +31,7 @@ export const UserSlice = createSlice({
 export const UserReducer = UserSlice.reducer;
 
 // Actions
-export const { setCurrentUser, setCredentials, setPersonnels } = UserSlice.actions;
+export const { setCurrentUser, setCredentials, setAuths, setPersonnels } = UserSlice.actions;
 
 // Selector
 export const selectUserReducer = (state) => state.userReducer;
@@ -36,4 +40,5 @@ export const selectCurrentUserRole = createSelector([selectCurrentUser], (curren
   currentUser ? currentUser.role : 'Guest',
 );
 export const selectCredentials = createSelector([selectUserReducer], (user) => user.credentials);
+export const selectAuths = createSelector([selectUserReducer], (user) => user.auths);
 export const selectPersonnels = createSelector([selectUserReducer], (user) => user.personnels);
