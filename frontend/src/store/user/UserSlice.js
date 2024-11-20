@@ -22,6 +22,9 @@ export const UserSlice = createSlice({
     setAuths: (state, action) => {
       state.auths = action.payload;
     },
+    setNewAuth: (state, action) => {
+      state.auths = [...state.auths, action.payload];
+    },
     setPersonnels: (state, action) => {
       state.personnels = action.payload;
     },
@@ -31,7 +34,8 @@ export const UserSlice = createSlice({
 export const UserReducer = UserSlice.reducer;
 
 // Actions
-export const { setCurrentUser, setCredentials, setAuths, setPersonnels } = UserSlice.actions;
+export const { setCurrentUser, setCredentials, setAuths, setNewAuth, setPersonnels } =
+  UserSlice.actions;
 
 // Selector
 export const selectUserReducer = (state) => state.userReducer;

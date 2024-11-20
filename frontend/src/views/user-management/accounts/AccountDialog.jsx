@@ -7,6 +7,8 @@ import usePasswordVisibility from '../../../hooks/ui/usePasswordVisibility'
 import { IconEye, IconEyeOff } from '@tabler/icons'
 import CustomSelect from '../../../components/forms/theme-elements/CustomSelect'
 import { USER_ROLES_ARRAY } from '../../../constants/UserRolesArray'
+import { setNewAuth } from '../../../store/user/UserSlice';
+import useAddAndDispath from '../../../hooks/shared/useAddAndDispath'
 
 const initialForm = {
     username: "",
@@ -19,6 +21,9 @@ const initialForm = {
 const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, userData = initialForm }) => {
     const [showPassword, handleClickShowPassword, handleMouseDownPassword] = usePasswordVisibility();
     const [formFields, setFormFields] = useState(userData)
+
+    const { loading, handleSubmit } = useAddAndDispath({ url: "/auth/add", formFields, setter: setNewAuth })
+
     const handleChange = (e) => {
         const { name, value } = e.target;
 
@@ -27,13 +32,12 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, userData = in
             [name]: value
         })
     };
-
     const handleClose = () => {
         setFormFields(initialForm);
         close();
     }
-    const { username, email, password, cpassword, role } = formFields;
 
+    const { username, email, password, cpassword, role } = formFields;
 
     return (
         <Dialog
@@ -144,7 +148,7 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, userData = in
                 <Button color='error' onClick={handleClose}>
                     Close
                 </Button>
-                <Button color='primary' onClick={handleClose} autoFocus>
+                <Button color='primary' onClick={handleSubmit} autoFocus>
                     Save
                 </Button>
             </DialogActions>
