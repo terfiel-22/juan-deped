@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createSelector } from 'reselect';
 import { credentialsInitState } from './UserSliceInitStates';
-import { addAuth, updateAuth } from './UserSliceService';
+import { addAuth, removeAuth, updateAuth } from './UserSliceService';
 
 const initialState = {
   credentials: credentialsInitState,
@@ -29,6 +29,9 @@ export const UserSlice = createSlice({
     setUpdatedAuth: (state, action) => {
       state.auths = updateAuth(state.auths, action.payload);
     },
+    setDeletedAuth: (state, action) => {
+      state.auths = removeAuth(state.auths, action.payload);
+    },
     setPersonnels: (state, action) => {
       state.personnels = action.payload;
     },
@@ -44,6 +47,7 @@ export const {
   setAuths,
   setNewAuth,
   setUpdatedAuth,
+  setDeletedAuth,
   setPersonnels,
 } = UserSlice.actions;
 

@@ -8,9 +8,10 @@ import CustomOutlinedInput from '../../../components/forms/theme-elements/Custom
 import usePasswordVisibility from '../../../hooks/ui/usePasswordVisibility'
 import CustomSelect from '../../../components/forms/theme-elements/CustomSelect'
 import { USER_ROLES_ARRAY } from '../../../constants/UserRolesArray'
-import { setNewAuth, setUpdatedAuth } from '../../../store/user/UserSlice';
+import { setDeletedAuth, setNewAuth, setUpdatedAuth } from '../../../store/user/UserSlice';
 import useAddAndDispatch from '../../../hooks/shared/useAddAndDispatch'
 import useUpdateAndDispatch from '../../../hooks/shared/useUpdateAndDispatch'
+import useDeleteAndDispatch from '../../../hooks/shared/useDeleteAndDispatch'
 
 const defaultData = {
     username: "",
@@ -27,12 +28,8 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, data = data ?
         setFormFields(data)
     }, [data])
 
-    const { loading, handleSubmit } = useAddAndDispatch({ url: "/auth/add", formFields, setter: setNewAuth })
-    const { loading: editLoading, handleSubmit: handleEditSubmit } = useUpdateAndDispatch({ url: "/auth/edit", formFields, setter: setUpdatedAuth })
-
     const handleChange = (e) => {
         const { name, value } = e.target;
-
         setFormFields({
             ...formFields,
             [name]: value
@@ -43,11 +40,9 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, data = data ?
         close();
     }
 
-    const handleDelete = () => {
-        if (confirm("Are you sure you want to delete this?")) {
-            alert("User is deleted successfully.")
-        }
-    }
+    const { loading, handleSubmit } = useAddAndDispatch({ url: "/auth/add", formFields, setter: setNewAuth })
+    const { loading: editLoading, handleSubmit: handleEditSubmit } = useUpdateAndDispatch({ url: "/auth/edit", formFields, setter: setUpdatedAuth })
+    const { deleteLoading, handleDelete } = useDeleteAndDispatch({ url: "/auth/delete", formFields, setter: setDeletedAuth })
 
     const { username, email, password, cpassword, role } = formFields;
 
@@ -160,7 +155,7 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, data = data ?
             <DialogActions sx={{ justifyContent: 'space-between' }}>
                 {
                     formFields._id ?
-                        <LoadingButton sx={{ marginLeft: '0', display: 'block' }} loading={loading} color='warning' onClick={handleDelete}>
+                        <LoadingButton sx={{ marginLeft: '0', display: 'block' }} loading={deleteLoading} color='warning' onClick={handleDelete}>
                             Delete
                         </LoadingButton>
                         :

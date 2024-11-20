@@ -192,9 +192,9 @@ export const editAuth = async (req, res, next) => {
 
 export const deleteAuth = async (req, res, next) => {
   try {
-    const { _id } = req.body;
+    const { authId } = req.params;
 
-    const deletedAuth = await Auth.findByIdAndDelete(_id);
+    const deletedAuth = await Auth.findByIdAndDelete(authId);
 
     if (!deletedAuth) throw new HttpError("User not found.", 404);
 
