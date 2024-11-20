@@ -16,7 +16,8 @@ const initialForm = {
     role: ""
 };
 
-const AccountDialog = ({ isOpen, isFullScreen, handleClose, userData = initialForm }) => {
+const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, userData = initialForm }) => {
+    const [showPassword, handleClickShowPassword, handleMouseDownPassword] = usePasswordVisibility();
     const [formFields, setFormFields] = useState(userData)
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -26,9 +27,13 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose, userData = initialFo
             [name]: value
         })
     };
+
+    const handleClose = () => {
+        setFormFields(initialForm);
+        close();
+    }
     const { username, email, password, cpassword, role } = formFields;
 
-    const [showPassword, handleClickShowPassword, handleMouseDownPassword] = usePasswordVisibility();
 
     return (
         <Dialog
