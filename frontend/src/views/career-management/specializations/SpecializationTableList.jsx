@@ -8,10 +8,11 @@ import {
     Paper,
     TableRow,
     TablePagination,
+    Tooltip,
+    IconButton,
 } from '@mui/material';
 import useTablePagination from '../../../hooks/ui/useTablePagination';
 import useEnhancedTableSearch from '../../../hooks/ui/useEnhancedTableSearch';
-import useEnhancedTableSelect from '../../../hooks/ui/useEnhancedTableSelect';
 import useEnhancedTableSort from '../../../hooks/ui/useEnhancedTableSort';
 import useTableDenseToggle from '../../../hooks/ui/useTableDenseToggle';
 import EnhancedTableToolbar from '../../../components/shared/EnhancedTableToolbar';
@@ -21,6 +22,7 @@ import TableDenseToggle from '../../../components/shared/TableDenseToggle';
 import CustomCheckbox from '../../../components/forms/theme-elements/CustomCheckbox';
 import { selectSpecializations, setSpecializations } from '../../../store/career/CareerSlice';
 import useFetchAndDispatch from '../../../hooks/shared/useFetchAndDispatch';
+import { IconEye } from '@tabler/icons';
 
 const headCells = [
     {
@@ -40,6 +42,12 @@ const headCells = [
         numeric: false,
         disablePadding: false,
         label: 'Track',
+    },
+    {
+        id: 'action',
+        numeric: false,
+        disablePadding: false,
+        label: 'Action',
     },
 ];
 
@@ -76,12 +84,6 @@ const SpecializationTableList = () => {
         setPage,
     });
 
-    // This is for selecting
-    const { selected, isSelected, handleSelectAllClick, handleClick } = useEnhancedTableSelect({
-        rows,
-        fieldName: FIELD_NAME,
-    });
-
     // This is for the sorting
     const { order, orderBy, getComparator, stableSort, handleRequestSort } = useEnhancedTableSort({
         fieldName: FIELD_NAME,
@@ -95,7 +97,6 @@ const SpecializationTableList = () => {
             <Box>
                 <Box>
                     <EnhancedTableToolbar
-                        numSelected={selected.length}
                         search={search}
                         handleSearch={handleSearch}
                         searchField={SEARCH_FIELD}
@@ -109,37 +110,20 @@ const SpecializationTableList = () => {
                             >
                                 <EnhancedTableHead
                                     headCells={headCells}
-                                    numSelected={selected.length}
                                     order={order}
                                     orderBy={orderBy}
-                                    onSelectAllClick={handleSelectAllClick}
                                     onRequestSort={handleRequestSort}
-                                    rowCount={rows.length}
                                 />
                                 <TableBody>
                                     {stableSort(pageData, getComparator()).map((specialization, index) => {
-                                        const isItemSelected = isSelected(specialization[FIELD_NAME]);
-                                        const labelId = `enhanced-table-checkbox-${index}`;
 
                                         return (
                                             <TableRow
                                                 hover
-                                                onClick={() => handleClick(specialization[FIELD_NAME])}
                                                 role="checkbox"
-                                                aria-checked={isItemSelected}
                                                 tabIndex={-1}
                                                 key={specialization._id}
-                                                selected={isItemSelected}
                                             >
-                                                <TableCell padding="checkbox">
-                                                    <CustomCheckbox
-                                                        color="primary"
-                                                        checked={isItemSelected}
-                                                        inputprops={{
-                                                            'aria-labelledby': labelId,
-                                                        }}
-                                                    />
-                                                </TableCell>
                                                 <TableCell>
                                                     <Typography color="textSecondary" variant="h6" fontWeight="400">
                                                         {specialization.name}
@@ -154,6 +138,13 @@ const SpecializationTableList = () => {
                                                     <Typography color="textSecondary" variant="h6" fontWeight="400">
                                                         {specialization.track}
                                                     </Typography>
+                                                </TableCell>
+                                                <TableCell>
+                                                    <Tooltip title="View">
+                                                        <IconButton size="small" onClick={() => { }}>
+                                                            <IconEye size="1.1rem" />
+                                                        </IconButton>
+                                                    </Tooltip>
                                                 </TableCell>
                                             </TableRow>
                                         );
