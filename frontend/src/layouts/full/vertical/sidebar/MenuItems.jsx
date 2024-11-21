@@ -2,6 +2,7 @@ import {
   IconChartHistogram,
   IconUsers,
   IconTable,
+  IconBook,
 } from '@tabler/icons';
 
 import { uniqueId } from 'lodash';
@@ -58,6 +59,16 @@ const Menuitems = [
   },
   {
     navlabel: true,
+    subheader: 'Document Management',
+  },
+  {
+    id: uniqueId(),
+    title: 'School Forms',
+    icon: IconBook,
+    href: '/admin/school-forms',
+  },
+  {
+    navlabel: true,
     subheader: 'Enrollment Management',
   },
   {
@@ -75,10 +86,6 @@ const Menuitems = [
   {
     navlabel: true,
     subheader: 'Grade Management',
-  },
-  {
-    navlabel: true,
-    subheader: 'Document Management',
   },
   {
     navlabel: true,
