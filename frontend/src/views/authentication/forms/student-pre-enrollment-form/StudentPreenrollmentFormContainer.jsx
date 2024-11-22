@@ -1,6 +1,5 @@
-import { Button, Grid, Alert } from '@mui/material'
+import { Button, Grid } from '@mui/material'
 import { Box, Stack } from '@mui/system'
-import { useReactToPrint } from "react-to-print";
 import PrintIcon from '@mui/icons-material/Print';
 import { LoadingButton } from '@mui/lab';
 import ProgressMobileStepper from '../../../../components/shared/ProgressMobileStepper'
@@ -9,24 +8,24 @@ import useStepper from "../../../../hooks/ui/useStepper";
 import { lazy, useRef } from "react";
 import Loadable from "../../../../layouts/full/shared/loadable/Loadable";
 import useStudentDetailForm from '../../../../hooks/student/useStudentDetailForm';
-const GeneralInformation = Loadable(lazy(() => import('../student-form-steps/GeneralInformation')))
-const LearnerInformation = Loadable(lazy(() => import('../student-form-steps/LearnerInformation')))
-const CurrentAddressInformation = Loadable(lazy(() => import('../student-form-steps/CurrentAddressInformation')))
-const PermanentAddressInformation = Loadable(lazy(() => import('../student-form-steps/PermanentAddressInformation')))
-const ParentInformation = Loadable(lazy(() => import('../student-form-steps/ParentInformation')))
-const ReturneeInformation = Loadable(lazy(() => import('../student-form-steps/ReturneeInformation')))
-const SHSLearner = Loadable(lazy(() => import('../student-form-steps/SHSLearner')))
-const PreferredDistanceLearningModalities = Loadable(lazy(() => import('../student-form-steps/PreferredDistanceLearningModalities')))
-const NCPasser = Loadable(lazy(() => import('../student-form-steps/NCPasser')))
-const SHSEligibility = Loadable(lazy(() => import('../student-form-steps/SHSEligibility')))
-const HealthReport = Loadable(lazy(() => import('../student-form-steps/HealthReport')))
+const GeneralInformation = Loadable(lazy(() => import('./student-form-steps/GeneralInformation')))
+const LearnerInformation = Loadable(lazy(() => import('./student-form-steps/LearnerInformation')))
+const CurrentAddressInformation = Loadable(lazy(() => import('./student-form-steps/CurrentAddressInformation')))
+const PermanentAddressInformation = Loadable(lazy(() => import('./student-form-steps/PermanentAddressInformation')))
+const ParentInformation = Loadable(lazy(() => import('./student-form-steps/ParentInformation')))
+const ReturneeInformation = Loadable(lazy(() => import('./student-form-steps/ReturneeInformation')))
+const SHSLearner = Loadable(lazy(() => import('./student-form-steps/SHSLearner')))
+const PreferredDistanceLearningModalities = Loadable(lazy(() => import('./student-form-steps/PreferredDistanceLearningModalities')))
+const NCPasser = Loadable(lazy(() => import('./student-form-steps/NCPasser')))
+const SHSEligibility = Loadable(lazy(() => import('./student-form-steps/SHSEligibility')))
+const HealthReport = Loadable(lazy(() => import('./student-form-steps/HealthReport')))
 
-import StudentPreEnrollmentData from '../student-form-steps/StudentPreEnrollmentData';
+import StudentPreEnrollmentData from './student-form-steps/StudentPreEnrollmentData';
 import useComponentPrinter from '../../../../hooks/ui/useComponentPrinter';
 import { useSelector } from 'react-redux';
 import { selectIsFromSubmitted } from '../../../../store/student/StudentSlice';
 
-const RegStudent = () => {
+const StudentPreenrollmentFormContainer = () => {
     const { handleSubmit, loading } = useStudentDetailForm();
 
     const contentRef = useRef();
@@ -143,4 +142,4 @@ const RegStudent = () => {
     )
 }
 
-export default RegStudent;
+export default StudentPreenrollmentFormContainer;

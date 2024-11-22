@@ -1,9 +1,9 @@
 import { Box } from '@mui/system'
 import { useMemo } from 'react'
 import { Grid } from '@mui/material'
-import CustomFormLabel from '../../../../components/forms/theme-elements/CustomFormLabel'
-import CustomTextField from '../../../../components/forms/theme-elements/CustomTextField'
-import useStudentDetailForm from '../../../../hooks/student/useStudentDetailForm'
+import CustomFormLabel from '../../../../../components/forms/theme-elements/CustomFormLabel'
+import CustomTextField from '../../../../../components/forms/theme-elements/CustomTextField'
+import useStudentDetailForm from '../../../../../hooks/student/useStudentDetailForm'
 
 const HealthReport = () => {
     const { formFields, handleChange } = useStudentDetailForm()

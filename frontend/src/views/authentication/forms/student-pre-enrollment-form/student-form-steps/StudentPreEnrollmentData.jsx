@@ -1,7 +1,7 @@
 import { Box, Typography, Divider, Paper, Grid } from '@mui/material';
 import { useSelector } from 'react-redux';;
-import { selectCurrentStudent } from '../../../../store/student/StudentSlice';
-import useFetch from '../../../../hooks/shared/useFetch';
+import { selectCurrentStudent } from '../../../../../store/student/StudentSlice';
+import useFetch from '../../../../../hooks/shared/useFetch';
 import { forwardRef } from 'react';
 
 const StudentPreEnrollmentData = forwardRef((_, ref) => {

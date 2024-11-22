@@ -2,11 +2,11 @@ import { Grid, Box, Card } from '@mui/material';
 import PageContainer from 'src/components/container/PageContainer';
 import Logo from 'src/layouts/full/shared/logo/Logo';
 import BlankCard from '../../components/shared/BlankCard';
-import RegStudent from './forms/registration-type/RegStudent';
 import useFetchAndDispatch from '../../hooks/shared/useFetchAndDispatch';
 import { selectCurrentStudent, setCurrentStudent } from '../../store/student/StudentSlice';
+import StudentPreenrollmentFormContainer from './forms/student-pre-enrollment-form/StudentPreenrollmentFormContainer';
 
-const StudentDetailForm = ({ studentAuthId }) => {
+const StudentPreenrollmentForm = ({ studentAuthId }) => {
     useFetchAndDispatch({
         url: `/student/form/${studentAuthId}`,
         setter: setCurrentStudent,
@@ -47,7 +47,7 @@ const StudentDetailForm = ({ studentAuthId }) => {
                             </Box>
                             <BlankCard>
                                 <Box px={2} py={4}>
-                                    <RegStudent />
+                                    <StudentPreenrollmentFormContainer />
                                 </Box>
                             </BlankCard>
                         </Card>
@@ -58,4 +58,4 @@ const StudentDetailForm = ({ studentAuthId }) => {
     )
 }
 
-export default StudentDetailForm
+export default StudentPreenrollmentForm

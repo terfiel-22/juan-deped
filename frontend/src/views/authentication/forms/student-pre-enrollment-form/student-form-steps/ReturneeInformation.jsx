@@ -1,8 +1,8 @@
 import { Box } from '@mui/system'
-import CustomFormLabel from '../../../../components/forms/theme-elements/CustomFormLabel'
-import CustomTextField from '../../../../components/forms/theme-elements/CustomTextField'
+import CustomFormLabel from '../../../../../components/forms/theme-elements/CustomFormLabel'
+import CustomTextField from '../../../../../components/forms/theme-elements/CustomTextField'
 import { Grid } from '@mui/material'
-import useStudentDetailForm from '../../../../hooks/student/useStudentDetailForm'
+import useStudentDetailForm from '../../../../../hooks/student/useStudentDetailForm'
 
 const ReturneeInformation = () => {
     const fieldName = "returningLearner";

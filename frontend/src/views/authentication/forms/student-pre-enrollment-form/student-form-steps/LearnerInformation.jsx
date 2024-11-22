@@ -1,10 +1,10 @@
 import { Box } from '@mui/system'
-import CustomFormLabel from '../../../../components/forms/theme-elements/CustomFormLabel'
-import CustomTextField from '../../../../components/forms/theme-elements/CustomTextField'
+import CustomFormLabel from '../../../../../components/forms/theme-elements/CustomFormLabel'
+import CustomTextField from '../../../../../components/forms/theme-elements/CustomTextField'
 import { FormControlLabel, Grid, RadioGroup } from '@mui/material'
-import CustomRadio from '../../../../components/forms/theme-elements/CustomRadio'
-import useStudentDetailForm from '../../../../hooks/student/useStudentDetailForm'
-import { formatDate } from '../../../../utils/dateFormatter'
+import CustomRadio from '../../../../../components/forms/theme-elements/CustomRadio'
+import useStudentDetailForm from '../../../../../hooks/student/useStudentDetailForm'
+import { formatDate } from '../../../../../utils/dateFormatter'
 
 const LearnerInformation = () => {
     const { formFields, handleChange } = useStudentDetailForm()

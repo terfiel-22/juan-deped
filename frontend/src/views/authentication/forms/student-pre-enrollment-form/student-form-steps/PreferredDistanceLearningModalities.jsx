@@ -1,6 +1,6 @@
 import { Box } from '@mui/system'
 import { Checkbox, FormControlLabel, Grid } from '@mui/material'
-import useStudentDetailForm from '../../../../hooks/student/useStudentDetailForm'
+import useStudentDetailForm from '../../../../../hooks/student/useStudentDetailForm'
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@mui/icons-material/CheckBox';
 

@@ -1,11 +1,11 @@
 import { Box } from '@mui/system'
 import { FormControlLabel, Grid, MenuItem, RadioGroup } from '@mui/material'
-import CustomRadio from '../../../../components/forms/theme-elements/CustomRadio'
-import CustomSelect from '../../../../components/forms/theme-elements/CustomSelect'
-import CustomFormLabel from '../../../../components/forms/theme-elements/CustomFormLabel'
-import useFetchAndDispatch from '../../../../hooks/shared/useFetchAndDispatch'
-import useStudentDetailForm from '../../../../hooks/student/useStudentDetailForm'
-import { selectStrands, selectTracks, setStrands, setTracks } from '../../../../store/career/CareerSlice'
+import CustomRadio from '../../../../../components/forms/theme-elements/CustomRadio'
+import CustomSelect from '../../../../../components/forms/theme-elements/CustomSelect'
+import CustomFormLabel from '../../../../../components/forms/theme-elements/CustomFormLabel'
+import useFetchAndDispatch from '../../../../../hooks/shared/useFetchAndDispatch'
+import useStudentDetailForm from '../../../../../hooks/student/useStudentDetailForm'
+import { selectStrands, selectTracks, setStrands, setTracks } from '../../../../../store/career/CareerSlice'
 
 const SHSLearner = () => {
     const fieldName = "seniorHighSchool";

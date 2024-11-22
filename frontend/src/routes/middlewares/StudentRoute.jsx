@@ -6,7 +6,7 @@ import { lazy } from "react";
 import { USER_ROLES } from "../../constants/UserRoles";
 
 const FullLayout = Loadable(lazy(() => import("../../layouts/full/FullLayout")));
-const StudentDetailForm = Loadable(lazy(() => import('../../views/authentication/StudentDetailForm')));
+const StudentPreenrollmentForm = Loadable(lazy(() => import('../../views/authentication/StudentPreenrollmentForm')));
 
 const StudentRoute = () => {
     const currentUser = useSelector(selectCurrentUser);
@@ -20,7 +20,7 @@ const StudentRoute = () => {
     }
 
     if (!currentUser.isApproved) {
-        return <StudentDetailForm studentAuthId={currentUser._id} />;
+        return <StudentPreenrollmentForm studentAuthId={currentUser._id} />;
     }
 
     return <FullLayout />

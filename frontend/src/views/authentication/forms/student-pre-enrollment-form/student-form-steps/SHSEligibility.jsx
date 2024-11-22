@@ -1,9 +1,9 @@
 import { Box } from '@mui/system';
-import CustomFormLabel from '../../../../components/forms/theme-elements/CustomFormLabel';
-import CustomTextField from '../../../../components/forms/theme-elements/CustomTextField';
+import CustomFormLabel from '../../../../../components/forms/theme-elements/CustomFormLabel';
+import CustomTextField from '../../../../../components/forms/theme-elements/CustomTextField';
 import { FormControlLabel, Grid, RadioGroup } from '@mui/material';
-import CustomRadio from '../../../../components/forms/theme-elements/CustomRadio';
-import useStudentDetailForm from '../../../../hooks/student/useStudentDetailForm';
+import CustomRadio from '../../../../../components/forms/theme-elements/CustomRadio';
+import useStudentDetailForm from '../../../../../hooks/student/useStudentDetailForm';
 
 const SHSEligibility = () => {
     const fieldName = 'shsEligibility';

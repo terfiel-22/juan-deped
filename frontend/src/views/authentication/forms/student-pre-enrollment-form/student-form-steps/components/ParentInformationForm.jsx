@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material'
-import CustomFormLabel from '../../../../../components/forms/theme-elements/CustomFormLabel'
-import useStudentDetailForm from '../../../../../hooks/student/useStudentDetailForm'
-import CustomTextField from '../../../../../components/forms/theme-elements/CustomTextField'
+import CustomFormLabel from '../../../../../../components/forms/theme-elements/CustomFormLabel'
+import useStudentDetailForm from '../../../../../../hooks/student/useStudentDetailForm'
+import CustomTextField from '../../../../../../components/forms/theme-elements/CustomTextField'
 
 const ParentInformationForm = ({ fieldName }) => {
 
