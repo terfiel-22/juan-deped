@@ -3,6 +3,7 @@ import PageContainer from 'src/components/container/PageContainer';
 import Logo from 'src/layouts/full/shared/logo/Logo';
 import BlankCard from '../../components/shared/BlankCard';
 import PendingHeader from '../../layouts/full/vertical/header/PendingHeader';
+import AlumniTrackingFormContainer from './forms/alumni-tracking-form/AlumniTrackingFormContainer';
 
 const AlumniTrackingForm = () => {
 
@@ -41,7 +42,7 @@ const AlumniTrackingForm = () => {
                             </Box>
                             <BlankCard>
                                 <Box px={2} py={4}>
-                                    {/* Put the page here */}
+                                    <AlumniTrackingFormContainer />
                                 </Box>
                             </BlankCard>
                         </Card>
