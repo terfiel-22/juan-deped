@@ -2,11 +2,13 @@ import { Grid, Box, Card } from '@mui/material';
 import PageContainer from 'src/components/container/PageContainer';
 import Logo from 'src/layouts/full/shared/logo/Logo';
 import BlankCard from '../../components/shared/BlankCard';
+import PendingHeader from '../../layouts/full/vertical/header/PendingHeader';
 
 const AlumniTrackingForm = () => {
 
     return (
         <PageContainer title="JuanDepEd | Alumni Tracking" description="Juan DepEd Authentication Page">
+            <PendingHeader />
             <Box
                 sx={{
                     position: 'relative',

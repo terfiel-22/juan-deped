@@ -88,7 +88,7 @@ const Profile = () => {
               </Box>
             </Stack>
             <Divider />
-            {dropdownData.profile.map((profile) => (
+            {/* {dropdownData.profile.map((profile) => (
               <Box key={profile.title}>
                 <Box sx={{ py: 2, px: 0 }} className="hover-text-primary">
                   <Link to={profile.href}>
@@ -139,7 +139,7 @@ const Profile = () => {
                   </Link>
                 </Box>
               </Box>
-            ))}
+            ))} */}
             <Box mt={2}>
               <Button
                 variant="outlined"
