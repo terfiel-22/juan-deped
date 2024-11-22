@@ -21,6 +21,7 @@ const AuthRoute = Loadable(lazy(() => import('./middlewares/AuthRoute')));
 const AdminRoute = Loadable(lazy(() => import('./middlewares/AdminRoute')));
 const RegistrarRoute = Loadable(lazy(() => import('./middlewares/RegistrarRoute')));
 const StudentRoute = Loadable(lazy(() => import('./middlewares/StudentRoute')));
+const AlumniRoute = Loadable(lazy(() => import('./middlewares/AlumniRoute')));
 
 /** User Management */
 const Accounts = Loadable(lazy(() => import('../views/user-management/accounts/Accounts')));
@@ -83,6 +84,14 @@ const Router = [
     children: [
       { path: '/student', element: <Navigate to="/student/dashboard" /> },
       { path: '/student/dashboard', element: <ModernDash /> },
+    ]
+  },
+  {
+    path: "/alumni",
+    element: <AlumniRoute />,
+    children: [
+      { path: '/alumni', element: <Navigate to="/alumni/dashboard" /> },
+      { path: '/alumni/dashboard', element: <ModernDash /> },
     ]
   },
   { path: '*', element: <Navigate to="/404" /> },
