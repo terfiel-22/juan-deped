@@ -12,11 +12,12 @@ import {
   Typography,
 } from '@mui/material';
 import { IconSearch, IconX } from '@tabler/icons';
-import Menuitems from '../sidebar/MenuItems';
 import CustomTextField from 'src/components/forms/theme-elements/CustomTextField';
 import { Link } from 'react-router-dom';
+import useMenuItems from '../../../../hooks/shared/useMenuItems';
 
 const Search = () => {
+  const { menuItems } = useMenuItems();
   // drawer top
   const [showDrawer2, setShowDrawer2] = useState(false);
   const [search, setSerach] = useState('');
@@ -32,7 +33,7 @@ const Search = () => {
       );
     return rotr;
   };
-  const searchData = filterRoutes(Menuitems, search);
+  const searchData = filterRoutes(menuItems, search);
   return (
     <>
       <IconButton

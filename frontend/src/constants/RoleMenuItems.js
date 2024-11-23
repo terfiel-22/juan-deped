@@ -1,14 +1,7 @@
-import {
-  IconChartHistogram,
-  IconUsers,
-  IconTable,
-  IconBook,
-} from '@tabler/icons';
-
+import { IconChartHistogram, IconUsers, IconTable, IconBook } from '@tabler/icons';
 import { uniqueId } from 'lodash';
 
-const Menuitems = [
-  /** Start - Juan DepEd */
+export const ADMIN_MENU_ITEMS = [
   {
     navlabel: true,
     subheader: 'Home',
@@ -99,7 +92,17 @@ const Menuitems = [
     navlabel: true,
     subheader: 'System Settings & Security',
   },
-  /** END - Juan DepEd */
 ];
 
-export default Menuitems;
+export const REGISTRAR_MENU_ITEMS = [
+  {
+    navlabel: true,
+    subheader: 'Admissions',
+  },
+  {
+    id: uniqueId(),
+    title: 'Analytics',
+    icon: IconChartHistogram,
+    href: '/registrar/dashboard',
+  },
+];

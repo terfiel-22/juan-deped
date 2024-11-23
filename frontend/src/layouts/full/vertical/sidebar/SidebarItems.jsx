@@ -1,5 +1,4 @@
 import React from 'react';
-import Menuitems from './MenuItems';
 import { useLocation } from 'react-router';
 import { Box, List, useMediaQuery } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
@@ -7,8 +6,10 @@ import { toggleMobileSidebar } from 'src/store/customizer/CustomizerSlice';
 import NavItem from './NavItem';
 import NavCollapse from './NavCollapse';
 import NavGroup from './NavGroup/NavGroup';
+import useMenuItems from '../../../../hooks/shared/useMenuItems';
 
 const SidebarItems = () => {
+  const { menuItems } = useMenuItems();
   const { pathname } = useLocation();
   const pathDirect = pathname;
   const pathWithoutLastPart = pathname.slice(0, pathname.lastIndexOf('/'));
@@ -20,7 +21,7 @@ const SidebarItems = () => {
   return (
     <Box sx={{ px: 3 }}>
       <List sx={{ pt: 0 }} className="sidebarNav">
-        {Menuitems.map((item, index) => {
+        {menuItems.map((item, index) => {
           // {/********SubHeader**********/}
           if (item.subheader) {
             return <NavGroup item={item} hideMenu={hideMenu} key={item.subheader} />;
