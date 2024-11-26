@@ -1,4 +1,4 @@
-import { IconChartHistogram, IconUsers, IconTable } from '@tabler/icons';
+import { IconChartHistogram, IconUsers, IconTable, IconBook, IconPoint } from '@tabler/icons';
 import { uniqueId } from 'lodash';
 
 export const ADMIN_MENU_ITEMS = [
@@ -50,6 +50,67 @@ export const ADMIN_MENU_ITEMS = [
     icon: IconTable,
     href: '/admin/specializations',
   },
+  {
+    navlabel: true,
+    subheader: 'Forms & Certificates',
+  },
+  {
+    id: uniqueId(),
+    title: 'School Forms',
+    icon: IconBook,
+    href: '/admin/school-forms/',
+    children: [
+      {
+        id: uniqueId(),
+        title: 'SHSF-1',
+        icon: IconPoint,
+        href: '/admin/school-forms/shsf-1',
+      },
+      {
+        id: uniqueId(),
+        title: 'SHSF-2',
+        icon: IconPoint,
+        href: '/admin/school-forms/shsf-2',
+      },
+      {
+        id: uniqueId(),
+        title: 'SHSF-4',
+        icon: IconPoint,
+        href: '/admin/school-forms/shsf-4',
+      },
+      {
+        id: uniqueId(),
+        title: 'SHSF-5A',
+        icon: IconPoint,
+        href: '/admin/school-forms/blog/shsf-5a',
+      },
+      {
+        id: uniqueId(),
+        title: 'SHSF-5B',
+        icon: IconPoint,
+        href: '/admin/school-forms/shsf-5b',
+      },
+      {
+        id: uniqueId(),
+        title: 'SHSF-6',
+        icon: IconPoint,
+        href: '/admin/school-forms/shsf-6',
+      },
+      {
+        id: uniqueId(),
+        title: 'SHSF-7',
+        icon: IconPoint,
+        href: '/admin/school-forms/shsf-7',
+      },
+      {
+        id: uniqueId(),
+        title: 'SF-8',
+        icon: IconPoint,
+        href: '/admin/school-forms/sf-8',
+      },
+    ],
+  },
+
   {
     navlabel: true,
     subheader: 'Enrollment Management',
