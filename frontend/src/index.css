@@ -22,14 +22,14 @@
   }
 
   /** MUI Datatable */
-  .MuiToolbar-root > div:nth-child(2),
+  .tss-qbo1l6-MUIDataTableToolbar-actions,
   .MuiTableCell-paddingCheckbox,
   .MUIDataTableSelectCell,
   .MuiTableFooter-root {
     display: none !important;
   }
   .MuiPaper-root {
-    height: 100vh !important;
+    box-shadow: none !important;
     border-radius: 0px !important;
   }
 }

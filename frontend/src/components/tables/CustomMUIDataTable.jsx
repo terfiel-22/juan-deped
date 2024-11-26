@@ -1,8 +1,27 @@
 import MUIDataTable from "mui-datatables";
 
+
 const transformData = (backendData) => {
-    const columns = Object.keys(backendData[0]);
-    const data = backendData.map((item) => Object.values(item));
+
+    function isDate(value) {
+        return !isNaN(Date.parse(value)) && new Date(value).toISOString() === value;
+    }
+
+    const columns = Object.keys(backendData[0]).map((key) => key.toUpperCase());
+
+    const data = backendData.map((item) =>
+        Object.values(item).map((value) => {
+            if (isDate(value)) {
+                const date = new Date(value);
+                return date.toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                });
+            }
+            return value;
+        })
+    );
     return { columns, data };
 }
 
@@ -17,14 +36,14 @@ const CustomMUIDataTable = ({ title, backendData }) => {
         responsive: "standard",
         rowHover: false,
         rowsPerPage: 5,
-        rowsPerPageOptions: [5, 20, 50],
-        tableBodyHeight: "100%",
-        tableBodyMaxHeight: "100%",
+        rowsPerPageOptions: [5, 20, 50, 100],
         onRowsDelete: (rowsDeleted, newTableData) => {
             console.log(rowsDeleted)
             console.log(newTableData)
         }
     };
+
+    if (!backendData) return;
 
     const { columns, data } = transformData(backendData)
 
