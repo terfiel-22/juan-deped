@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Box, Menu, Avatar, Typography, Divider, Button, IconButton } from '@mui/material';
-import * as dropdownData from './data';
-
 import { IconMail } from '@tabler/icons';
 import { Stack } from '@mui/system';
 
@@ -51,6 +48,7 @@ const Profile = () => {
       {/* ------------------------------------------- */}
       <Menu
         id="msgs-menu"
+        closeAfterTransition={false}
         anchorEl={anchorEl2}
         keepMounted
         open={Boolean(anchorEl2)}

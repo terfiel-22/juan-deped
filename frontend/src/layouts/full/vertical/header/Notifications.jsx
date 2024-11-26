@@ -52,6 +52,7 @@ const Notifications = () => {
       {/* ------------------------------------------- */}
       <Menu
         id="msgs-menu"
+        closeAfterTransition={false}
         anchorEl={anchorEl2}
         keepMounted
         open={Boolean(anchorEl2)}

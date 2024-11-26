@@ -91,6 +91,7 @@ const Sidebar = () => {
   return (
     <Drawer
       anchor="left"
+      closeAfterTransition={false}
       open={customizer.isMobileSidebar}
       onClose={() => dispatch(toggleMobileSidebar())}
       variant="temporary"
