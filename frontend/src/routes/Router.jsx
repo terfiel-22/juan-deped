@@ -32,6 +32,16 @@ const Tracks = Loadable(lazy(() => import('../views/career-management/tracks/Tra
 const Strands = Loadable(lazy(() => import('../views/career-management/strands/Strands')));
 const Specializations = Loadable(lazy(() => import('../views/career-management/specializations/Specializations')));
 
+/** SCHOOL FORMS */
+const SHSF1 = Loadable(lazy(() => import('../views/forms-and-cerificates/school-forms/SHSF1')));
+const SHSF2 = Loadable(lazy(() => import('../views/forms-and-cerificates/school-forms/SHSF2')));
+const SHSF4 = Loadable(lazy(() => import('../views/forms-and-cerificates/school-forms/SHSF4')));
+const SHSF5A = Loadable(lazy(() => import('../views/forms-and-cerificates/school-forms/SHSF5A')));
+const SHSF5B = Loadable(lazy(() => import('../views/forms-and-cerificates/school-forms/SHSF5B')));
+const SHSF6 = Loadable(lazy(() => import('../views/forms-and-cerificates/school-forms/SHSF6')));
+const SHSF7 = Loadable(lazy(() => import('../views/forms-and-cerificates/school-forms/SHSF7')));
+const SF8 = Loadable(lazy(() => import('../views/forms-and-cerificates/school-forms/SF8')));
+
 /** ERROR */
 const PageNotFound = Loadable(lazy(() => import('../views/errors/PageNotFound')))
 
@@ -64,6 +74,14 @@ const Router = [
       { path: '/admin/tracks', element: <Tracks /> },
       { path: '/admin/strands', element: <Strands /> },
       { path: '/admin/specializations', element: <Specializations /> },
+      { path: '/admin/school-forms/shsf1', element: <SHSF1 /> },
+      { path: '/admin/school-forms/shsf2', element: <SHSF2 /> },
+      { path: '/admin/school-forms/shsf4', element: <SHSF4 /> },
+      { path: '/admin/school-forms/shsf5a', element: <SHSF5A /> },
+      { path: '/admin/school-forms/shsf5b', element: <SHSF5B /> },
+      { path: '/admin/school-forms/shsf6', element: <SHSF6 /> },
+      { path: '/admin/school-forms/shsf7', element: <SHSF7 /> },
+      { path: '/admin/school-forms/sf8', element: <SF8 /> },
     ]
   },
   {
