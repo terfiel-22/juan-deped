@@ -7,7 +7,7 @@ const transformData = (backendData) => {
         return !isNaN(Date.parse(value)) && new Date(value).toISOString() === value;
     }
 
-    const columns = Object.keys(backendData[0]).map((key) => key.toUpperCase());
+    const columns = Object.keys(backendData[0]).map((key) => key.replace(/([A-Z])/g, "_$1").toUpperCase());
 
     const data = backendData.map((item) =>
         Object.values(item).map((value) => {

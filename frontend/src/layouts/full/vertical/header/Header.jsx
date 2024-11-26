@@ -7,7 +7,7 @@ import {
   toggleMobileSidebar,
   setDarkMode,
 } from 'src/store/customizer/CustomizerSlice';
-import { IconMenu2, IconMoon, IconSun } from '@tabler/icons';
+import { IconMenu2, IconMoon, IconSun } from "@tabler/icons";
 
 // components
 import Notifications from './Notifications';

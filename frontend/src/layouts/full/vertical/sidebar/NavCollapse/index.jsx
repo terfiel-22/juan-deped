@@ -54,8 +54,8 @@ const NavCollapse = ({ menu, level, pathWithoutLastPart, pathDirect, onClick, hi
       open && level < 2
         ? 'white'
         : `inherit` && level > 1 && open
-        ? theme.palette.primary.main
-        : theme.palette.text.secondary,
+          ? theme.palette.primary.main
+          : theme.palette.text.secondary,
     borderRadius: `${customizer.borderRadius}px`,
   }));
   // If Menu has Children
@@ -88,7 +88,6 @@ const NavCollapse = ({ menu, level, pathWithoutLastPart, pathDirect, onClick, hi
   return (
     <React.Fragment key={menu.id}>
       <ListItemStyled
-        button
         component="li"
         onClick={handleClick}
         selected={pathWithoutLastPart === menu.href}
