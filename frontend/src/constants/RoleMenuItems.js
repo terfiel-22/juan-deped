@@ -1,4 +1,4 @@
-import { IconChartHistogram, IconUsers, IconTable, IconBook } from '@tabler/icons';
+import { IconChartHistogram, IconUsers, IconTable } from '@tabler/icons';
 import { uniqueId } from 'lodash';
 
 export const ADMIN_MENU_ITEMS = [
@@ -49,16 +49,6 @@ export const ADMIN_MENU_ITEMS = [
     title: 'Specializations',
     icon: IconTable,
     href: '/admin/specializations',
-  },
-  {
-    navlabel: true,
-    subheader: 'Document Management',
-  },
-  {
-    id: uniqueId(),
-    title: 'School Forms',
-    icon: IconBook,
-    href: '/admin/school-forms',
   },
   {
     navlabel: true,

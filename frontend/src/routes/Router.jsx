@@ -32,9 +32,6 @@ const Tracks = Loadable(lazy(() => import('../views/career-management/tracks/Tra
 const Strands = Loadable(lazy(() => import('../views/career-management/strands/Strands')));
 const Specializations = Loadable(lazy(() => import('../views/career-management/specializations/Specializations')));
 
-/** Reports */
-const SchoolForms = Loadable(lazy(() => import('../views/reports/SchoolForms')));
-
 /** ERROR */
 const PageNotFound = Loadable(lazy(() => import('../views/errors/PageNotFound')))
 
@@ -67,7 +64,6 @@ const Router = [
       { path: '/admin/tracks', element: <Tracks /> },
       { path: '/admin/strands', element: <Strands /> },
       { path: '/admin/specializations', element: <Specializations /> },
-      { path: '/admin/school-forms', element: <SchoolForms /> },
     ]
   },
   {
