@@ -10,6 +10,11 @@ export const fetchPersonnels = async (req, res, next) => {
       "mName",
       "civilStatus",
       "position",
+      "eligibility",
+      "birthdate",
+      "age",
+      "bloodType",
+      "yrsOfTeachingPrivate",
       "-_id",
     ]);
     res.status(200).json(personnels);
