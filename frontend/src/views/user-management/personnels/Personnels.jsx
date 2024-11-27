@@ -3,9 +3,9 @@ import PageContainer from "../../../components/container/PageContainer"
 import Breadcrumb from "../../../layouts/full/shared/breadcrumb/Breadcrumb"
 import useFetchAndDispatch from "../../../hooks/shared/useFetchAndDispatch";
 import { selectPersonnels, setPersonnels } from "../../../store/user/UserSlice";
-import CustomMUIDataTable from "../../../components/tables/CustomMUIDataTable";
 import { useState } from "react";
 import { useEffect } from "react";
+import CustomMUIDataTable from "../../../components/mui-datatable/CustomMUIDataTable";
 
 const BCrumb = [
     {
