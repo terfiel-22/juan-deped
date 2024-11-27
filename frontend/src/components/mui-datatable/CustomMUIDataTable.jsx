@@ -4,16 +4,16 @@ import "./CustomMUIDataTable.css";
 
 const CustomMUIDataTable = ({ title, backendData }) => {
 
-    const { columns, data, addButton } = useMUIDataTable({ backendData });
+    const { columns, data, customToolBar } = useMUIDataTable({ backendData });
 
-    const OPTIONS = {
+    const options = {
         search: true,
         download: true,
         downloadOptions: {
             filename: title + '.csv',
         },
-        customToolbar: () => addButton,
-        print: true,
+        customToolbar: () => customToolBar,
+        print: false,
         viewColumns: true,
         filter: true,
         selectableRows: 'none',
@@ -27,10 +27,7 @@ const CustomMUIDataTable = ({ title, backendData }) => {
 
     return (
         <MUIDataTable
-            title={title}
-            data={data}
-            columns={columns}
-            options={OPTIONS}
+            {...{ title, options, columns, data }}
             className="print-container"
         />
     );

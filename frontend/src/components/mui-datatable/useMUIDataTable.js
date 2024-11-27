@@ -1,7 +1,9 @@
 import { IconButton } from '@mui/material';
 import { Tooltip } from '@mui/material';
-import { IconEye, IconPlus } from '@tabler/icons';
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import LocalPrintshopIcon from '@mui/icons-material/LocalPrintshop';
+import AddIcon from '@mui/icons-material/Add';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 const useMUIDataTable = ({ backendData }) => {
   const [columns, setColumns] = useState([]);
@@ -10,9 +12,28 @@ const useMUIDataTable = ({ backendData }) => {
   const addButton = (
     <Tooltip title="Add New">
       <IconButton onClick={() => {}}>
-        <IconPlus size="1.2rem" icon="plus" />
+        <AddIcon size="1.3rem" icon="plus" />
       </IconButton>
     </Tooltip>
+  );
+
+  const printButton = (
+    <Tooltip title="Print">
+      <IconButton
+        onClick={() => {
+          window.print();
+        }}
+      >
+        <LocalPrintshopIcon size="1.3rem" icon="plus" />
+      </IconButton>
+    </Tooltip>
+  );
+
+  const customToolBar = (
+    <>
+      {printButton}
+      {addButton}
+    </>
   );
 
   const isDate = useCallback(
@@ -33,7 +54,7 @@ const useMUIDataTable = ({ backendData }) => {
         return (
           <Tooltip title="View">
             <IconButton size="small" onClick={() => handleView(rowIndex)}>
-              <IconEye size="1.1rem" />
+              <VisibilityIcon size="1.3rem" />
             </IconButton>
           </Tooltip>
         );
@@ -82,7 +103,7 @@ const useMUIDataTable = ({ backendData }) => {
     setData(_data);
   }, [backendData]);
 
-  return { columns, data, addButton };
+  return { columns, data, customToolBar };
 };
 
 export default useMUIDataTable;
