@@ -137,12 +137,16 @@ export const addAuth = async (req, res, next) => {
       throw new HttpError("Creating new account failed.", 400);
     }
 
-    generateTokenAndSetCookie(user._id, res);
-    await user.save();
+    const savedUser = await user.save();
+    const result = await Auth.findById(savedUser._id).select([
+      "_id",
+      "username",
+      "email",
+      "role",
+      "isApproved",
+    ]);
 
-    res
-      .status(200)
-      .json({ message: "Account is successfully added.", result: user });
+    res.status(200).json({ message: "Account is successfully added.", result });
   } catch (error) {
     next(error);
   }
@@ -181,12 +185,20 @@ export const editAuth = async (req, res, next) => {
     const updatedAuth = await Auth.findByIdAndUpdate(_id, values, {
       new: true,
       runValidators: true,
-    }).select("-password");
+    });
     if (!updatedAuth) throw new HttpError("User not found.", 404);
+
+    const result = await Auth.findById(updatedAuth._id).select([
+      "_id",
+      "username",
+      "email",
+      "role",
+      "isApproved",
+    ]);
 
     return res.status(200).json({
       message: "Account is successfully updated.",
-      result: updatedAuth,
+      result,
     });
   } catch (error) {
     next(error);

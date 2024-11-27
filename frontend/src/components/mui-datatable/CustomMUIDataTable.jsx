@@ -1,8 +1,17 @@
 import MUIDataTable from 'mui-datatables';
 import useMUIDataTable from './useMUIDataTable';
 
-const CustomMUIDataTable = ({ title, backendData }) => {
-    const { columns, data, customToolBar } = useMUIDataTable({ backendData });
+const CustomMUIDataTable = ({
+    title,
+    backendData,
+    handleOpenDialog = () => { },
+    setSelectedData = {},
+}) => {
+    const { columns, data, customToolBar } = useMUIDataTable({
+        backendData,
+        handleOpenDialog,
+        setSelectedData,
+    });
 
     const options = {
         search: true,
@@ -22,13 +31,7 @@ const CustomMUIDataTable = ({ title, backendData }) => {
         rowsPerPageOptions: [5, 20, 50, 100],
     };
 
-
-    return (
-        <MUIDataTable
-            {...{ title, options, columns, data }}
-            className="print-container"
-        />
-    );
+    return <MUIDataTable {...{ title, options, columns, data }} className="print-container" />;
 };
 
 export default CustomMUIDataTable;

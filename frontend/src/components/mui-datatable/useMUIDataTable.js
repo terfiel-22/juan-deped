@@ -5,13 +5,18 @@ import LocalPrintshopIcon from '@mui/icons-material/LocalPrintshop';
 import AddIcon from '@mui/icons-material/Add';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 
-const useMUIDataTable = ({ backendData, handlePrint = () => window.print() }) => {
+const useMUIDataTable = ({
+  backendData,
+  handleOpenDialog,
+  setSelectedData,
+  handlePrint = () => window.print(),
+}) => {
   const [columns, setColumns] = useState([]);
   const [data, setData] = useState([]);
 
   const addButton = (
     <Tooltip title="Add New">
-      <IconButton onClick={() => {}}>
+      <IconButton onClick={handleOpenDialog}>
         <AddIcon size="1.3rem" icon="plus" />
       </IconButton>
     </Tooltip>
@@ -38,7 +43,7 @@ const useMUIDataTable = ({ backendData, handlePrint = () => window.print() }) =>
 
   const handleView = useCallback(
     (rowIndex) => {
-      console.log(backendData[rowIndex]);
+      setSelectedData(backendData[rowIndex]);
     },
     [backendData],
   );
