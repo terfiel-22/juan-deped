@@ -93,6 +93,9 @@ const useMUIDataTable = ({ backendData, handlePrint = () => window.print() }) =>
             day: 'numeric',
           });
         }
+
+        if (typeof value === 'boolean' || value instanceof Boolean) return value ? 'Yes' : 'No';
+
         return value;
       }),
     );

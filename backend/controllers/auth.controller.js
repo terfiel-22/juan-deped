@@ -94,7 +94,13 @@ export const logout = async (req, res, next) => {
 
 export const fetchAuths = async (req, res, next) => {
   try {
-    const auths = await Auth.find({}).select("-password");
+    const auths = await Auth.find().select([
+      "_id",
+      "username",
+      "email",
+      "role",
+      "isApproved",
+    ]);
     res.status(200).json(auths);
   } catch (error) {
     next(error);

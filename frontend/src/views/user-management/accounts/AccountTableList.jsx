@@ -12,17 +12,14 @@ import {
     IconButton,
 } from '@mui/material';
 
-import { selectAuths, setAuths } from '../../../store/user/UserSlice';
 import useTablePagination from '../../../hooks/ui/useTablePagination';
 import EnhancedTableToolbar from '../../../components/shared/EnhancedTableToolbar';
 import EnhancedTableHead from '../../../components/shared/EnhancedTableHead';
 import useEnhancedTableSearch from '../../../hooks/ui/useEnhancedTableSearch';
 import useEnhancedTableSort from '../../../hooks/ui/useEnhancedTableSort';
 import useTableDenseToggle from '../../../hooks/ui/useTableDenseToggle';
-import { useEffect, useState } from 'react';
 import TableDenseToggle from '../../../components/shared/TableDenseToggle';
 import { IconEye } from '@tabler/icons';
-import useFetchAndDispatch from '../../../hooks/shared/useFetchAndDispatch';
 import { formatDate } from '../../../utils/dateFormatter';
 import useTableDialog from '../../../hooks/shared/useTableDialog';
 import AccountDialog from './AccountDialog';
@@ -81,14 +78,6 @@ const defaultFormData = {
 };
 
 const AccountTableList = () => {
-    /** Fetch Auths */
-    const { data } = useFetchAndDispatch({
-        url: "/auths", setter: setAuths, selector: selectAuths
-    });
-    const [rows, setRows] = useState(data);
-    useEffect(() => {
-        setRows(data)
-    }, [data])
 
     // This is for pagination
     const {

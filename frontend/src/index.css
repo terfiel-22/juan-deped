@@ -28,7 +28,7 @@
   }
 
   /** Remove Tools on Print */
-  .MuiToolbar-root .MuiButtonBase-root {
+  .MuiToolbar-root {
     display: none !important;
   }
   .MuiTableFooter-root {
@@ -40,11 +40,4 @@
     box-shadow: none !important;
     border-radius: 0px !important;
   }
-}
-
-table,
-th,
-tr,
-td {
-  text-align: center !important;
 }
