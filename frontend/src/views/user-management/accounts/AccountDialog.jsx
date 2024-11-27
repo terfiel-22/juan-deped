@@ -1,4 +1,4 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Grid, IconButton, InputAdornment, MenuItem } from '@mui/material'
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Grid2, IconButton, InputAdornment, MenuItem } from '@mui/material'
 import { Box, Stack } from '@mui/system'
 import { useEffect, useState } from 'react'
 import { IconEye, IconEyeOff } from '@tabler/icons'
@@ -58,8 +58,8 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, data = data ?
             </DialogTitle>
             <DialogContent>
                 <Stack>
-                    <Grid container spacing={1} marginBottom={2}>
-                        <Grid item xs={12} sm={12} lg={6}>
+                    <Grid2 container spacing={1} marginBottom={2}>
+                        <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
                             <CustomFormLabel htmlFor="username">Username</CustomFormLabel>
                             <CustomOutlinedInput
                                 name="username"
@@ -69,8 +69,8 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, data = data ?
                                 value={username}
                                 onChange={handleChange}
                             />
-                        </Grid>
-                        <Grid item xs={12} sm={12} lg={6}>
+                        </Grid2>
+                        <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
                             <CustomFormLabel htmlFor="email">Email</CustomFormLabel>
                             <CustomOutlinedInput
                                 name="email"
@@ -80,8 +80,8 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, data = data ?
                                 value={email}
                                 onChange={handleChange}
                             />
-                        </Grid>
-                        <Grid item xs={12} sm={12} lg={6}>
+                        </Grid2>
+                        <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
                             <CustomFormLabel htmlFor="password">Password</CustomFormLabel>
                             <CustomOutlinedInput
                                 type={showPassword ? 'text' : 'password'}
@@ -104,8 +104,8 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, data = data ?
                                 value={password ?? ""}
                                 onChange={handleChange}
                             />
-                        </Grid>
-                        <Grid item xs={12} sm={12} lg={6}>
+                        </Grid2>
+                        <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
                             <CustomFormLabel htmlFor="cpassword">Confirm Password</CustomFormLabel>
                             <CustomOutlinedInput
                                 type={showPassword ? 'text' : 'password'}
@@ -128,8 +128,8 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, data = data ?
                                 value={cpassword ?? ""}
                                 onChange={handleChange}
                             />
-                        </Grid>
-                        <Grid item xs={12} sm={12} lg={12}>
+                        </Grid2>
+                        <Grid2 size={12}>
                             <CustomFormLabel htmlFor="role">Role</CustomFormLabel>
                             <CustomSelect
                                 id="role"
@@ -147,8 +147,8 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, data = data ?
                                     USER_ROLES_ARRAY.map((role, index) => <MenuItem key={index} value={role}>{role}</MenuItem>)
                                 }
                             </CustomSelect>
-                        </Grid>
-                    </Grid>
+                        </Grid2>
+                    </Grid2>
                 </Stack>
             </DialogContent>
             <DialogActions sx={{ justifyContent: 'space-between' }}>
