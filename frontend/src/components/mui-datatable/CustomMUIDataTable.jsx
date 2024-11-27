@@ -6,6 +6,9 @@ const CustomMUIDataTable = ({ title, backendData }) => {
     const OPTIONS = {
         search: true,
         download: true,
+        downloadOptions: {
+            filename: title + ".csv"
+        },
         print: true,
         viewColumns: true,
         filter: true,
