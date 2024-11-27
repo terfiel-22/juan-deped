@@ -3,7 +3,7 @@ import { Tooltip } from '@mui/material';
 import { IconEye } from '@tabler/icons';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-const useTransformData = ({ backendData }) => {
+const useMUIDataTable = ({ backendData }) => {
   const [columns, setColumns] = useState([]);
   const [data, setData] = useState([]);
 
@@ -72,4 +72,4 @@ const useTransformData = ({ backendData }) => {
   return { columns, data };
 };
 
-export default useTransformData;
+export default useMUIDataTable;

@@ -1,5 +1,5 @@
 import MUIDataTable from 'mui-datatables';
-import useTransformData from './useTransformData';
+import useMUIDataTable from './useMUIDataTable';
 
 
 const CustomMUIDataTable = ({ title, backendData }) => {
@@ -17,7 +17,7 @@ const CustomMUIDataTable = ({ title, backendData }) => {
         rowsPerPageOptions: [5, 20, 50, 100],
     };
 
-    const { columns, data } = useTransformData({ backendData });
+    const { columns, data } = useMUIDataTable({ backendData });
 
     return (
         <MUIDataTable
