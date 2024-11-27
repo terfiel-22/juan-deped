@@ -12,6 +12,7 @@ const CustomMUIDataTable = ({ title, backendData }) => {
         downloadOptions: {
             filename: title + '.csv',
         },
+        customToolbar: () => addButton,
         print: true,
         viewColumns: true,
         filter: true,
