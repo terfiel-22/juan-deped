@@ -4,10 +4,11 @@ import DashboardCard from '../../../components/shared/DashboardCard';
 import { Grid2, Typography } from '@mui/material';
 import CustomFormLabel from '../../../components/forms/theme-elements/CustomFormLabel';
 import CustomOutlinedInput from '../../../components/forms/theme-elements/CustomOutlinedInput';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { LoadingButton } from '@mui/lab';
 import axiosClient from '../../../utils/axiosClient';
 import { toastError, toastSuccess } from '../../../utils/toastEmitter';
+import { formatDate } from '../../../utils/dateFormatter';
 
 const BCrumb = [
     {
@@ -38,6 +39,22 @@ const INITIAL_DATA = {
 const School = () => {
     const [formData, setFormData] = useState(INITIAL_DATA);
     const [loading, setLoading] = useState(false);
+
+    /** Fetch Existing School */
+    useEffect(() => {
+        setLoading(true);
+        axiosClient
+            .get("/school")
+            .then(({ data }) => {
+                setFormData(data);
+            })
+            .catch(({ response: { data } }) => {
+                toastError(data.message);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    }, [])
 
     const handleChange = useCallback((e) => {
         const { name, value } = e.target;
@@ -158,7 +175,7 @@ const School = () => {
                             id="beginningOfSemDate"
                             placeholder="Enter Start Date"
                             fullWidth
-                            value={beginningOfSemDate}
+                            value={formatDate(beginningOfSemDate)}
                             onChange={handleChange}
                         />
                     </Grid2>
@@ -170,7 +187,7 @@ const School = () => {
                             id="endOfSemDate"
                             placeholder="Enter End Date"
                             fullWidth
-                            value={endOfSemDate}
+                            value={formatDate(endOfSemDate)}
                             onChange={handleChange}
                         />
                     </Grid2>

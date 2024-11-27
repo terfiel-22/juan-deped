@@ -73,3 +73,12 @@ export const createSchool = async (req, res, next) => {
     next(error);
   }
 };
+
+export const fetchSchool = async (req, res, next) => {
+  try {
+    const existingSchool = await School.findOne().sort("-_id");
+    res.json(existingSchool);
+  } catch (error) {
+    next(error);
+  }
+};
