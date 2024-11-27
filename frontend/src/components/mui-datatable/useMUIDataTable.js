@@ -7,11 +7,16 @@ const useMUIDataTable = ({ backendData }) => {
   const [columns, setColumns] = useState([]);
   const [data, setData] = useState([]);
 
-  const isDate = (value) => !isNaN(Date.parse(value)) && new Date(value).toISOString() === value;
+  const isDate = useCallback(
+    (value) => !isNaN(Date.parse(value)) && new Date(value).toISOString() === value,
+  );
 
-  const handleView = useCallback((rowIndex) => {
-    console.log(backendData[rowIndex]);
-  });
+  const handleView = useCallback(
+    (rowIndex) => {
+      console.log(backendData[rowIndex]);
+    },
+    [backendData],
+  );
 
   const customColumn = useMemo(() => ({
     name: 'ACTIONS',
@@ -49,7 +54,7 @@ const useMUIDataTable = ({ backendData }) => {
     });
 
     setColumns([..._columns, customColumn]);
-  }, [backendData, customColumn]);
+  }, [backendData]);
 
   useEffect(() => {
     if (!backendData) return;
