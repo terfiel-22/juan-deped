@@ -27,11 +27,6 @@ const AlumniRoute = Loadable(lazy(() => import('./middlewares/AlumniRoute')));
 const Accounts = Loadable(lazy(() => import('../views/user-management/accounts/Accounts')));
 const Personnels = Loadable(lazy(() => import('../views/user-management/personnels/Personnels')));
 
-/** Career Management */
-const Tracks = Loadable(lazy(() => import('../views/career-management/tracks/Tracks')));
-const Strands = Loadable(lazy(() => import('../views/career-management/strands/Strands')));
-const Specializations = Loadable(lazy(() => import('../views/career-management/specializations/Specializations')));
-
 /** SCHOOL FORMS */
 const SHSF1 = Loadable(lazy(() => import('../views/forms-and-cerificates/school-forms/SHSF1')));
 const SHSF2 = Loadable(lazy(() => import('../views/forms-and-cerificates/school-forms/SHSF2')));
@@ -41,6 +36,13 @@ const SHSF5B = Loadable(lazy(() => import('../views/forms-and-cerificates/school
 const SHSF6 = Loadable(lazy(() => import('../views/forms-and-cerificates/school-forms/SHSF6')));
 const SHSF7 = Loadable(lazy(() => import('../views/forms-and-cerificates/school-forms/SHSF7')));
 const SF8 = Loadable(lazy(() => import('../views/forms-and-cerificates/school-forms/SF8')));
+
+
+/** School Management */
+const School = Loadable(lazy(() => import('../views/school-management/school/School')));
+const Tracks = Loadable(lazy(() => import('../views/school-management/tracks/Tracks')));
+const Strands = Loadable(lazy(() => import('../views/school-management/strands/Strands')));
+const Specializations = Loadable(lazy(() => import('../views/school-management/specializations/Specializations')));
 
 /** ERROR */
 const PageNotFound = Loadable(lazy(() => import('../views/errors/PageNotFound')))
@@ -71,9 +73,6 @@ const Router = [
       { path: '/admin/dashboard', element: <ModernDash /> },
       { path: '/admin/accounts', element: <Accounts /> },
       { path: '/admin/personnels', element: <Personnels /> },
-      { path: '/admin/tracks', element: <Tracks /> },
-      { path: '/admin/strands', element: <Strands /> },
-      { path: '/admin/specializations', element: <Specializations /> },
       { path: '/admin/school-forms/shsf1', element: <SHSF1 /> },
       { path: '/admin/school-forms/shsf2', element: <SHSF2 /> },
       { path: '/admin/school-forms/shsf4', element: <SHSF4 /> },
@@ -82,6 +81,10 @@ const Router = [
       { path: '/admin/school-forms/shsf6', element: <SHSF6 /> },
       { path: '/admin/school-forms/shsf7', element: <SHSF7 /> },
       { path: '/admin/school-forms/sf8', element: <SF8 /> },
+      { path: '/admin/school', element: <School /> },
+      { path: '/admin/tracks', element: <Tracks /> },
+      { path: '/admin/strands', element: <Strands /> },
+      { path: '/admin/specializations', element: <Specializations /> },
     ]
   },
   {

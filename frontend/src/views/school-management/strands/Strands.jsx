@@ -6,7 +6,7 @@ import StrandTableList from './StrandTableList';
 const BCrumb = [
     {
         to: '/',
-        title: 'Career Management',
+        title: 'School Management',
     },
     {
         title: 'Strands',

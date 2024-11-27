@@ -6,7 +6,7 @@ import TrackTableList from './TrackTableList';
 const BCrumb = [
     {
         to: '/',
-        title: 'Career Management',
+        title: 'School Management',
     },
     {
         title: 'Tracks',

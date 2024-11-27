@@ -6,7 +6,7 @@ import SpecializationTableList from './SpecializationTableList';
 const BCrumb = [
     {
         to: '/',
-        title: 'Career Management',
+        title: 'School Management',
     },
     {
         title: 'Specializations',

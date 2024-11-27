@@ -1,4 +1,11 @@
-import { IconChartHistogram, IconUsers, IconTable, IconBook, IconPoint } from '@tabler/icons';
+import {
+  IconChartHistogram,
+  IconUsers,
+  IconTable,
+  IconBook,
+  IconPoint,
+  IconSchool,
+} from '@tabler/icons';
 import { uniqueId } from 'lodash';
 
 export const ADMIN_MENU_ITEMS = [
@@ -27,28 +34,6 @@ export const ADMIN_MENU_ITEMS = [
     title: 'Personnels',
     icon: IconUsers,
     href: '/admin/personnels',
-  },
-  {
-    navlabel: true,
-    subheader: 'Career Management',
-  },
-  {
-    id: uniqueId(),
-    title: 'Tracks',
-    icon: IconTable,
-    href: '/admin/tracks',
-  },
-  {
-    id: uniqueId(),
-    title: 'Strands',
-    icon: IconTable,
-    href: '/admin/strands',
-  },
-  {
-    id: uniqueId(),
-    title: 'Specializations',
-    icon: IconTable,
-    href: '/admin/specializations',
   },
   {
     navlabel: true,
@@ -110,38 +95,33 @@ export const ADMIN_MENU_ITEMS = [
       },
     ],
   },
-
   {
     navlabel: true,
-    subheader: 'Enrollment Management',
+    subheader: 'School Management',
   },
   {
-    navlabel: true,
-    subheader: 'Student Management',
+    id: uniqueId(),
+    title: 'School',
+    icon: IconSchool,
+    href: '/admin/school',
   },
   {
-    navlabel: true,
-    subheader: 'Class Management',
+    id: uniqueId(),
+    title: 'Tracks',
+    icon: IconTable,
+    href: '/admin/tracks',
   },
   {
-    navlabel: true,
-    subheader: 'Attendance Management',
+    id: uniqueId(),
+    title: 'Strands',
+    icon: IconTable,
+    href: '/admin/strands',
   },
   {
-    navlabel: true,
-    subheader: 'Grade Management',
-  },
-  {
-    navlabel: true,
-    subheader: 'Event Management',
-  },
-  {
-    navlabel: true,
-    subheader: 'Account Settings',
-  },
-  {
-    navlabel: true,
-    subheader: 'System Settings & Security',
+    id: uniqueId(),
+    title: 'Specializations',
+    icon: IconTable,
+    href: '/admin/specializations',
   },
 ];
 
