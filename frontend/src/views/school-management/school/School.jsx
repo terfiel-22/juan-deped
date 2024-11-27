@@ -1,7 +1,7 @@
 import PageContainer from '../../../components/container/PageContainer'
 import Breadcrumb from '../../../layouts/full/shared/breadcrumb/Breadcrumb'
 import DashboardCard from '../../../components/shared/DashboardCard';
-import { Grid2 } from '@mui/material';
+import { Grid2, Typography } from '@mui/material';
 import CustomFormLabel from '../../../components/forms/theme-elements/CustomFormLabel';
 import CustomOutlinedInput from '../../../components/forms/theme-elements/CustomOutlinedInput';
 import { useCallback, useState } from 'react';
@@ -59,6 +59,7 @@ const School = () => {
             {/* end breadcrumb */}
 
             <DashboardCard>
+                <Typography variant='h4' align='center'>School Settings for Current School Year</Typography>
                 <Grid2 container spacing={2}>
                     <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
                         <CustomFormLabel htmlFor="schoolId">School ID</CustomFormLabel>
