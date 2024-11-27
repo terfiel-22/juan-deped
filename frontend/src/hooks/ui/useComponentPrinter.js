@@ -1,7 +1,7 @@
 import { useReactToPrint } from 'react-to-print';
 import html2pdf from 'html2pdf.js';
 
-const useComponentPrinter = ({ contentRef, fileName }) => {
+const useComponentPrinter = ({ contentRef, fileName, orientation = 'portrait' }) => {
   const handlePrint = useReactToPrint({
     contentRef,
     print: async (printIframe) => {
@@ -13,7 +13,7 @@ const useComponentPrinter = ({ contentRef, fileName }) => {
           margin: 0,
           filename: fileName + '.pdf',
           html2canvas: { scale: 2 },
-          jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait', floatPrecision: 'smart' },
+          jsPDF: { unit: 'in', format: 'letter', orientation, floatPrecision: 'smart' },
           pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
         };
         try {

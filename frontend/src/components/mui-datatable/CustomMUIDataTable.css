@@ -19,18 +19,9 @@
   }
 }
 
-table {
-  border: 1px solid #ddd; /* Set your desired border style and color */
-  padding: 8px;
-  text-align: left;
-}
-th {
-  border: 1px solid #ddd; /* Set your desired border style and color */
-  padding: 8px;
-  text-align: left;
-}
+table,
+th,
+tr,
 td {
-  border: 1px solid #ddd; /* Set your desired border style and color */
-  padding: 8px;
-  text-align: left;
+  text-align: center !important;
 }

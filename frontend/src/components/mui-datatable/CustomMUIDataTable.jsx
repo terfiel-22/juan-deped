@@ -3,7 +3,6 @@ import useMUIDataTable from './useMUIDataTable';
 import "./CustomMUIDataTable.css";
 
 const CustomMUIDataTable = ({ title, backendData }) => {
-
     const { columns, data, customToolBar } = useMUIDataTable({ backendData });
 
     const options = {

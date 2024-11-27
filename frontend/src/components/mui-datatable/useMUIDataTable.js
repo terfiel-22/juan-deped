@@ -5,7 +5,7 @@ import LocalPrintshopIcon from '@mui/icons-material/LocalPrintshop';
 import AddIcon from '@mui/icons-material/Add';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 
-const useMUIDataTable = ({ backendData }) => {
+const useMUIDataTable = ({ backendData, handlePrint = () => window.print() }) => {
   const [columns, setColumns] = useState([]);
   const [data, setData] = useState([]);
 
@@ -19,11 +19,7 @@ const useMUIDataTable = ({ backendData }) => {
 
   const printButton = (
     <Tooltip title="Print">
-      <IconButton
-        onClick={() => {
-          window.print();
-        }}
-      >
+      <IconButton onClick={handlePrint}>
         <LocalPrintshopIcon size="1.3rem" icon="plus" />
       </IconButton>
     </Tooltip>
@@ -79,7 +75,7 @@ const useMUIDataTable = ({ backendData }) => {
           },
         };
       }
-      return key.replace(/([A-Z])/g, '_$1').toUpperCase();
+      return key.replace(/([A-Z])/g, ' $1').toUpperCase();
     });
 
     setColumns([..._columns, customColumn]);
