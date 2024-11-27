@@ -1,11 +1,19 @@
 import { IconButton } from '@mui/material';
 import { Tooltip } from '@mui/material';
-import { IconEye } from '@tabler/icons';
+import { IconEye, IconPlus } from '@tabler/icons';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
 const useMUIDataTable = ({ backendData }) => {
   const [columns, setColumns] = useState([]);
   const [data, setData] = useState([]);
+
+  const addButton = (
+    <Tooltip title="Add New">
+      <IconButton onClick={() => {}}>
+        <IconPlus size="1.2rem" icon="plus" />
+      </IconButton>
+    </Tooltip>
+  );
 
   const isDate = useCallback(
     (value) => !isNaN(Date.parse(value)) && new Date(value).toISOString() === value,
@@ -74,7 +82,7 @@ const useMUIDataTable = ({ backendData }) => {
     setData(_data);
   }, [backendData]);
 
-  return { columns, data };
+  return { columns, data, addButton };
 };
 
 export default useMUIDataTable;

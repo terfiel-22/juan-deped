@@ -1,18 +1,21 @@
 import MUIDataTable from 'mui-datatables';
 import useMUIDataTable from './useMUIDataTable';
 
-
 const CustomMUIDataTable = ({ title, backendData }) => {
+
+    const { columns, data, addButton } = useMUIDataTable({ backendData });
+
     const OPTIONS = {
         search: true,
+        customToolbar: () => addButton,
         download: true,
         downloadOptions: {
-            filename: title + ".csv"
+            filename: title + '.csv',
         },
         print: true,
         viewColumns: true,
         filter: true,
-        selectableRows: "none",
+        selectableRows: 'none',
         filterType: 'dropdown',
         responsive: 'standard',
         rowHover: false,
@@ -20,7 +23,6 @@ const CustomMUIDataTable = ({ title, backendData }) => {
         rowsPerPageOptions: [5, 20, 50, 100],
     };
 
-    const { columns, data } = useMUIDataTable({ backendData });
 
     return (
         <MUIDataTable
