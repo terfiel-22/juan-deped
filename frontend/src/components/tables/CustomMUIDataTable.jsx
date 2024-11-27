@@ -33,7 +33,13 @@ const transformData = (backendData) => {
 
     const columns = Object.keys(backendData[0]).map((key) => {
         if (key === '_id') {
-            return { name: '_ID', options: { display: 'excluded' } };
+            return {
+                name: '_ID',
+                options: {
+                    display: 'excluded',
+                    download: false,
+                }
+            };
         }
         return key.replace(/([A-Z])/g, '_$1').toUpperCase();
     });
