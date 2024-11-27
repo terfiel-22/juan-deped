@@ -6,7 +6,8 @@ import CustomFormLabel from '../../../components/forms/theme-elements/CustomForm
 import CustomOutlinedInput from '../../../components/forms/theme-elements/CustomOutlinedInput';
 import { useCallback, useState } from 'react';
 import { LoadingButton } from '@mui/lab';
-import { Box } from '@mui/system';
+import axiosClient from '../../../utils/axiosClient';
+import { toastError, toastSuccess } from '../../../utils/toastEmitter';
 
 const BCrumb = [
     {
@@ -36,7 +37,7 @@ const INITIAL_DATA = {
 
 const School = () => {
     const [formData, setFormData] = useState(INITIAL_DATA);
-    const [isLoading, setIsLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const handleChange = useCallback((e) => {
         const { name, value } = e.target;
@@ -47,7 +48,18 @@ const School = () => {
     });
 
     const handleSubmit = useCallback(() => {
-        console.log(formData);
+        setLoading(true);
+        axiosClient
+            .post("/school", formData)
+            .then(({ data }) => {
+                toastSuccess(data.message);
+            })
+            .catch(({ response: { data } }) => {
+                toastError(data.message);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
     }, [formData])
 
     const { schoolId, schoolName, district, division, region, semester, beginningOfSemDate, endOfSemDate, schoolYear, schoolHead, schoolHeadDesignation, assistantPrincipal, assistantPrincipalDesignation } = formData;
@@ -208,7 +220,7 @@ const School = () => {
                     </Grid2>
                 </Grid2>
                 <Grid2 container justifyContent="end" marginTop={4}>
-                    <LoadingButton loading={isLoading} variant='contained' color='primary' onClick={handleSubmit}>
+                    <LoadingButton loading={loading} variant='contained' color='primary' onClick={handleSubmit}>
                         Save Changes
                     </LoadingButton>
                 </Grid2>

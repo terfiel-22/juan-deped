@@ -4,6 +4,7 @@ import authRoute from "./auth.route.js";
 import personnelRoute from "./personnel.route.js";
 import studentRoute from "./student.route.js";
 import trackStrandSpecializationRoute from "./track-strand-specialization.route.js";
+import schoolRoute from "./school-management/school.route.js";
 
 const router = Router();
 
@@ -13,5 +14,6 @@ export default () => {
   personnelRoute(router);
   studentRoute(router);
   trackStrandSpecializationRoute(router);
+  schoolRoute(router);
   return router;
 };
