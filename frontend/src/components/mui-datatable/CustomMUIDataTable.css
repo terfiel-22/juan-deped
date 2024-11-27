@@ -1,0 +1,20 @@
+@media print {
+  /** Remove Scroll Bar*/
+  div:has(> .MuiTable-root) {
+    overflow: visible !important;
+  }
+
+  /** Remove Tools on Print */
+  .MuiToolbar-root .MuiButtonBase-root {
+    display: none !important;
+  }
+  .MuiTableFooter-root {
+    display: none !important;
+  }
+
+  /** Remove border shadow */
+  .MuiPaper-root {
+    box-shadow: none !important;
+    border-radius: 0px !important;
+  }
+}

@@ -1,5 +1,6 @@
 import MUIDataTable from 'mui-datatables';
 import useMUIDataTable from './useMUIDataTable';
+import "./CustomMUIDataTable.css";
 
 const CustomMUIDataTable = ({ title, backendData }) => {
 
@@ -7,7 +8,6 @@ const CustomMUIDataTable = ({ title, backendData }) => {
 
     const OPTIONS = {
         search: true,
-        customToolbar: () => addButton,
         download: true,
         downloadOptions: {
             filename: title + '.csv',

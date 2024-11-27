@@ -20,15 +20,4 @@
   .print-container .print-hidden {
     visibility: hidden;
   }
-
-  /** MUI Datatable */
-  .MuiTableCell-paddingCheckbox,
-  .MUIDataTableSelectCell,
-  .MuiTableFooter-root {
-    display: none !important;
-  }
-  .MuiPaper-root {
-    box-shadow: none !important;
-    border-radius: 0px !important;
-  }
 }
