@@ -3,6 +3,7 @@ import Personnel from "../models/personnel.model.js";
 export const fetchPersonnels = async (req, res, next) => {
   try {
     const personnels = await Personnel.find().select([
+      "_id",
       "empNo",
       "account",
       "lName",
@@ -15,7 +16,6 @@ export const fetchPersonnels = async (req, res, next) => {
       "age",
       "bloodType",
       "yrsOfTeachingPrivate",
-      "-_id",
     ]);
     res.status(200).json(personnels);
   } catch (error) {

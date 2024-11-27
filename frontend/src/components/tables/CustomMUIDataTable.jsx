@@ -7,7 +7,12 @@ const transformData = (backendData) => {
         return !isNaN(Date.parse(value)) && new Date(value).toISOString() === value;
     }
 
-    const columns = Object.keys(backendData[0]).map((key) => key.replace(/([A-Z])/g, "_$1").toUpperCase());
+    const columns = Object.keys(backendData[0]).map((key) => {
+        if (key === "_id") {
+            return { name: "_ID", options: { display: "excluded" } }
+        }
+        return key.replace(/([A-Z])/g, "_$1").toUpperCase();
+    });
 
     const data = backendData.map((item) =>
         Object.values(item).map((value) => {
@@ -37,9 +42,12 @@ const CustomMUIDataTable = ({ title, backendData }) => {
         rowHover: false,
         rowsPerPage: 5,
         rowsPerPageOptions: [5, 20, 50, 100],
-        onRowsDelete: (rowsDeleted, newTableData) => {
-            console.log(rowsDeleted)
-            console.log(newTableData)
+        onRowsDelete: (rowsDeleted) => {
+            const idsToDelete = rowsDeleted.data.map(d => backendData[d.dataIndex]._id);
+            if (confirm("Are you sure you want to delete?")) {
+                alert("Deleted successfully.");
+                console.log(idsToDelete);
+            }
         }
     };
 

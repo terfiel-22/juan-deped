@@ -16,7 +16,7 @@ const SHSF1 = () => {
   return (
     <PageContainer title="JuanDepEd | SHSF1" description="this is SHSF1 page">
       {/* breadcrumb */}
-      <Breadcrumb title="SHSF1" items={BCrumb} />
+      <Breadcrumb title="School Form 1 School Register for Senior High School (SF1-SHS)" items={BCrumb} />
       {/* end breadcrumb */}
       <Box>
         {/* Header Content */}
