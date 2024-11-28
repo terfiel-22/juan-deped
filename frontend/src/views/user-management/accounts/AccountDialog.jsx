@@ -45,6 +45,14 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, data = data ?
     const { updateLoading, handleUpdate } = useUpdate({ url: "/auth/edit", formData, setter: setUpdatedAccount })
     const { deleteLoading, handleDelete } = useDelete({ url: "/auth/delete", formData, setter: setDeletedAccount })
 
+    const isButtonLoading = formData._id ? updateLoading : createLoading;
+    const handleSaveButton = () => formData._id ? handleUpdate() : handleCreate();
+    const handleDeleteButton = () => {
+        handleDelete();
+        handleClose();
+    }
+
+
     const { username, email, password, cpassword, role } = formData;
 
     return (
@@ -155,7 +163,7 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, data = data ?
             <DialogActions sx={{ justifyContent: 'space-between' }}>
                 {
                     formData._id ?
-                        <LoadingButton sx={{ marginLeft: '0', display: 'block' }} loading={deleteLoading} color='warning' onClick={handleDelete}>
+                        <LoadingButton sx={{ marginLeft: '0', display: 'block' }} loading={deleteLoading} color='warning' onClick={handleDeleteButton}>
                             Delete
                         </LoadingButton>
                         :
@@ -165,7 +173,7 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, data = data ?
                     <Button color='error' sx={{ marginRight: '10px' }} onClick={handleClose}>
                         Close
                     </Button>
-                    <LoadingButton loading={formData._id ? updateLoading : createLoading} color='primary' onClick={formData._id ? handleUpdate : handleCreate}>
+                    <LoadingButton loading={isButtonLoading} color='primary' onClick={handleSaveButton}>
                         Save
                     </LoadingButton>
                 </Box>
