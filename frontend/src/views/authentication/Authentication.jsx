@@ -1,10 +1,18 @@
-import React from 'react'
-import { Grid, Box, Card } from '@mui/material';
+import { useState } from 'react'
+import { Grid2, Box, Card, Tab } from '@mui/material';
 import PageContainer from 'src/components/container/PageContainer';
 import Logo from 'src/layouts/full/shared/logo/Logo';
-import AuthLayout from './layouts/AuthLayout';
+import BlankCard from '../../components/shared/BlankCard';
+import { TabContext, TabList, TabPanel } from '@mui/lab';
+import LoginForm from './forms/LoginForm';
+import RegistrationForm from './forms/RegistrationForm';
 
 const Authentication = () => {
+    const [value, setValue] = useState('1');
+
+    const handleChange = (_, newValue) => {
+        setValue(newValue);
+    };
     return (
         <PageContainer title="JuanDepEd | Authentication" description="Juan DepEd Authentication Page">
             <Box
@@ -22,13 +30,9 @@ const Authentication = () => {
                     },
                 }}
             >
-                <Grid container spacing={0} justifyContent="center" sx={{ height: '100vh' }}>
-                    <Grid
-                        item
-                        xs={12}
-                        sm={12}
-                        lg={6}
-                        xl={4}
+                <Grid2 container spacing={0} justifyContent="center" sx={{ height: '100vh' }}>
+                    <Grid2
+                        size={{ xs: 12, sm: 12, lg: 12, xl: 4 }}
                         display="flex"
                         justifyContent="center"
                         alignItems="center"
@@ -37,10 +41,29 @@ const Authentication = () => {
                             <Box display="flex" alignItems="center" justifyContent="center">
                                 <Logo />
                             </Box>
-                            <AuthLayout />
+                            <BlankCard>
+                                <TabContext value={value}>
+                                    <Box sx={{ borderBottom: 1, borderColor: (theme) => theme.palette.divider }}>
+                                        <TabList
+                                            onChange={handleChange}
+                                            aria-label="lab API tabs example"
+                                            centered
+                                        >
+                                            <Tab label="Login" value="1" />
+                                            <Tab label="Register" value="2" />
+                                        </TabList>
+                                    </Box>
+                                    <TabPanel value="1">
+                                        <LoginForm />
+                                    </TabPanel>
+                                    <TabPanel value="2">
+                                        <RegistrationForm />
+                                    </TabPanel>
+                                </TabContext>
+                            </BlankCard>
                         </Card>
-                    </Grid>
-                </Grid>
+                    </Grid2>
+                </Grid2>
             </Box>
         </PageContainer>
     )
