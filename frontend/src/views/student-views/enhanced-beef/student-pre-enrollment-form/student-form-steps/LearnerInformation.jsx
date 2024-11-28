@@ -1,7 +1,7 @@
 import { Box } from '@mui/system'
 import CustomFormLabel from '../../../../../components/forms/theme-elements/CustomFormLabel'
 import CustomTextField from '../../../../../components/forms/theme-elements/CustomTextField'
-import { FormControlLabel, Grid, RadioGroup } from '@mui/material'
+import { FormControlLabel, Grid2, RadioGroup } from '@mui/material'
 import CustomRadio from '../../../../../components/forms/theme-elements/CustomRadio'
 import useStudentDetailForm from '../../../../../hooks/student/useStudentDetailForm'
 import { formatDate } from '../../../../../utils/dateFormatter'
@@ -13,15 +13,15 @@ const LearnerInformation = () => {
 
     return (
         <Box>
-            <Grid container spacing={2}>
-                <Grid item xs={12} sm={12} lg={3}>
+            <Grid2 container spacing={2}>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="isPsaAvailable">Is PSA Available?</CustomFormLabel>
                     <RadioGroup row aria-label="isPsaAvailable" name="isPsaAvailable" onChange={handleChange} value={isPsaAvailable}>
                         <FormControlLabel value={true} control={<CustomRadio />} label="Yes" />
                         <FormControlLabel value={false} control={<CustomRadio />} label="No" />
                     </RadioGroup>
-                </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="psaBirthCertificateNo">PSA Birth Certificate No.</CustomFormLabel>
                     <CustomTextField
                         id="psaBirthCertificateNo"
@@ -34,8 +34,8 @@ const LearnerInformation = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="learnerReferenceNo">Learner Reference No.</CustomFormLabel>
                     <CustomTextField
                         id="learnerReferenceNo"
@@ -47,8 +47,8 @@ const LearnerInformation = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="lastName">Last Name</CustomFormLabel>
                     <CustomTextField
                         id="lastName"
@@ -60,8 +60,8 @@ const LearnerInformation = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="firstName">First Name</CustomFormLabel>
                     <CustomTextField
                         id="firstName"
@@ -73,8 +73,8 @@ const LearnerInformation = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="middleName">Middle Name</CustomFormLabel>
                     <CustomTextField
                         id="middleName"
@@ -86,8 +86,8 @@ const LearnerInformation = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="extensionName">Extension Name</CustomFormLabel>
                     <CustomTextField
                         id="extensionName"
@@ -99,8 +99,8 @@ const LearnerInformation = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="birthDate">Birthdate</CustomFormLabel>
                     <CustomTextField
                         id="birthDate"
@@ -113,15 +113,15 @@ const LearnerInformation = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="sex">Sex</CustomFormLabel>
                     <RadioGroup row aria-label="sex" name="sex" onChange={handleChange} value={sex}>
                         <FormControlLabel value="Male" control={<CustomRadio />} label="Male" />
                         <FormControlLabel value="Female" control={<CustomRadio />} label="Female" />
                     </RadioGroup>
-                </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="age">Age</CustomFormLabel>
                     <CustomTextField
                         id="age"
@@ -133,8 +133,8 @@ const LearnerInformation = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="placeOfBirth">Place of Birth</CustomFormLabel>
                     <CustomTextField
                         id="placeOfBirth"
@@ -146,8 +146,8 @@ const LearnerInformation = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="motherTongue">Mother Tongue</CustomFormLabel>
                     <CustomTextField
                         id="motherTongue"
@@ -159,15 +159,15 @@ const LearnerInformation = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="isIndigenousPeople">Is Indigenous People?</CustomFormLabel>
                     <RadioGroup row aria-label="isIndigenousPeople" name="isIndigenousPeople" onChange={handleChange} value={isIndigenousPeople}>
                         <FormControlLabel value={true} control={<CustomRadio />} label="Yes" />
                         <FormControlLabel value={false} control={<CustomRadio />} label="No" />
                     </RadioGroup>
-                </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="indigenousPeople">Indigenous Community</CustomFormLabel>
                     <CustomTextField
                         id="indigenousPeople"
@@ -180,15 +180,15 @@ const LearnerInformation = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="isFourPsBeneficiary">Is 4Ps Beneficiary?</CustomFormLabel>
                     <RadioGroup row aria-label="isFourPsBeneficiary" name="isFourPsBeneficiary" onChange={handleChange} value={isFourPsBeneficiary}>
                         <FormControlLabel value={true} control={<CustomRadio />} label="Yes" />
                         <FormControlLabel value={false} control={<CustomRadio />} label="No" />
                     </RadioGroup>
-                </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="fourPsHouseHoldId">4Ps Household ID</CustomFormLabel>
                     <CustomTextField
                         id="fourPsHouseHoldId"
@@ -201,8 +201,8 @@ const LearnerInformation = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-            </Grid>
+                </Grid2>
+            </Grid2>
         </Box>
     )
 }
