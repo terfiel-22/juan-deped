@@ -7,6 +7,7 @@ import AccountDialog from './AccountDialog';
 import useTableDialog from '../../../hooks/shared/useTableDialog';
 import useRead from '../../../hooks/crud/useRead';
 import { setAccounts } from '../../../store/tables/reducers/account/AccountAction';
+import { selectAccounts } from '../../../store/tables/reducers/account/AccountSelector';
 
 const BCrumb = [
     {
@@ -28,11 +29,7 @@ const defaultFormData = {
 
 const Accounts = () => {
     /** Fetch Auths */
-    const { data } = useRead({ url: '/auths', setter: setAccounts });
-    const [rows, setRows] = useState(data);
-    useEffect(() => {
-        setRows(data);
-    }, [data]);
+    const { storedData } = useRead({ url: '/auths', setter: setAccounts, selector: selectAccounts });
 
     /** For Table Dialog */
     const {
@@ -57,7 +54,7 @@ const Accounts = () => {
                     data={selectedData}
                 />
                 <CustomMUIDataTable
-                    backendData={rows}
+                    backendData={storedData}
                     handleOpenDialog={handleOpenDialog}
                     setSelectedData={setSelectedData}
                     title="Accounts"

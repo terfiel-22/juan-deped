@@ -43,7 +43,7 @@ const useMUIDataTable = ({
 
   const handleView = useCallback(
     (rowIndex) => {
-      if (!backendData) return;
+      if (backendData.length === 0) return;
       setSelectedData(backendData[rowIndex]);
     },
     [backendData],
@@ -70,7 +70,7 @@ const useMUIDataTable = ({
   }));
 
   useEffect(() => {
-    if (!backendData) return;
+    if (backendData.length === 0) return;
     const _columns = Object.keys(backendData[0]).map((key) => {
       if (key === '_id') {
         return {
@@ -88,7 +88,7 @@ const useMUIDataTable = ({
   }, [backendData]);
 
   useEffect(() => {
-    if (!backendData) return;
+    if (backendData.length === 0) return;
     const _data = backendData.map((item) =>
       Object.values(item).map((value) => {
         if (isDate(value)) {
