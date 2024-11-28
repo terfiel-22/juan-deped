@@ -4,6 +4,7 @@ const trackSchema = new Schema({
   name: { type: String, required: true },
   strands: [{ type: Types.ObjectId, ref: "Strand" }],
   schoolYear: { type: String, required: true },
+  isAvailable: { type: Boolean, default: true },
 });
 
 const strandSchema = new Schema({
