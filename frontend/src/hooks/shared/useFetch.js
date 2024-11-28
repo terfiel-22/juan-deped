@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axiosClient from '../../utils/axiosClient';
+import { toastError } from '../../utils/toastEmitter';
 
 const useFetch = ({ url }) => {
   const [data, setData] = useState(null);
@@ -11,7 +12,7 @@ const useFetch = ({ url }) => {
         setData(data);
       })
       .catch(({ response: { data } }) => {
-        console.error(data.message);
+        toastError(data.message);
       });
   }, [url]);
 

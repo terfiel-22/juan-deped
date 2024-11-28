@@ -1,10 +1,9 @@
 import { Box } from '@mui/system';
 import PageContainer from '../../../components/container/PageContainer';
 import Breadcrumb from '../../../layouts/full/shared/breadcrumb/Breadcrumb';
-import { selectTracks, setTracks } from '../../../store/career/CareerSlice';
-import useFetchAndDispatch from '../../../hooks/shared/useFetchAndDispatch';
 import { useEffect, useState } from 'react';
 import CustomMUIDataTable from '../../../components/mui-datatable/CustomMUIDataTable';
+import useFetch from '../../../hooks/shared/useFetch';
 
 const BCrumb = [
     {
@@ -18,11 +17,7 @@ const BCrumb = [
 
 const Tracks = () => {
     /** Fetch Tracks */
-    const { data } = useFetchAndDispatch({
-        url: '/tracks',
-        setter: setTracks,
-        selector: selectTracks
-    });
+    const { data } = useFetch({ url: '/tracks' });
     const [rows, setRows] = useState(data);
     useEffect(() => {
         setRows(data);

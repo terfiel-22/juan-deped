@@ -6,6 +6,7 @@ import { selectPersonnels, setPersonnels } from "../../../store/user/UserSlice";
 import { useState } from "react";
 import { useEffect } from "react";
 import CustomMUIDataTable from "../../../components/mui-datatable/CustomMUIDataTable";
+import useFetch from "../../../hooks/shared/useFetch";
 
 const BCrumb = [
     {
@@ -19,9 +20,7 @@ const BCrumb = [
 
 const Personnels = () => {
     /** Fetch Personnels */
-    const { data } = useFetchAndDispatch({
-        url: "/personnels", setter: setPersonnels, selector: selectPersonnels
-    });
+    const { data } = useFetch({ url: "/personnels" });
     const [rows, setRows] = useState(data);
     useEffect(() => {
         setRows(data)
