@@ -12,6 +12,8 @@ import ReturneeInformationForm from './forms/ReturneeInformationForm'
 import SHSLearnerForm from './forms/SHSLearnerForm'
 import PreferredDistanceLearningModalitiesForm from './forms/PreferredDistanceLearningModalitiesForm'
 import NCPasserForm from './forms/NCPasserForm'
+import SHSEligibilityForm from './forms/SHSEligibilityForm'
+import AdditionalInformationForm from './forms/AdditionalInformationForm'
 
 const EnhancedBeefForm = () => {
     const [formData, setFormData] = useState(ENHANCED_BEEF_STATE);
@@ -87,11 +89,11 @@ const EnhancedBeefForm = () => {
                 </Grid2>
                 <Grid2 size={12}>
                     <CustomHeader4 text="For SHS Eligibility" />
-                    {/* Content Here */}
+                    <SHSEligibilityForm {...{ formData, handleNestedChange }} />
                 </Grid2>
                 <Grid2 size={12}>
                     <CustomHeader4 text="Additional Information" />
-                    {/* Content Here */}
+                    <AdditionalInformationForm  {...{ formData, handleChange }} />
                 </Grid2>
                 <Grid2 container size={12} justifyContent="flex-end">
                     <LoadingButton variant='contained' loading={loading} type='submit'>Save Changes</LoadingButton>
