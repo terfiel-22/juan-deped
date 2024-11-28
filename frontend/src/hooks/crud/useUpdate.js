@@ -3,7 +3,7 @@ import axiosClient from '../../utils/axiosClient';
 import { toastError, toastSuccess } from '../../utils/toastEmitter';
 import { useDispatch } from 'react-redux';
 
-const useUpdate = ({ url, formData, setter }) => {
+const useUpdate = ({ url, formData, setter = null }) => {
   const dispatch = useDispatch();
   const [updateLoading, setUpdateLoading] = useState(false);
 

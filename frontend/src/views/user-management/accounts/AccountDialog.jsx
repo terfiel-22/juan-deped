@@ -8,10 +8,10 @@ import CustomOutlinedInput from '../../../components/forms/theme-elements/Custom
 import usePasswordVisibility from '../../../hooks/ui/usePasswordVisibility'
 import CustomSelect from '../../../components/forms/theme-elements/CustomSelect'
 import { USER_ROLES_ARRAY } from '../../../constants/UserRolesArray'
-import { setDeletedAuth, setNewAuth, setUpdatedAuth } from '../../../store/user/UserSlice';
-import useAddAndDispatch from '../../../hooks/shared/useAddAndDispatch'
-import useUpdateAndDispatch from '../../../hooks/shared/useUpdateAndDispatch'
-import useDeleteAndDispatch from '../../../hooks/shared/useDeleteAndDispatch'
+import useCreate from '../../../hooks/crud/useCreate'
+import { setDeletedAccount, setNewAccount, setUpdatedAccount } from '../../../store/tables/reducers/account/AccountAction'
+import useUpdate from '../../../hooks/crud/useUpdate'
+import useDelete from '../../../hooks/crud/useDelete'
 
 const defaultData = {
     username: "",
@@ -23,28 +23,28 @@ const defaultData = {
 
 const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, data = data ?? defaultData }) => {
     const { showPassword, handleClickShowPassword, handleMouseDownPassword } = usePasswordVisibility();
-    const [formFields, setFormFields] = useState(data)
+    const [formData, setFormData] = useState(data)
     useEffect(() => {
-        setFormFields(data)
+        setFormData(data)
     }, [data])
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormFields({
-            ...formFields,
+        setFormData({
+            ...formData,
             [name]: value
         })
     };
     const handleClose = () => {
-        setFormFields(defaultData);
+        setFormData(defaultData);
         close();
     }
 
-    const { loading, handleSubmit } = useAddAndDispatch({ url: "/auth/add", formFields, setter: setNewAuth })
-    const { updateLoading, handleUpdate } = useUpdateAndDispatch({ url: "/auth/edit", formFields, setter: setUpdatedAuth })
-    const { deleteLoading, handleDelete } = useDeleteAndDispatch({ url: "/auth/delete", formFields, setter: setDeletedAuth })
+    const { createLoading, handleCreate } = useCreate({ url: "/auth/add", formData, setter: setNewAccount })
+    const { updateLoading, handleUpdate } = useUpdate({ url: "/auth/edit", formData, setter: setUpdatedAccount })
+    const { deleteLoading, handleDelete } = useDelete({ url: "/auth/delete", formData, setter: setDeletedAccount })
 
-    const { username, email, password, cpassword, role } = formFields;
+    const { username, email, password, cpassword, role } = formData;
 
     return (
         <Dialog
@@ -153,7 +153,7 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, data = data ?
             </DialogContent>
             <DialogActions sx={{ justifyContent: 'space-between' }}>
                 {
-                    formFields._id ?
+                    formData._id ?
                         <LoadingButton sx={{ marginLeft: '0', display: 'block' }} loading={deleteLoading} color='warning' onClick={handleDelete}>
                             Delete
                         </LoadingButton>
@@ -164,7 +164,7 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, data = data ?
                     <Button color='error' sx={{ marginRight: '10px' }} onClick={handleClose}>
                         Close
                     </Button>
-                    <LoadingButton loading={formFields._id ? updateLoading : loading} color='primary' onClick={formFields._id ? handleUpdate : handleSubmit}>
+                    <LoadingButton loading={formData._id ? updateLoading : createLoading} color='primary' onClick={formData._id ? handleUpdate : handleCreate}>
                         Save
                     </LoadingButton>
                 </Box>
