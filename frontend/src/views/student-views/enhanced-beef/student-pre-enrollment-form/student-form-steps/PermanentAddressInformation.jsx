@@ -1,7 +1,7 @@
 import { Box } from '@mui/system'
 import CustomFormLabel from '../../../../../components/forms/theme-elements/CustomFormLabel'
 import CustomTextField from '../../../../../components/forms/theme-elements/CustomTextField'
-import { FormControlLabel, Grid, RadioGroup } from '@mui/material'
+import { FormControlLabel, Grid2, RadioGroup } from '@mui/material'
 import useStudentDetailForm from '../../../../../hooks/student/useStudentDetailForm'
 import CustomRadio from '../../../../../components/forms/theme-elements/CustomRadio'
 
@@ -12,15 +12,15 @@ const PermanentAddressInformation = () => {
 
     return (
         <Box>
-            <Grid container spacing={2}>
-                <Grid item xs={12} sm={12} lg={3}>
+            <Grid2 container spacing={2}>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="isSameAsCurrentAddress">Same as Current Address?</CustomFormLabel>
                     <RadioGroup row aria-label="isSameAsCurrentAddress" name="isSameAsCurrentAddress" onChange={handleChange} value={isSameAsCurrentAddress}>
                         <FormControlLabel value={true} control={<CustomRadio />} label="Yes" />
                         <FormControlLabel value={false} control={<CustomRadio />} label="No" />
                     </RadioGroup>
-                </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="houseNoStreet">House Street No.</CustomFormLabel>
                     <CustomTextField
                         id="houseNoStreet"
@@ -33,8 +33,8 @@ const PermanentAddressInformation = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="streetName">Street Name</CustomFormLabel>
                     <CustomTextField
                         id="streetName"
@@ -47,8 +47,8 @@ const PermanentAddressInformation = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="barangay">Barangay</CustomFormLabel>
                     <CustomTextField
                         id="barangay"
@@ -61,8 +61,8 @@ const PermanentAddressInformation = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="municipalityCity">Municipality/City</CustomFormLabel>
                     <CustomTextField
                         id="municipalityCity"
@@ -75,8 +75,8 @@ const PermanentAddressInformation = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="province">Province</CustomFormLabel>
                     <CustomTextField
                         id="province"
@@ -89,8 +89,8 @@ const PermanentAddressInformation = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="country">Country</CustomFormLabel>
                     <CustomTextField
                         id="country"
@@ -103,8 +103,8 @@ const PermanentAddressInformation = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="zipCode">Zip Code</CustomFormLabel>
                     <CustomTextField
                         id="zipCode"
@@ -117,8 +117,8 @@ const PermanentAddressInformation = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-            </Grid>
+                </Grid2>
+            </Grid2>
         </Box>
     )
 }
