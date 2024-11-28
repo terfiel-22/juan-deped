@@ -6,7 +6,7 @@ const CustomHeader4 = ({ text }) => {
     const theme = useTheme();
     const customizer = useSelector((state) => state.customizer);
     return (
-        <Typography variant='h4' sx={{ background: theme.palette.primary.light, color: theme.palette.primary.main, borderRadius: `${customizer.borderRadius}px`, padding: 1 }}>{text}</Typography>
+        <Typography variant='h4' sx={{ background: theme.palette.primary.light, color: theme.palette.primary.secondary, borderRadius: `${customizer.borderRadius}px`, padding: 1 }}>{text}</Typography>
     )
 }
 
