@@ -1,6 +1,6 @@
-import { Box } from "@mui/system";
 import PageContainer from "../../../components/container/PageContainer"
 import Breadcrumb from "../../../layouts/full/shared/breadcrumb/Breadcrumb"
+import DashboardCard from "../../../components/shared/DashboardCard";
 
 const BCrumb = [
     {
@@ -18,11 +18,11 @@ const EnhancedBeef = () => {
             {/* breadcrumb */}
             <Breadcrumb title="ENHANCED BASIC EDUCATION ENROLLMENT FORM" items={BCrumb} />
             {/* end breadcrumb */}
-            <Box>
-                {/* Header Content */}
-                {/* Table Here */}
-                {/* Footer Content */}
-            </Box>
+
+            {/* start content */}
+            <DashboardCard>
+
+            </DashboardCard>
         </PageContainer>
     )
 }

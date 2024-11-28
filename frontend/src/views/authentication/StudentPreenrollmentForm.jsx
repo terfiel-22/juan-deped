@@ -4,7 +4,7 @@ import Logo from 'src/layouts/full/shared/logo/Logo';
 import BlankCard from '../../components/shared/BlankCard';
 import useFetchAndDispatch from '../../hooks/shared/useFetchAndDispatch';
 import { selectCurrentStudent, setCurrentStudent } from '../../store/student/StudentSlice';
-import StudentPreenrollmentFormContainer from './forms/student-pre-enrollment-form/StudentPreenrollmentFormContainer';
+import StudentPreenrollmentFormContainer from '../student-views/enhanced-beef/student-pre-enrollment-form/StudentPreenrollmentFormContainer';
 import PendingHeader from '../../layouts/full/vertical/header/PendingHeader';
 
 const StudentPreenrollmentForm = ({ studentAuthId }) => {
