@@ -10,7 +10,7 @@ const StudentPreEnrollmentData = forwardRef((_, ref) => {
     const { data: track } = useFetch({ url: studentData.seniorHighSchool.track ? `/track/${studentData.seniorHighSchool.track}` : null })
     const { data: strand } = useFetch({ url: studentData.seniorHighSchool.strand ? `/strand/${studentData.seniorHighSchool.strand}` : null })
 
-    if (!studentData || !track || !strand) {
+    if (!studentData) {
         return <Typography>Loading...</Typography>;
     }
 
@@ -156,8 +156,8 @@ const StudentPreEnrollmentData = forwardRef((_, ref) => {
                 <Box sx={{ marginTop: 2 }}>
                     <Typography variant="h5">Senior High School Information</Typography>
                     <Typography><strong>Semester:</strong> {studentData.seniorHighSchool.semester}</Typography>
-                    <Typography><strong>Track:</strong> {track.data.name}</Typography>
-                    <Typography><strong>Strand:</strong> {strand.data.name}</Typography>
+                    <Typography><strong>Track:</strong> {track && track.name}</Typography>
+                    <Typography><strong>Strand:</strong> {track && strand.name}</Typography>
                 </Box>
                 <Divider />
 
