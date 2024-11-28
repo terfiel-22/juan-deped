@@ -18,12 +18,11 @@ const BCrumb = [
 ];
 
 const Personnels = () => {
-
     /** Fetch Personnels */
     const { data } = useFetchAndDispatch({
         url: "/personnels", setter: setPersonnels, selector: selectPersonnels
     });
-    const [rows, setRows] = useState(null);
+    const [rows, setRows] = useState(data);
     useEffect(() => {
         setRows(data)
     }, [data])
