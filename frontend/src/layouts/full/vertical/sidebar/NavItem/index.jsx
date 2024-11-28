@@ -36,7 +36,7 @@ const NavItem = ({ item, level, pathDirect, onClick, hideMenu }) => {
       backgroundColor: theme.palette.primary.light,
       color: theme.palette.primary.main,
     },
-    '&.Mui-selected': {
+    '&.active': {
       color: 'white',
       backgroundColor: theme.palette.primary.main,
       '&:hover': {
