@@ -1,5 +1,6 @@
 import { model, Schema } from "mongoose";
-import { LEARNERS_ENUM } from "../../constants/UserRoles";
+import { LEARNERS_ENUM } from "../../constants/UserRoles.js";
+import { DEFAULT_PROFILE_PIC } from "../../constants/DefaultFields.js";
 
 const learnerSchema = Schema(
   {
@@ -7,7 +8,7 @@ const learnerSchema = Schema(
     username: { type: String, required: true },
     email: { type: String, unique: true, required: true },
     password: { type: String, required: true },
-    avatar: { type: String, required: true },
+    profilePic: { type: String, required: true, default: DEFAULT_PROFILE_PIC },
     role: {
       type: String,
       required: true,

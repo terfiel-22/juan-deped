@@ -5,6 +5,7 @@ import personnelRoute from "./personnel.route.js";
 import studentRoute from "./student.route.js";
 import schoolRoute from "./school-management/school.route.js";
 import trackStrandSpecializationRoute from "./school-management/track-strand-specialization.route.js";
+import learnerRoute from "./learner/learner.route.js";
 
 const router = Router();
 
@@ -15,5 +16,6 @@ export default () => {
   studentRoute(router);
   trackStrandSpecializationRoute(router);
   schoolRoute(router);
+  learnerRoute(router);
   return router;
 };
