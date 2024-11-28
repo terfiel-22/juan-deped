@@ -2,8 +2,9 @@ import { Box } from '@mui/system'
 import PageContainer from '../../../components/container/PageContainer'
 import Breadcrumb from '../../../layouts/full/shared/breadcrumb/Breadcrumb'
 import CustomMUIDataTable from '../../../components/mui-datatable/CustomMUIDataTable';
-import useFetch from '../../../hooks/shared/useFetch';
-import { useEffect, useState } from 'react';
+import useRead from '../../../hooks/crud/useRead';
+import { setSpecializations } from '../../../store/tables/reducers/career/CareerAction';
+import { selectSpecializations } from '../../../store/tables/reducers/career/CareerSelector';
 
 const BCrumb = [
     {
@@ -17,18 +18,15 @@ const BCrumb = [
 
 const Specializations = () => {
     /** Fetch Specializations */
-    const { data } = useFetch({ url: "/specializations" });
-    const [rows, setRows] = useState(data);
-    useEffect(() => {
-        setRows(data)
-    }, [data])
+    const { storedData } = useRead({ url: '/specializations', setter: setSpecializations, selector: selectSpecializations });
+
     return (
         <PageContainer title="JuanDepEd | Specializations" description="this is Specializations page">
             {/* breadcrumb */}
             <Breadcrumb title="Specializations" items={BCrumb} />
             {/* end breadcrumb */}
             <Box>
-                <CustomMUIDataTable title={"Specialization List"} backendData={rows} />
+                <CustomMUIDataTable title={"Specialization List"} backendData={storedData} />
             </Box>
         </PageContainer>
     )

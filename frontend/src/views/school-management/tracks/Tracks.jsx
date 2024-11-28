@@ -1,9 +1,10 @@
 import { Box } from '@mui/system';
 import PageContainer from '../../../components/container/PageContainer';
 import Breadcrumb from '../../../layouts/full/shared/breadcrumb/Breadcrumb';
-import { useEffect, useState } from 'react';
 import CustomMUIDataTable from '../../../components/mui-datatable/CustomMUIDataTable';
-import useFetch from '../../../hooks/shared/useFetch';
+import useRead from '../../../hooks/crud/useRead';
+import { setTracks } from '../../../store/tables/reducers/career/CareerAction';
+import { selectTracks } from '../../../store/tables/reducers/career/CareerSelector';
 
 const BCrumb = [
     {
@@ -17,11 +18,7 @@ const BCrumb = [
 
 const Tracks = () => {
     /** Fetch Tracks */
-    const { data } = useFetch({ url: '/tracks' });
-    const [rows, setRows] = useState(data);
-    useEffect(() => {
-        setRows(data);
-    }, [data]);
+    const { storedData } = useRead({ url: '/tracks', setter: setTracks, selector: selectTracks });
 
     return (
         <PageContainer title="JuanDepEd | Tracks" description="this is Tracks page">
@@ -29,7 +26,7 @@ const Tracks = () => {
             <Breadcrumb title="Tracks" items={BCrumb} />
             {/* end breadcrumb */}
             <Box>
-                <CustomMUIDataTable title={"Track List"} backendData={rows} />
+                <CustomMUIDataTable title={"Track List"} backendData={storedData} />
             </Box>
         </PageContainer>
     )
