@@ -47,7 +47,7 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose, data = defaultData }
         })
     };
 
-    const handleSaveButton = () => formData._id ? handleUpdate() : handleCreate();
+    const handleSubmit = () => formData._id ? handleUpdate() : handleCreate();
     const handleDeleteButton = () => {
         handleDelete();
         handleClose();
@@ -63,122 +63,128 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose, data = defaultData }
             onClose={handleClose}
             aria-labelledby="responsive-dialog-title"
         >
-            <DialogTitle id="responsive-dialog-title">
-                User Account
-            </DialogTitle>
-            <DialogContent>
-                <Stack>
-                    <Grid2 container spacing={1} marginBottom={2}>
-                        <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
-                            <CustomFormLabel htmlFor="username">Username</CustomFormLabel>
-                            <CustomOutlinedInput
-                                name="username"
-                                id="username"
-                                placeholder="Username"
-                                fullWidth
-                                value={username}
-                                onChange={handleChange}
-                            />
+            <form onSubmit={handleSubmit}>
+                <DialogTitle id="responsive-dialog-title">
+                    User Account
+                </DialogTitle>
+                <DialogContent>
+                    <Stack>
+                        <Grid2 container spacing={1} marginBottom={2}>
+                            <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
+                                <CustomFormLabel htmlFor="username">Username</CustomFormLabel>
+                                <CustomOutlinedInput
+                                    required
+                                    name="username"
+                                    id="username"
+                                    placeholder="Username"
+                                    fullWidth
+                                    value={username}
+                                    onChange={handleChange}
+                                />
+                            </Grid2>
+                            <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
+                                <CustomFormLabel htmlFor="email">Email</CustomFormLabel>
+                                <CustomOutlinedInput
+                                    required
+                                    type="email"
+                                    name="email"
+                                    id="email"
+                                    placeholder="Email"
+                                    fullWidth
+                                    value={email}
+                                    onChange={handleChange}
+                                />
+                            </Grid2>
+                            <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
+                                <CustomFormLabel htmlFor="password">Password</CustomFormLabel>
+                                <CustomOutlinedInput
+                                    type={showPassword ? 'text' : 'password'}
+                                    endAdornment={
+                                        <InputAdornment position="end">
+                                            <IconButton
+                                                aria-label="toggle password visibility"
+                                                onClick={handleClickShowPassword}
+                                                onMouseDown={handleMouseDownPassword}
+                                                edge="end"
+                                            >
+                                                {showPassword ? <IconEyeOff size="20" /> : <IconEye size="20" />}
+                                            </IconButton>
+                                        </InputAdornment>
+                                    }
+                                    name="password"
+                                    id="password"
+                                    placeholder="******"
+                                    fullWidth
+                                    value={password ?? ""}
+                                    onChange={handleChange}
+                                />
+                            </Grid2>
+                            <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
+                                <CustomFormLabel htmlFor="cpassword">Confirm Password</CustomFormLabel>
+                                <CustomOutlinedInput
+                                    type={showPassword ? 'text' : 'password'}
+                                    endAdornment={
+                                        <InputAdornment position="end">
+                                            <IconButton
+                                                aria-label="toggle password visibility"
+                                                onClick={handleClickShowPassword}
+                                                onMouseDown={handleMouseDownPassword}
+                                                edge="end"
+                                            >
+                                                {showPassword ? <IconEyeOff size="20" /> : <IconEye size="20" />}
+                                            </IconButton>
+                                        </InputAdornment>
+                                    }
+                                    name="cpassword"
+                                    id="cpassword"
+                                    placeholder="******"
+                                    fullWidth
+                                    value={cpassword ?? ""}
+                                    onChange={handleChange}
+                                />
+                            </Grid2>
+                            <Grid2 size={12}>
+                                <CustomFormLabel htmlFor="role">Role</CustomFormLabel>
+                                <CustomSelect
+                                    required
+                                    id="role"
+                                    name="role"
+                                    variant="outlined"
+                                    fullWidth
+                                    size="small"
+                                    value={role}
+                                    onChange={handleChange}
+                                >
+                                    <MenuItem value="">
+                                        <em>None</em>
+                                    </MenuItem>
+                                    {
+                                        USER_ROLES_ARRAY.map((role, index) => <MenuItem key={index} value={role}>{role}</MenuItem>)
+                                    }
+                                </CustomSelect>
+                            </Grid2>
                         </Grid2>
-                        <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
-                            <CustomFormLabel htmlFor="email">Email</CustomFormLabel>
-                            <CustomOutlinedInput
-                                name="email"
-                                id="email"
-                                placeholder="Email"
-                                fullWidth
-                                value={email}
-                                onChange={handleChange}
-                            />
-                        </Grid2>
-                        <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
-                            <CustomFormLabel htmlFor="password">Password</CustomFormLabel>
-                            <CustomOutlinedInput
-                                type={showPassword ? 'text' : 'password'}
-                                endAdornment={
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                            aria-label="toggle password visibility"
-                                            onClick={handleClickShowPassword}
-                                            onMouseDown={handleMouseDownPassword}
-                                            edge="end"
-                                        >
-                                            {showPassword ? <IconEyeOff size="20" /> : <IconEye size="20" />}
-                                        </IconButton>
-                                    </InputAdornment>
-                                }
-                                name="password"
-                                id="password"
-                                placeholder="******"
-                                fullWidth
-                                value={password ?? ""}
-                                onChange={handleChange}
-                            />
-                        </Grid2>
-                        <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
-                            <CustomFormLabel htmlFor="cpassword">Confirm Password</CustomFormLabel>
-                            <CustomOutlinedInput
-                                type={showPassword ? 'text' : 'password'}
-                                endAdornment={
-                                    <InputAdornment position="end">
-                                        <IconButton
-                                            aria-label="toggle password visibility"
-                                            onClick={handleClickShowPassword}
-                                            onMouseDown={handleMouseDownPassword}
-                                            edge="end"
-                                        >
-                                            {showPassword ? <IconEyeOff size="20" /> : <IconEye size="20" />}
-                                        </IconButton>
-                                    </InputAdornment>
-                                }
-                                name="cpassword"
-                                id="cpassword"
-                                placeholder="******"
-                                fullWidth
-                                value={cpassword ?? ""}
-                                onChange={handleChange}
-                            />
-                        </Grid2>
-                        <Grid2 size={12}>
-                            <CustomFormLabel htmlFor="role">Role</CustomFormLabel>
-                            <CustomSelect
-                                id="role"
-                                name="role"
-                                variant="outlined"
-                                fullWidth
-                                size="small"
-                                value={role}
-                                onChange={handleChange}
-                            >
-                                <MenuItem value="">
-                                    <em>None</em>
-                                </MenuItem>
-                                {
-                                    USER_ROLES_ARRAY.map((role, index) => <MenuItem key={index} value={role}>{role}</MenuItem>)
-                                }
-                            </CustomSelect>
-                        </Grid2>
-                    </Grid2>
-                </Stack>
-            </DialogContent>
-            <DialogActions sx={{ justifyContent: 'space-between' }}>
-                {
-                    formData._id ?
-                        <LoadingButton sx={{ marginLeft: '0', display: 'block' }} loading={deleteLoading} color='warning' onClick={handleDeleteButton}>
-                            Delete
+                    </Stack>
+                </DialogContent>
+                <DialogActions sx={{ justifyContent: 'space-between' }}>
+                    {
+                        formData._id ?
+                            <LoadingButton type='button' sx={{ marginLeft: '0', display: 'block' }} loading={deleteLoading} color='warning' onClick={handleDeleteButton}>
+                                Delete
+                            </LoadingButton>
+                            :
+                            <Box></Box>
+                    }
+                    <Box>
+                        <Button color='error' type='button' sx={{ marginRight: '10px' }} onClick={handleClose}>
+                            Close
+                        </Button>
+                        <LoadingButton type='submit' loading={isButtonLoading} color='primary' >
+                            Save
                         </LoadingButton>
-                        :
-                        <Box></Box>
-                }
-                <Box>
-                    <Button color='error' sx={{ marginRight: '10px' }} onClick={handleClose}>
-                        Close
-                    </Button>
-                    <LoadingButton loading={isButtonLoading} color='primary' onClick={handleSaveButton}>
-                        Save
-                    </LoadingButton>
-                </Box>
-            </DialogActions>
+                    </Box>
+                </DialogActions>
+            </form>
         </Dialog>
     )
 }
