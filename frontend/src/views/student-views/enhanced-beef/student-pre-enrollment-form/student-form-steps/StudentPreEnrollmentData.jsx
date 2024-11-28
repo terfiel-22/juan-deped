@@ -1,14 +1,14 @@
 import { Box, Typography, Divider, Paper, Grid } from '@mui/material';
 import { useSelector } from 'react-redux';;
 import { selectCurrentStudent } from '../../../../../store/student/StudentSlice';
-import useFetch from '../../../../../hooks/shared/useFetch';
 import { forwardRef } from 'react';
+import useRead from '../../../../../hooks/crud/useRead';
 
 const StudentPreEnrollmentData = forwardRef((_, ref) => {
 
     const studentData = useSelector(selectCurrentStudent);
-    const track = useFetch({ url: `/track/${studentData.seniorHighSchool.track}` })
-    const strand = useFetch({ url: `/strand/${studentData.seniorHighSchool.strand}` })
+    const { _data: track } = useRead({ url: `/track/${studentData.seniorHighSchool.track}` })
+    const { _data: strand } = useRead({ url: `/strand/${studentData.seniorHighSchool.strand}` })
 
     if (!studentData || !track.data || !strand.data) {
         return <Typography>Loading...</Typography>;

@@ -100,6 +100,7 @@ const juanDeped = {
   ],
   learnerEnhancedBeefs: [
     {
+      // Basic Information
       learnerId: { type: Types.ObjectId, ref: "Learner", required: true },
       email: { type: String, required: true, unique: true },
       mobile: { type: String, required: true },

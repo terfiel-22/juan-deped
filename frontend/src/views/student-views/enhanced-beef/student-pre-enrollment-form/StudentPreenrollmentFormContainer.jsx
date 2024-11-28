@@ -66,7 +66,7 @@ const StudentPreenrollmentFormContainer = () => {
                     {activeStep === steps.length ? (
                         <>
                             <Stack spacing={2} mt={3}>
-                                <StudentPreEnrollmentData ref={contentRef} />
+                                {/* <StudentPreEnrollmentData ref={contentRef} /> */}
 
                                 <Box display="flex" justifyContent="space-between" mt={3}>
                                     <Button
