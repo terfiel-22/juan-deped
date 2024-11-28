@@ -3,6 +3,7 @@ import { FormControlLabel, Grid2, RadioGroup } from '@mui/material';
 import CustomFormLabel from '../../../../components/forms/theme-elements/CustomFormLabel';
 import CustomTextField from '../../../../components/forms/theme-elements/CustomTextField';
 import CustomRadio from '../../../../components/forms/theme-elements/CustomRadio';
+import { formatDate } from '../../../../utils/dateFormatter';
 
 const SHSEligibilityForm = ({ formData, handleNestedChange }) => {
     const fieldName = 'shsEligibility';
@@ -95,7 +96,7 @@ const SHSEligibilityForm = ({ formData, handleNestedChange }) => {
                         name="graduationDate"
                         type="date"
                         onChange={handleChange}
-                        value={graduationDate}
+                        value={graduationDate ? formatDate(graduationDate) : ""}
                         disabled={!(isHsCompleter || isJhsCompleter)}
                         placeholder="Enter graduation date"
                         variant="outlined"
@@ -227,7 +228,7 @@ const SHSEligibilityForm = ({ formData, handleNestedChange }) => {
                         name="examDate"
                         type="date"
                         onChange={handleChange}
-                        value={examDate}
+                        value={examDate ? formatDate(examDate) : ""}
                         disabled={!(isPeptPasser || isAlsPasser || isOtherExamPasser)}
                         placeholder="Enter exam date"
                         variant="outlined"

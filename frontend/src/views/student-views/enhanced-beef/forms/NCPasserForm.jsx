@@ -3,6 +3,7 @@ import CustomFormLabel from '../../../../components/forms/theme-elements/CustomF
 import CustomTextField from '../../../../components/forms/theme-elements/CustomTextField'
 import { FormControlLabel, Grid2, RadioGroup } from '@mui/material'
 import CustomRadio from '../../../../components/forms/theme-elements/CustomRadio'
+import { formatDate } from '../../../../utils/dateFormatter'
 
 const NCPasserForm
     = ({ formData, handleNestedChange }) => {
@@ -56,7 +57,7 @@ const NCPasserForm
                             name="validUntil"
                             type="date"
                             onChange={handleChange}
-                            value={validUntil}
+                            value={validUntil ? formatDate(validUntil) : ""}
                             disabled={!isNcPasser}
                             placeholder="Enter Specialization"
                             variant="outlined"

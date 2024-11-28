@@ -3,7 +3,7 @@ import { Box } from '@mui/system'
 import { LoadingButton } from '@mui/lab'
 import CustomHeader4 from '../../../components/material-ui/typography/CustomHeader4'
 import GeneralInformationForm from './forms/GeneralInformationForm'
-import LearnerInformation from './forms/LearnerInformationForm'
+import LearnerInformationForm from './forms/LearnerInformationForm'
 import AddressInformationForm from './forms/AddressInformationForm'
 import ParentGuardianInformationForm from './forms/ParentGuardianInformationForm'
 import ReturneeInformationForm from './forms/ReturneeInformationForm'
@@ -26,7 +26,7 @@ const EnhancedBeefForm = () => {
                 </Grid2>
                 <Grid2 size={12}>
                     <CustomHeader4 text="Learner Information" />
-                    <LearnerInformation {...{ formData, handleChange }} />
+                    <LearnerInformationForm {...{ formData, handleChange }} />
                 </Grid2>
                 <Grid2 size={12}>
                     <CustomHeader4 text="Address Information" />

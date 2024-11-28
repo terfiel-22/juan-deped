@@ -104,7 +104,7 @@ const LearnerInformation = ({ formData, handleChange }) => {
                         name="birthDate"
                         type="date"
                         onChange={handleChange}
-                        value={formatDate(birthDate)}
+                        value={birthDate ? formatDate(birthDate) : ""}
                         placeholder="dd/mm/yyyy"
                         variant="outlined"
                         fullWidth
