@@ -1,4 +1,4 @@
-import { Button, Grid } from '@mui/material'
+import { Button, Grid2 } from '@mui/material'
 import { Box, Stack } from '@mui/system'
 import PrintIcon from '@mui/icons-material/Print';
 import { LoadingButton } from '@mui/lab';
@@ -59,14 +59,14 @@ const StudentPreenrollmentFormContainer = () => {
         handleSteps } = useStepper({ steps, optionals })
 
     return (
-        <Grid container spacing={3}>
-            <Grid item xs={12} lg={12}>
+        <Grid2 container spacing={3}>
+            <Grid2 size={{ xs: 12, lg: 12 }} >
                 <Box width="100%" px={2}>
                     <WebStepper steps={steps} activeStep={activeStep} isStepOptional={isStepOptional} isStepSkipped={isStepSkipped} handleGoTo={handleGoTo} />
                     {activeStep === steps.length ? (
                         <>
                             <Stack spacing={2} mt={3}>
-                                {/* <StudentPreEnrollmentData ref={contentRef} /> */}
+                                <StudentPreEnrollmentData ref={contentRef} />
 
                                 <Box display="flex" justifyContent="space-between" mt={3}>
                                     <Button
@@ -137,8 +137,8 @@ const StudentPreenrollmentFormContainer = () => {
 
                     <ProgressMobileStepper steps={steps} activeStep={activeStep} />
                 </Box>
-            </Grid>
-        </Grid >
+            </Grid2>
+        </Grid2 >
     )
 }
 
