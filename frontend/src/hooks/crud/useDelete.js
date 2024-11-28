@@ -1,8 +1,10 @@
 import { useCallback, useState } from 'react';
 import axiosClient from '../../utils/axiosClient';
-import { toastCloseTime, toastError, toastSuccess } from '../../utils/toastEmitter';
+import { toastError, toastSuccess } from '../../utils/toastEmitter';
+import { useDispatch } from 'react-redux';
 
-const useDelete = ({ url, id }) => {
+const useDelete = ({ url, id, setter = null }) => {
+  const dispatch = useDispatch();
   const [deleteLoading, setDeleteLoading] = useState(false);
 
   const handleDelete = useCallback(() => {
@@ -17,7 +19,7 @@ const useDelete = ({ url, id }) => {
       })
       .catch(({ response: { data } }) => {
         toastError(data.message);
-        setTimeout(() => window.location.reload(), toastCloseTime);
+        if (setter) dispatch(setter(data.result));
       })
       .finally(() => {
         setDeleteLoading(false);

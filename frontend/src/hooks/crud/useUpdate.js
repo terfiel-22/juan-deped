@@ -1,8 +1,10 @@
 import { useCallback, useState } from 'react';
 import axiosClient from '../../utils/axiosClient';
-import { toastCloseTime, toastError, toastSuccess } from '../../utils/toastEmitter';
+import { toastError, toastSuccess } from '../../utils/toastEmitter';
+import { useDispatch } from 'react-redux';
 
-const useUpdate = ({ url, formData }) => {
+const useUpdate = ({ url, formData, setter }) => {
+  const dispatch = useDispatch();
   const [updateLoading, setUpdateLoading] = useState(false);
 
   const handleUpdate = useCallback(() => {
@@ -14,9 +16,7 @@ const useUpdate = ({ url, formData }) => {
       })
       .catch(({ response: { data } }) => {
         toastError(data.message);
-        setTimeout(function () {
-          window.location.reload();
-        }, toastCloseTime);
+        if (setter) dispatch(setter(data.result));
       })
       .finally(() => {
         setUpdateLoading(false);

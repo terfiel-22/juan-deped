@@ -1,8 +1,10 @@
+import { useDispatch } from 'react-redux';
 import axiosClient from '../../../utils/axiosClient';
 import { toastError } from '../../../utils/toastEmitter';
 import { useEffect, useState } from 'react';
 
-const useCreate = ({ url, id = null }) => {
+const useRead = ({ url, id = null, setter = null }) => {
+  const dispatch = useDispatch();
   const [data, setData] = useState(null);
   const [readLoading, setReadLoading] = useState(false);
 
@@ -13,6 +15,7 @@ const useCreate = ({ url, id = null }) => {
       .get(_url)
       .then(({ data }) => {
         setData(data);
+        if (setter) dispatch(setter(data));
       })
       .catch(({ response: { data } }) => {
         toastError(data.message);
@@ -22,7 +25,7 @@ const useCreate = ({ url, id = null }) => {
       });
   }, [url]);
 
-  return { data, readLoading, handleCreate };
+  return { data, readLoading };
 };
 
-export default useCreate;
+export default useRead;

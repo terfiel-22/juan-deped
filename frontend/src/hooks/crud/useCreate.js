@@ -1,8 +1,10 @@
 import { useCallback, useState } from 'react';
 import axiosClient from '../../utils/axiosClient';
 import { toastError, toastSuccess } from '../../utils/toastEmitter';
+import { useDispatch } from 'react-redux';
 
 const useCreate = ({ url, formData }) => {
+  const dispatch = useDispatch();
   const [createLoading, setCreateLoading] = useState(false);
 
   const handleCreate = useCallback(() => {
@@ -14,6 +16,7 @@ const useCreate = ({ url, formData }) => {
       })
       .catch(({ response: { data } }) => {
         toastError(data.message);
+        if (setter) dispatch(setter(data.result));
       })
       .finally(() => {
         setCreateLoading(false);
