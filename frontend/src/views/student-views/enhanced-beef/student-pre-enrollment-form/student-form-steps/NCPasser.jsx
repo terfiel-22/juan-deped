@@ -1,7 +1,7 @@
 import { Box } from '@mui/system'
 import CustomFormLabel from '../../../../../components/forms/theme-elements/CustomFormLabel'
 import CustomTextField from '../../../../../components/forms/theme-elements/CustomTextField'
-import { FormControlLabel, Grid, RadioGroup } from '@mui/material'
+import { FormControlLabel, Grid2, RadioGroup } from '@mui/material'
 import CustomRadio from '../../../../../components/forms/theme-elements/CustomRadio'
 import useStudentDetailForm from '../../../../../hooks/student/useStudentDetailForm'
 
@@ -15,15 +15,15 @@ const NCPasser
 
         return (
             <Box>
-                <Grid container spacing={2}>
-                    <Grid item xs={12} sm={12} lg={3}>
+                <Grid2 container spacing={2}>
+                    <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                         <CustomFormLabel htmlFor="isNcPasser">Is NC Passer?</CustomFormLabel>
                         <RadioGroup row aria-label="isNcPasser" name="isNcPasser" onChange={handleChange} value={isNcPasser}>
                             <FormControlLabel value={true} control={<CustomRadio />} label="Yes" />
                             <FormControlLabel value={false} control={<CustomRadio />} label="No" />
                         </RadioGroup>
-                    </Grid>
-                    <Grid item xs={12} sm={12} lg={3}>
+                    </Grid2>
+                    <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                         <CustomFormLabel htmlFor="certificateNo">Certificate No.</CustomFormLabel>
                         <CustomTextField
                             id="certificateNo"
@@ -36,8 +36,8 @@ const NCPasser
                             fullWidth
                             size="small"
                         />
-                    </Grid>
-                    <Grid item xs={12} sm={12} lg={3}>
+                    </Grid2>
+                    <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                         <CustomFormLabel htmlFor="specialization">Specialization</CustomFormLabel>
                         <CustomTextField
                             id="specialization"
@@ -50,8 +50,8 @@ const NCPasser
                             fullWidth
                             size="small"
                         />
-                    </Grid>
-                    <Grid item xs={12} sm={12} lg={3}>
+                    </Grid2>
+                    <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                         <CustomFormLabel htmlFor="validUntil">Valid Until</CustomFormLabel>
                         <CustomTextField
                             id="validUntil"
@@ -65,8 +65,8 @@ const NCPasser
                             fullWidth
                             size="small"
                         />
-                    </Grid>
-                </Grid>
+                    </Grid2>
+                </Grid2>
             </Box>
         )
     }
