@@ -54,7 +54,7 @@ const StudentPreEnrollmentData = forwardRef((_, ref) => {
                             <Typography><strong>First Name:</strong> {studentData.firstName}</Typography>
                             <Typography><strong>Last Name:</strong> {studentData.lastName}</Typography>
                             <Typography><strong>Middle Name:</strong> {studentData.middleName}</Typography>
-                            <Typography><strong>Birth Date:</strong> {new Date(studentData.birthDate).toLocaleDateString()}</Typography>
+                            <Typography><strong>Birth Date:</strong> {studentData.birthDate && new Date(studentData.birthDate).toLocaleDateString()}</Typography>
                         </Grid2>
                         <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
                             <Typography><strong>Sex:</strong> {studentData.sex}</Typography>
