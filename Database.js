@@ -88,32 +88,13 @@ const juanDeped = {
   learners: [
     {
       lrn: { type: String, unique: true, required: true },
-      username: { type: String, required: true },
       email: { type: String, unique: true, required: true },
       password: { type: String, required: true },
       avatar: { type: String, required: true },
       role: {
         type: String,
         required: true,
-        enum: ["Student", "Alumnus"],
-      },
-      isApproved: {
-        type: Boolean,
-        default: false,
-      },
-    },
-  ],
-  learnerParentAccounts: [
-    {
-      learnerId: { type: Types.ObjectId, ref: "Learner", required: true },
-      username: { type: String, required: true },
-      email: { type: String, unique: true, required: true },
-      password: { type: String, required: true },
-      avatar: { type: String, required: true },
-      role: {
-        type: String,
-        required: true,
-        default: "ParentGuardian",
+        enum: ["Student", "Alumni", "Parent"],
       },
     },
   ],

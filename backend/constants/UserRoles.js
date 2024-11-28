@@ -7,7 +7,19 @@ export const USER_ROLES = Object.freeze({
   SUBJECT_TEACHER: "Subject Teacher",
   CLASS_ADVISER: "Class Adviser",
   STUDENT: "Student",
-  ALUMNUS: "Alumnus",
+  ALUMNI: "Alumni",
   PARENT_GUARDIAN: "Parent/Guardian",
   GUEST: "Guest",
 });
+
+export const PERSONNELS_ENUM = [
+  "Administrator",
+  "School Head",
+  "Assistant Principal",
+  "Registrar",
+  "Admissions",
+  "Subject Teacher",
+  "Class Adviser",
+];
+
+export const LEARNERS_ENUM = ["Student", "Alumni", "Parent/Guardian"];
