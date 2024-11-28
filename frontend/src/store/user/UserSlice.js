@@ -22,7 +22,7 @@ export const UserSlice = createSlice({
       state.currentUser = credentialsInitState;
     },
     setCredentials: (state, action) => {
-      state.credentials = action.payload;
+      state.credentials = { ...action.payload, password: '' };
     },
   },
 });
