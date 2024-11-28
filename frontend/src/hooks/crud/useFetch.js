@@ -1,20 +1,20 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import axiosClient from '../../utils/axiosClient';
 import { toastError } from '../../utils/toastEmitter';
 
-const useRead = ({ url, id = null, setter, selector }) => {
-  const dispatch = useDispatch();
-  const storedData = useSelector(selector);
+const useFetch = ({ url }) => {
+  const [data, setData] = useState(null);
+  const [dataArray, setDataArray] = useState([]);
   const [readLoading, setReadLoading] = useState(false);
 
   useEffect(() => {
+    if (!url) return;
     setReadLoading(true);
-    let _url = id ? `${url}/${id}` : url;
     axiosClient
-      .get(_url)
+      .get(url)
       .then(({ data }) => {
-        dispatch(setter(data));
+        if (Array.isArray(data)) setDataArray(data);
+        else setData(data);
       })
       .catch(({ response: { data } }) => {
         toastError(data.message);
@@ -22,9 +22,9 @@ const useRead = ({ url, id = null, setter, selector }) => {
       .finally(() => {
         setReadLoading(false);
       });
-  }, [url, setter]);
+  }, [url]);
 
-  return { storedData, readLoading };
+  return { data, dataArray, readLoading };
 };
 
-export default useRead;
+export default useFetch;
