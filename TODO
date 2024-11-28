@@ -1,3 +1,5 @@
+size={{xs:12,sm:12,lg:3}}
+
 BACKEND
 [/] Database Connection
 [/] Track Model
