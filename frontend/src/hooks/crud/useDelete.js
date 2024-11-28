@@ -3,7 +3,7 @@ import axiosClient from '../../utils/axiosClient';
 import { toastError, toastSuccess } from '../../utils/toastEmitter';
 import { useDispatch } from 'react-redux';
 
-const useDelete = ({ url, id, setter = null }) => {
+const useDelete = ({ url, formData, setter = null }) => {
   const dispatch = useDispatch();
   const [deleteLoading, setDeleteLoading] = useState(false);
 
@@ -13,7 +13,7 @@ const useDelete = ({ url, id, setter = null }) => {
     setDeleteLoading(true);
 
     axiosClient
-      .delete(`${url}/${id}`)
+      .delete(`${url}/${formData._id}`)
       .then(({ data }) => {
         toastSuccess(data.message);
         if (setter) dispatch(setter(data.result));
@@ -24,7 +24,7 @@ const useDelete = ({ url, id, setter = null }) => {
       .finally(() => {
         setDeleteLoading(false);
       });
-  }, [url, id, setter]);
+  }, [url, formData, setter]);
 
   return { deleteLoading, handleDelete };
 };
