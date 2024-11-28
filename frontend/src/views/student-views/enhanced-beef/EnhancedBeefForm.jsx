@@ -10,6 +10,7 @@ import AddressInformationForm from './forms/AddressInformationForm'
 import ParentGuardianInformationForm from './forms/ParentGuardianInformationForm'
 import ReturneeInformationForm from './forms/ReturneeInformationForm'
 import SHSLearnerForm from './forms/SHSLearnerForm'
+import PreferredDistanceLearningModalitiesForm from './forms/PreferredDistanceLearningModalitiesForm'
 
 const EnhancedBeefForm = () => {
     const [formData, setFormData] = useState(ENHANCED_BEEF_STATE);
@@ -53,31 +54,31 @@ const EnhancedBeefForm = () => {
             <Grid2 container rowSpacing={5}>
                 <Grid2 size={12}>
                     <CustomHeader4 text="General Information" />
-                    <GeneralInformationForm formData={formData} handleChange={handleChange} />
+                    <GeneralInformationForm {...{ formData, handleChange }} />
                 </Grid2>
                 <Grid2 size={12}>
                     <CustomHeader4 text="Learner Information" />
-                    <LearnerInformation formData={formData} handleChange={handleChange} />
+                    <LearnerInformation {...{ formData, handleChange }} />
                 </Grid2>
                 <Grid2 size={12}>
                     <CustomHeader4 text="Address Information" />
-                    <AddressInformationForm formData={formData} handleChange={handleChange} />
+                    <AddressInformationForm {...{ formData, handleChange }} />
                 </Grid2>
                 <Grid2 size={12}>
                     <CustomHeader4 text="Parent/Guardian Information" />
-                    <ParentGuardianInformationForm formData={formData} handleNestedChange={handleNestedChange} />
+                    <ParentGuardianInformationForm {...{ formData, handleNestedChange }} />
                 </Grid2>
                 <Grid2 size={12}>
                     <CustomHeader4 text="For Returning Learner" />
-                    <ReturneeInformationForm formData={formData} handleNestedChange={handleNestedChange} />
+                    <ReturneeInformationForm {...{ formData, handleNestedChange }} />
                 </Grid2>
                 <Grid2 size={12}>
                     <CustomHeader4 text="For Learners in SHS" />
-                    <SHSLearnerForm formData={formData} handleNestedChange={handleNestedChange} />
+                    <SHSLearnerForm {...{ formData, handleNestedChange }} />
                 </Grid2>
                 <Grid2 size={12}>
-                    <CustomHeader4 text="Preferred Distance Learning Modality/ies" />
-                    {/* Content Here */}
+                    <CustomHeader4 text="Preferred Distance Learning Modalities" />
+                    <PreferredDistanceLearningModalitiesForm {...{ formData, handleNestedChange }} />
                 </Grid2>
                 <Grid2 size={12}>
                     <CustomHeader4 text="For NC Passer" />
