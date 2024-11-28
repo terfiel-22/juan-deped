@@ -54,3 +54,34 @@ export const registerLearner = async (req, res, next) => {
     next(error);
   }
 };
+
+export const loginLearner = async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
+
+    const userByEmail = await Learner.findOne({ email });
+    const userByLRN = await Learner.findOne({ lrn: email });
+    const learner = userByEmail ?? userByLRN;
+
+    const isPasswordCorrect = await bcrypt.compare(
+      password,
+      learner?.password || ""
+    );
+
+    if (!learner || !isPasswordCorrect)
+      throw new HttpError("Invalid credentials.", 400);
+
+    generateTokenAndSetCookie(learner._id, res);
+
+    res.status(200).json({
+      _id: learner._id,
+      username: learner.username,
+      email: learner.email,
+      profilePic,
+      lrn: learner.lrn,
+      role: learner.role,
+    });
+  } catch (error) {
+    next(error);
+  }
+};

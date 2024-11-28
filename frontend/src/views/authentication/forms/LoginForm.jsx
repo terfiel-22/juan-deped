@@ -18,11 +18,12 @@ const LoginForm = () => {
     const { showPassword, handleClickShowPassword, handleMouseDownPassword } = usePasswordVisibility()
 
     return (
-        <>
+        <form onSubmit={handleSubmit}>
             <Stack>
                 <Box>
                     <CustomFormLabel htmlFor="email">Email/LRN</CustomFormLabel>
                     <CustomOutlinedInput
+                        required
                         id="email"
                         name="email"
                         placeholder="Email or LRN"
@@ -34,6 +35,7 @@ const LoginForm = () => {
                 <Box>
                     <CustomFormLabel htmlFor="password">Password</CustomFormLabel>
                     <CustomOutlinedInput
+                        required
                         type={showPassword ? 'text' : 'password'}
                         endAdornment={
                             <InputAdornment position="end">
@@ -82,13 +84,12 @@ const LoginForm = () => {
                     color="primary"
                     size="large"
                     fullWidth
-                    type="button"
-                    onClick={handleSubmit}
+                    type="submit"
                 >
                     Sign In
                 </LoadingButton>
             </Box>
-        </>
+        </form>
     )
 }
 
