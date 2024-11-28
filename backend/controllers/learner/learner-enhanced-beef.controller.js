@@ -39,3 +39,15 @@ export const saveEnhancedBeef = async (req, res, next) => {
     next(error);
   }
 };
+
+export const fetchEnhancedBeef = async (req, res, next) => {
+  try {
+    const learnerId = get(req, "user._id");
+    const learnerEnhancedBeef = await LearnerEnhancedBeef.findOne({
+      learnerId,
+    });
+    res.json(learnerEnhancedBeef);
+  } catch (error) {
+    next(error);
+  }
+};
