@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material'
+import { Grid2 } from '@mui/material'
 import CustomFormLabel from '../../../../../../components/forms/theme-elements/CustomFormLabel'
 import useStudentDetailForm from '../../../../../../hooks/student/useStudentDetailForm'
 import CustomTextField from '../../../../../../components/forms/theme-elements/CustomTextField'
@@ -12,7 +12,7 @@ const ParentInformationForm = ({ fieldName }) => {
 
     return (
         <>
-            <Grid item xs={12} sm={12} lg={2}>
+            <Grid2 size={{ xs: 12, sm: 12, lg: 2 }}>
                 <CustomFormLabel htmlFor="lastName">Last Name</CustomFormLabel>
                 <CustomTextField
                     id="lastName"
@@ -24,8 +24,8 @@ const ParentInformationForm = ({ fieldName }) => {
                     fullWidth
                     size="small"
                 />
-            </Grid>
-            <Grid item xs={12} sm={12} lg={2}>
+            </Grid2>
+            <Grid2 size={{ xs: 12, sm: 12, lg: 2 }}>
                 <CustomFormLabel htmlFor="firstName">First Name</CustomFormLabel>
                 <CustomTextField
                     id="firstName"
@@ -37,8 +37,8 @@ const ParentInformationForm = ({ fieldName }) => {
                     fullWidth
                     size="small"
                 />
-            </Grid>
-            <Grid item xs={12} sm={12} lg={2}>
+            </Grid2>
+            <Grid2 size={{ xs: 12, sm: 12, lg: 2 }}>
                 <CustomFormLabel htmlFor="middleName">Middle Name</CustomFormLabel>
                 <CustomTextField
                     id="middleName"
@@ -50,8 +50,8 @@ const ParentInformationForm = ({ fieldName }) => {
                     fullWidth
                     size="small"
                 />
-            </Grid>
-            <Grid item xs={12} sm={12} lg={3}>
+            </Grid2>
+            <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                 <CustomFormLabel htmlFor="contactNumber">Contact Number</CustomFormLabel>
                 <CustomTextField
                     id="contactNumber"
@@ -63,8 +63,8 @@ const ParentInformationForm = ({ fieldName }) => {
                     fullWidth
                     size="small"
                 />
-            </Grid>
-            <Grid item xs={12} sm={12} lg={3}>
+            </Grid2>
+            <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                 <CustomFormLabel htmlFor="email">Email</CustomFormLabel>
                 <CustomTextField
                     id="email"
@@ -77,7 +77,7 @@ const ParentInformationForm = ({ fieldName }) => {
                     fullWidth
                     size="small"
                 />
-            </Grid>
+            </Grid2>
         </>
     )
 }
