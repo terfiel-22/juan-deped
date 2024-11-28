@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectCurrentUser } from '../../store/user/UserSlice';
+import { selectCurrentUser } from '../../store/user/UserSelector';
 import { USER_ROLES } from '../../constants/UserRoles';
 import { ADMIN_MENU_ITEMS, REGISTRAR_MENU_ITEMS } from '../../constants/RoleMenuItems';
 

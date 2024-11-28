@@ -1,8 +1,9 @@
 import axiosClient from '../../utils/axiosClient';
-import { selectCurrentUser, setCurrentUser } from '../../store/user/UserSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { toastError } from '../../utils/toastEmitter';
+import { selectCurrentUser } from '../../store/user/UserSelector';
+import { setCurrentUser } from '../../store/user/UserAction';
 
 const useLogout = () => {
   const dispatch = useDispatch();

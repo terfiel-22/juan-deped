@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { selectCurrentUser } from "../../store/user/UserSlice";
+import { selectCurrentUser } from "../../store/user/UserSelector";
 import { ROLE_ROUTES } from "../../constants/RoleRoutes";
 
 const AuthRoute = () => {

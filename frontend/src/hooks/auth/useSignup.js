@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import axiosClient from '../../utils/axiosClient';
-import { setCurrentUser } from '../../store/user/UserSlice';
 import { toastError } from '../../utils/toastEmitter';
+import { setCurrentUser } from '../../store/user/UserAction';
 
 const useSignup = () => {
   const dispatch = useDispatch();

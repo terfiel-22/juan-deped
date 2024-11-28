@@ -1,3 +1,3 @@
 import { UserSlice } from './UserSlice';
 
-export const { setCurrentUser, setCredentials } = UserSlice.actions;
+export const { setCurrentUser, setCurrentUserToDefault, setCredentials } = UserSlice.actions;

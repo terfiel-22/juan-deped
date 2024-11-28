@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { selectCurrentUser } from "../../store/user/UserSlice";
+import { selectCurrentUser } from "../../store/user/UserSelector";
 import Loadable from "../../layouts/full/shared/loadable/Loadable";
 import { lazy } from "react";
 import { USER_ROLES } from "../../constants/UserRoles";

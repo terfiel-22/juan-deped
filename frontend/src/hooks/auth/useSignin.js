@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axiosClient from '../../utils/axiosClient';
-import { selectCredentials, setCredentials, setCurrentUser } from '../../store/user/UserSlice';
-import { credentialsInitState } from '../../store/user/UserSliceInitStates';
 import { setCurrentStudentEmail, setCurrentStudentLRN } from '../../store/student/StudentSlice';
 import { USER_ROLES } from '../../constants/UserRoles';
 import { toastError } from '../../utils/toastEmitter';
+import { selectCredentials } from '../../store/user/UserSelector';
+import { setCredentials, setCurrentUser } from '../../store/user/UserAction';
 
 const useSignin = () => {
   const dispatch = useDispatch();
@@ -33,8 +33,6 @@ const useSignin = () => {
 
     if (remembered) {
       dispatch(setCredentials(formData));
-    } else {
-      dispatch(setCredentials(credentialsInitState));
     }
 
     setLoading(true);
