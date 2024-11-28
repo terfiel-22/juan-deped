@@ -2,11 +2,10 @@ import { Box } from '@mui/system';
 import { useEffect, useState } from 'react';
 import PageContainer from '../../../components/container/PageContainer';
 import Breadcrumb from '../../../layouts/full/shared/breadcrumb/Breadcrumb';
-import useFetchAndDispatch from '../../../hooks/shared/useFetchAndDispatch';
-import { selectAuths, setAuths } from '../../../store/user/UserSlice';
 import CustomMUIDataTable from '../../../components/mui-datatable/CustomMUIDataTable';
 import AccountDialog from './AccountDialog';
 import useTableDialog from '../../../hooks/shared/useTableDialog';
+import useFetch from '../../../hooks/shared/useFetch';
 
 const BCrumb = [
     {
@@ -28,11 +27,7 @@ const defaultFormData = {
 
 const Accounts = () => {
     /** Fetch Auths */
-    const { data } = useFetchAndDispatch({
-        url: '/auths',
-        setter: setAuths,
-        selector: selectAuths,
-    });
+    const { data } = useFetch({ url: '/auths' });
     const [rows, setRows] = useState(data);
     useEffect(() => {
         setRows(data);

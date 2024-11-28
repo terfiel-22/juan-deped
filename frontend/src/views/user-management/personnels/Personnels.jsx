@@ -1,8 +1,6 @@
 import { Box } from "@mui/system"
 import PageContainer from "../../../components/container/PageContainer"
 import Breadcrumb from "../../../layouts/full/shared/breadcrumb/Breadcrumb"
-import useFetchAndDispatch from "../../../hooks/shared/useFetchAndDispatch";
-import { selectPersonnels, setPersonnels } from "../../../store/user/UserSlice";
 import { useState } from "react";
 import { useEffect } from "react";
 import CustomMUIDataTable from "../../../components/mui-datatable/CustomMUIDataTable";
