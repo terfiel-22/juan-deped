@@ -1,5 +1,4 @@
 import bcrypt from "bcryptjs";
-import uniqid from "uniqid";
 import {
   AppliedSubject,
   CoreSubject,
@@ -20,33 +19,41 @@ import {
   Specialization,
   Strand,
   Track,
-} from "../models/track-strand-specialization.model.js";
+} from "../models/school-management/track-strand-specialization.model.js";
 import { profilePic } from "../_mockData/default_data_fields.js";
 
 export const initTrackStrandSpecialization = async (req, res, next) => {
   try {
+    const schoolYear = "2024-2025";
     await Track.deleteMany({});
     await Strand.deleteMany({});
     await Specialization.deleteMany({});
 
     for (const track of tracks) {
-      const trackDoc = await Track.create({
+      const trackDoc = new Track({
         name: track.name,
+        schoolYear,
       });
 
       for (const strand of track.strands) {
-        const strandDoc = await Strand.create({
+        const strandDoc = new Strand({
           name: strand.name,
           track: trackDoc._id,
         });
 
         for (const specialization of strand.specializations) {
-          await Specialization.create({
+          const specializationDoc = await Specialization.create({
             name: specialization.name,
             strand: strandDoc._id,
           });
+
+          strandDoc.specializations.push(specializationDoc._id);
         }
+
+        const savedStrandDoc = await strandDoc.save();
+        trackDoc.strands.push(savedStrandDoc._id);
       }
+      await trackDoc.save();
     }
 
     res.status(201).json({

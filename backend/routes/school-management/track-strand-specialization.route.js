@@ -7,7 +7,7 @@ import {
   fetchStrandsByTrackId,
   fetchTrackById,
   fetchTracks,
-} from "../controllers/track-strand-specialization.controller.js";
+} from "../../controllers/school-management/track-strand-specialization.controller.js";
 
 export default (router) => {
   router.get("/tracks", fetchTracks);

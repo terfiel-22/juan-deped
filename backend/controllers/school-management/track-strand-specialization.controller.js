@@ -1,9 +1,9 @@
+import HttpError from "../../utils/HttpError.utils.js";
 import {
   Specialization,
   Strand,
   Track,
-} from "../models/track-strand-specialization.model.js";
-import HttpError from "../utils/HttpError.utils.js";
+} from "../../models/school-management/track-strand-specialization.model.js";
 
 /** TRACKS */
 export const fetchTracks = async (req, res, next) => {
