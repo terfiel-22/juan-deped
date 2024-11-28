@@ -142,7 +142,7 @@ export const REGISTRAR_MENU_ITEMS = [
 export const STUDENT_MENU_ITEMS = [
   {
     navlabel: true,
-    subheader: 'Complete Registration',
+    subheader: 'Enrollment',
   },
   {
     id: uniqueId(),
