@@ -9,7 +9,7 @@ const GeneralInformationForm = ({ formData, handleChange }) => {
     const { email, mobile, schoolYear, gradeLevelToEnroll, withLRN, isReturnee } = formData;
 
     return (
-        <Box padding={2}>
+        <Box>
             <Grid2 container spacing={2}>
                 <Grid2 size={{ xs: 12, sm: 12, lg: 4 }}>
                     <CustomFormLabel htmlFor="email">Email</CustomFormLabel>

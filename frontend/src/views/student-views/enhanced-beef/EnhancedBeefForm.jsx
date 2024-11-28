@@ -5,6 +5,7 @@ import { ENHANCED_BEEF_STATE } from './enhanceBeefState'
 import { LoadingButton } from '@mui/lab'
 import CustomHeader4 from '../../../components/material-ui/typography/CustomHeader4'
 import GeneralInformationForm from './forms/GeneralInformationForm'
+import LearnerInformation from './forms/LearnerInformationForm'
 
 const EnhancedBeefForm = () => {
     const [formData, setFormData] = useState(ENHANCED_BEEF_STATE);
@@ -45,14 +46,14 @@ const EnhancedBeefForm = () => {
 
     return (
         <Box component='form' onSubmit={handleSubmit} width="100%" px={2}>
-            <Grid2 container spacing={2}>
+            <Grid2 container rowSpacing={5}>
                 <Grid2 size={12}>
                     <CustomHeader4 text="General Information" />
                     <GeneralInformationForm formData={formData} handleChange={handleChange} />
                 </Grid2>
                 <Grid2 size={12}>
                     <CustomHeader4 text="Learner Information" />
-                    {/* Content Here */}
+                    <LearnerInformation formData={formData} handleChange={handleChange} />
                 </Grid2>
                 <Grid2 size={12}>
                     <CustomHeader4 text="Address Information" />

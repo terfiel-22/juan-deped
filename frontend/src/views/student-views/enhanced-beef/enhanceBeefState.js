@@ -13,7 +13,7 @@ export const ENHANCED_BEEF_STATE = {
   firstName: '',
   middleName: '',
   extensionName: '',
-  birthDate: '',
+  birthDate: '2000-01-01',
   sex: '',
   age: '',
   placeOfBirth: '',
