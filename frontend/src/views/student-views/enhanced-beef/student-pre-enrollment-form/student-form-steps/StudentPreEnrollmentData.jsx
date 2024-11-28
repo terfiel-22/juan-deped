@@ -7,8 +7,8 @@ import useRead from '../../../../../hooks/crud/useRead';
 const StudentPreEnrollmentData = forwardRef((_, ref) => {
 
     const studentData = useSelector(selectCurrentStudent);
-    const { _data: track } = useRead({ url: `/track/${studentData.seniorHighSchool.track}` })
-    const { _data: strand } = useRead({ url: `/strand/${studentData.seniorHighSchool.strand}` })
+    const { _data: track } = useRead({ url: "/track", id: studentData.seniorHighSchool.track })
+    const { _data: strand } = useRead({ url: "/strand", id: studentData.seniorHighSchool.strand })
 
     if (!studentData || !track.data || !strand.data) {
         return <Typography>Loading...</Typography>;
@@ -21,7 +21,7 @@ const StudentPreEnrollmentData = forwardRef((_, ref) => {
             <Paper elevation={3} sx={{ padding: 3, marginTop: 2, overflow: 'auto' }} className='paper'>
                 <Grid container justifyContent="space-between">
                     <Typography variant="h4" gutterBottom>
-                        Student Pre-Enrollment Data
+                        Enhanced Basic Education Enrollment Form
                     </Typography>
                     {studentData.createdAt &&
                         <Typography><strong>Submitted At:</strong> {new Date(studentData.createdAt).toDateString()}</Typography>
