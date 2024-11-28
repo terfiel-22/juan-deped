@@ -1,10 +1,10 @@
 import { Box } from "@mui/system"
 import PageContainer from "../../../components/container/PageContainer"
 import Breadcrumb from "../../../layouts/full/shared/breadcrumb/Breadcrumb"
-import { useState } from "react";
-import { useEffect } from "react";
 import CustomMUIDataTable from "../../../components/mui-datatable/CustomMUIDataTable";
-import useFetch from "../../../hooks/shared/useFetch";
+import useRead from "../../../hooks/crud/useRead";
+import { setPersonnels } from "../../../store/tables/reducers/personnel/PersonnelAction";
+import { selectPersonnels } from "../../../store/tables/reducers/personnel/PersonnelSelector";
 
 const BCrumb = [
     {
@@ -18,11 +18,7 @@ const BCrumb = [
 
 const Personnels = () => {
     /** Fetch Personnels */
-    const { data } = useFetch({ url: "/personnels" });
-    const [rows, setRows] = useState(data);
-    useEffect(() => {
-        setRows(data)
-    }, [data])
+    const { storedData } = useRead({ url: "/personnels", setter: setPersonnels, selector: selectPersonnels })
 
     return (
         <PageContainer title="JuanDepEd | Personnels" description="this is Personnels page">
@@ -30,7 +26,7 @@ const Personnels = () => {
             <Breadcrumb title="Personnels" items={BCrumb} />
             {/* end breadcrumb */}
             <Box>
-                <CustomMUIDataTable title={"Personnel List"} backendData={rows} />
+                <CustomMUIDataTable title={"Personnel List"} backendData={storedData} />
             </Box>
         </PageContainer>
     )
