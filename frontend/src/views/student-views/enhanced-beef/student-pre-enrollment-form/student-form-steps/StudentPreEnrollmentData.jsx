@@ -1,16 +1,16 @@
-import { Box, Typography, Divider, Paper, Grid } from '@mui/material';
+import { Box, Typography, Divider, Paper, Grid2 } from '@mui/material';
 import { useSelector } from 'react-redux';;
 import { selectCurrentStudent } from '../../../../../store/student/StudentSlice';
 import { forwardRef } from 'react';
-import useRead from '../../../../../hooks/crud/useRead';
+import useFetch from '../../../../../hooks/crud/useFetch';
 
 const StudentPreEnrollmentData = forwardRef((_, ref) => {
 
     const studentData = useSelector(selectCurrentStudent);
-    const { _data: track } = useRead({ url: "/track", id: studentData.seniorHighSchool.track })
-    const { _data: strand } = useRead({ url: "/strand", id: studentData.seniorHighSchool.strand })
+    const { data: track } = useFetch({ url: studentData.seniorHighSchool.track ? `/track/${studentData.seniorHighSchool.track}` : null })
+    const { data: strand } = useFetch({ url: studentData.seniorHighSchool.strand ? `/strand/${studentData.seniorHighSchool.strand}` : null })
 
-    if (!studentData || !track.data || !strand.data) {
+    if (!studentData || !track || !strand) {
         return <Typography>Loading...</Typography>;
     }
 
@@ -19,29 +19,29 @@ const StudentPreEnrollmentData = forwardRef((_, ref) => {
             height: '50vh', display: 'flex', flexDirection: 'column'
         }} className="print-container" ref={ref}>
             <Paper elevation={3} sx={{ padding: 3, marginTop: 2, overflow: 'auto' }} className='paper'>
-                <Grid container justifyContent="space-between">
+                <Grid2 container justifyContent="space-between">
                     <Typography variant="h4" gutterBottom>
                         Enhanced Basic Education Enrollment Form
                     </Typography>
                     {studentData.createdAt &&
                         <Typography><strong>Submitted At:</strong> {new Date(studentData.createdAt).toDateString()}</Typography>
                     }
-                </Grid>
+                </Grid2>
                 <Divider />
 
                 {/* General Information */}
                 <Box sx={{ marginTop: 2 }}>
                     <Typography variant="h5">General Information</Typography>
-                    <Grid container justifyContent="space-between" mt={2}>
-                        <Grid item xs={12} sm={12} lg={6}>
+                    <Grid2 container justifyContent="space-between" mt={2}>
+                        <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
                             <Typography><strong>Email:</strong> {studentData.email}</Typography>
                             <Typography><strong>Mobile:</strong> {studentData.mobile}</Typography>
-                        </Grid>
-                        <Grid item xs={12} sm={12} lg={6}>
+                        </Grid2>
+                        <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
                             <Typography><strong>School Year:</strong> {studentData.schoolYear}</Typography>
                             <Typography><strong>Grade Level:</strong> {studentData.gradeLevelToEnroll}</Typography>
-                        </Grid>
-                    </Grid>
+                        </Grid2>
+                    </Grid2>
                 </Box>
                 <Divider />
 
@@ -49,20 +49,20 @@ const StudentPreEnrollmentData = forwardRef((_, ref) => {
                 <Box sx={{ marginTop: 2 }}>
                     <Typography variant="h5">Learner Information</Typography>
 
-                    <Grid container justifyContent="space-between" mt={2}>
-                        <Grid item xs={12} sm={12} lg={6}>
+                    <Grid2 container justifyContent="space-between" mt={2}>
+                        <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
                             <Typography><strong>First Name:</strong> {studentData.firstName}</Typography>
                             <Typography><strong>Last Name:</strong> {studentData.lastName}</Typography>
                             <Typography><strong>Middle Name:</strong> {studentData.middleName}</Typography>
                             <Typography><strong>Birth Date:</strong> {new Date(studentData.birthDate).toLocaleDateString()}</Typography>
-                        </Grid>
-                        <Grid item xs={12} sm={12} lg={6}>
+                        </Grid2>
+                        <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
                             <Typography><strong>Sex:</strong> {studentData.sex}</Typography>
                             <Typography><strong>Age:</strong> {studentData.age}</Typography>
                             <Typography><strong>Place of Birth:</strong> {studentData.placeOfBirth}</Typography>
                             <Typography><strong>Mother Tongue:</strong> {studentData.motherTongue}</Typography>
-                        </Grid>
-                    </Grid>
+                        </Grid2>
+                    </Grid2>
                     {studentData.isPsaAvailable && (
                         <Typography><strong>PSA Birth Certificate No:</strong> {studentData.psaBirthCertificateNo}</Typography>
                     )}
@@ -82,37 +82,37 @@ const StudentPreEnrollmentData = forwardRef((_, ref) => {
                 <Box sx={{ marginTop: 2 }}>
                     <Typography variant="h5">Current Address</Typography>
 
-                    <Grid container justifyContent="space-between" mt={2}>
-                        <Grid item xs={12} sm={12} lg={6}>
+                    <Grid2 container justifyContent="space-between" mt={2}>
+                        <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
                             <Typography><strong>House No:</strong> {studentData.currentHouseNoStreet}</Typography>
                             <Typography><strong>Street Name:</strong> {studentData.currentStreetName}</Typography>
                             <Typography><strong>Barangay:</strong> {studentData.currentBarangay}</Typography>
                             <Typography><strong>Municipality/City:</strong> {studentData.currentMunicipalityCity}</Typography>
-                        </Grid>
-                        <Grid item xs={12} sm={12} lg={6}>
+                        </Grid2>
+                        <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
                             <Typography><strong>Province:</strong> {studentData.currentProvince}</Typography>
                             <Typography><strong>Country:</strong> {studentData.currentCountry}</Typography>
                             <Typography><strong>Zip Code:</strong> {studentData.currentZipCode}</Typography>
-                        </Grid>
-                    </Grid>
+                        </Grid2>
+                    </Grid2>
                 </Box>
                 <Divider />
 
                 {/* Permanent Address */}
                 <Box sx={{ marginTop: 2 }}>
                     <Typography variant="h5">Permanent Address</Typography>
-                    <Grid container justifyContent="space-between" mt={2}>
-                        <Grid item xs={12} sm={12} lg={6}>
+                    <Grid2 container justifyContent="space-between" mt={2}>
+                        <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
                             <Typography><strong>House No:</strong> {studentData.isSameAsCurrentAddress ? studentData.currentHouseNoStreet : studentData.houseNoStreet}</Typography>
                             <Typography><strong>Street Name:</strong> {studentData.isSameAsCurrentAddress ? studentData.currentStreetName : studentData.streetName}</Typography>
                             <Typography><strong>Barangay:</strong> {studentData.isSameAsCurrentAddress ? studentData.currentBarangay : studentData.barangay}</Typography>
                             <Typography><strong>Municipality/City:</strong> {studentData.isSameAsCurrentAddress ? studentData.currentMunicipalityCity : studentData.municipalityCity}</Typography>
-                        </Grid>
-                        <Grid item xs={12} sm={12} lg={6}><Typography><strong>Province:</strong> {studentData.isSameAsCurrentAddress ? studentData.currentProvince : studentData.province}</Typography>
+                        </Grid2>
+                        <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}><Typography><strong>Province:</strong> {studentData.isSameAsCurrentAddress ? studentData.currentProvince : studentData.province}</Typography>
                             <Typography><strong>Country:</strong> {studentData.isSameAsCurrentAddress ? studentData.currentCountry : studentData.country}</Typography>
                             <Typography><strong>Zip Code:</strong> {studentData.isSameAsCurrentAddress ? studentData.currentZipCode : studentData.zipCode}</Typography>
-                        </Grid>
-                    </Grid>
+                        </Grid2>
+                    </Grid2>
                 </Box>
                 <Divider />
 
@@ -120,21 +120,21 @@ const StudentPreEnrollmentData = forwardRef((_, ref) => {
                 <Box sx={{ marginTop: 2 }}>
                     <Typography variant="h5">Parents or Guardians</Typography>
 
-                    <Grid container justifyContent="space-between" mt={2}>
-                        <Grid item xs={12} sm={12} lg={6}>
+                    <Grid2 container justifyContent="space-between" mt={2}>
+                        <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
                             <Typography><strong>Father's Name:</strong> {`${studentData.father.firstName} ${studentData.father.middleName} ${studentData.father.lastName}`}</Typography>
                             <Typography><strong>Father's Contact:</strong> {studentData.father.contactNumber}</Typography>
                             <Typography><strong>Father's Email:</strong> {studentData.father.email}</Typography>
                             <Typography><strong>Mother's Name:</strong> {`${studentData.mother.firstName} ${studentData.mother.middleName} ${studentData.mother.lastName}`}</Typography>
                             <Typography><strong>Mother's Contact:</strong> {studentData.mother.contactNumber}</Typography>
                             <Typography><strong>Mother's Email:</strong> {studentData.mother.email}</Typography>
-                        </Grid>
-                        <Grid item xs={12} sm={12} lg={6}>
+                        </Grid2>
+                        <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
                             <Typography><strong>Guardian's Name:</strong> {`${studentData.guardian.firstName} ${studentData.guardian.middleName} ${studentData.guardian.lastName}`}</Typography>
                             <Typography><strong>Guardian's Contact:</strong> {studentData.guardian.contactNumber}</Typography>
                             <Typography><strong>Guardian's Email:</strong> {studentData.guardian.email}</Typography>
-                        </Grid>
-                    </Grid>
+                        </Grid2>
+                    </Grid2>
                 </Box>
                 <Divider />
 
@@ -164,7 +164,7 @@ const StudentPreEnrollmentData = forwardRef((_, ref) => {
                 {/* Preferred Distance Learning Modalities */}
                 <Box sx={{ marginTop: 2 }}>
                     <Typography variant="h5">Preferred Distance Learning Modalities</Typography>
-                    <Grid container justifyContent="space-between" mt={2}>
+                    <Grid2 container justifyContent="space-between" mt={2}>
                         {studentData.preferredDistanceLearningModalities.isModularPrint && <Typography>• Modular (Print)</Typography>}
                         {studentData.preferredDistanceLearningModalities.isOnline && <Typography>• Online</Typography>}
                         {studentData.preferredDistanceLearningModalities.isRadioBased && <Typography>• Radio-Based Instruction</Typography>}
@@ -173,7 +173,7 @@ const StudentPreEnrollmentData = forwardRef((_, ref) => {
                         {studentData.preferredDistanceLearningModalities.isEducationTV && <Typography>• Educational TV</Typography>}
                         {studentData.preferredDistanceLearningModalities.isHomeschooling && <Typography>• Homeschooling</Typography>}
                         {studentData.preferredDistanceLearningModalities.isFaceToFace && <Typography>• Face-to-Face</Typography>}
-                    </Grid>
+                    </Grid2>
                 </Box>
                 <Divider />
 
