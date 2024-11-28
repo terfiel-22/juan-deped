@@ -1,7 +1,5 @@
 import { Grid2 } from '@mui/material'
 import { Box } from '@mui/system'
-import { useCallback, useState } from 'react'
-import { ENHANCED_BEEF_STATE } from './enhanceBeefState'
 import { LoadingButton } from '@mui/lab'
 import CustomHeader4 from '../../../components/material-ui/typography/CustomHeader4'
 import GeneralInformationForm from './forms/GeneralInformationForm'
@@ -14,43 +12,10 @@ import PreferredDistanceLearningModalitiesForm from './forms/PreferredDistanceLe
 import NCPasserForm from './forms/NCPasserForm'
 import SHSEligibilityForm from './forms/SHSEligibilityForm'
 import AdditionalInformationForm from './forms/AdditionalInformationForm'
+import useEnhancedBeefForm from './hooks/useEnhancedBeefForm'
 
 const EnhancedBeefForm = () => {
-    const [formData, setFormData] = useState(ENHANCED_BEEF_STATE);
-    const [loading, setLoading] = useState(false);
-    const handleChange = useCallback(
-        (e) => {
-            const { name, value, type, checked } = e.target;
-            const _value =
-                type === 'checkbox'
-                    ? checked
-                    : value === 'true' || value === 'false'
-                        ? value === 'true'
-                        : value;
-            setFormData({
-                ...formData,
-                [name]: _value,
-            });
-        },
-        [formData],
-    );
-    const handleNestedChange = useCallback(
-        (e, field) => {
-            const { name, value, type, checked } = e.target;
-            const _value =
-                type === 'checkbox' ? checked : value === 'true' ? true : value === 'false' ? false : value;
-
-            const updatedField = { ...formData[field], [name]: _value };
-            const updatedFormData = { ...formData, [field]: updatedField };
-
-            setFormData(updatedFormData)
-        },
-        [formData],
-    );
-    const handleSubmit = useCallback((e) => {
-        e.preventDefault();
-        console.log(formData);
-    })
+    const { formData, handleChange, handleNestedChange, handleSubmit, loading } = useEnhancedBeefForm();
 
     return (
         <Box component='form' onSubmit={handleSubmit} width="100%" px={2}>
