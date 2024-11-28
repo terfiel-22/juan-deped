@@ -7,6 +7,7 @@ import CustomHeader4 from '../../../components/material-ui/typography/CustomHead
 import GeneralInformationForm from './forms/GeneralInformationForm'
 import LearnerInformation from './forms/LearnerInformationForm'
 import AddressInformationForm from './forms/AddressInformationForm'
+import ParentGuardianInformationForm from './forms/ParentGuardianInformationForm'
 
 const EnhancedBeefForm = () => {
     const [formData, setFormData] = useState(ENHANCED_BEEF_STATE);
@@ -62,7 +63,7 @@ const EnhancedBeefForm = () => {
                 </Grid2>
                 <Grid2 size={12}>
                     <CustomHeader4 text="Parent/Guardian Information" />
-                    {/* Content Here */}
+                    <ParentGuardianInformationForm formData={formData} handleNestedChange={handleNestedChange} />
                 </Grid2>
                 <Grid2 size={12}>
                     <CustomHeader4 text="For Returning Learner" />
