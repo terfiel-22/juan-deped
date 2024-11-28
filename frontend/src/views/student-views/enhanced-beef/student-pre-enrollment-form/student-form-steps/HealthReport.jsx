@@ -1,6 +1,6 @@
 import { Box } from '@mui/system'
 import { useMemo } from 'react'
-import { Grid } from '@mui/material'
+import { Grid2 } from '@mui/material'
 import CustomFormLabel from '../../../../../components/forms/theme-elements/CustomFormLabel'
 import CustomTextField from '../../../../../components/forms/theme-elements/CustomTextField'
 import useStudentDetailForm from '../../../../../hooks/student/useStudentDetailForm'
@@ -17,8 +17,8 @@ const HealthReport = () => {
 
     return (
         <Box>
-            <Grid container spacing={2}>
-                <Grid item xs={12} sm={12} lg={4}>
+            <Grid2 container spacing={2}>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 4 }}>
                     <CustomFormLabel htmlFor="weightKg">Weight</CustomFormLabel>
                     <CustomTextField
                         id="weightKg"
@@ -31,8 +31,8 @@ const HealthReport = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={4}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 4 }}>
                     <CustomFormLabel htmlFor="heightM">Height</CustomFormLabel>
                     <CustomTextField
                         id="heightM"
@@ -45,8 +45,8 @@ const HealthReport = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={4}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 4 }}>
                     <CustomFormLabel htmlFor="bmi">Body Mass Index</CustomFormLabel>
                     <CustomTextField
                         id="bmi"
@@ -57,8 +57,8 @@ const HealthReport = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-            </Grid>
+                </Grid2>
+            </Grid2>
         </Box>
     )
 }
