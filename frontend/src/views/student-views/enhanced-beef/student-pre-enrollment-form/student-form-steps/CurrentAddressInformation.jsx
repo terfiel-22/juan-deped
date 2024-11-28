@@ -1,7 +1,7 @@
 import { Box } from '@mui/system'
 import CustomFormLabel from '../../../../../components/forms/theme-elements/CustomFormLabel'
 import CustomTextField from '../../../../../components/forms/theme-elements/CustomTextField'
-import { Grid } from '@mui/material'
+import { Grid2 } from '@mui/material'
 import useStudentDetailForm from '../../../../../hooks/student/useStudentDetailForm'
 
 const CurrentAddressInformation = () => {
@@ -11,8 +11,8 @@ const CurrentAddressInformation = () => {
 
     return (
         <Box>
-            <Grid container spacing={2}>
-                <Grid item xs={12} sm={12} lg={4}>
+            <Grid2 container spacing={2}>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 4 }}>
                     <CustomFormLabel htmlFor="currentHouseNoStreet">House Street No.</CustomFormLabel>
                     <CustomTextField
                         id="currentHouseNoStreet"
@@ -24,8 +24,8 @@ const CurrentAddressInformation = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={4}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 4 }}>
                     <CustomFormLabel htmlFor="currentStreetName">Street Name</CustomFormLabel>
                     <CustomTextField
                         id="currentStreetName"
@@ -37,8 +37,8 @@ const CurrentAddressInformation = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={4}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 4 }}>
                     <CustomFormLabel htmlFor="currentBarangay">Barangay</CustomFormLabel>
                     <CustomTextField
                         id="currentBarangay"
@@ -50,8 +50,8 @@ const CurrentAddressInformation = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="currentMunicipalityCity">Municipality/City</CustomFormLabel>
                     <CustomTextField
                         id="currentMunicipalityCity"
@@ -63,8 +63,8 @@ const CurrentAddressInformation = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="currentProvince">Province</CustomFormLabel>
                     <CustomTextField
                         id="currentProvince"
@@ -76,8 +76,8 @@ const CurrentAddressInformation = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="currentCountry">Country</CustomFormLabel>
                     <CustomTextField
                         id="currentCountry"
@@ -89,8 +89,8 @@ const CurrentAddressInformation = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="currentZipCode">Zip Code</CustomFormLabel>
                     <CustomTextField
                         id="currentZipCode"
@@ -102,8 +102,8 @@ const CurrentAddressInformation = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-            </Grid>
+                </Grid2>
+            </Grid2>
         </Box>
     )
 }
