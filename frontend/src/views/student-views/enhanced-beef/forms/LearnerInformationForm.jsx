@@ -6,7 +6,7 @@ import CustomRadio from '../../../../components/forms/theme-elements/CustomRadio
 import { formatDate } from '../../../../utils/dateFormatter'
 
 const LearnerInformation = ({ formData, handleChange }) => {
-    const { isPsaAvailable, psaBirthCertificateNo, learnerReferenceNo, lastName, firstName, middleName, extensionName, birthDate, sex, age, placeOfBirth, motherTongue, isIndigenousPeople, indigenousPeople, isFourPsBeneficiary, fourPsHouseHoldId } = formData;
+    const { isPsaAvailable, psaBirthCertificateNo, lrn, lastName, firstName, middleName, extensionName, birthDate, sex, age, placeOfBirth, motherTongue, isIndigenousPeople, indigenousPeople, isFourPsBeneficiary, fourPsHouseHoldId } = formData;
 
     return (
         <Box>
@@ -33,12 +33,12 @@ const LearnerInformation = ({ formData, handleChange }) => {
                     />
                 </Grid2>
                 <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
-                    <CustomFormLabel htmlFor="learnerReferenceNo">Learner Reference No.</CustomFormLabel>
+                    <CustomFormLabel htmlFor="lrn">Learner Reference No.</CustomFormLabel>
                     <CustomTextField
-                        id="learnerReferenceNo"
-                        name="learnerReferenceNo"
+                        id="lrn"
+                        name="lrn"
                         onChange={handleChange}
-                        value={learnerReferenceNo}
+                        value={lrn}
                         placeholder="Enter LRN"
                         variant="outlined"
                         fullWidth
