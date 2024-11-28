@@ -39,7 +39,7 @@ export const registerLearner = async (req, res, next) => {
       throw new HttpError("Creating new account failed.", 400);
     }
 
-    generateTokenAndSetCookie(user._id, res);
+    generateTokenAndSetCookie(newLearner._id, res);
     const savedLearner = await newLearner.save();
 
     res.status(200).json({
