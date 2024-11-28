@@ -2,8 +2,9 @@ import { useTheme } from '@emotion/react';
 import { useMediaQuery } from '@mui/system';
 import { useCallback, useState } from 'react';
 
-const useTableDialog = ({ defaultFormData }) => {
+const useTableDialog = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedData, _setSelectedData] = useState(null);
   const theme = useTheme();
   const isFullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -13,9 +14,9 @@ const useTableDialog = ({ defaultFormData }) => {
 
   const handleCloseDialog = useCallback(() => {
     setIsOpen(false);
+    _setSelectedData(null);
   }, []);
 
-  const [selectedData, _setSelectedData] = useState(defaultFormData);
   const setSelectedData = useCallback((data) => {
     _setSelectedData(data);
     setIsOpen(true);

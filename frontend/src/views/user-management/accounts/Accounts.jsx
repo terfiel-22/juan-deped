@@ -39,7 +39,7 @@ const Accounts = () => {
         handleCloseDialog,
         selectedData,
         setSelectedData,
-    } = useTableDialog({ defaultFormData });
+    } = useTableDialog();
 
     return (
         <PageContainer title="JuanDepEd | Accounts" description="this is Accounts page">

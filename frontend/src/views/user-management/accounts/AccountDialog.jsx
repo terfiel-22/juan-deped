@@ -15,6 +15,7 @@ import useDelete from '../../../hooks/crud/useDelete'
 import { setDeletedAccount, setNewAccount, setUpdatedAccount } from '../../../store/tables/reducers/account/AccountAction'
 
 const defaultData = {
+    _id: null,
     username: "",
     email: "",
     password: "",
@@ -22,12 +23,21 @@ const defaultData = {
     role: ""
 };
 
-const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, data = data ?? defaultData }) => {
-    const { showPassword, handleClickShowPassword, handleMouseDownPassword } = usePasswordVisibility();
-    const [formData, setFormData] = useState(data)
+const AccountDialog = ({ isOpen, isFullScreen, handleClose, data = defaultData }) => {
+    const [formData, setFormData] = useState(defaultData)
     useEffect(() => {
-        setFormData(data)
+        if (isOpen)
+            setFormData(data)
+        else
+            setFormData(defaultData)
     }, [data])
+    const { showPassword, handleClickShowPassword, handleMouseDownPassword } = usePasswordVisibility();
+
+    const { createLoading, handleCreate } = useCreate({ url: "/auth/add", formData, setter: setNewAccount })
+    const { updateLoading, handleUpdate } = useUpdate({ url: "/auth/edit", formData, setter: setUpdatedAccount })
+    const { deleteLoading, handleDelete } = useDelete({ url: "/auth/delete", formData, setter: setDeletedAccount })
+
+    const isButtonLoading = formData._id ? updateLoading : createLoading;
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -36,16 +46,7 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose: close, data = data ?
             [name]: value
         })
     };
-    const handleClose = () => {
-        setFormData(defaultData);
-        close();
-    }
 
-    const { createLoading, handleCreate } = useCreate({ url: "/auth/add", formData, setter: setNewAccount })
-    const { updateLoading, handleUpdate } = useUpdate({ url: "/auth/edit", formData, setter: setUpdatedAccount })
-    const { deleteLoading, handleDelete } = useDelete({ url: "/auth/delete", formData, setter: setDeletedAccount })
-
-    const isButtonLoading = formData._id ? updateLoading : createLoading;
     const handleSaveButton = () => formData._id ? handleUpdate() : handleCreate();
     const handleDeleteButton = () => {
         handleDelete();
