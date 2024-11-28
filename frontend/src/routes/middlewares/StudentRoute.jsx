@@ -6,7 +6,6 @@ import { lazy } from "react";
 import { USER_ROLES } from "../../constants/UserRoles";
 
 const FullLayout = Loadable(lazy(() => import("../../layouts/full/FullLayout")));
-const StudentPreenrollmentForm = Loadable(lazy(() => import('../../views/authentication/StudentPreenrollmentForm')));
 
 const StudentRoute = () => {
     const currentUser = useSelector(selectCurrentUser);
@@ -17,10 +16,6 @@ const StudentRoute = () => {
 
     if (currentUser.role !== USER_ROLES.STUDENT) {
         return <Navigate to="/" />;
-    }
-
-    if (!currentUser.isApproved) {
-        return <StudentPreenrollmentForm studentAuthId={currentUser._id} />;
     }
 
     return <FullLayout />

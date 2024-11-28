@@ -2,7 +2,11 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectCurrentUserRole } from '../../store/user/UserSelector';
 import { USER_ROLES } from '../../constants/UserRoles';
-import { ADMIN_MENU_ITEMS, REGISTRAR_MENU_ITEMS } from '../../constants/RoleMenuItems';
+import {
+  ADMIN_MENU_ITEMS,
+  REGISTRAR_MENU_ITEMS,
+  STUDENT_MENU_ITEMS,
+} from '../../constants/RoleMenuItems';
 
 const useMenuItems = () => {
   const [menuItems, setMenuItems] = useState([]);
@@ -17,6 +21,9 @@ const useMenuItems = () => {
         break;
       case USER_ROLES.REGISTRAR:
         setMenuItems(REGISTRAR_MENU_ITEMS);
+        break;
+      case USER_ROLES.STUDENT:
+        setMenuItems(STUDENT_MENU_ITEMS);
         break;
       default:
         break;

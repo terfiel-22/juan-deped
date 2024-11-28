@@ -5,6 +5,7 @@ import {
   IconBook,
   IconPoint,
   IconSchool,
+  IconNote,
 } from '@tabler/icons';
 import { uniqueId } from 'lodash';
 
@@ -135,5 +136,18 @@ export const REGISTRAR_MENU_ITEMS = [
     title: 'Analytics',
     icon: IconChartHistogram,
     href: '/registrar/dashboard',
+  },
+];
+
+export const STUDENT_MENU_ITEMS = [
+  {
+    navlabel: true,
+    subheader: 'Complete Registration',
+  },
+  {
+    id: uniqueId(),
+    title: 'Enhanced BEEF',
+    icon: IconNote,
+    href: '/student/enhanced-beef',
   },
 ];

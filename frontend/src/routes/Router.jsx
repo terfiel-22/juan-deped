@@ -2,6 +2,7 @@ import React, { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
 
 import Loadable from '../layouts/full/shared/loadable/Loadable';
+import { STUDENT_ROUTER } from './role-routes/StudentRouter';
 
 /* ***Layouts**** */
 const FullLayout = Loadable(lazy(() => import('../layouts/full/FullLayout')));
@@ -96,14 +97,6 @@ const Router = [
     ]
   },
   {
-    path: "/student",
-    element: <StudentRoute />,
-    children: [
-      { path: '/student', element: <Navigate to="/student/dashboard" /> },
-      { path: '/student/dashboard', element: <ModernDash /> },
-    ]
-  },
-  {
     path: "/alumni",
     element: <AlumniRoute />,
     children: [
@@ -111,6 +104,7 @@ const Router = [
       { path: '/alumni/dashboard', element: <ModernDash /> },
     ]
   },
+  ...STUDENT_ROUTER,
   { path: '*', element: <Navigate to="/404" /> },
 ];
 
