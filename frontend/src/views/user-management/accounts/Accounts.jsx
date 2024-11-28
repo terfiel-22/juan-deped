@@ -6,6 +6,8 @@ import CustomMUIDataTable from '../../../components/mui-datatable/CustomMUIDataT
 import AccountDialog from './AccountDialog';
 import useTableDialog from '../../../hooks/shared/useTableDialog';
 import useFetch from '../../../hooks/shared/useFetch';
+import useRead from '../../../hooks/crud/useRead';
+import { setAccounts } from '../../../store/tables/reducers/account/AccountAction';
 
 const BCrumb = [
     {
@@ -27,7 +29,7 @@ const defaultFormData = {
 
 const Accounts = () => {
     /** Fetch Auths */
-    const { data } = useFetch({ url: '/auths' });
+    const { data } = useRead({ url: '/auths', setter: setAccounts });
     const [rows, setRows] = useState(data);
     useEffect(() => {
         setRows(data);

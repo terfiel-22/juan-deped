@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
-import axiosClient from '../../../utils/axiosClient';
-import { toastError } from '../../../utils/toastEmitter';
 import { useEffect, useState } from 'react';
+import axiosClient from '../../utils/axiosClient';
+import { toastError } from '../../utils/toastEmitter';
 
 const useRead = ({ url, id = null, setter = null }) => {
   const dispatch = useDispatch();
