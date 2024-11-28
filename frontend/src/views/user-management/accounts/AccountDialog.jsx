@@ -7,12 +7,12 @@ import CustomFormLabel from '../../../components/forms/theme-elements/CustomForm
 import CustomOutlinedInput from '../../../components/forms/theme-elements/CustomOutlinedInput'
 import usePasswordVisibility from '../../../hooks/ui/usePasswordVisibility'
 import CustomSelect from '../../../components/forms/theme-elements/CustomSelect'
-import { USER_ROLES_ARRAY } from '../../../constants/UserRolesArray'
 import useCreate from '../../../hooks/crud/useCreate'
 import useUpdate from '../../../hooks/crud/useUpdate'
 import useDelete from '../../../hooks/crud/useDelete'
 
 import { setDeletedAccount, setNewAccount, setUpdatedAccount } from '../../../store/tables/reducers/account/AccountAction'
+import { PERSONNEL_ROLES_ARRAY } from '../../../constants/UserRoles'
 
 const defaultData = {
     _id: null,
@@ -159,7 +159,7 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose, data = defaultData }
                                         <em>None</em>
                                     </MenuItem>
                                     {
-                                        USER_ROLES_ARRAY.map((role, index) => <MenuItem key={index} value={role}>{role}</MenuItem>)
+                                        PERSONNEL_ROLES_ARRAY.map((role, index) => <MenuItem key={index} value={role}>{role}</MenuItem>)
                                     }
                                 </CustomSelect>
                             </Grid2>

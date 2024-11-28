@@ -11,3 +11,13 @@ export const USER_ROLES = Object.freeze({
   PARENT_GUARDIAN: 'Parent/Guardian',
   GUEST: 'Guest',
 });
+
+export const PERSONNEL_ROLES_ARRAY = [
+  'Administrator',
+  'School Head',
+  'Assistant Principal',
+  'Registrar',
+  'Admissions',
+  'Subject Teacher',
+  'Class Adviser',
+];
