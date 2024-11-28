@@ -13,15 +13,15 @@ const useCreate = ({ url, formData, setter = null }) => {
       .post(url, formData)
       .then(({ data }) => {
         toastSuccess(data.message);
+        if (setter) dispatch(setter(data.result));
       })
       .catch(({ response: { data } }) => {
         toastError(data.message);
-        if (setter) dispatch(setter(data.result));
       })
       .finally(() => {
         setCreateLoading(false);
       });
-  }, [url, formData]);
+  }, [url, formData, setter]);
 
   return { createLoading, handleCreate };
 };

@@ -5,7 +5,6 @@ import Breadcrumb from '../../../layouts/full/shared/breadcrumb/Breadcrumb';
 import CustomMUIDataTable from '../../../components/mui-datatable/CustomMUIDataTable';
 import AccountDialog from './AccountDialog';
 import useTableDialog from '../../../hooks/shared/useTableDialog';
-import useFetch from '../../../hooks/shared/useFetch';
 import useRead from '../../../hooks/crud/useRead';
 import { setAccounts } from '../../../store/tables/reducers/account/AccountAction';
 

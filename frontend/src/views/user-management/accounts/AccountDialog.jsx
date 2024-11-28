@@ -9,9 +9,10 @@ import usePasswordVisibility from '../../../hooks/ui/usePasswordVisibility'
 import CustomSelect from '../../../components/forms/theme-elements/CustomSelect'
 import { USER_ROLES_ARRAY } from '../../../constants/UserRolesArray'
 import useCreate from '../../../hooks/crud/useCreate'
-import { setDeletedAccount, setNewAccount, setUpdatedAccount } from '../../../store/tables/reducers/account/AccountAction'
 import useUpdate from '../../../hooks/crud/useUpdate'
 import useDelete from '../../../hooks/crud/useDelete'
+
+import { setDeletedAccount, setNewAccount, setUpdatedAccount } from '../../../store/tables/reducers/account/AccountAction'
 
 const defaultData = {
     username: "",

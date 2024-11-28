@@ -23,7 +23,7 @@ const useRead = ({ url, id = null, setter = null }) => {
       .finally(() => {
         setReadLoading(false);
       });
-  }, [url]);
+  }, [url, setter]);
 
   return { data, readLoading };
 };

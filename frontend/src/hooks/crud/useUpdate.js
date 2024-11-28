@@ -13,15 +13,15 @@ const useUpdate = ({ url, formData, setter = null }) => {
       .put(url, formData)
       .then(({ data }) => {
         toastSuccess(data.message);
+        if (setter) dispatch(setter(data.result));
       })
       .catch(({ response: { data } }) => {
         toastError(data.message);
-        if (setter) dispatch(setter(data.result));
       })
       .finally(() => {
         setUpdateLoading(false);
       });
-  }, [url, formData]);
+  }, [url, formData, setter]);
 
   return { updateLoading, handleUpdate };
 };

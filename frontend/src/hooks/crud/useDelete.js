@@ -16,15 +16,15 @@ const useDelete = ({ url, id, setter = null }) => {
       .delete(`${url}/${id}`)
       .then(({ data }) => {
         toastSuccess(data.message);
+        if (setter) dispatch(setter(data.result));
       })
       .catch(({ response: { data } }) => {
         toastError(data.message);
-        if (setter) dispatch(setter(data.result));
       })
       .finally(() => {
         setDeleteLoading(false);
       });
-  }, [url]);
+  }, [url, id, setter]);
 
   return { deleteLoading, handleDelete };
 };
