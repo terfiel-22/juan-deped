@@ -1,8 +1,7 @@
 import PageContainer from "../../../components/container/PageContainer"
 import Breadcrumb from "../../../layouts/full/shared/breadcrumb/Breadcrumb"
-import DashboardCard from "../../../components/shared/DashboardCard";
-import StudentPreenrollmentFormContainer from "./student-pre-enrollment-form/StudentPreenrollmentFormContainer";
 import EnhancedBeefForm from "./EnhancedBeefForm";
+import { Card } from "@mui/material";
 
 const BCrumb = [
     {
@@ -22,9 +21,9 @@ const EnhancedBeef = () => {
             {/* end breadcrumb */}
 
             {/* start content */}
-            <DashboardCard>
+            <Card>
                 <EnhancedBeefForm />
-            </DashboardCard>
+            </Card>
         </PageContainer>
     )
 }
