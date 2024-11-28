@@ -6,6 +6,7 @@ import studentRoute from "./student.route.js";
 import schoolRoute from "./school-management/school.route.js";
 import trackStrandSpecializationRoute from "./school-management/track-strand-specialization.route.js";
 import learnerRoute from "./learner/learner.route.js";
+import learnerEnhancedBeefRoute from "./learner/learner-enhanced-beef.route.js";
 
 const router = Router();
 
@@ -17,5 +18,6 @@ export default () => {
   trackStrandSpecializationRoute(router);
   schoolRoute(router);
   learnerRoute(router);
+  learnerEnhancedBeefRoute(router);
   return router;
 };

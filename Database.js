@@ -100,13 +100,13 @@ const juanDeped = {
   ],
   learnerEnhancedBeefs: [
     {
-      // Basic Information
       learnerId: { type: Types.ObjectId, ref: "Learner", required: true },
       email: { type: String, required: true, unique: true },
       mobile: { type: String, required: true },
       schoolYear: { type: String, required: true },
       gradeLevelToEnroll: { type: Number, required: true, enum: [11, 12] },
       withLRN: { type: Boolean, default: true },
+      isReturnee: { type: Boolean, default: false },
 
       // Learner Information
       isPsaAvailable: { type: Boolean, default: true },
@@ -203,147 +203,143 @@ const juanDeped = {
         },
       },
 
-      // Parent or Guardians
-      fatherName: { type: String, required: true },
-      fatherContactNumber: { type: String, required: true },
-      fatherEmail: { type: String, required: true },
-      motherName: { type: String, required: true },
-      motherContactNumber: { type: String, required: true },
-      motherEmail: { type: String, required: true },
-      guardianName: { type: String, required: true },
-      guardianContactNumber: { type: String, required: true },
-      guardianEmail: { type: String, required: true },
+      // Parents or Guardians
+      father: {
+        lastName: { type: String, required: true },
+        firstName: { type: String, required: true },
+        middleName: { type: String, required: true },
+        contactNumber: { type: String, required: true },
+        email: { type: String, required: true },
+      },
+      mother: {
+        lastName: { type: String, required: true },
+        firstName: { type: String, required: true },
+        middleName: { type: String, required: true },
+        contactNumber: { type: String, required: true },
+        email: { type: String, required: true },
+      },
+      guardian: {
+        lastName: { type: String, required: true },
+        firstName: { type: String, required: true },
+        middleName: { type: String, required: true },
+        contactNumber: { type: String, required: true },
+        email: { type: String, required: true },
+      },
 
-      // Applying for
-      shsSemester: { type: String, enum: ["1st Sem", "2nd Sem"] },
-      track: { type: String, required: true },
-      strand: { type: String, required: true },
+      returningLearner: {
+        lastGradeLevelCompleted: {
+          type: String,
+          required: function () {
+            return this.isReturnee;
+          },
+        },
+        lastSchoolYearCompleted: {
+          type: String,
+          required: function () {
+            return this.isReturnee;
+          },
+        },
+        lastSchoolAttended: {
+          type: String,
+          required: function () {
+            return this.isReturnee;
+          },
+        },
+        schoolID: {
+          type: String,
+          required: function () {
+            return this.isReturnee;
+          },
+        },
+      },
 
-      // For returnee
-      isReturnee: { type: Boolean, default: false },
+      seniorHighSchool: {
+        semester: { type: String, enum: ["1st Sem", "2nd Sem"] },
+        track: { type: Types.ObjectId, ref: "Track", required: true },
+        strand: { type: Types.ObjectId, ref: "Strand", required: true },
+      },
 
-      // For ncPasser
-      isNcPasser: { type: Boolean, default: false },
-    },
-  ],
-  learnerReturnees: [
-    {
-      learnerId: { type: Types.ObjectId, ref: "Learner", required: true },
-      lastGradeLevelCompleted: {
-        type: String,
-        required: function () {
-          return this.isReturnee;
-        },
+      preferredDistanceLearningModalities: {
+        isModularPrint: { type: Boolean, default: false },
+        isOnline: { type: Boolean, default: false },
+        isRadioBased: { type: Boolean, default: false },
+        isBlended: { type: Boolean, default: false },
+        isModularDigital: { type: Boolean, default: false },
+        isEducationTV: { type: Boolean, default: false },
+        isHomeschooling: { type: Boolean, default: false },
+        isFaceToFace: { type: Boolean, default: false },
       },
-      lastSchoolYearCompleted: {
-        type: String,
-        required: function () {
-          return this.isReturnee;
-        },
-      },
-      lastSchoolAttended: {
-        type: String,
-        required: function () {
-          return this.isReturnee;
-        },
-      },
-      schoolID: {
-        type: String,
-        required: function () {
-          return this.isReturnee;
-        },
-      },
-    },
-  ],
-  learnerPreferredDistanceLearningModalities: [
-    {
-      learnerId: { type: Types.ObjectId, ref: "Learner", required: true },
-      isModularPrint: { type: Boolean, default: false },
-      isOnline: { type: Boolean, default: false },
-      isRadioBased: { type: Boolean, default: false },
-      isBlended: { type: Boolean, default: false },
-      isModularDigital: { type: Boolean, default: false },
-      isEducationTV: { type: Boolean, default: false },
-      isHomeschooling: { type: Boolean, default: false },
-      isFaceToFace: { type: Boolean, default: false },
-    },
-  ],
-  learnerNcPassers: [
-    {
-      learnerId: { type: Types.ObjectId, ref: "Learner", required: true },
-      certificateNo: {
-        type: String,
-        required: function () {
-          return this.ncPasser.isNcPasser;
-        },
-      },
-      specialization: {
-        type: String,
-        required: function () {
-          return this.ncPasser.isNcPasser;
-        },
-      },
-      validUntil: {
-        type: Date,
-        required: function () {
-          return this.ncPasser.isNcPasser;
-        },
-      },
-    },
-  ],
-  learnerShsEligibility: [
-    {
-      learnerId: { type: Types.ObjectId, ref: "Learner", required: true },
-      isHsCompleter: { type: Boolean, default: false },
-      hsGenAve: {
-        type: String,
-        required: function () {
-          return this.shsEligibility.isHsCompleter;
-        },
-      },
-      isJhsCompleter: { type: Boolean, default: false },
-      jhsGenAve: {
-        type: String,
-        required: function () {
-          return this.shsEligibility.isJhsCompleter;
-        },
-      },
-      graduationDate: Date,
-      schoolName: String,
-      schoolAddress: String,
 
-      isPeptPasser: { type: Boolean, default: false },
-      peptRating: {
-        type: String,
-        required: function () {
-          return this.shsEligibility.isPeptPasser;
+      ncPasser: {
+        isNcPasser: { type: Boolean, default: false },
+        certificateNo: {
+          type: String,
+          required: function () {
+            return this.ncPasser.isNcPasser;
+          },
+        },
+        specialization: {
+          type: String,
+          required: function () {
+            return this.ncPasser.isNcPasser;
+          },
+        },
+        validUntil: {
+          type: Date,
+          required: function () {
+            return this.ncPasser.isNcPasser;
+          },
         },
       },
-      isAlsPasser: { type: Boolean, default: false },
-      alsRating: {
-        type: String,
-        required: function () {
-          return this.shsEligibility.isAlsPasser;
+
+      shsEligibility: {
+        isHsCompleter: { type: Boolean, default: false },
+        hsGenAve: {
+          type: String,
+          required: function () {
+            return this.shsEligibility.isHsCompleter;
+          },
         },
-      },
-      isOtherExamPasser: { type: Boolean, default: false },
-      otherExam: {
-        type: String,
-        required: function () {
-          return this.shsEligibility.isOtherExamPasser;
+        isJhsCompleter: { type: Boolean, default: false },
+        jhsGenAve: {
+          type: String,
+          required: function () {
+            return this.shsEligibility.isJhsCompleter;
+          },
         },
+        graduationDate: Date,
+        schoolName: String,
+        schoolAddress: String,
+
+        isPeptPasser: { type: Boolean, default: false },
+        peptRating: {
+          type: String,
+          required: function () {
+            return this.shsEligibility.isPeptPasser;
+          },
+        },
+        isAlsPasser: { type: Boolean, default: false },
+        alsRating: {
+          type: String,
+          required: function () {
+            return this.shsEligibility.isAlsPasser;
+          },
+        },
+        isOtherExamPasser: { type: Boolean, default: false },
+        otherExam: {
+          type: String,
+          required: function () {
+            return this.shsEligibility.isOtherExamPasser;
+          },
+        },
+        examDate: Date,
+        learningCenterName: String,
+        learningCenterAddress: String,
       },
-      examDate: Date,
-      learningCenterName: String,
-      learningCenterAddress: String,
-    },
-  ],
-  learnerAdditionalInfo: [
-    {
-      learnerId: { type: Types.ObjectId, ref: "Learner", required: true },
+
+      // Additional
       weightKg: Number,
       heightM: Number,
-      bMI: Number,
     },
   ],
 
