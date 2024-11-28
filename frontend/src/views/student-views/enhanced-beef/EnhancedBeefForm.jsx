@@ -1,9 +1,10 @@
-import { Divider, Grid2, Typography } from '@mui/material'
+import { Grid2 } from '@mui/material'
 import { Box } from '@mui/system'
 import { useCallback, useState } from 'react'
 import { ENHANCED_BEEF_STATE } from './enhanceBeefState'
 import { LoadingButton } from '@mui/lab'
 import CustomHeader4 from '../../../components/material-ui/typography/CustomHeader4'
+import GeneralInformationForm from './forms/GeneralInformationForm'
 
 const EnhancedBeefForm = () => {
     const [formData, setFormData] = useState(ENHANCED_BEEF_STATE);
@@ -47,53 +48,43 @@ const EnhancedBeefForm = () => {
             <Grid2 container spacing={2}>
                 <Grid2 size={12}>
                     <CustomHeader4 text="General Information" />
-                    {/* Content Here */}
-                    <Divider />
+                    <GeneralInformationForm formData={formData} handleChange={handleChange} />
                 </Grid2>
                 <Grid2 size={12}>
                     <CustomHeader4 text="Learner Information" />
                     {/* Content Here */}
-                    <Divider />
                 </Grid2>
                 <Grid2 size={12}>
                     <CustomHeader4 text="Address Information" />
                     {/* Content Here */}
-                    <Divider />
                 </Grid2>
                 <Grid2 size={12}>
                     <CustomHeader4 text="Parent/Guardian Information" />
                     {/* Content Here */}
-                    <Divider />
                 </Grid2>
                 <Grid2 size={12}>
                     <CustomHeader4 text="For Returning Learner" />
                     {/* Content Here */}
-                    <Divider />
                 </Grid2>
                 <Grid2 size={12}>
                     <CustomHeader4 text="For Learners in SHS" />
                     {/* Content Here */}
-                    <Divider />
                 </Grid2>
                 <Grid2 size={12}>
                     <CustomHeader4 text="Preferred Distance Learning Modality/ies" />
                     {/* Content Here */}
-                    <Divider />
                 </Grid2>
                 <Grid2 size={12}>
                     <CustomHeader4 text="For NC Passer" />
                     {/* Content Here */}
-                    <Divider />
                 </Grid2>
                 <Grid2 size={12}>
                     <CustomHeader4 text="For SHS Eligibility" />
                     {/* Content Here */}
-                    <Divider />
                 </Grid2>
                 <Grid2 size={12}>
                     <CustomHeader4 text="Additional Information" />
                     {/* Content Here */}
-                    <Divider />
                 </Grid2>
                 <Grid2 container size={12} justifyContent="flex-end">
                     <LoadingButton variant='contained' loading={loading} type='submit'>Save Changes</LoadingButton>
