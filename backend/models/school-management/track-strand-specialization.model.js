@@ -15,6 +15,7 @@ const strandSchema = new Schema({
 const specializationSchema = new Schema({
   name: { type: String, required: true },
   strand: { type: Types.ObjectId, ref: "Strand", required: true },
+  track: { type: Types.ObjectId, ref: "Track", required: true },
 });
 
 export const Track = model("Track", trackSchema);

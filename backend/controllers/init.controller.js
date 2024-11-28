@@ -45,6 +45,7 @@ export const initTrackStrandSpecialization = async (req, res, next) => {
           const specializationDoc = await Specialization.create({
             name: specialization.name,
             strand: strandDoc._id,
+            track: trackDoc._id,
           });
 
           strandDoc.specializations.push(specializationDoc._id);
