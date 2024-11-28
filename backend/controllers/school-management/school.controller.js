@@ -1,7 +1,7 @@
 import School from "../../models/school-management/school.model.js";
 import HttpError from "../../utils/HttpError.utils.js";
 
-export const createSchool = async (req, res, next) => {
+export const saveSchoolData = async (req, res, next) => {
   try {
     const {
       schoolId,
