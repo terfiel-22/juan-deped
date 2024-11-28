@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectCurrentUser } from '../../store/user/UserSelector';
+import { selectCurrentUserRole } from '../../store/user/UserSelector';
 import { USER_ROLES } from '../../constants/UserRoles';
 import { ADMIN_MENU_ITEMS, REGISTRAR_MENU_ITEMS } from '../../constants/RoleMenuItems';
 
 const useMenuItems = () => {
   const [menuItems, setMenuItems] = useState([]);
-  const currentUser = useSelector(selectCurrentUser);
+  const role = useSelector(selectCurrentUserRole);
 
   useEffect(() => {
-    if (!currentUser) return;
+    if (!role) return;
 
-    switch (currentUser.role) {
+    switch (role) {
       case USER_ROLES.ADMINISTRATOR:
         setMenuItems(ADMIN_MENU_ITEMS);
         break;
@@ -21,7 +21,7 @@ const useMenuItems = () => {
       default:
         break;
     }
-  }, [currentUser]);
+  }, [role]);
 
   return { menuItems };
 };
