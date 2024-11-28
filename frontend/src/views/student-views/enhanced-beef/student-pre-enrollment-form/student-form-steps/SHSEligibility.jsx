@@ -1,7 +1,7 @@
 import { Box } from '@mui/system';
 import CustomFormLabel from '../../../../../components/forms/theme-elements/CustomFormLabel';
 import CustomTextField from '../../../../../components/forms/theme-elements/CustomTextField';
-import { FormControlLabel, Grid, RadioGroup } from '@mui/material';
+import { FormControlLabel, Grid2, RadioGroup } from '@mui/material';
 import CustomRadio from '../../../../../components/forms/theme-elements/CustomRadio';
 import useStudentDetailForm from '../../../../../hooks/student/useStudentDetailForm';
 
@@ -31,8 +31,8 @@ const SHSEligibility = () => {
 
     return (
         <Box>
-            <Grid container spacing={2}>
-                <Grid item xs={12} sm={12} lg={3}>
+            <Grid2 container spacing={2}>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="isHsCompleter">
                         Is HS (Old Curriculum) Completer?
                     </CustomFormLabel>
@@ -46,8 +46,8 @@ const SHSEligibility = () => {
                         <FormControlLabel value={true} control={<CustomRadio />} label="Yes" />
                         <FormControlLabel value={false} control={<CustomRadio />} label="No" />
                     </RadioGroup>
-                </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="hsGenAve">General Average</CustomFormLabel>
                     <CustomTextField
                         id="hsGenAve"
@@ -60,8 +60,8 @@ const SHSEligibility = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="isJhsCompleter">
                         Is JHS Completer?
                     </CustomFormLabel>
@@ -75,8 +75,8 @@ const SHSEligibility = () => {
                         <FormControlLabel value={true} control={<CustomRadio />} label="Yes" />
                         <FormControlLabel value={false} control={<CustomRadio />} label="No" />
                     </RadioGroup>
-                </Grid>
-                <Grid item xs={12} sm={12} lg={3}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="jhsGenAve">General Average</CustomFormLabel>
                     <CustomTextField
                         id="jhsGenAve"
@@ -89,8 +89,8 @@ const SHSEligibility = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={4}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 4 }}>
                     <CustomFormLabel htmlFor="graduationDate">Graduation Date</CustomFormLabel>
                     <CustomTextField
                         id="graduationDate"
@@ -104,8 +104,8 @@ const SHSEligibility = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={4}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 4 }}>
                     <CustomFormLabel htmlFor="schoolName">School Name</CustomFormLabel>
                     <CustomTextField
                         id="schoolName"
@@ -118,8 +118,8 @@ const SHSEligibility = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={4}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 4 }}>
                     <CustomFormLabel htmlFor="schoolAddress">School Address</CustomFormLabel>
                     <CustomTextField
                         id="schoolAddress"
@@ -132,9 +132,9 @@ const SHSEligibility = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
+                </Grid2>
 
-                <Grid item xs={12} sm={12} lg={2}>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 2 }}>
                     <CustomFormLabel htmlFor="isPeptPasser">
                         Is PEPT Passer?
                     </CustomFormLabel>
@@ -148,8 +148,8 @@ const SHSEligibility = () => {
                         <FormControlLabel value={true} control={<CustomRadio />} label="Yes" />
                         <FormControlLabel value={false} control={<CustomRadio />} label="No" />
                     </RadioGroup>
-                </Grid>
-                <Grid item xs={12} sm={12} lg={2}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 2 }}>
                     <CustomFormLabel htmlFor="peptRating">Rating</CustomFormLabel>
                     <CustomTextField
                         id="peptRating"
@@ -162,8 +162,8 @@ const SHSEligibility = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={2}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 2 }}>
                     <CustomFormLabel htmlFor="isAlsPasser">
                         Is ALS Passer?
                     </CustomFormLabel>
@@ -177,8 +177,8 @@ const SHSEligibility = () => {
                         <FormControlLabel value={true} control={<CustomRadio />} label="Yes" />
                         <FormControlLabel value={false} control={<CustomRadio />} label="No" />
                     </RadioGroup>
-                </Grid>
-                <Grid item xs={12} sm={12} lg={2}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 2 }}>
                     <CustomFormLabel htmlFor="alsRating">Rating</CustomFormLabel>
                     <CustomTextField
                         id="alsRating"
@@ -191,8 +191,8 @@ const SHSEligibility = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={2}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 2 }}>
                     <CustomFormLabel htmlFor="isOtherExamPasser">
                         Other?
                     </CustomFormLabel>
@@ -206,8 +206,8 @@ const SHSEligibility = () => {
                         <FormControlLabel value={true} control={<CustomRadio />} label="Yes" />
                         <FormControlLabel value={false} control={<CustomRadio />} label="No" />
                     </RadioGroup>
-                </Grid>
-                <Grid item xs={12} sm={12} lg={2}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 2 }}>
                     <CustomFormLabel htmlFor="otherExam">Specify</CustomFormLabel>
                     <CustomTextField
                         id="otherExam"
@@ -220,9 +220,9 @@ const SHSEligibility = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
+                </Grid2>
 
-                <Grid item xs={12} sm={12} lg={4}>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 4 }}>
                     <CustomFormLabel htmlFor="examDate">Exam Date</CustomFormLabel>
                     <CustomTextField
                         id="examDate"
@@ -236,8 +236,8 @@ const SHSEligibility = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={4}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 4 }}>
                     <CustomFormLabel htmlFor="learningCenterName">Learning Center Name</CustomFormLabel>
                     <CustomTextField
                         id="learningCenterName"
@@ -250,8 +250,8 @@ const SHSEligibility = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-                <Grid item xs={12} sm={12} lg={4}>
+                </Grid2>
+                <Grid2 size={{ xs: 12, sm: 12, lg: 4 }}>
                     <CustomFormLabel htmlFor="learningCenterAddress">Learning Center Address</CustomFormLabel>
                     <CustomTextField
                         id="learningCenterAddress"
@@ -264,8 +264,8 @@ const SHSEligibility = () => {
                         fullWidth
                         size="small"
                     />
-                </Grid>
-            </Grid>
+                </Grid2>
+            </Grid2>
         </Box>
     );
 };
