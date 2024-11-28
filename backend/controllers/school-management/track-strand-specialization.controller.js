@@ -8,7 +8,11 @@ import {
 /** TRACKS */
 export const fetchTracks = async (req, res, next) => {
   try {
-    const tracks = await Track.find({});
+    const tracks = await Track.find().select([
+      "name",
+      "schoolYear",
+      "isAvailable",
+    ]);
 
     res.status(200).json(tracks);
   } catch (error) {
@@ -31,7 +35,9 @@ export const fetchTrackById = async (req, res, next) => {
 /** STRANDS */
 export const fetchStrands = async (req, res, next) => {
   try {
-    const strandList = await Strand.find({}).populate("track").exec();
+    const strandList = await Strand.find()
+      .select(["name", "track"])
+      .populate("track");
 
     let strands = [];
     strandList.forEach(({ _id, name, track }) => {
@@ -85,7 +91,7 @@ export const fetchStrandsByTrackId = async (req, res, next) => {
 /** SPECIALIZATIONS */
 export const fetchSpecializations = async (req, res, next) => {
   try {
-    const specializationList = await Specialization.find({})
+    const specializationList = await Specialization.find()
       .populate({
         path: "strand",
         populate: {
