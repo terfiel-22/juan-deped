@@ -3,6 +3,7 @@ import CustomizerReducer from './customizer/CustomizerSlice';
 import { UserReducer } from './user/UserSlice';
 import { CareerReducer } from './career/CareerSlice';
 import { StudentReducer } from './student/StudentSlice';
+import { TableReducer } from './tables/TableReducer';
 
 export const rootReducer = combineReducers({
   customizer: CustomizerReducer,
@@ -10,4 +11,7 @@ export const rootReducer = combineReducers({
   userReducer: UserReducer,
   studentReducer: StudentReducer,
   careerReducer: CareerReducer,
+
+  /** New */
+  tableReducer: TableReducer,
 });
