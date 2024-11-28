@@ -14,7 +14,7 @@ const useSignup = () => {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
-    learnerReferenceNo: '',
+    lrn: '',
     password: '',
     cpassword: '',
     role: 'Student',
@@ -28,7 +28,9 @@ const useSignup = () => {
     });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
     setLoading(true);
     const { username, email, password, cpassword, role } = formData;
 
@@ -39,7 +41,7 @@ const useSignup = () => {
     }
 
     axiosClient
-      .post('/auth/register', formData)
+      .post('/auth/learner/register', formData)
       .then(({ data }) => {
         dispatch(setCurrentUser(data));
       })

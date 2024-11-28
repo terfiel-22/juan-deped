@@ -1,4 +1,4 @@
-import { FormControlLabel, Grid, IconButton, InputAdornment, RadioGroup } from '@mui/material'
+import { FormControlLabel, Grid2, IconButton, InputAdornment, RadioGroup } from '@mui/material'
 import { Box, Stack } from '@mui/system'
 import { IconEye, IconEyeOff } from '@tabler/icons'
 import { LoadingButton } from '@mui/lab'
@@ -14,12 +14,13 @@ const RegistrationForm = () => {
     const { formData, loading, handleChange, handleSubmit } = useSignup();
 
     return (
-        <>
+        <form onSubmit={handleSubmit}>
             <Stack>
-                <Grid container spacing={1} marginBottom={2}>
-                    <Grid item xs={12} sm={12} lg={6}>
+                <Grid2 container spacing={1} marginBottom={2}>
+                    <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
                         <CustomFormLabel htmlFor="username">Username</CustomFormLabel>
                         <CustomOutlinedInput
+                            required
                             name="username"
                             id="username"
                             value={formData.username}
@@ -27,10 +28,11 @@ const RegistrationForm = () => {
                             fullWidth
                             onChange={handleChange}
                         />
-                    </Grid>
-                    <Grid item xs={12} sm={12} lg={6}>
+                    </Grid2>
+                    <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
                         <CustomFormLabel htmlFor="email">Email</CustomFormLabel>
                         <CustomOutlinedInput
+                            required
                             name="email"
                             id="email"
                             value={formData.email}
@@ -38,28 +40,29 @@ const RegistrationForm = () => {
                             fullWidth
                             onChange={handleChange}
                         />
-                    </Grid>
-                    <Grid item xs={12} sm={12} lg={6}>
-                        <CustomFormLabel htmlFor="learnerReferenceNo">Learner Reference No.</CustomFormLabel>
+                    </Grid2>
+                    <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
+                        <CustomFormLabel htmlFor="lrn">Learner Reference No.</CustomFormLabel>
                         <CustomOutlinedInput
-                            name="learnerReferenceNo"
-                            id="learnerReferenceNo"
-                            value={formData.learnerReferenceNo}
-                            placeholder="Learner Reference No."
+                            name="lrn"
+                            id="lrn"
+                            value={formData.lrn}
+                            placeholder="LRN (if available)"
                             fullWidth
                             onChange={handleChange}
                         />
-                    </Grid>
-                    <Grid item xs={12} sm={12} lg={6}>
+                    </Grid2>
+                    <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
                         <CustomFormLabel htmlFor="role">Registration Type</CustomFormLabel>
                         <RadioGroup row aria-label="position" id="role" name="role" value={formData.role} onChange={handleChange} >
                             <FormControlLabel value="Student" control={<CustomRadio />} label="Student" />
-                            <FormControlLabel value="Alumnus" control={<CustomRadio />} label="Alumnus" />
+                            <FormControlLabel value="Alumni" control={<CustomRadio />} label="Alumni" />
                         </RadioGroup>
-                    </Grid>
-                    <Grid item xs={12} sm={12} lg={6}>
+                    </Grid2>
+                    <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
                         <CustomFormLabel htmlFor="password">Password</CustomFormLabel>
                         <CustomOutlinedInput
+                            required
                             type={showPassword ? 'text' : 'password'}
                             endAdornment={
                                 <InputAdornment position="end">
@@ -80,10 +83,11 @@ const RegistrationForm = () => {
                             value={formData.password}
                             onChange={handleChange}
                         />
-                    </Grid>
-                    <Grid item xs={12} sm={12} lg={6}>
+                    </Grid2>
+                    <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
                         <CustomFormLabel htmlFor="cpassword">Confirm Password</CustomFormLabel>
                         <CustomOutlinedInput
+                            required
                             type={showPassword ? 'text' : 'password'}
                             endAdornment={
                                 <InputAdornment position="end">
@@ -104,23 +108,22 @@ const RegistrationForm = () => {
                             value={formData.cpassword}
                             onChange={handleChange}
                         />
-                    </Grid>
-                </Grid>
+                    </Grid2>
+                </Grid2>
             </Stack>
             <Box>
                 <LoadingButton
+                    type="submit"
                     loading={loading}
                     variant="contained"
                     color="primary"
                     size="large"
                     fullWidth
-                    type="button"
-                    onClick={handleSubmit}
                 >
                     Sign Up
                 </LoadingButton>
             </Box>
-        </>
+        </form>
     );
 }
 
