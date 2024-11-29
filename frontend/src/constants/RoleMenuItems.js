@@ -157,6 +157,60 @@ export const STUDENT_MENU_ITEMS = [
     icon: IconNote,
     href: '/student/enhanced-beef',
   },
+  {
+    navlabel: true,
+    subheader: 'Home',
+  },
+  {
+    id: uniqueId(),
+    title: 'Graduation Tracking',
+    icon: IconStack,
+    href: '/student/tracking',
+  },
+  {
+    id: uniqueId(),
+    title: 'Grades',
+    icon: IconStars,
+    href: '/student/grades',
+  },
+  {
+    id: uniqueId(),
+    title: 'Attendance Records',
+    icon: IconCalendarEvent,
+    href: '/student/attendance',
+  },
+  {
+    id: uniqueId(),
+    title: 'Progress Reports',
+    icon: IconLoader,
+    href: '/student/progress',
+  },
+  {
+    navlabel: true,
+    subheader: 'Personal Information',
+  },
+  {
+    id: uniqueId(),
+    title: 'Profile',
+    icon: IconUserCircle,
+    href: '/student/profile',
+  },
+  {
+    navlabel: true,
+    subheader: 'Request Management',
+  },
+  {
+    id: uniqueId(),
+    title: 'Certification',
+    icon: IconCertificate,
+    href: '/student/request/certificate',
+  },
+  {
+    id: uniqueId(),
+    title: 'School Records',
+    icon: IconReceipt,
+    href: '/student/request/school-records',
+  },
 ];
 
 export const ALUMNI_MENU_ITEMS = [
