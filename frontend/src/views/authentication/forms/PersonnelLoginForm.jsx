@@ -1,8 +1,7 @@
-import { FormControlLabel, FormGroup, Grid2, IconButton, InputAdornment, Typography } from '@mui/material'
+import { FormControlLabel, FormGroup, Grid2, IconButton, InputAdornment } from '@mui/material'
 import CustomFormLabel from '../../../components/forms/theme-elements/CustomFormLabel'
 import { Box, Stack } from '@mui/system'
 import CustomCheckbox from '../../../components/forms/theme-elements/CustomCheckbox'
-import { Link } from 'react-router-dom'
 import CustomOutlinedInput from '../../../components/forms/theme-elements/CustomOutlinedInput'
 import { IconEye, IconEyeOff } from '@tabler/icons'
 import usePasswordVisibility from '../../../hooks/ui/usePasswordVisibility'
@@ -10,7 +9,7 @@ import useSignin from '../../../hooks/auth/useSignin'
 import { LoadingButton } from '@mui/lab'
 
 
-const LoginForm = () => {
+const PersonnelLoginForm = () => {
     const { formData, loading, handleChange, handleSubmit } = useSignin()
     const { email, password, remembered } = formData;
 
@@ -20,12 +19,12 @@ const LoginForm = () => {
         <form onSubmit={handleSubmit}>
             <Stack>
                 <Box>
-                    <CustomFormLabel htmlFor="email">Email/LRN</CustomFormLabel>
+                    <CustomFormLabel htmlFor="email">Email</CustomFormLabel>
                     <CustomOutlinedInput
                         required
                         id="email"
                         name="email"
-                        placeholder="Email or LRN"
+                        placeholder="Email"
                         value={email}
                         onChange={handleChange}
                         fullWidth
@@ -63,17 +62,6 @@ const LoginForm = () => {
                             label="Remeber this Device"
                         />
                     </FormGroup>
-                    <Typography
-                        component={Link}
-                        to="/forgot-password"
-                        fontWeight="500"
-                        sx={{
-                            textDecoration: 'none',
-                            color: 'primary.main',
-                        }}
-                    >
-                        Forgot Password ?
-                    </Typography>
                 </Grid2>
             </Stack>
             <Box>
@@ -92,4 +80,4 @@ const LoginForm = () => {
     )
 }
 
-export default LoginForm
+export default PersonnelLoginForm

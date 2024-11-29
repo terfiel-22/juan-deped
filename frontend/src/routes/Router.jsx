@@ -12,6 +12,7 @@ const BlankLayout = Loadable(lazy(() => import('../layouts/blank/BlankLayout')))
 const ModernDash = Loadable(lazy(() => import('../views/dashboard/Modern')));
 
 /** Authentication */
+const PersonnelAuthentication = Loadable(lazy(() => import('../views/authentication/PersonnelAuthentication')));
 const Authentication = Loadable(lazy(() => import('../views/authentication/Authentication')));
 const ForgotPassword = Loadable(lazy(() => import('../views/authentication/ForgotPassword')));
 
@@ -21,7 +22,6 @@ const GuestRoute = Loadable(lazy(() => import('./middlewares/GuestRoute')));
 const AuthRoute = Loadable(lazy(() => import('./middlewares/AuthRoute')));
 const AdminRoute = Loadable(lazy(() => import('./middlewares/AdminRoute')));
 const RegistrarRoute = Loadable(lazy(() => import('./middlewares/RegistrarRoute')));
-const StudentRoute = Loadable(lazy(() => import('./middlewares/StudentRoute')));
 const AlumniRoute = Loadable(lazy(() => import('./middlewares/AlumniRoute')));
 
 /** User Management */
@@ -63,6 +63,7 @@ const Router = [
     element: <GuestRoute />,
     children: [
       { path: '/auth', element: <Authentication /> },
+      { path: '/auth/personnel', element: <PersonnelAuthentication /> },
       { path: '/forgot-password', element: <ForgotPassword /> },
     ]
   },
