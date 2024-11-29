@@ -85,3 +85,13 @@ export const loginLearner = async (req, res, next) => {
     next(error);
   }
 };
+
+export const logout = async (req, res, next) => {
+  try {
+    res.cookie("jwt", "", { maxAge: 0 });
+    res.status(200).json({ message: "Logout success." });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Logout error occured." });
+  }
+};

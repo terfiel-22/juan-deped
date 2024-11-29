@@ -5,7 +5,7 @@ import { toastError } from '../../utils/toastEmitter';
 import { selectCredentials } from '../../store/user/UserSelector';
 import { setCredentials, setCurrentUser } from '../../store/user/UserAction';
 
-const useSignin = ({ url = '/auth/learner/login' }) => {
+const useSignin = ({ url }) => {
   const dispatch = useDispatch();
   const savedCredentials = useSelector(selectCredentials);
 
