@@ -10,7 +10,7 @@ import { LoadingButton } from '@mui/lab'
 
 
 const PersonnelLoginForm = () => {
-    const { formData, loading, handleChange, handleSubmit } = useSignin()
+    const { formData, loading, handleChange, handleSubmit } = useSignin({ url: "/auth/personnel/login" })
     const { email, password, remembered } = formData;
 
     const { showPassword, handleClickShowPassword, handleMouseDownPassword } = usePasswordVisibility()

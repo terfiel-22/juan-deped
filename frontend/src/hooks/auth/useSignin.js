@@ -5,7 +5,7 @@ import { toastError } from '../../utils/toastEmitter';
 import { selectCredentials } from '../../store/user/UserSelector';
 import { setCredentials, setCurrentUser } from '../../store/user/UserAction';
 
-const useSignin = () => {
+const useSignin = ({ url = '/auth/learner/login' }) => {
   const dispatch = useDispatch();
   const savedCredentials = useSelector(selectCredentials);
 
@@ -44,7 +44,7 @@ const useSignin = () => {
     }
 
     axiosClient
-      .post('/auth/learner/login', formData)
+      .post(url, formData)
       .then(({ data }) => {
         dispatch(setCurrentUser(data));
       })
