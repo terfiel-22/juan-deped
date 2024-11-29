@@ -5,7 +5,7 @@ import {
 } from "../../controllers/school-management/subject.controller.js";
 
 export default (router) => {
-  router.get("/subjects/core", fetchCoreSubjects);
-  router.get("/subjects/applied", fetchAppliedSubjects);
-  router.get("/subjects/specialized", fetchSpecializedSubjects);
+  router.get("/subject/core-subjects", fetchCoreSubjects);
+  router.get("/subject/applied-subjects", fetchAppliedSubjects);
+  router.get("/subject/specialized-subjects", fetchSpecializedSubjects);
 };
