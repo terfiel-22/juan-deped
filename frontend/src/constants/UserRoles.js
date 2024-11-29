@@ -21,3 +21,5 @@ export const PERSONNEL_ROLES_ARRAY = [
   'Subject Teacher',
   'Class Adviser',
 ];
+
+export const LEARNER_ROLES_ARRAY = ['Student', 'Alumni', 'Parent/Guardian'];
