@@ -1,8 +1,8 @@
 import bcrypt from "bcryptjs";
 import Learner from "../../models/learner/learner.model.js";
 import HttpError from "../../utils/HttpError.utils.js";
-import { profilePic } from "../../_mockData/default_data_fields.js";
 import generateTokenAndSetCookie from "../../utils/generateTokenAndSetCookie.js";
+import { DEFAULT_PROFILE_PIC } from "../../constants/DefaultFields.js";
 
 export const registerLearner = async (req, res, next) => {
   try {
@@ -46,7 +46,7 @@ export const registerLearner = async (req, res, next) => {
       _id: savedLearner._id,
       username: savedLearner.username,
       email: savedLearner.email,
-      profilePic,
+      profilePic: DEFAULT_PROFILE_PIC,
       lrn: savedLearner.lrn,
       role: savedLearner.role,
     });
@@ -77,7 +77,7 @@ export const loginLearner = async (req, res, next) => {
       _id: learner._id,
       username: learner.username,
       email: learner.email,
-      profilePic,
+      profilePic: learner.profilePic,
       lrn: learner.lrn,
       role: learner.role,
     });

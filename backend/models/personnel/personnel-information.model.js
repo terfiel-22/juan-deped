@@ -1,8 +1,8 @@
 import { model, Schema, Types } from "mongoose";
 
-const personnelSchema = new Schema(
+const personnelInformation = new Schema(
   {
-    authId: { type: Types.ObjectId, ref: "Auth" },
+    personnelId: { type: Types.ObjectId, ref: "Personnel" },
     empNo: { type: String, default: "" },
     account: { type: String, default: "" },
     lName: { type: String, default: "" },
@@ -65,6 +65,9 @@ const personnelSchema = new Schema(
 );
 
 // Export Personnel Model
-const Personnel = model("Personnel", personnelSchema);
+const PersonnelInformation = model(
+  "PersonnelInformation",
+  personnelInformation
+);
 
-export default Personnel;
+export default PersonnelInformation;

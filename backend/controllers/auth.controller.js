@@ -2,7 +2,7 @@ import bcrypt from "bcryptjs";
 import generateTokenAndSetCookie from "../utils/generateTokenAndSetCookie.js";
 import Auth from "../models/auth.model.js";
 import HttpError from "../utils/HttpError.utils.js";
-import { profilePic } from "../_mockData/default_data_fields.js";
+import { DEFAULT_PROFILE_PIC as profilePic } from "../constants/DefaultFields.js";
 
 export const login = async (req, res, next) => {
   try {

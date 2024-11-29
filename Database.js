@@ -5,7 +5,7 @@ const juanDeped = {
       username: { type: String, required: true },
       email: { type: String, unique: true, required: true },
       password: { type: String, required: true },
-      avatar: { type: String, required: true },
+      profilePic: { type: String, required: true },
       role: {
         type: String,
         required: true,
@@ -90,7 +90,7 @@ const juanDeped = {
       lrn: { type: String, unique: true, required: true },
       email: { type: String, unique: true, required: true },
       password: { type: String, required: true },
-      avatar: { type: String, required: true },
+      profilePic: { type: String, required: true },
       role: {
         type: String,
         required: true,

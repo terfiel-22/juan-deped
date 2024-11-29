@@ -4,7 +4,7 @@ import {
   CoreSubject,
   SpecializedSubject,
 } from "../models/subject.model.js";
-import Personnel from "../models/personnel.model.js";
+import PersonnelInformation from "../models/personnel/personnel-information.model.js";
 import Auth from "../models/auth.model.js";
 import {
   coreSubjects,
@@ -20,7 +20,7 @@ import {
   Strand,
   Track,
 } from "../models/school-management/track-strand-specialization.model.js";
-import { profilePic } from "../_mockData/default_data_fields.js";
+import { DEFAULT_PROFILE_PIC as profilePic } from "../constants/DefaultFields.js";
 
 export const initTrackStrandSpecialization = async (req, res, next) => {
   try {
@@ -99,8 +99,8 @@ export const initSubjects = async (req, res, next) => {
 
 export const initPersonnels = async (req, res, next) => {
   try {
-    await Personnel.deleteMany({});
-    await Personnel.insertMany(formattedPersonnels);
+    await PersonnelInformation.deleteMany({});
+    await PersonnelInformation.insertMany(formattedPersonnels);
 
     res
       .status(201)
