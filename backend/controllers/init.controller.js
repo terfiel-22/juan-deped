@@ -21,6 +21,7 @@ import {
   Track,
 } from "../models/school-management/track-strand-specialization.model.js";
 import { DEFAULT_PROFILE_PIC as profilePic } from "../constants/DefaultFields.js";
+import Personnel from "../models/personnel/personnel.model.js";
 
 export const initTrackStrandSpecialization = async (req, res, next) => {
   try {
@@ -112,13 +113,13 @@ export const initPersonnels = async (req, res, next) => {
 
 export const initAdminAccount = async (req, res, next) => {
   try {
-    await Auth.deleteMany({});
+    await Personnel.deleteMany({});
     const { username, email, password, role } = admin;
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    const userAdmin = new Auth({
+    const userAdmin = new Personnel({
       username,
       email,
       password: hashedPassword,
