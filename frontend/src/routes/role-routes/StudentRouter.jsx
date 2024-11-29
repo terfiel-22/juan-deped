@@ -8,13 +8,11 @@ const StudentRoute = Loadable(lazy(() => import("../middlewares/StudentRoute")))
 /** PAGES */
 const EnhancedBeef = Loadable(lazy(() => import("../../views/student-views/enhanced-beef/EnhancedBeef")));
 
-export const STUDENT_ROUTER = [
-    {
-        path: "/student",
-        element: <StudentRoute />,
-        children: [
-            { path: '/student', element: <Navigate to="/student/enhanced-beef" /> },
-            { path: '/student/enhanced-beef', element: <EnhancedBeef /> },
-        ]
-    },
-]
+export const STUDENT_ROUTER = {
+    path: "/student",
+    element: <StudentRoute />,
+    children: [
+        { path: '/student', element: <Navigate to="/student/enhanced-beef" /> },
+        { path: '/student/enhanced-beef', element: <EnhancedBeef /> },
+    ]
+};
