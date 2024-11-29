@@ -5,7 +5,6 @@ import {
   SpecializedSubject,
 } from "../models/subject.model.js";
 import PersonnelInformation from "../models/personnel/personnel-information.model.js";
-import Auth from "../models/auth.model.js";
 import {
   coreSubjects,
   appliedSubjects,

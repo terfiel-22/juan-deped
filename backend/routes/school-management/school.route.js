@@ -2,9 +2,9 @@ import {
   saveSchoolData,
   fetchSchool,
 } from "../../controllers/school-management/school.controller.js";
-import { isAuthenticated } from "../../middlewares/roleHandler.js";
+import { isPersonnel } from "../../middlewares/roleHandler.js";
 
 export default (router) => {
-  router.get("/school", isAuthenticated, fetchSchool);
-  router.post("/school", isAuthenticated, saveSchoolData);
+  router.get("/school", isPersonnel, fetchSchool);
+  router.post("/school", isPersonnel, saveSchoolData);
 };
