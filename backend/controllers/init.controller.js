@@ -3,7 +3,7 @@ import {
   AppliedSubject,
   CoreSubject,
   SpecializedSubject,
-} from "../models/subject.model.js";
+} from "../models/school-management/subject.model.js";
 import PersonnelInformation from "../models/personnel/personnel-information.model.js";
 import {
   coreSubjects,
