@@ -7,6 +7,7 @@ import trackStrandSpecializationRoute from "./school-management/track-strand-spe
 import learnerRoute from "./learner/learner.route.js";
 import learnerEnhancedBeefRoute from "./learner/learner-enhanced-beef.route.js";
 import personnelRoute from "./personnel/personnel.route.js";
+import personnelInformationRoute from "./personnel/personnel-information.route.js";
 
 const router = Router();
 
@@ -19,5 +20,6 @@ export default () => {
   learnerRoute(router);
   learnerEnhancedBeefRoute(router);
   personnelRoute(router);
+  personnelInformationRoute(router);
   return router;
 };

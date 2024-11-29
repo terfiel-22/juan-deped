@@ -18,7 +18,7 @@ const BCrumb = [
 
 const Personnels = () => {
     /** Fetch Personnels */
-    const { storedData } = useRead({ url: "/personnels", setter: setPersonnels, selector: selectPersonnels })
+    const { storedData } = useRead({ url: "/personnel/informations", setter: setPersonnels, selector: selectPersonnels })
 
     return (
         <PageContainer title="JuanDepEd | Personnels" description="this is Personnels page">

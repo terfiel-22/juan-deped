@@ -1,8 +1,8 @@
-import Personnel from "../models/personnel.model.js";
+import PersonnelInformation from "../../models/personnel/personnel-information.model.js";
 
-export const fetchPersonnels = async (req, res, next) => {
+export const fetchPersonnelInformations = async (req, res, next) => {
   try {
-    const personnels = await Personnel.find().select([
+    const personnels = await PersonnelInformation.find().select([
       "_id",
       "empNo",
       "account",
