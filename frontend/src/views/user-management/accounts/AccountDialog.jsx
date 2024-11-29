@@ -33,9 +33,9 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose, data = defaultData }
     }, [data])
     const { showPassword, handleClickShowPassword, handleMouseDownPassword } = usePasswordVisibility();
 
-    const { createLoading, handleCreate } = useCreate({ url: "/auth/add", formData, setter: setNewAccount })
-    const { updateLoading, handleUpdate } = useUpdate({ url: "/auth/edit", formData, setter: setUpdatedAccount })
-    const { deleteLoading, handleDelete } = useDelete({ url: "/auth/delete", formData, setter: setDeletedAccount })
+    const { createLoading, handleCreate } = useCreate({ url: "/personnel", formData, setter: setNewAccount })
+    const { updateLoading, handleUpdate } = useUpdate({ url: "/personnel", formData, setter: setUpdatedAccount })
+    const { deleteLoading, handleDelete } = useDelete({ url: "/personnel", formData, setter: setDeletedAccount })
 
     const isButtonLoading = formData._id ? updateLoading : createLoading;
 
@@ -47,7 +47,10 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose, data = defaultData }
         })
     };
 
-    const handleSubmit = () => formData._id ? handleUpdate() : handleCreate();
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        formData._id ? handleUpdate() : handleCreate();
+    };
     const handleDeleteButton = () => {
         handleDelete();
         handleClose();

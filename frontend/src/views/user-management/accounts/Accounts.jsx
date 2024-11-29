@@ -29,7 +29,7 @@ const defaultFormData = {
 
 const Accounts = () => {
     /** Fetch Auths */
-    const { storedData } = useRead({ url: '/auths', setter: setAccounts, selector: selectAccounts });
+    const { storedData } = useRead({ url: '/personnels', setter: setAccounts, selector: selectAccounts });
 
     /** For Table Dialog */
     const {

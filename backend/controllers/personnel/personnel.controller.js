@@ -64,11 +64,13 @@ export const createPersonnel = async (req, res, next) => {
     const savedPersonnel = await newPersonnel.save();
 
     res.status(200).json({
-      _id: savedPersonnel._id,
-      username: savedPersonnel.username,
-      email: savedPersonnel.email,
-      profilePic: DEFAULT_PROFILE_PIC,
-      role: savedPersonnel.role,
+      message: "Personnel Account successfully added,",
+      result: {
+        _id: savedPersonnel._id,
+        username: savedPersonnel.username,
+        email: savedPersonnel.email,
+        role: savedPersonnel.role,
+      },
     });
   } catch (error) {
     next(error);
