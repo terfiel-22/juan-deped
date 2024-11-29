@@ -23,9 +23,9 @@ const SF8 = Loadable(lazy(() => import('../../views/forms-and-cerificates/school
 
 /** School Management */
 const School = Loadable(lazy(() => import('../../views/school-management/school/School')));
-const Tracks = Loadable(lazy(() => import('../../views/school-management/tracks/Tracks')));
-const Strands = Loadable(lazy(() => import('../../views/school-management/strands/Strands')));
-const Specializations = Loadable(lazy(() => import('../../views/school-management/specializations/Specializations')));
+const Tracks = Loadable(lazy(() => import('../../views/school-management/career/tracks/Tracks')));
+const Strands = Loadable(lazy(() => import('../../views/school-management/career/strands/Strands')));
+const Specializations = Loadable(lazy(() => import('../../views/school-management/career/specializations/Specializations')));
 const CoreSubjects = Loadable(lazy(() => import("../../views/school-management/subjects/core-subjects/CoreSubjects")));
 const AppliedSubjects = Loadable(lazy(() => import("../../views/school-management/subjects/applied-subjects/AppliedSubjects")));
 const SpecializedSubjects = Loadable(lazy(() => import("../../views/school-management/subjects/specialized-subjects/SpecializedSubjects")));

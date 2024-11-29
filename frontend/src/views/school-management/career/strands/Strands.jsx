@@ -1,10 +1,10 @@
 import { Box } from '@mui/system'
-import PageContainer from '../../../components/container/PageContainer'
-import Breadcrumb from '../../../layouts/full/shared/breadcrumb/Breadcrumb'
-import CustomMUIDataTable from '../../../components/mui-datatable/CustomMUIDataTable';
-import useRead from '../../../hooks/crud/useRead';
-import { setStrands } from '../../../store/tables/reducers/career/CareerAction';
-import { selectStrands } from '../../../store/tables/reducers/career/CareerSelector';
+import PageContainer from '../../../../components/container/PageContainer'
+import Breadcrumb from '../../../../layouts/full/shared/breadcrumb/Breadcrumb'
+import CustomMUIDataTable from '../../../../components/mui-datatable/CustomMUIDataTable';
+import useRead from '../../../../hooks/crud/useRead';
+import { setStrands } from '../../../../store/tables/reducers/career/CareerAction';
+import { selectStrands } from '../../../../store/tables/reducers/career/CareerSelector';
 
 const BCrumb = [
     {
