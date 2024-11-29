@@ -7,7 +7,7 @@ export const USER_ROLES = Object.freeze({
   SUBJECT_TEACHER: 'Subject Teacher',
   CLASS_ADVISER: 'Class Adviser',
   STUDENT: 'Student',
-  ALUMNUS: 'Alumnus',
+  ALUMNI: 'Alumni',
   PARENT_GUARDIAN: 'Parent/Guardian',
   GUEST: 'Guest',
 });

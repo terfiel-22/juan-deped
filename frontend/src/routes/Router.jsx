@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom';
 
 import Loadable from '../layouts/full/shared/loadable/Loadable';
 import { STUDENT_ROUTER } from './role-routes/StudentRouter';
+import { ALUMNI_ROUTER } from './role-routes/AlumniRouter';
 
 /* ***Layouts**** */
 const FullLayout = Loadable(lazy(() => import('../layouts/full/FullLayout')));
@@ -22,7 +23,6 @@ const GuestRoute = Loadable(lazy(() => import('./middlewares/GuestRoute')));
 const AuthRoute = Loadable(lazy(() => import('./middlewares/AuthRoute')));
 const AdminRoute = Loadable(lazy(() => import('./middlewares/AdminRoute')));
 const RegistrarRoute = Loadable(lazy(() => import('./middlewares/RegistrarRoute')));
-const AlumniRoute = Loadable(lazy(() => import('./middlewares/AlumniRoute')));
 
 /** User Management */
 const Accounts = Loadable(lazy(() => import('../views/user-management/accounts/Accounts')));
@@ -97,14 +97,7 @@ const Router = [
       { path: '/registrar/dashboard', element: <ModernDash /> },
     ]
   },
-  {
-    path: "/alumni",
-    element: <AlumniRoute />,
-    children: [
-      { path: '/alumni', element: <Navigate to="/alumni/dashboard" /> },
-      { path: '/alumni/dashboard', element: <ModernDash /> },
-    ]
-  },
+  ...ALUMNI_ROUTER,
   ...STUDENT_ROUTER,
   { path: '*', element: <Navigate to="/404" /> },
 ];

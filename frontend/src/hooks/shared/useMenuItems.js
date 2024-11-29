@@ -4,6 +4,7 @@ import { selectCurrentUserRole } from '../../store/user/UserSelector';
 import { USER_ROLES } from '../../constants/UserRoles';
 import {
   ADMIN_MENU_ITEMS,
+  ALUMNI_MENU_ITEMS,
   REGISTRAR_MENU_ITEMS,
   STUDENT_MENU_ITEMS,
 } from '../../constants/RoleMenuItems';
@@ -24,6 +25,9 @@ const useMenuItems = () => {
         break;
       case USER_ROLES.STUDENT:
         setMenuItems(STUDENT_MENU_ITEMS);
+        break;
+      case USER_ROLES.ALUMNI:
+        setMenuItems(ALUMNI_MENU_ITEMS);
         break;
       default:
         break;

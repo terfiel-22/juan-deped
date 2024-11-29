@@ -6,24 +6,19 @@ import { lazy } from "react";
 import { USER_ROLES } from "../../constants/UserRoles";
 
 const FullLayout = Loadable(lazy(() => import("../../layouts/full/FullLayout")));
-const AlumniTrackingForm = Loadable(lazy(() => import('../../views/authentication/AlumniTrackingForm')));
 
-const AlumniRoute = () => {
+const StudentRoute = () => {
     const currentUser = useSelector(selectCurrentUser);
 
     if (!currentUser) {
         return <Navigate to="/auth" />;
     }
 
-    if (currentUser.role !== USER_ROLES.ALUMNUS) {
+    if (currentUser.role !== USER_ROLES.ALUMNI) {
         return <Navigate to="/" />;
-    }
-
-    if (!currentUser.isApproved) {
-        return <AlumniTrackingForm />;
     }
 
     return <FullLayout />
 }
 
-export default AlumniRoute
+export default StudentRoute

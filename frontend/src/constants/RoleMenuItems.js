@@ -6,6 +6,13 @@ import {
   IconPoint,
   IconSchool,
   IconNote,
+  IconStars,
+  IconCalendarEvent,
+  IconLoader,
+  IconUserCircle,
+  IconCertificate,
+  IconReceipt,
+  IconStack,
 } from '@tabler/icons';
 import { uniqueId } from 'lodash';
 
@@ -149,5 +156,62 @@ export const STUDENT_MENU_ITEMS = [
     title: 'Enhanced BEEF',
     icon: IconNote,
     href: '/student/enhanced-beef',
+  },
+];
+
+export const ALUMNI_MENU_ITEMS = [
+  {
+    navlabel: true,
+    subheader: 'Home',
+  },
+  {
+    id: uniqueId(),
+    title: 'Alumni Tracking',
+    icon: IconStack,
+    href: '/alumni/tracking',
+  },
+  {
+    id: uniqueId(),
+    title: 'Grades',
+    icon: IconStars,
+    href: '/alumni/grades',
+  },
+  {
+    id: uniqueId(),
+    title: 'Attendance Records',
+    icon: IconCalendarEvent,
+    href: '/alumni/attendance',
+  },
+  {
+    id: uniqueId(),
+    title: 'Progress Reports',
+    icon: IconLoader,
+    href: '/alumni/progress',
+  },
+  {
+    navlabel: true,
+    subheader: 'Personal Information',
+  },
+  {
+    id: uniqueId(),
+    title: 'Profile',
+    icon: IconUserCircle,
+    href: '/alumni/profile',
+  },
+  {
+    navlabel: true,
+    subheader: 'Request Management',
+  },
+  {
+    id: uniqueId(),
+    title: 'Certification',
+    icon: IconCertificate,
+    href: '/alumni/request/certificate',
+  },
+  {
+    id: uniqueId(),
+    title: 'School Records',
+    icon: IconReceipt,
+    href: '/alumni/request/school-records',
   },
 ];
