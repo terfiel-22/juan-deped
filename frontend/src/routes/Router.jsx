@@ -84,9 +84,9 @@ const Router = [
       { path: '/admin/school-forms/shsf7', element: <SHSF7 /> },
       { path: '/admin/school-forms/sf8', element: <SF8 /> },
       { path: '/admin/school', element: <School /> },
-      { path: '/admin/tracks', element: <Tracks /> },
-      { path: '/admin/strands', element: <Strands /> },
-      { path: '/admin/specializations', element: <Specializations /> },
+      { path: '/admin/career/tracks', element: <Tracks /> },
+      { path: '/admin/career/strands', element: <Strands /> },
+      { path: '/admin/career/specializations', element: <Specializations /> },
     ]
   },
   {

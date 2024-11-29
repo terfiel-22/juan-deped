@@ -13,6 +13,8 @@ import {
   IconCertificate,
   IconReceipt,
   IconStack,
+  IconListSearch,
+  IconNotebook,
 } from '@tabler/icons';
 import { uniqueId } from 'lodash';
 
@@ -115,21 +117,55 @@ export const ADMIN_MENU_ITEMS = [
   },
   {
     id: uniqueId(),
-    title: 'Tracks',
-    icon: IconTable,
-    href: '/admin/tracks',
+    title: 'Career',
+    icon: IconListSearch,
+    href: '/admin/career',
+    children: [
+      {
+        id: uniqueId(),
+        title: 'Tracks',
+        icon: IconPoint,
+        href: '/admin/career/tracks',
+      },
+      {
+        id: uniqueId(),
+        title: 'Strands',
+        icon: IconPoint,
+        href: '/admin/career/strands',
+      },
+      {
+        id: uniqueId(),
+        title: 'Specializations',
+        icon: IconPoint,
+        href: '/admin/career/specializations',
+      },
+    ],
   },
   {
     id: uniqueId(),
-    title: 'Strands',
-    icon: IconTable,
-    href: '/admin/strands',
-  },
-  {
-    id: uniqueId(),
-    title: 'Specializations',
-    icon: IconTable,
-    href: '/admin/specializations',
+    title: 'Subject',
+    icon: IconNotebook,
+    href: '/admin/subject',
+    children: [
+      {
+        id: uniqueId(),
+        title: 'Core',
+        icon: IconPoint,
+        href: '/admin/subject/core',
+      },
+      {
+        id: uniqueId(),
+        title: 'Applied',
+        icon: IconPoint,
+        href: '/admin/subject/applied',
+      },
+      {
+        id: uniqueId(),
+        title: 'Specialized',
+        icon: IconPoint,
+        href: '/admin/subject/specialized',
+      },
+    ],
   },
 ];
 
