@@ -1,10 +1,10 @@
 import { Box } from '@mui/system';
-import PageContainer from '../../../components/container/PageContainer';
-import Breadcrumb from '../../../layouts/full/shared/breadcrumb/Breadcrumb';
-import CustomMUIDataTable from '../../../components/mui-datatable/CustomMUIDataTable';
-import useRead from '../../../hooks/crud/useRead';
-import { setCoreSubjects } from '../../../store/tables/reducers/subject/SubjectAction';
-import { selectCoreSubjects } from '../../../store/tables/reducers/subject/SubjectSelector';
+import PageContainer from '../../../../components/container/PageContainer';
+import Breadcrumb from '../../../../layouts/full/shared/breadcrumb/Breadcrumb';
+import CustomMUIDataTable from '../../../../components/mui-datatable/CustomMUIDataTable';
+import useRead from '../../../../hooks/crud/useRead';
+import { setCoreSubjects } from '../../../../store/tables/reducers/subject/SubjectAction';
+import { selectCoreSubjects } from '../../../../store/tables/reducers/subject/SubjectSelector';
 
 const BCrumb = [
     {

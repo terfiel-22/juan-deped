@@ -26,7 +26,9 @@ const School = Loadable(lazy(() => import('../../views/school-management/school/
 const Tracks = Loadable(lazy(() => import('../../views/school-management/tracks/Tracks')));
 const Strands = Loadable(lazy(() => import('../../views/school-management/strands/Strands')));
 const Specializations = Loadable(lazy(() => import('../../views/school-management/specializations/Specializations')));
-const CoreSubject = Loadable(lazy(() => import("../../../../backend/models/school-management/subject.model")));
+const CoreSubjects = Loadable(lazy(() => import("../../views/school-management/subjects/core-subjects/CoreSubjects")));
+const AppliedSubjects = Loadable(lazy(() => import("../../views/school-management/subjects/applied-subjects/AppliedSubjects")));
+const SpecializedSubjects = Loadable(lazy(() => import("../../views/school-management/subjects/specialized-subjects/SpecializedSubjects")));
 
 export const ADMIN_ROUTER = {
     path: "/admin",
@@ -48,8 +50,8 @@ export const ADMIN_ROUTER = {
         { path: '/admin/career/tracks', element: <Tracks /> },
         { path: '/admin/career/strands', element: <Strands /> },
         { path: '/admin/career/specializations', element: <Specializations /> },
-        { path: '/admin/subject/core-subjects', element: <CoreSubject /> },
-        { path: '/admin/subject/applied-subjects', element: <CoreSubject /> },
-        { path: '/admin/subject/specialized-subjects', element: <CoreSubject /> },
+        { path: '/admin/subject/core-subjects', element: <CoreSubjects /> },
+        { path: '/admin/subject/applied-subjects', element: <AppliedSubjects /> },
+        { path: '/admin/subject/specialized-subjects', element: <SpecializedSubjects /> },
     ]
 };
