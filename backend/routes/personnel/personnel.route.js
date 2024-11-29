@@ -12,5 +12,10 @@ export default (router) => {
   router.get("/personnels", isPersonnel, isAdmin, fetchPersonnels);
   router.post("/personnel", isPersonnel, isAdmin, createPersonnel);
   router.put("/personnel", isPersonnel, isAdmin, editPersonnel);
-  router.delete("/personnel", isPersonnel, isAdmin, deletePersonnel);
+  router.delete(
+    "/personnel/:personnelId",
+    isPersonnel,
+    isAdmin,
+    deletePersonnel
+  );
 };

@@ -1,7 +1,6 @@
 import bcrypt from "bcryptjs";
 import HttpError from "../../utils/HttpError.utils.js";
 import Personnel from "../../models/personnel/personnel.model.js";
-import { DEFAULT_PROFILE_PIC } from "../../constants/DefaultFields.js";
 import generateTokenAndSetCookie from "../../utils/generateTokenAndSetCookie.js";
 
 export const loginPersonnel = async (req, res, next) => {

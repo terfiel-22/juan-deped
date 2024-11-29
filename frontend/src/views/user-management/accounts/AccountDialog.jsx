@@ -47,13 +47,18 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose, data = defaultData }
         })
     };
 
+    const _handleClose = () => {
+        setFormData(defaultData)
+        handleClose();
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         formData._id ? handleUpdate() : handleCreate();
     };
-    const handleDeleteButton = () => {
+    const _handleDelete = () => {
         handleDelete();
-        handleClose();
+        _handleClose();
     }
 
 
@@ -172,14 +177,14 @@ const AccountDialog = ({ isOpen, isFullScreen, handleClose, data = defaultData }
                 <DialogActions sx={{ justifyContent: 'space-between' }}>
                     {
                         formData._id ?
-                            <LoadingButton type='button' sx={{ marginLeft: '0', display: 'block' }} loading={deleteLoading} color='warning' onClick={handleDeleteButton}>
+                            <LoadingButton type='button' sx={{ marginLeft: '0', display: 'block' }} loading={deleteLoading} color='warning' onClick={_handleDelete}>
                                 Delete
                             </LoadingButton>
                             :
                             <Box></Box>
                     }
                     <Box>
-                        <Button color='error' type='button' sx={{ marginRight: '10px' }} onClick={handleClose}>
+                        <Button color='error' type='button' sx={{ marginRight: '10px' }} onClick={_handleClose}>
                             Close
                         </Button>
                         <LoadingButton type='submit' loading={isButtonLoading} color='primary' >
