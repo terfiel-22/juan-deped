@@ -1,5 +1,5 @@
 import { Button, Dialog, DialogActions, DialogContent, Fab, TextField, Typography } from '@mui/material';
-import { LocalizationProvider, MobileDatePicker } from '@mui/x-date-pickers';
+import { LocalizationProvider, MobileDateTimePicker } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3';
 import { IconCheck } from '@tabler/icons';
 
@@ -96,14 +96,14 @@ const CalendarDialog = ({
                     {/* Selection of Start and end date */}
                     {/* ------------------------------------------- */}
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
-                        <MobileDatePicker
+                        <MobileDateTimePicker
                             label="Start Date"
                             inputFormat="MM/dd/yyyy"
                             value={start}
                             onChange={handleStartChange}
                             slotProps={{ textField: { fullWidth: true, sx: { mb: 3 } } }}
                         />
-                        <MobileDatePicker
+                        <MobileDateTimePicker
                             label="End Date"
                             inputFormat="MM/dd/yyyy"
                             value={end}
