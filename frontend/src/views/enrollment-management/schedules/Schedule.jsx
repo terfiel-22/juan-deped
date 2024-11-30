@@ -207,22 +207,19 @@ const Schedule = () => {
                                 inputFormat="MM/dd/yyyy"
                                 value={start}
                                 onChange={handleStartChange}
-                                renderInput={(params) => <TextField {...params} fullWidth sx={{ mb: 3 }} />}
+                                slotProps={{ textField: { fullWidth: true, sx: { mb: 3 } } }}
                             />
                             <MobileDatePicker
                                 label="End Date"
                                 inputFormat="MM/dd/yyyy"
                                 value={end}
                                 onChange={handleEndChange}
-                                renderInput={(params) => (
-                                    <TextField
-                                        {...params}
-                                        fullWidth
-                                        sx={{ mb: 3 }}
-                                        error={start > end}
-                                        helperText={start > end ? 'End date must be later than start date' : ''}
-                                    />
-                                )}
+                                slotProps={{
+                                    textField: {
+                                        fullWidth: true, sx: { mb: 3 }, error: (start > end),
+                                        helperText: (start > end ? 'End date must be later than start date' : '')
+                                    }
+                                }}
                             />
                         </LocalizationProvider>
 
@@ -273,7 +270,7 @@ const Schedule = () => {
                             ''
                         )}
                         <Button type="submit" disabled={!title} variant="contained">
-                            {update ? 'Update Event' : 'Add Event'}
+                            Save
                         </Button>
                     </DialogActions>
                     {/* ------------------------------------------- */}
