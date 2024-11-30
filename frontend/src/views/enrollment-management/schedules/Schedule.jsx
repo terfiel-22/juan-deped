@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import {
-    CardContent,
     Button,
     Dialog,
     DialogActions,
@@ -10,26 +9,21 @@ import {
     Typography,
 } from '@mui/material';
 import { IconCheck } from '@tabler/icons';
-import { Calendar, momentLocalizer } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { MobileDatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3'
-import moment from 'moment';
 import Events from './Events';
 
 import './Calendar.css';
 import PageContainer from '../../../components/container/PageContainer';
 import Breadcrumb from '../../../layouts/full/shared/breadcrumb/Breadcrumb';
-import BlankCard from '../../../components/shared/BlankCard';
+import CustomCalendar from '../../../components/react-calendar/CustomCalendar';
 
-moment.locale('en-PH');
-const localizer = momentLocalizer(moment);
 
 const Schedule = () => {
     const [calevents, setCalEvents] = useState(Events);
     const [open, setOpen] = useState(false);
     const [title, setTitle] = useState('');
-    const [slot, setSlot] = useState();
     const [start, setStart] = useState();
     const [end, setEnd] = useState();
     const [color, setColor] = useState('default');
@@ -62,22 +56,6 @@ const Schedule = () => {
             value: 'warning',
         },
     ];
-    const addNewEventAlert = (slotInfo) => {
-        setOpen(true);
-        setSlot(slotInfo);
-        setStart(slotInfo.start);
-        setEnd(slotInfo.end);
-    };
-    const editEvent = (event) => {
-        setOpen(true);
-        const newEditEvent = calevents.find((elem) => elem.title === event.title);
-        setColor(event.color);
-        setTitle(newEditEvent.title);
-        setColor(newEditEvent.color);
-        setStart(newEditEvent.start);
-        setEnd(newEditEvent.end);
-        setUpdate(event);
-    };
     const updateEvent = (e) => {
         e.preventDefault();
         setCalEvents(
@@ -126,12 +104,7 @@ const Schedule = () => {
         setUpdate(null);
     };
 
-    const eventColors = (event) => {
-        if (event.color) {
-            return { className: `event-${event.color}` };
-        }
-        return { className: `event-default` };
-    };
+
 
     const handleStartChange = (newValue) => {
         setStart(newValue);
@@ -152,27 +125,13 @@ const Schedule = () => {
     return (
         <PageContainer title="JuanDepEd | Schedules" description="this is Schedules page">
             <Breadcrumb title="Schedules" items={BCrumb} />
-            <BlankCard key={slot} variant="outlined">
-                {/* ------------------------------------------- */}
-                {/* Schedules */}
-                {/* ------------------------------------------- */}
-                <CardContent>
-                    <Calendar
-                        selectable
-                        events={calevents}
-                        defaultView="month"
-                        scrollToTime={new Date(1970, 1, 1, 6)}
-                        defaultDate={new Date()}
-                        localizer={localizer}
-                        style={{ height: 'calc(100vh - 350px' }}
-                        onSelectEvent={(event) => editEvent(event)}
-                        onSelectSlot={(slotInfo) => addNewEventAlert(slotInfo)}
-                        eventPropGetter={(event) => eventColors(event)}
-                    />
-                </CardContent>
-            </BlankCard>
             {/* ------------------------------------------- */}
-            {/* Add Calendar Event Dialog */}
+            {/* Schedules Calendar*/}
+            {/* ------------------------------------------- */}
+            <CustomCalendar {...{ calevents, setOpen, setStart, setEnd, setColor, setTitle, setUpdate }} />
+
+            {/* ------------------------------------------- */}
+            {/* Add Schedules Dialog */}
             {/* ------------------------------------------- */}
             <Dialog open={open} onClose={handleClose} fullWidth maxWidth="xs">
                 <form onSubmit={update ? updateEvent : submitHandler}>
