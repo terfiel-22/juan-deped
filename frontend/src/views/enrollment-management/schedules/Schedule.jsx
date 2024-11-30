@@ -22,7 +22,7 @@ import PageContainer from '../../../components/container/PageContainer';
 import Breadcrumb from '../../../layouts/full/shared/breadcrumb/Breadcrumb';
 import BlankCard from '../../../components/shared/BlankCard';
 
-moment.locale('en-GB');
+moment.locale('en-PH');
 const localizer = momentLocalizer(moment);
 
 const Schedule = () => {
