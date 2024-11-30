@@ -385,9 +385,9 @@ const juanDeped = {
   /** Enrollment Management */
   enrollmentSchedules: [
     {
-      name: { type: String, required: true },
-      startDate: { type: Date, required: true },
-      endDate: { type: Date, required: true },
+      title: { type: String, required: true },
+      start: { type: Date, required: true },
+      end: { type: Date, required: true },
       color: { type: String, required: true },
     },
   ],
