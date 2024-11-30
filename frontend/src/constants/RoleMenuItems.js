@@ -209,6 +209,12 @@ export const STUDENT_MENU_ITEMS = [
   },
   {
     id: uniqueId(),
+    title: 'Schedules',
+    icon: IconCalendarEvent,
+    href: '/student/schedules',
+  },
+  {
+    id: uniqueId(),
     title: 'Graduation Tracking',
     icon: IconStack,
     href: '/student/tracking',

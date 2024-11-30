@@ -6,7 +6,8 @@ import Loadable from "../../layouts/full/shared/loadable/Loadable";
 const StudentRoute = Loadable(lazy(() => import("../middlewares/StudentRoute")));
 
 /** PAGES */
-const EnhancedBeef = Loadable(lazy(() => import("../../views/student-views/enhanced-beef/EnhancedBeef")));
+const EnhancedBeef = Loadable(lazy(() => import("../../views/learner-views/enhanced-beef/EnhancedBeef")));
+const LearnerSchedules = Loadable(lazy(() => import("../../views/learner-views/schedules/LearnerSchedules")));
 
 export const STUDENT_ROUTER = {
     path: "/student",
@@ -14,5 +15,6 @@ export const STUDENT_ROUTER = {
     children: [
         { path: '/student', element: <Navigate to="/student/enhanced-beef" /> },
         { path: '/student/enhanced-beef', element: <EnhancedBeef /> },
+        { path: '/student/schedules', element: <LearnerSchedules /> },
     ]
 };
