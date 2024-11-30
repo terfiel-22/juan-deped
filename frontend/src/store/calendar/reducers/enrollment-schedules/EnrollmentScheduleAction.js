@@ -1,3 +1,8 @@
-import { EnrollmentScheduleSlice } from './EnrollmentSchedulesSlice';
+import { EnrollmentScheduleSlice } from './EnrollmentScheduleSlice';
 
-export const { setEnrollmentSchedules } = EnrollmentScheduleSlice.actions;
+export const {
+  setEnrollmentSchedules,
+  setNewEnrollmentSchedule,
+  setUpdatedEnrollmentSchedule,
+  setDeletedEnrollmentSchedule,
+} = EnrollmentScheduleSlice.actions;

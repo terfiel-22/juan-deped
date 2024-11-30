@@ -2,7 +2,7 @@ import PageContainer from '../../../components/container/PageContainer';
 import Breadcrumb from '../../../layouts/full/shared/breadcrumb/Breadcrumb';
 import CalendarAndDialog from '../../../components/react-calendar/CalendarAndDialog';
 import useRead from '../../../hooks/crud/useRead';
-import { setEnrollmentSchedules } from '../../../store/calendar/reducers/enrollment-schedules/EnrollmentScheduleAction';
+import { setDeletedEnrollmentSchedule, setEnrollmentSchedules, setNewEnrollmentSchedule, setUpdatedEnrollmentSchedule } from '../../../store/calendar/reducers/enrollment-schedules/EnrollmentScheduleAction';
 import { selectEnrollmentSchedules } from '../../../store/calendar/reducers/enrollment-schedules/EnrollmentScheduleSelector';
 
 
@@ -20,9 +20,9 @@ const Schedule = () => {
 
     const url = "/enrollment/schedule";
     const setters = {
-        setNew: "",
-        setUpdated: "",
-        setDeleted: "",
+        setNew: setNewEnrollmentSchedule,
+        setUpdated: setUpdatedEnrollmentSchedule,
+        setDeleted: setDeletedEnrollmentSchedule,
     }
 
     const { storedData: events } = useRead({ url: "/enrollment/schedules", setter: setEnrollmentSchedules, selector: selectEnrollmentSchedules })
