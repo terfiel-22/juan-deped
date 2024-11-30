@@ -19,7 +19,7 @@ const Schedule = () => {
     ];
 
     const { storedData } = useRead({ url: "/enrollment/schedules", setter: setEnrollmentSchedules, selector: selectEnrollmentSchedules })
-    console.log(storedData);
+
     return (
         <PageContainer title="JuanDepEd | Schedules" description="this is Schedules page">
             <Breadcrumb title="Schedules" items={BCrumb} />

@@ -113,14 +113,14 @@ const CalendarDialog = ({
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <MobileDateTimePicker
                             label="Start Date"
-                            inputFormat="MM/dd/yyyy"
+                            inputFormat="MM/dd/yyyy hh:mm aa"
                             value={start}
                             onChange={handleStartChange}
                             slotProps={{ textField: { fullWidth: true, sx: { mb: 3 } } }}
                         />
                         <MobileDateTimePicker
                             label="End Date"
-                            inputFormat="MM/dd/yyyy"
+                            inputFormat="MM/dd/yyyy hh:mm aa"
                             value={end}
                             onChange={handleEndChange}
                             slotProps={{
