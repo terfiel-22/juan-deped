@@ -30,6 +30,9 @@ const CoreSubjects = Loadable(lazy(() => import("../../views/school-management/s
 const AppliedSubjects = Loadable(lazy(() => import("../../views/school-management/subjects/applied-subjects/AppliedSubjects")));
 const SpecializedSubjects = Loadable(lazy(() => import("../../views/school-management/subjects/specialized-subjects/SpecializedSubjects")));
 
+/** Enrollment Management */
+const Schedules = Loadable(lazy(() => import('../../views/enrollment-management/schedules/Schedule.jsx')));
+
 export const ADMIN_ROUTER = {
     path: "/admin",
     element: <AdminRoute />,
@@ -53,5 +56,6 @@ export const ADMIN_ROUTER = {
         { path: '/admin/subject/core-subjects', element: <CoreSubjects /> },
         { path: '/admin/subject/applied-subjects', element: <AppliedSubjects /> },
         { path: '/admin/subject/specialized-subjects', element: <SpecializedSubjects /> },
+        { path: '/admin/enrollment/schedules', element: <Schedules /> },
     ]
 };

@@ -343,7 +343,7 @@ const juanDeped = {
     },
   ],
 
-  /** School Forms */
+  /** School Management */
   schools: [
     {
       schoolId: { type: String, required: true },
@@ -361,6 +361,37 @@ const juanDeped = {
       assistantPrincipalDesignation: { type: String, required: true },
     },
   ],
+  tracks: [
+    {
+      _id: "",
+      name: "",
+      strands: [],
+    },
+  ],
+  strands: [
+    {
+      _id: "",
+      name: "",
+      specializations: [],
+    },
+  ],
+  specializations: [
+    {
+      _id: "",
+      name: "",
+    },
+  ],
+
+  /** Enrollment Management */
+  enrollmentSchedules: [
+    {
+      name: "",
+      startDate: "",
+      endDate: "",
+    },
+  ],
+
+  /** School Forms */
   shsfOnes: [
     {
       schoolId: { type: Types.ObjectId, ref: "School", required: true },
@@ -398,27 +429,6 @@ const juanDeped = {
       guardianFullName: String,
       parentGuardianContactNumber: String,
       remarks: String,
-    },
-  ],
-
-  tracks: [
-    {
-      _id: "",
-      name: "",
-      strands: [],
-    },
-  ],
-  strands: [
-    {
-      _id: "",
-      name: "",
-      specializations: [],
-    },
-  ],
-  specializations: [
-    {
-      _id: "",
-      name: "",
     },
   ],
 };

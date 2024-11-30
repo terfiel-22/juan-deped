@@ -47,6 +47,16 @@ export const ADMIN_MENU_ITEMS = [
   },
   {
     navlabel: true,
+    subheader: 'Enrollment Management',
+  },
+  {
+    id: uniqueId(),
+    title: 'Schedules',
+    icon: IconCalendarEvent,
+    href: '/admin/enrollment/schedules',
+  },
+  {
+    navlabel: true,
     subheader: 'Forms & Certificates',
   },
   {
