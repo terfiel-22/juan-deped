@@ -7,6 +7,7 @@ import learnerEnhancedBeefRoute from "./learner/learner-enhanced-beef.route.js";
 import personnelRoute from "./personnel/personnel.route.js";
 import personnelInformationRoute from "./personnel/personnel-information.route.js";
 import subjectRoute from "./school-management/subject.route.js";
+import enrollmentScheduleRoute from "./enrollment-management/enrollment-schedule.route.js";
 
 const router = Router();
 
@@ -19,5 +20,6 @@ export default () => {
   personnelRoute(router);
   personnelInformationRoute(router);
   subjectRoute(router);
+  enrollmentScheduleRoute(router);
   return router;
 };
