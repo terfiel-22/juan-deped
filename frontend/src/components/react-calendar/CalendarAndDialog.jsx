@@ -4,14 +4,15 @@ import useBigCalendar from './useBigCalendar'
 
 const CalendarAndDialog = ({ events }) => {
     const {
-        calevents, setCalEvents,
-        open, setOpen,
-        title, setTitle,
-        start, setStart,
-        end, setEnd,
-        color, setColor,
-        update, setUpdate,
-        ColorVariation
+        calevents,
+        setCalEvents,
+        open,
+        setOpen,
+        formData,
+        setFormData,
+        update,
+        setUpdate,
+        ColorVariation,
     } = useBigCalendar({ events })
 
     return (
@@ -19,7 +20,7 @@ const CalendarAndDialog = ({ events }) => {
             {/* ------------------------------------------- */}
             {/*  Calendar*/}
             {/* ------------------------------------------- */}
-            <CustomCalendar {...{ calevents, setOpen, setStart, setEnd, setColor, setTitle, setUpdate }} />
+            <CustomCalendar {...{ calevents, setOpen, setFormData, formData, setUpdate }} />
 
             {/* ------------------------------------------- */}
             {/*  Dialog */}
@@ -28,10 +29,7 @@ const CalendarAndDialog = ({ events }) => {
                 ColorVariation,
                 setCalEvents, calevents,
                 setOpen, open,
-                setTitle, title,
-                setColor, color,
-                setStart, start,
-                setEnd, end,
+                setFormData, formData,
                 setUpdate, update,
             }} />
         </>

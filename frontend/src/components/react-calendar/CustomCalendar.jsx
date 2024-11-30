@@ -8,22 +8,26 @@ import './CustomCalendar.css';
 
 moment.locale('en-PH');
 const localizer = momentLocalizer(moment);
-const CustomCalendar = ({ calevents, setOpen, setStart, setEnd, setColor, setTitle, setUpdate }) => {
+const CustomCalendar = ({ calevents, setOpen, setFormData, formData, setUpdate }) => {
     const [slot, setSlot] = useState();
     const addNewEventAlert = (slotInfo) => {
         setOpen(true);
         setSlot(slotInfo);
-        setStart(slotInfo.start);
-        setEnd(slotInfo.end);
+        setFormData({
+            ...formData,
+            start: slotInfo.start,
+            end: slotInfo.end,
+        })
     };
     const editEvent = (event) => {
         setOpen(true);
         const newEditEvent = calevents.find((elem) => elem.title === event.title);
-        setColor(event.color);
-        setTitle(newEditEvent.title);
-        setColor(newEditEvent.color);
-        setStart(newEditEvent.start);
-        setEnd(newEditEvent.end);
+        setFormData({
+            title: newEditEvent.title,
+            color: newEditEvent.color,
+            start: newEditEvent.start,
+            end: newEditEvent.end,
+        })
         setUpdate(event);
     };
     const eventColors = (event) => {

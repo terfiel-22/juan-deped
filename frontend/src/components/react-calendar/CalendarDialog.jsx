@@ -7,65 +7,80 @@ const CalendarDialog = ({
     ColorVariation,
     setCalEvents, calevents,
     setOpen, open,
-    setTitle, title,
-    setColor, color,
-    setStart, start,
-    setEnd, end,
+    setFormData, formData,
     setUpdate, update,
 }) => {
 
+    const resetForm = () => {
+        setFormData({
+            title: '',
+            color: 'default',
+            start: new Date(),
+            end: new Date(),
+        })
+    }
     const updateEvent = (e) => {
         e.preventDefault();
         setCalEvents(
             calevents.map((elem) => {
                 if (elem.title === update.title) {
-                    return { ...elem, title, start, end, color };
+                    return { ...elem, ...formData };
                 }
                 return elem;
             }),
         );
         setOpen(false);
-        setTitle('');
-        setColor('');
-        setStart(new Date());
-        setEnd(new Date());
+        resetForm();
         setUpdate(null);
     };
+
     const submitHandler = (e) => {
         e.preventDefault();
         const newEvents = calevents;
-        newEvents.push({
-            title,
-            start,
-            end,
-            color,
-        });
+        newEvents.push(formData);
         setOpen(false);
         e.target.reset();
         setCalEvents(newEvents);
-        setTitle('');
-        setStart(new Date());
-        setEnd(new Date());
+        resetForm();
     };
+
     const deleteHandler = (event) => {
         const updatecalEvents = calevents.filter((ind) => ind.title !== event.title);
         setCalEvents(updatecalEvents);
     };
+
     const handleClose = () => {
         setOpen(false);
-        setTitle('');
-        setStart(new Date());
-        setEnd(new Date());
+        resetForm();
         setUpdate(null);
     };
-    const inputChangeHandler = (e) => setTitle(e.target.value);
-    const selectinputChangeHandler = (id) => setColor(id);
+
+    const inputChangeHandler = (e) => {
+        setFormData({
+            ...formData,
+            title: e.target.value,
+        })
+    };
+    const selectinputChangeHandler = (id) => {
+        setFormData({
+            ...formData,
+            color: id,
+        })
+    };
     const handleStartChange = (newValue) => {
-        setStart(newValue);
+        setFormData({
+            ...formData,
+            start: newValue,
+        })
     };
     const handleEndChange = (newValue) => {
-        setEnd(newValue);
+        setFormData({
+            ...formData,
+            end: newValue,
+        })
     };
+
+    const { title, color, start, end } = formData;
 
     return (
         <Dialog open={open} onClose={handleClose} fullWidth maxWidth="xs" closeAfterTransition={false}>
