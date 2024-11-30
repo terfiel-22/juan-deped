@@ -23,6 +23,7 @@ const CalendarDialog = ({
 
     const resetForm = () => {
         setFormData({
+            _id: "",
             title: '',
             color: 'default',
             start: new Date(),
