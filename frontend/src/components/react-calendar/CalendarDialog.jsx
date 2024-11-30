@@ -13,13 +13,13 @@ const CalendarDialog = ({
     setOpen, open,
     setFormData, formData,
     setUpdate, update,
-    urls, setters
+    url, setters
 }) => {
 
 
-    const { createLoading, handleCreate } = useCreate({ url: urls.addUrl, formData, setter: setters.setNew })
-    const { updateLoading, handleUpdate } = useUpdate({ url: urls.updateUrl, formData, setter: setters.setUpdated })
-    const { deleteLoading, handleDelete } = useDelete({ url: urls.deleteUrl, formData, setter: setters.setDeleted })
+    const { createLoading, handleCreate } = useCreate({ url, formData, setter: setters.setNew })
+    const { updateLoading, handleUpdate } = useUpdate({ url, formData, setter: setters.setUpdated })
+    const { deleteLoading, handleDelete } = useDelete({ url, formData, setter: setters.setDeleted })
 
     const resetForm = () => {
         setFormData({

@@ -18,11 +18,7 @@ const Schedule = () => {
         },
     ];
 
-    const urls = {
-        addUrl: "",
-        updateUrl: "",
-        deleteUrl: "",
-    }
+    const url = "/enrollment/schedule";
     const setters = {
         setNew: "",
         setUpdated: "",
@@ -35,7 +31,7 @@ const Schedule = () => {
         <PageContainer title="JuanDepEd | Schedules" description="this is Schedules page">
             <Breadcrumb title="Schedules" items={BCrumb} />
 
-            <CalendarAndDialog  {...{ events, urls, setters }} />
+            <CalendarAndDialog  {...{ events, url, setters }} />
         </PageContainer>
     );
 }
