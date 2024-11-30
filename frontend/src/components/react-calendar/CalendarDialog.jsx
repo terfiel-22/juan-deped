@@ -2,6 +2,10 @@ import { Button, Dialog, DialogActions, DialogContent, Fab, TextField, Typograph
 import { LocalizationProvider, MobileDateTimePicker } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3';
 import { IconCheck } from '@tabler/icons';
+import useCreate from '../../hooks/crud/useCreate';
+import useUpdate from '../../hooks/crud/useUpdate';
+import useDelete from '../../hooks/crud/useDelete';
+import { LoadingButton } from '@mui/lab';
 
 const CalendarDialog = ({
     ColorVariation,
@@ -9,7 +13,13 @@ const CalendarDialog = ({
     setOpen, open,
     setFormData, formData,
     setUpdate, update,
+    urls, setters
 }) => {
+
+
+    const { createLoading, handleCreate } = useCreate({ url: urls.addUrl, formData, setter: setters.setNew })
+    const { updateLoading, handleUpdate } = useUpdate({ url: urls.updateUrl, formData, setter: setters.setUpdated })
+    const { deleteLoading, handleDelete } = useDelete({ url: urls.deleteUrl, formData, setter: setters.setDeleted })
 
     const resetForm = () => {
         setFormData({
@@ -21,14 +31,7 @@ const CalendarDialog = ({
     }
     const updateEvent = (e) => {
         e.preventDefault();
-        setCalEvents(
-            calevents.map((elem) => {
-                if (elem.title === update.title) {
-                    return { ...elem, ...formData };
-                }
-                return elem;
-            }),
-        );
+        handleUpdate();
         setOpen(false);
         resetForm();
         setUpdate(null);
@@ -36,17 +39,11 @@ const CalendarDialog = ({
 
     const submitHandler = (e) => {
         e.preventDefault();
-        const newEvents = calevents;
-        newEvents.push(formData);
+        handleCreate();
         setOpen(false);
         e.target.reset();
         setCalEvents(newEvents);
         resetForm();
-    };
-
-    const deleteHandler = (event) => {
-        const updatecalEvents = calevents.filter((ind) => ind.title !== event.title);
-        setCalEvents(updatecalEvents);
     };
 
     const handleClose = () => {
@@ -167,20 +164,21 @@ const CalendarDialog = ({
                     <Button onClick={handleClose}>Cancel</Button>
 
                     {update ? (
-                        <Button
+                        <LoadingButton
+                            loading={deleteLoading}
                             type="submit"
                             color="error"
                             variant="contained"
-                            onClick={() => deleteHandler(update)}
+                            onClick={handleDelete}
                         >
                             Delete
-                        </Button>
+                        </LoadingButton>
                     ) : (
                         ''
                     )}
-                    <Button type="submit" disabled={!title} variant="contained">
+                    <LoadingButton loading={update ? createLoading : updateLoading} type="submit" disabled={!title} variant="contained">
                         Save
-                    </Button>
+                    </LoadingButton>
                 </DialogActions>
             </form>
         </Dialog>

@@ -2,7 +2,7 @@ import CustomCalendar from './CustomCalendar'
 import CalendarDialog from './CalendarDialog'
 import useBigCalendar from './useBigCalendar'
 
-const CalendarAndDialog = ({ events }) => {
+const CalendarAndDialog = ({ events, urls, setters }) => {
     const {
         calevents,
         setCalEvents,
@@ -31,6 +31,7 @@ const CalendarAndDialog = ({ events }) => {
                 setOpen, open,
                 setFormData, formData,
                 setUpdate, update,
+                urls, setters
             }} />
         </>
     )

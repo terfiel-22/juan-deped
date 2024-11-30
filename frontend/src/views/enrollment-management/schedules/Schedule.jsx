@@ -18,13 +18,24 @@ const Schedule = () => {
         },
     ];
 
-    const { storedData } = useRead({ url: "/enrollment/schedules", setter: setEnrollmentSchedules, selector: selectEnrollmentSchedules })
+    const urls = {
+        addUrl: "",
+        updateUrl: "",
+        deleteUrl: "",
+    }
+    const setters = {
+        setNew: "",
+        setUpdated: "",
+        setDeleted: "",
+    }
+
+    const { storedData: events } = useRead({ url: "/enrollment/schedules", setter: setEnrollmentSchedules, selector: selectEnrollmentSchedules })
 
     return (
         <PageContainer title="JuanDepEd | Schedules" description="this is Schedules page">
             <Breadcrumb title="Schedules" items={BCrumb} />
 
-            <CalendarAndDialog events={storedData} />
+            <CalendarAndDialog  {...{ events, urls, setters }} />
         </PageContainer>
     );
 }
