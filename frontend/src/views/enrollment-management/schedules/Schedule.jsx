@@ -1,8 +1,9 @@
-import Events from './Events';
-
 import PageContainer from '../../../components/container/PageContainer';
 import Breadcrumb from '../../../layouts/full/shared/breadcrumb/Breadcrumb';
 import CalendarAndDialog from '../../../components/react-calendar/CalendarAndDialog';
+import useRead from '../../../hooks/crud/useRead';
+import { setEnrollmentSchedules } from '../../../store/calendar/reducers/enrollment-schedules/EnrollmentScheduleAction';
+import { selectEnrollmentScheduleReducer } from '../../../store/calendar/reducers/enrollment-schedules/EnrollmentScheduleSelector';
 
 
 const Schedule = () => {
@@ -16,11 +17,14 @@ const Schedule = () => {
             title: 'Schedules',
         },
     ];
+
+    const { storedData } = useRead({ url: "/enrollment/schedules", setter: setEnrollmentSchedules, selector: selectEnrollmentScheduleReducer })
+
     return (
         <PageContainer title="JuanDepEd | Schedules" description="this is Schedules page">
             <Breadcrumb title="Schedules" items={BCrumb} />
 
-            <CalendarAndDialog events={Events} />
+            <CalendarAndDialog events={storedData} />
         </PageContainer>
     );
 }
