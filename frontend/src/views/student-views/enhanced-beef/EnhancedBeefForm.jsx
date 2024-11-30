@@ -21,7 +21,7 @@ const EnhancedBeefForm = () => {
     const { formData, handleChange, handleNestedChange, handleSubmit, loading } = useEnhancedBeefForm();
 
     const contentRef = useRef(null);
-    const { handlePrint } = useComponentPrinter({ contentRef, fileName: 'Enhanced BEEF' })
+    const { handlePrint } = useComponentPrinter({ contentRef, filename: 'Enhanced BEEF' })
 
     return (
         <Box component='form' onSubmit={handleSubmit} width="100%" px={2} className='print-container' ref={contentRef}>
