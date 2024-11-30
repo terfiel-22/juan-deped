@@ -3,7 +3,7 @@ import { LocalizationProvider, MobileDatePicker } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3';
 import { IconCheck } from '@tabler/icons';
 
-const ScheduleDialog = ({
+const CalendarDialog = ({
     ColorVariation,
     setCalEvents, calevents,
     setOpen, open,
@@ -58,10 +58,8 @@ const ScheduleDialog = ({
         setEnd(new Date());
         setUpdate(null);
     };
-
     const inputChangeHandler = (e) => setTitle(e.target.value);
     const selectinputChangeHandler = (id) => setColor(id);
-
     const handleStartChange = (newValue) => {
         setStart(newValue);
     };
@@ -77,19 +75,19 @@ const ScheduleDialog = ({
                     {/* Add Edit title */}
                     {/* ------------------------------------------- */}
                     <Typography variant="h4" sx={{ mb: 2 }}>
-                        {update ? 'Update Event' : 'Add Event'}
+                        {update ? 'Update' : 'Add'}
                     </Typography>
                     <Typography mb={3} variant="subtitle2">
                         {!update
-                            ? 'To add Event kindly fillup the title and choose the event color and press the add button'
-                            : 'To Edit/Update Event kindly change the title and choose the event color and press the update button'}
+                            ? 'To Add, kindly fillup the title and choose the event color and press the add button'
+                            : 'To Edit/Update, kindly change the title and choose the event color and press the update button'}
                     </Typography>
                     <TextField
-                        id="Event Title"
-                        placeholder="Enter Event Title"
+                        id="Title"
+                        placeholder="Enter Title"
                         variant="outlined"
                         fullWidth
-                        label="Event Title"
+                        label="Title"
                         value={title}
                         sx={{ mb: 3 }}
                         onChange={inputChangeHandler}
@@ -120,10 +118,10 @@ const ScheduleDialog = ({
                     </LocalizationProvider>
 
                     {/* ------------------------------------------- */}
-                    {/* Calendar Event Color*/}
+                    {/* Calendar Color*/}
                     {/* ------------------------------------------- */}
                     <Typography variant="h6" fontWeight={600} my={2}>
-                        Select Event Color
+                        Select Color
                     </Typography>
                     {/* ------------------------------------------- */}
                     {/* colors for event */}
@@ -169,12 +167,9 @@ const ScheduleDialog = ({
                         Save
                     </Button>
                 </DialogActions>
-                {/* ------------------------------------------- */}
-                {/* End Calendar */}
-                {/* ------------------------------------------- */}
             </form>
         </Dialog>
     )
 }
 
-export default ScheduleDialog
+export default CalendarDialog

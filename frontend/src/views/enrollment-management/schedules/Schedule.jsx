@@ -4,7 +4,7 @@ import Events from './Events';
 import PageContainer from '../../../components/container/PageContainer';
 import Breadcrumb from '../../../layouts/full/shared/breadcrumb/Breadcrumb';
 import CustomCalendar from '../../../components/react-calendar/CustomCalendar';
-import ScheduleDialog from './ScheduleDialog';
+import CalendarDialog from '../../../components/react-calendar/CalendarDialog';
 
 
 const Schedule = () => {
@@ -68,7 +68,7 @@ const Schedule = () => {
             {/* ------------------------------------------- */}
             {/* Add Schedules Dialog */}
             {/* ------------------------------------------- */}
-            <ScheduleDialog {...{
+            <CalendarDialog {...{
                 ColorVariation,
                 setCalEvents, calevents,
                 setOpen, open,
