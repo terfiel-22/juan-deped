@@ -43,62 +43,10 @@ const Schedule = () => {
             value: 'warning',
         },
     ];
-    const updateEvent = (e) => {
-        e.preventDefault();
-        setCalEvents(
-            calevents.map((elem) => {
-                if (elem.title === update.title) {
-                    return { ...elem, title, start, end, color };
-                }
-                return elem;
-            }),
-        );
-        setOpen(false);
-        setTitle('');
-        setColor('');
-        setStart(new Date());
-        setEnd(new Date());
-        setUpdate(null);
-    };
-    const inputChangeHandler = (e) => setTitle(e.target.value);
-    const selectinputChangeHandler = (id) => setColor(id);
-
-    const submitHandler = (e) => {
-        e.preventDefault();
-        const newEvents = calevents;
-        newEvents.push({
-            title,
-            start,
-            end,
-            color,
-        });
-        setOpen(false);
-        e.target.reset();
-        setCalEvents(newEvents);
-        setTitle('');
-        setStart(new Date());
-        setEnd(new Date());
-    };
-    const deleteHandler = (event) => {
-        const updatecalEvents = calevents.filter((ind) => ind.title !== event.title);
-        setCalEvents(updatecalEvents);
-    };
-    const handleClose = () => {
-        setOpen(false);
-        setTitle('');
-        setStart(new Date());
-        setEnd(new Date());
-        setUpdate(null);
-    };
 
 
 
-    const handleStartChange = (newValue) => {
-        setStart(newValue);
-    };
-    const handleEndChange = (newValue) => {
-        setEnd(newValue);
-    };
+
 
     const BCrumb = [
         {
@@ -121,22 +69,14 @@ const Schedule = () => {
             {/* Add Schedules Dialog */}
             {/* ------------------------------------------- */}
             <ScheduleDialog {...{
-                open,
-                color,
-                start,
-                end,
-                handleClose,
-                update,
-                updateEvent,
-                submitHandler,
-                title,
-                inputChangeHandler,
-                handleStartChange,
-                handleEndChange,
                 ColorVariation,
-                handleClose,
-                selectinputChangeHandler,
-                deleteHandler
+                setCalEvents, calevents,
+                setOpen, open,
+                setTitle, title,
+                setColor, color,
+                setStart, start,
+                setEnd, end,
+                setUpdate, update,
             }} />
         </PageContainer>
     );
