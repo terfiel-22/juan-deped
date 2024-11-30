@@ -3,6 +3,8 @@ import BlankCard from '../shared/BlankCard'
 import { CardContent } from '@mui/material'
 import { Calendar, momentLocalizer } from 'react-big-calendar'
 import moment from 'moment';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+import './CustomCalendar.css';
 
 moment.locale('en-PH');
 const localizer = momentLocalizer(moment);
