@@ -1,4 +1,4 @@
-import { Grid2 } from '@mui/material'
+import { Grid2, IconButton } from '@mui/material'
 import { Box } from '@mui/system'
 import { LoadingButton } from '@mui/lab'
 import CustomHeader4 from '../../../components/material-ui/typography/CustomHeader4'
@@ -13,12 +13,18 @@ import NCPasserForm from './forms/NCPasserForm'
 import SHSEligibilityForm from './forms/SHSEligibilityForm'
 import AdditionalInformationForm from './forms/AdditionalInformationForm'
 import useEnhancedBeefForm from './hooks/useEnhancedBeefForm'
+import { IconPrinter } from '@tabler/icons'
+import useComponentPrinter from '../../../hooks/ui/useComponentPrinter'
+import { useRef } from 'react'
 
 const EnhancedBeefForm = () => {
     const { formData, handleChange, handleNestedChange, handleSubmit, loading } = useEnhancedBeefForm();
 
+    const contentRef = useRef(null);
+    const { handlePrint } = useComponentPrinter({ contentRef, fileName: 'Enhanced BEEF' })
+
     return (
-        <Box component='form' onSubmit={handleSubmit} width="100%" px={2}>
+        <Box component='form' onSubmit={handleSubmit} width="100%" px={2} className='print-container' ref={contentRef}>
             <Grid2 container rowSpacing={5}>
                 <Grid2 size={12}>
                     <CustomHeader4 text="General Information" />
@@ -60,7 +66,8 @@ const EnhancedBeefForm = () => {
                     <CustomHeader4 text="Additional Information" />
                     <AdditionalInformationForm  {...{ formData, handleChange }} />
                 </Grid2>
-                <Grid2 container size={12} justifyContent="flex-end">
+                <Grid2 container size={12} justifyContent="flex-end" spacing={2}>
+                    <IconButton aria-label='Print' type='button' onClick={handlePrint}><IconPrinter /></IconButton>
                     <LoadingButton variant='contained' loading={loading} type='submit'>Save Changes</LoadingButton>
                 </Grid2>
             </Grid2>
