@@ -3,7 +3,7 @@ import Breadcrumb from '../../../layouts/full/shared/breadcrumb/Breadcrumb';
 import CalendarAndDialog from '../../../components/react-calendar/CalendarAndDialog';
 import useRead from '../../../hooks/crud/useRead';
 import { setEnrollmentSchedules } from '../../../store/calendar/reducers/enrollment-schedules/EnrollmentScheduleAction';
-import { selectEnrollmentScheduleReducer } from '../../../store/calendar/reducers/enrollment-schedules/EnrollmentScheduleSelector';
+import { selectEnrollmentSchedules } from '../../../store/calendar/reducers/enrollment-schedules/EnrollmentScheduleSelector';
 
 
 const Schedule = () => {
@@ -18,8 +18,8 @@ const Schedule = () => {
         },
     ];
 
-    const { storedData } = useRead({ url: "/enrollment/schedules", setter: setEnrollmentSchedules, selector: selectEnrollmentScheduleReducer })
-
+    const { storedData } = useRead({ url: "/enrollment/schedules", setter: setEnrollmentSchedules, selector: selectEnrollmentSchedules })
+    console.log(storedData);
     return (
         <PageContainer title="JuanDepEd | Schedules" description="this is Schedules page">
             <Breadcrumb title="Schedules" items={BCrumb} />

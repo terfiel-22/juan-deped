@@ -3,9 +3,9 @@ import { createSelector } from 'reselect';
 export const selectCalendarReducer = (state) => state.calendarReducer;
 export const selectEnrollmentScheduleReducer = createSelector(
   [selectCalendarReducer],
-  (calendarReducer) => calendarReducer.enrollmentReducer,
+  (calendarReducer) => calendarReducer.enrollmentScheduleReducer,
 );
-export const selectTracks = createSelector(
+export const selectEnrollmentSchedules = createSelector(
   [selectEnrollmentScheduleReducer],
-  (enrollmentReducer) => enrollmentReducer.enrollmentSchedules,
+  (enrollmentScheduleReducer) => enrollmentScheduleReducer.enrollmentSchedules,
 );
