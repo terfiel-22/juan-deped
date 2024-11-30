@@ -28,7 +28,6 @@ const useBigCalendar = ({ events }) => {
 
   return {
     calevents,
-    setCalEvents,
     open,
     setOpen,
     formData,

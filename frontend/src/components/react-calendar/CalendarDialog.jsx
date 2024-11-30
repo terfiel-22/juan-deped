@@ -9,7 +9,6 @@ import { LoadingButton } from '@mui/lab';
 
 const CalendarDialog = ({
     ColorVariation,
-    setCalEvents,
     setOpen, open,
     setFormData, formData,
     setUpdate, update,
@@ -30,27 +29,24 @@ const CalendarDialog = ({
             end: new Date(),
         })
     }
-    const updateEvent = (e) => {
-        e.preventDefault();
-        handleUpdate();
-        setOpen(false);
-        resetForm();
-        setUpdate(null);
-    };
 
     const submitHandler = (e) => {
         e.preventDefault();
         handleCreate();
-        setOpen(false);
-        e.target.reset();
-        setCalEvents(newEvents);
         resetForm();
+        setOpen(false);
+    };
+
+    const updateHandler = (e) => {
+        e.preventDefault();
+        handleUpdate();
+        setUpdate(null);
+        resetForm();
+        setOpen(false);
     };
 
     const deleteHandler = () => {
-        resetForm();
         handleDelete();
-        setOpen(false);
     }
 
     const handleClose = () => {
@@ -65,10 +61,10 @@ const CalendarDialog = ({
             title: e.target.value,
         })
     };
-    const selectinputChangeHandler = (id) => {
+    const selectinputChangeHandler = (value) => {
         setFormData({
             ...formData,
-            color: id,
+            color: value,
         })
     };
     const handleStartChange = (newValue) => {
@@ -88,7 +84,7 @@ const CalendarDialog = ({
 
     return (
         <Dialog open={open} onClose={handleClose} fullWidth maxWidth="xs" closeAfterTransition={false}>
-            <form onSubmit={update ? updateEvent : submitHandler}>
+            <form onSubmit={update ? updateHandler : submitHandler}>
                 <DialogContent>
                     {/* ------------------------------------------- */}
                     {/* Add Edit title */}
@@ -173,7 +169,7 @@ const CalendarDialog = ({
                     {update ? (
                         <LoadingButton
                             loading={deleteLoading}
-                            type="submit"
+                            type="button"
                             color="error"
                             variant="contained"
                             onClick={deleteHandler}

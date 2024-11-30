@@ -5,7 +5,6 @@ import useBigCalendar from './useBigCalendar'
 const CalendarAndDialog = ({ events, url, setters }) => {
     const {
         calevents,
-        setCalEvents,
         open,
         setOpen,
         formData,
@@ -27,7 +26,6 @@ const CalendarAndDialog = ({ events, url, setters }) => {
             {/* ------------------------------------------- */}
             <CalendarDialog {...{
                 ColorVariation,
-                setCalEvents,
                 setOpen, open,
                 setFormData, formData,
                 setUpdate, update,
