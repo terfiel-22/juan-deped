@@ -91,8 +91,8 @@ const Schedule = () => {
         setOpen(false);
         setTitle('');
         setColor('');
-        setStart('');
-        setEnd('');
+        setStart(new Date());
+        setEnd(new Date());
         setUpdate(null);
     };
     const inputChangeHandler = (e) => setTitle(e.target.value);
