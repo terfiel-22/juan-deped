@@ -21,7 +21,7 @@ const CustomCalendar = ({ calevents, setOpen, setFormData, formData, setUpdate }
     };
     const editEvent = (event) => {
         setOpen(true);
-        const newEditEvent = calevents.find((elem) => elem.title === event.title);
+        const newEditEvent = calevents.find((elem) => elem._id === event._id);
         setFormData({
             title: newEditEvent.title,
             color: newEditEvent.color,
