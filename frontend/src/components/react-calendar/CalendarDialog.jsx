@@ -9,7 +9,7 @@ import { LoadingButton } from '@mui/lab';
 
 const CalendarDialog = ({
     ColorVariation,
-    setCalEvents, calevents,
+    setCalEvents,
     setOpen, open,
     setFormData, formData,
     setUpdate, update,
@@ -46,6 +46,12 @@ const CalendarDialog = ({
         setCalEvents(newEvents);
         resetForm();
     };
+
+    const deleteHandler = () => {
+        resetForm();
+        handleDelete();
+        setOpen(false);
+    }
 
     const handleClose = () => {
         setOpen(false);
@@ -170,7 +176,7 @@ const CalendarDialog = ({
                             type="submit"
                             color="error"
                             variant="contained"
-                            onClick={handleDelete}
+                            onClick={deleteHandler}
                         >
                             Delete
                         </LoadingButton>

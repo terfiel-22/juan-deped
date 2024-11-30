@@ -27,7 +27,7 @@ const CalendarAndDialog = ({ events, url, setters }) => {
             {/* ------------------------------------------- */}
             <CalendarDialog {...{
                 ColorVariation,
-                setCalEvents, calevents,
+                setCalEvents,
                 setOpen, open,
                 setFormData, formData,
                 setUpdate, update,

@@ -12,7 +12,6 @@ const useBigCalendar = ({ events }) => {
       start: isoDateFormatter(ev.start),
       end: isoDateFormatter(ev.end),
     }));
-    console.log(formattedEvents);
     setCalEvents(formattedEvents);
   }, [events]);
 
