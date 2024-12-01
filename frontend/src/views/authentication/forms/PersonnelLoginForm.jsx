@@ -59,7 +59,7 @@ const PersonnelLoginForm = () => {
                     <FormGroup>
                         <FormControlLabel
                             control={<CustomCheckbox name="remembered" checked={remembered} onChange={handleChange} />}
-                            label="Remeber this Device"
+                            label="Remember this Device"
                         />
                     </FormGroup>
                 </Grid2>
