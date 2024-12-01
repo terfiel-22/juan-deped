@@ -12,7 +12,7 @@ const AddressInformationForm = ({ formData, handleChange }) => {
             <Box>
                 <Grid2 container spacing={2}>
                     <Grid2 size={{ xs: 12, sm: 12, lg: 4 }}>
-                        <CustomFormLabel htmlFor="currentHouseNoStreet">House Street No.</CustomFormLabel>
+                        <CustomFormLabel htmlFor="currentHouseNoStreet">Current House Street No.</CustomFormLabel>
                         <CustomTextField
                             id="currentHouseNoStreet"
                             name="currentHouseNoStreet"
@@ -25,7 +25,7 @@ const AddressInformationForm = ({ formData, handleChange }) => {
                         />
                     </Grid2>
                     <Grid2 size={{ xs: 12, sm: 12, lg: 4 }}>
-                        <CustomFormLabel htmlFor="currentStreetName">Street Name</CustomFormLabel>
+                        <CustomFormLabel htmlFor="currentStreetName">Current Street Name</CustomFormLabel>
                         <CustomTextField
                             id="currentStreetName"
                             name="currentStreetName"
@@ -38,7 +38,7 @@ const AddressInformationForm = ({ formData, handleChange }) => {
                         />
                     </Grid2>
                     <Grid2 size={{ xs: 12, sm: 12, lg: 4 }}>
-                        <CustomFormLabel htmlFor="currentBarangay">Barangay</CustomFormLabel>
+                        <CustomFormLabel htmlFor="currentBarangay">Current Barangay</CustomFormLabel>
                         <CustomTextField
                             id="currentBarangay"
                             name="currentBarangay"
@@ -51,7 +51,7 @@ const AddressInformationForm = ({ formData, handleChange }) => {
                         />
                     </Grid2>
                     <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
-                        <CustomFormLabel htmlFor="currentMunicipalityCity">Municipality/City</CustomFormLabel>
+                        <CustomFormLabel htmlFor="currentMunicipalityCity">Current Municipality/City</CustomFormLabel>
                         <CustomTextField
                             id="currentMunicipalityCity"
                             name="currentMunicipalityCity"
@@ -64,7 +64,7 @@ const AddressInformationForm = ({ formData, handleChange }) => {
                         />
                     </Grid2>
                     <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
-                        <CustomFormLabel htmlFor="currentProvince">Province</CustomFormLabel>
+                        <CustomFormLabel htmlFor="currentProvince">Current Province</CustomFormLabel>
                         <CustomTextField
                             id="currentProvince"
                             name="currentProvince"
@@ -77,7 +77,7 @@ const AddressInformationForm = ({ formData, handleChange }) => {
                         />
                     </Grid2>
                     <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
-                        <CustomFormLabel htmlFor="currentCountry">Country</CustomFormLabel>
+                        <CustomFormLabel htmlFor="currentCountry">Current Country</CustomFormLabel>
                         <CustomTextField
                             id="currentCountry"
                             name="currentCountry"
@@ -90,7 +90,7 @@ const AddressInformationForm = ({ formData, handleChange }) => {
                         />
                     </Grid2>
                     <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
-                        <CustomFormLabel htmlFor="currentZipCode">Zip Code</CustomFormLabel>
+                        <CustomFormLabel htmlFor="currentZipCode">Current Zip Code</CustomFormLabel>
                         <CustomTextField
                             id="currentZipCode"
                             name="currentZipCode"
@@ -107,14 +107,14 @@ const AddressInformationForm = ({ formData, handleChange }) => {
             <Box>
                 <Grid2 container spacing={2}>
                     <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
-                        <CustomFormLabel htmlFor="isSameAsCurrentAddress">Same as Current Address?</CustomFormLabel>
+                        <CustomFormLabel htmlFor="isSameAsCurrentAddress">Is Current Address Permanent?</CustomFormLabel>
                         <RadioGroup row aria-label="isSameAsCurrentAddress" name="isSameAsCurrentAddress" onChange={handleChange} value={isSameAsCurrentAddress}>
                             <FormControlLabel value={true} control={<CustomRadio />} label="Yes" />
                             <FormControlLabel value={false} control={<CustomRadio />} label="No" />
                         </RadioGroup>
                     </Grid2>
                     <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
-                        <CustomFormLabel htmlFor="houseNoStreet">House Street No.</CustomFormLabel>
+                        <CustomFormLabel htmlFor="houseNoStreet">Permanent House Street No.</CustomFormLabel>
                         <CustomTextField
                             id="houseNoStreet"
                             name="houseNoStreet"
@@ -128,7 +128,7 @@ const AddressInformationForm = ({ formData, handleChange }) => {
                         />
                     </Grid2>
                     <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
-                        <CustomFormLabel htmlFor="streetName">Street Name</CustomFormLabel>
+                        <CustomFormLabel htmlFor="streetName">Permanent Street Name</CustomFormLabel>
                         <CustomTextField
                             id="streetName"
                             name="streetName"
@@ -142,7 +142,7 @@ const AddressInformationForm = ({ formData, handleChange }) => {
                         />
                     </Grid2>
                     <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
-                        <CustomFormLabel htmlFor="barangay">Barangay</CustomFormLabel>
+                        <CustomFormLabel htmlFor="barangay">Permanent Barangay</CustomFormLabel>
                         <CustomTextField
                             id="barangay"
                             name="barangay"
@@ -156,7 +156,7 @@ const AddressInformationForm = ({ formData, handleChange }) => {
                         />
                     </Grid2>
                     <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
-                        <CustomFormLabel htmlFor="municipalityCity">Municipality/City</CustomFormLabel>
+                        <CustomFormLabel htmlFor="municipalityCity">Permanent Municipality/City</CustomFormLabel>
                         <CustomTextField
                             id="municipalityCity"
                             name="municipalityCity"
@@ -170,7 +170,7 @@ const AddressInformationForm = ({ formData, handleChange }) => {
                         />
                     </Grid2>
                     <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
-                        <CustomFormLabel htmlFor="province">Province</CustomFormLabel>
+                        <CustomFormLabel htmlFor="province">Permanent Province</CustomFormLabel>
                         <CustomTextField
                             id="province"
                             name="province"
@@ -184,7 +184,7 @@ const AddressInformationForm = ({ formData, handleChange }) => {
                         />
                     </Grid2>
                     <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
-                        <CustomFormLabel htmlFor="country">Country</CustomFormLabel>
+                        <CustomFormLabel htmlFor="country">Permanent Country</CustomFormLabel>
                         <CustomTextField
                             id="country"
                             name="country"
@@ -198,7 +198,7 @@ const AddressInformationForm = ({ formData, handleChange }) => {
                         />
                     </Grid2>
                     <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
-                        <CustomFormLabel htmlFor="zipCode">Zip Code</CustomFormLabel>
+                        <CustomFormLabel htmlFor="zipCode">Permanent Zip Code</CustomFormLabel>
                         <CustomTextField
                             id="zipCode"
                             name="zipCode"
