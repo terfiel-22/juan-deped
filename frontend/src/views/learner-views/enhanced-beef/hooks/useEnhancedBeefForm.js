@@ -12,6 +12,7 @@ const useEnhancedBeefForm = () => {
     axiosClient
       .get('/learner/enhanced-beef')
       .then(({ data }) => {
+        if (!data) return;
         setFormData(data);
       })
       .catch(({ response: { data } }) => {
