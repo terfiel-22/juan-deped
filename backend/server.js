@@ -5,7 +5,7 @@ import cookieParser from "cookie-parser";
 import connectToMongoDB from "./db/connectToMongoDB.js";
 import apiRoute from "./routes/api.route.js";
 import errorHandler from "./middlewares/errorHandler.js";
-import unsupportedRoutes from "./middlewares/unsupportedRoutes.js";
+// import unsupportedRoutes from "./middlewares/unsupportedRoutes.js";
 
 /** Initialization */
 config();
@@ -20,8 +20,8 @@ app.use(cookieParser());
 
 app.use("/api", apiRoute());
 
-/** Modify this before deploying */
-app.use(unsupportedRoutes); // This will prevent accessing frontend files
+// app.use(unsupportedRoutes); // For Development only
+
 app.use(errorHandler); // This will catch an error provided by apiRoutes and will prevent reaching the front end side
 
 /** Connect the Frontend */
