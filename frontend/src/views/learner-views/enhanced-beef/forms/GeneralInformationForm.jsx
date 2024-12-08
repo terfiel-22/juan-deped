@@ -4,7 +4,7 @@ import { FormControlLabel, Grid2, RadioGroup } from '@mui/material'
 import CustomRadio from '../../../../components/forms/theme-elements/CustomRadio'
 import CustomFormLabel from '../../../../components/forms/theme-elements/CustomFormLabel'
 
-const GeneralInformationForm = ({ formData, handleChange }) => {
+const GeneralInformationForm = ({ errors, formData, handleChange }) => {
 
     const { email, mobile, schoolYear, gradeLevelToEnroll, withLRN, isReturnee } = formData;
 
@@ -14,6 +14,8 @@ const GeneralInformationForm = ({ formData, handleChange }) => {
                 <Grid2 size={{ xs: 12, sm: 12, lg: 4 }}>
                     <CustomFormLabel htmlFor="email">Email</CustomFormLabel>
                     <CustomTextField
+                        error={!!errors.email}
+                        helperText={errors.email}
                         id="email"
                         name="email"
                         type="email"
@@ -28,6 +30,8 @@ const GeneralInformationForm = ({ formData, handleChange }) => {
                 <Grid2 size={{ xs: 12, sm: 12, lg: 4 }}>
                     <CustomFormLabel htmlFor="mobile">Mobile</CustomFormLabel>
                     <CustomTextField
+                        error={!!errors.mobile}
+                        helperText={errors.mobile}
                         id="mobile"
                         name="mobile"
                         onChange={handleChange}
@@ -41,6 +45,8 @@ const GeneralInformationForm = ({ formData, handleChange }) => {
                 <Grid2 size={{ xs: 12, sm: 12, lg: 4 }}>
                     <CustomFormLabel htmlFor="schoolYear">School Year</CustomFormLabel>
                     <CustomTextField
+                        error={!!errors.schoolYear}
+                        helperText={errors.schoolYear}
                         id="schoolYear"
                         name="schoolYear"
                         onChange={handleChange}

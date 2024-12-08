@@ -18,7 +18,7 @@ import useComponentPrinter from '../../../hooks/ui/useComponentPrinter'
 import { useRef } from 'react'
 
 const EnhancedBeefForm = () => {
-    const { formData, handleChange, handleNestedChange, handleSubmit, loading } = useEnhancedBeefForm();
+    const { errors, formData, handleChange, handleNestedChange, handleSubmit, loading } = useEnhancedBeefForm();
 
     const contentRef = useRef(null);
     const { handlePrint } = useComponentPrinter({ contentRef, filename: 'Enhanced BEEF' })
@@ -28,7 +28,7 @@ const EnhancedBeefForm = () => {
             <Grid2 container rowSpacing={5}>
                 <Grid2 size={12}>
                     <CustomHeader4 text="General Information" />
-                    <GeneralInformationForm {...{ formData, handleChange }} />
+                    <GeneralInformationForm {...{ errors, formData, handleChange }} />
                 </Grid2>
                 <Grid2 size={12}>
                     <CustomHeader4 text="Learner Information" />

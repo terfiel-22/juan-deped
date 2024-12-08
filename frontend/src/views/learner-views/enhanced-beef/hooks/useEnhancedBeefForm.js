@@ -5,7 +5,7 @@ import { toastError, toastSuccess } from '../../../../utils/toastEmitter';
 import { transformValidationErrorResponse } from '../../../../utils/transformValidationErrorResponse';
 
 const useEnhancedBeefForm = () => {
-  // Loading
+  const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState(ENHANCED_BEEF_STATE);
 
@@ -62,14 +62,14 @@ const useEnhancedBeefForm = () => {
       })
       .catch(({ response: { data } }) => {
         toastError(data.message);
-        transformValidationErrorResponse(data.errors);
+        setErrors(transformValidationErrorResponse(data.errors));
       })
       .finally(() => {
         setLoading(false);
       });
   });
 
-  return { formData, handleChange, handleNestedChange, handleSubmit, loading };
+  return { errors, formData, handleChange, handleNestedChange, handleSubmit, loading };
 };
 
 export default useEnhancedBeefForm;
