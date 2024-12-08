@@ -20,7 +20,6 @@ const ParentGuardianInformationFormComponent = ({ fieldName, formData, handleNes
                     variant="outlined"
                     fullWidth
                     size="small"
-                    required
                 />
             </Grid2>
             <Grid2 size={{ xs: 12, sm: 12, lg: 2 }}>
@@ -34,7 +33,6 @@ const ParentGuardianInformationFormComponent = ({ fieldName, formData, handleNes
                     variant="outlined"
                     fullWidth
                     size="small"
-                    required
                 />
             </Grid2>
             <Grid2 size={{ xs: 12, sm: 12, lg: 2 }}>
@@ -48,7 +46,6 @@ const ParentGuardianInformationFormComponent = ({ fieldName, formData, handleNes
                     variant="outlined"
                     fullWidth
                     size="small"
-                    required
                 />
             </Grid2>
             <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
@@ -62,7 +59,6 @@ const ParentGuardianInformationFormComponent = ({ fieldName, formData, handleNes
                     variant="outlined"
                     fullWidth
                     size="small"
-                    required
                 />
             </Grid2>
             <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
@@ -77,7 +73,6 @@ const ParentGuardianInformationFormComponent = ({ fieldName, formData, handleNes
                     variant="outlined"
                     fullWidth
                     size="small"
-                    required
                 />
             </Grid2>
         </Grid2>

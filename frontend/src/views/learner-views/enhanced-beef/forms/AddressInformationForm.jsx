@@ -22,7 +22,6 @@ const AddressInformationForm = ({ formData, handleChange }) => {
                             variant="outlined"
                             fullWidth
                             size="small"
-                            required
                         />
                     </Grid2>
                     <Grid2 size={{ xs: 12, sm: 12, lg: 4 }}>
@@ -36,7 +35,6 @@ const AddressInformationForm = ({ formData, handleChange }) => {
                             variant="outlined"
                             fullWidth
                             size="small"
-                            required
                         />
                     </Grid2>
                     <Grid2 size={{ xs: 12, sm: 12, lg: 4 }}>
@@ -50,7 +48,6 @@ const AddressInformationForm = ({ formData, handleChange }) => {
                             variant="outlined"
                             fullWidth
                             size="small"
-                            required
                         />
                     </Grid2>
                     <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
@@ -64,7 +61,6 @@ const AddressInformationForm = ({ formData, handleChange }) => {
                             variant="outlined"
                             fullWidth
                             size="small"
-                            required
                         />
                     </Grid2>
                     <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
@@ -78,7 +74,6 @@ const AddressInformationForm = ({ formData, handleChange }) => {
                             variant="outlined"
                             fullWidth
                             size="small"
-                            required
                         />
                     </Grid2>
                     <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
@@ -92,7 +87,6 @@ const AddressInformationForm = ({ formData, handleChange }) => {
                             variant="outlined"
                             fullWidth
                             size="small"
-                            required
                         />
                     </Grid2>
                     <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
@@ -106,7 +100,6 @@ const AddressInformationForm = ({ formData, handleChange }) => {
                             variant="outlined"
                             fullWidth
                             size="small"
-                            required
                         />
                     </Grid2>
                 </Grid2>
@@ -132,7 +125,6 @@ const AddressInformationForm = ({ formData, handleChange }) => {
                             variant="outlined"
                             fullWidth
                             size="small"
-                            required
                         />
                     </Grid2>
                     <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
@@ -147,7 +139,6 @@ const AddressInformationForm = ({ formData, handleChange }) => {
                             variant="outlined"
                             fullWidth
                             size="small"
-                            required
                         />
                     </Grid2>
                     <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
@@ -162,7 +153,6 @@ const AddressInformationForm = ({ formData, handleChange }) => {
                             variant="outlined"
                             fullWidth
                             size="small"
-                            required
                         />
                     </Grid2>
                     <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
@@ -177,7 +167,6 @@ const AddressInformationForm = ({ formData, handleChange }) => {
                             variant="outlined"
                             fullWidth
                             size="small"
-                            required
                         />
                     </Grid2>
                     <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
@@ -192,7 +181,6 @@ const AddressInformationForm = ({ formData, handleChange }) => {
                             variant="outlined"
                             fullWidth
                             size="small"
-                            required
                         />
                     </Grid2>
                     <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
@@ -207,7 +195,6 @@ const AddressInformationForm = ({ formData, handleChange }) => {
                             variant="outlined"
                             fullWidth
                             size="small"
-                            required
                         />
                     </Grid2>
                     <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
@@ -222,7 +209,6 @@ const AddressInformationForm = ({ formData, handleChange }) => {
                             variant="outlined"
                             fullWidth
                             size="small"
-                            required
                         />
                     </Grid2>
                 </Grid2>
