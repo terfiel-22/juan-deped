@@ -1,6 +1,6 @@
 import { body } from "express-validator";
 
-export const studentFormValidationRules = [
+export const enhancedBeefValidationRules = [
   body("email")
     .notEmpty()
     .withMessage("Email is required")
@@ -26,7 +26,7 @@ export const studentFormValidationRules = [
     }
     return true;
   }),
-  body("learnerReferenceNo").custom((value, { req }) => {
+  body("lrn").custom((value, { req }) => {
     if (req.body.withLRN && (!value || value.trim() === "")) {
       throw new Error(
         "Learner Reference Number is required when withLRN is true"

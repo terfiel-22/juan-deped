@@ -61,6 +61,7 @@ const useEnhancedBeefForm = () => {
       })
       .catch(({ response: { data } }) => {
         toastError(data.message);
+        console.log(data);
       })
       .finally(() => {
         setLoading(false);

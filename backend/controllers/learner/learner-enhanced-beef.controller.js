@@ -40,7 +40,7 @@ export const saveEnhancedBeef = async (req, res, next) => {
   }
 };
 
-export const fetchEnhancedBeef = async (req, res, next) => {
+export const fetchOwnEnhancedBeef = async (req, res, next) => {
   try {
     const learnerId = get(req, "user._id");
     const learnerEnhancedBeef = await LearnerEnhancedBeef.findOne({
