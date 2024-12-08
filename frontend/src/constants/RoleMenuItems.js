@@ -1,7 +1,6 @@
 import {
   IconChartHistogram,
   IconUsers,
-  IconTable,
   IconBook,
   IconPoint,
   IconSchool,
@@ -54,6 +53,12 @@ export const ADMIN_MENU_ITEMS = [
     title: 'Schedules',
     icon: IconCalendarEvent,
     href: '/admin/enrollment/schedules',
+  },
+  {
+    id: uniqueId(),
+    title: 'Students',
+    icon: IconUsers,
+    href: '/admin/enrollment/students',
   },
   {
     navlabel: true,
