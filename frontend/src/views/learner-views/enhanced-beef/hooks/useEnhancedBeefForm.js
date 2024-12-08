@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { ENHANCED_BEEF_STATE } from './enhanceBeefState';
 import axiosClient from '../../../../utils/axiosClient';
 import { toastError, toastSuccess } from '../../../../utils/toastEmitter';
+import { transformValidationErrorResponse } from '../../../../utils/transformValidationErrorResponse';
 
 const useEnhancedBeefForm = () => {
   // Loading
@@ -61,7 +62,7 @@ const useEnhancedBeefForm = () => {
       })
       .catch(({ response: { data } }) => {
         toastError(data.message);
-        console.log(data);
+        transformValidationErrorResponse(data.errors);
       })
       .finally(() => {
         setLoading(false);
