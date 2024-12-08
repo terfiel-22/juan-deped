@@ -2,7 +2,7 @@ import { Grid2 } from '@mui/material'
 import CustomFormLabel from '../../../../../components/forms/theme-elements/CustomFormLabel';
 import CustomTextField from '../../../../../components/forms/theme-elements/CustomTextField';
 
-const ParentGuardianInformationFormComponent = ({ fieldName, formData, handleNestedChange }) => {
+const ParentGuardianInformationFormComponent = ({ fieldName, errors, formData, handleNestedChange }) => {
     const { lastName, firstName, middleName, contactNumber, email } = formData[fieldName];
 
     const handleChange = (e) => handleNestedChange(e, fieldName);
@@ -12,6 +12,8 @@ const ParentGuardianInformationFormComponent = ({ fieldName, formData, handleNes
             <Grid2 size={{ xs: 12, sm: 12, lg: 2 }}>
                 <CustomFormLabel htmlFor="lastName">Last Name</CustomFormLabel>
                 <CustomTextField
+                    error={errors[fieldName]?.lastName}
+                    helperText={errors[fieldName]?.lastName}
                     id="lastName"
                     name="lastName"
                     onChange={handleChange}
@@ -25,6 +27,8 @@ const ParentGuardianInformationFormComponent = ({ fieldName, formData, handleNes
             <Grid2 size={{ xs: 12, sm: 12, lg: 2 }}>
                 <CustomFormLabel htmlFor="firstName">First Name</CustomFormLabel>
                 <CustomTextField
+                    error={!!errors[fieldName]?.firstName}
+                    helperText={errors[fieldName]?.firstName}
                     id="firstName"
                     name="firstName"
                     onChange={handleChange}
@@ -38,6 +42,8 @@ const ParentGuardianInformationFormComponent = ({ fieldName, formData, handleNes
             <Grid2 size={{ xs: 12, sm: 12, lg: 2 }}>
                 <CustomFormLabel htmlFor="middleName">Middle Name</CustomFormLabel>
                 <CustomTextField
+                    error={!!errors[fieldName]?.middleName}
+                    helperText={errors[fieldName]?.middleName}
                     id="middleName"
                     name="middleName"
                     onChange={handleChange}
@@ -51,6 +57,8 @@ const ParentGuardianInformationFormComponent = ({ fieldName, formData, handleNes
             <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                 <CustomFormLabel htmlFor="contactNumber">Contact Number</CustomFormLabel>
                 <CustomTextField
+                    error={!!errors[fieldName]?.contactNumber}
+                    helperText={errors[fieldName]?.contactNumber}
                     id="contactNumber"
                     name="contactNumber"
                     onChange={handleChange}
@@ -64,6 +72,8 @@ const ParentGuardianInformationFormComponent = ({ fieldName, formData, handleNes
             <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                 <CustomFormLabel htmlFor="email">Email</CustomFormLabel>
                 <CustomTextField
+                    error={!!errors[fieldName]?.email}
+                    helperText={errors[fieldName]?.email}
                     id="email"
                     name="email"
                     type="email"

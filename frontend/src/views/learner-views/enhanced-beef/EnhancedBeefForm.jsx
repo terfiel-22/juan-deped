@@ -40,7 +40,7 @@ const EnhancedBeefForm = () => {
                 </Grid2>
                 <Grid2 size={12}>
                     <CustomHeader4 text="Parent/Guardian Information" />
-                    <ParentGuardianInformationForm {...{ formData, handleNestedChange }} />
+                    <ParentGuardianInformationForm {...{ errors, formData, handleNestedChange }} />
                 </Grid2>
                 <Grid2 size={12}>
                     <CustomHeader4 text="For Returning Learner" />

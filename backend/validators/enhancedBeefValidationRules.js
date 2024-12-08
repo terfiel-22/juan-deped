@@ -179,40 +179,22 @@ export const enhancedBeefValidationRules = [
     .withMessage("Mother's Email is required")
     .isEmail()
     .withMessage("Invalid email format for Mother's Email"),
-  body("guardian")
-    .optional()
-    .isObject()
-    .withMessage("Guardian must be an object if provided"),
+  body("guardian").isObject().withMessage("Guardian must be an object"),
   body("guardian.lastName")
-    .optional()
     .notEmpty()
-    .withMessage(
-      "Guardian's Last Name is required if guardian details are provided"
-    ),
+    .withMessage("Guardian's Last Name is required"),
   body("guardian.firstName")
-    .optional()
     .notEmpty()
-    .withMessage(
-      "Guardian's First Name is required if guardian details are provided"
-    ),
+    .withMessage("Guardian's First Name is required"),
   body("guardian.middleName")
-    .optional()
     .notEmpty()
-    .withMessage(
-      "Guardian's Middle Name is required if guardian details are provided"
-    ),
+    .withMessage("Guardian's Middle Name is required"),
   body("guardian.contactNumber")
-    .optional()
     .notEmpty()
-    .withMessage(
-      "Guardian's Contact Number is required if guardian details are provided"
-    ),
+    .withMessage("Guardian's Contact Number is required"),
   body("guardian.email")
-    .optional()
     .notEmpty()
-    .withMessage(
-      "Guardian's Email is required if guardian details are provided"
-    )
+    .withMessage("Guardian's Email is required")
     .isEmail()
     .withMessage("Invalid email format for Guardian's Email"),
 ];
