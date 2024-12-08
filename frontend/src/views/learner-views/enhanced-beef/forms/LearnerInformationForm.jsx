@@ -5,7 +5,7 @@ import { FormControlLabel, Grid2, RadioGroup } from '@mui/material'
 import CustomRadio from '../../../../components/forms/theme-elements/CustomRadio'
 import { formatDate } from '../../../../utils/dateFormatter'
 
-const LearnerInformation = ({ formData, handleChange }) => {
+const LearnerInformation = ({ errors, formData, handleChange }) => {
     const { isPsaAvailable, psaBirthCertificateNo, lrn, lastName, firstName, middleName, extensionName, birthDate, sex, age, placeOfBirth, motherTongue, isIndigenousPeople, indigenousPeople, isFourPsBeneficiary, fourPsHouseHoldId } = formData;
 
     return (
@@ -21,6 +21,8 @@ const LearnerInformation = ({ formData, handleChange }) => {
                 <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="psaBirthCertificateNo">PSA Birth Certificate No.</CustomFormLabel>
                     <CustomTextField
+                        error={!!errors.psaBirthCertificateNo}
+                        helperText={errors.psaBirthCertificateNo}
                         id="psaBirthCertificateNo"
                         name="psaBirthCertificateNo"
                         onChange={handleChange}
@@ -35,6 +37,8 @@ const LearnerInformation = ({ formData, handleChange }) => {
                 <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="lrn">Learner Reference No.</CustomFormLabel>
                     <CustomTextField
+                        error={!!errors.lrn}
+                        helperText={errors.lrn}
                         id="lrn"
                         name="lrn"
                         onChange={handleChange}
@@ -48,6 +52,8 @@ const LearnerInformation = ({ formData, handleChange }) => {
                 <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="lastName">Last Name</CustomFormLabel>
                     <CustomTextField
+                        error={!!errors.lastName}
+                        helperText={errors.lastName}
                         id="lastName"
                         name="lastName"
                         onChange={handleChange}
@@ -61,6 +67,8 @@ const LearnerInformation = ({ formData, handleChange }) => {
                 <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="firstName">First Name</CustomFormLabel>
                     <CustomTextField
+                        error={!!errors.firstName}
+                        helperText={errors.firstName}
                         id="firstName"
                         name="firstName"
                         onChange={handleChange}
@@ -74,6 +82,8 @@ const LearnerInformation = ({ formData, handleChange }) => {
                 <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="middleName">Middle Name</CustomFormLabel>
                     <CustomTextField
+                        error={!!errors.middleName}
+                        helperText={errors.middleName}
                         id="middleName"
                         name="middleName"
                         onChange={handleChange}
@@ -100,6 +110,8 @@ const LearnerInformation = ({ formData, handleChange }) => {
                 <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="birthDate">Birthdate</CustomFormLabel>
                     <CustomTextField
+                        error={!!errors.birthDate}
+                        helperText={errors.birthDate}
                         id="birthDate"
                         name="birthDate"
                         type="date"
@@ -121,6 +133,8 @@ const LearnerInformation = ({ formData, handleChange }) => {
                 <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="age">Age</CustomFormLabel>
                     <CustomTextField
+                        error={!!errors.age}
+                        helperText={errors.age}
                         id="age"
                         name="age"
                         onChange={handleChange}
@@ -134,6 +148,8 @@ const LearnerInformation = ({ formData, handleChange }) => {
                 <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="placeOfBirth">Place of Birth</CustomFormLabel>
                     <CustomTextField
+                        error={!!errors.placeOfBirth}
+                        helperText={errors.placeOfBirth}
                         id="placeOfBirth"
                         name="placeOfBirth"
                         onChange={handleChange}
@@ -147,6 +163,8 @@ const LearnerInformation = ({ formData, handleChange }) => {
                 <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="motherTongue">Mother Tongue</CustomFormLabel>
                     <CustomTextField
+                        error={!!errors.motherTongue}
+                        helperText={errors.motherTongue}
                         id="motherTongue"
                         name="motherTongue"
                         onChange={handleChange}
@@ -167,6 +185,8 @@ const LearnerInformation = ({ formData, handleChange }) => {
                 <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="indigenousPeople">Indigenous Community</CustomFormLabel>
                     <CustomTextField
+                        error={!!errors.indigenousPeople}
+                        helperText={errors.indigenousPeople}
                         id="indigenousPeople"
                         name="indigenousPeople"
                         onChange={handleChange}
@@ -188,6 +208,8 @@ const LearnerInformation = ({ formData, handleChange }) => {
                 <Grid2 size={{ xs: 12, sm: 12, lg: 3 }}>
                     <CustomFormLabel htmlFor="fourPsHouseHoldId">4Ps Household ID</CustomFormLabel>
                     <CustomTextField
+                        error={!!errors.fourPsHouseHoldId}
+                        helperText={errors.fourPsHouseHoldId}
                         id="fourPsHouseHoldId"
                         name="fourPsHouseHoldId"
                         onChange={handleChange}
