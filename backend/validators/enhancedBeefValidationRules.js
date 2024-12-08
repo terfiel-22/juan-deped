@@ -78,15 +78,63 @@ export const enhancedBeefValidationRules = [
   }),
   body("currentHouseNoStreet")
     .notEmpty()
-    .withMessage("House No. and Street is required"),
-  body("currentStreetName").notEmpty().withMessage("Street Name is required"),
-  body("currentBarangay").notEmpty().withMessage("Barangay is required"),
+    .withMessage("Current House No. and Street is required"),
+  body("currentStreetName")
+    .notEmpty()
+    .withMessage("Current Street Name is required"),
+  body("currentBarangay")
+    .notEmpty()
+    .withMessage("Current Barangay is required"),
   body("currentMunicipalityCity")
     .notEmpty()
     .withMessage("Municipality/City is required"),
-  body("currentProvince").notEmpty().withMessage("Province is required"),
-  body("currentCountry").notEmpty().withMessage("Country is required"),
-  body("currentZipCode").notEmpty().withMessage("Zip Code is required"),
+  body("currentProvince")
+    .notEmpty()
+    .withMessage("Current Province is required"),
+  body("currentCountry").notEmpty().withMessage("Current Country is required"),
+  body("currentZipCode").notEmpty().withMessage("Current Zip Code is required"),
+  body("houseNoStreet").custom((value, { req }) => {
+    if (!req.body.isSameAsCurrentAddress && (!value || value.trim() === "")) {
+      throw new Error("Permanent House No. and Street is required");
+    }
+    return true;
+  }),
+  body("streetName").custom((value, { req }) => {
+    if (!req.body.isSameAsCurrentAddress && (!value || value.trim() === "")) {
+      throw new Error("Permanent Street Name is required");
+    }
+    return true;
+  }),
+  body("barangay").custom((value, { req }) => {
+    if (!req.body.isSameAsCurrentAddress && (!value || value.trim() === "")) {
+      throw new Error("Permanent Barangay is required");
+    }
+    return true;
+  }),
+  body("municipalityCity").custom((value, { req }) => {
+    if (!req.body.isSameAsCurrentAddress && (!value || value.trim() === "")) {
+      throw new Error("Permanent Municipality/City is required");
+    }
+    return true;
+  }),
+  body("province").custom((value, { req }) => {
+    if (!req.body.isSameAsCurrentAddress && (!value || value.trim() === "")) {
+      throw new Error("Permanent Province is required");
+    }
+    return true;
+  }),
+  body("country").custom((value, { req }) => {
+    if (!req.body.isSameAsCurrentAddress && (!value || value.trim() === "")) {
+      throw new Error("Permanent Country is required");
+    }
+    return true;
+  }),
+  body("zipCode").custom((value, { req }) => {
+    if (!req.body.isSameAsCurrentAddress && (!value || value.trim() === "")) {
+      throw new Error("Permanent Zip Code is required");
+    }
+    return true;
+  }),
   body("father")
     .notEmpty()
     .withMessage("Father details are required")

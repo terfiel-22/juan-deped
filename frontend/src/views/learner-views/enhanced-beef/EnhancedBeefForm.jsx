@@ -36,7 +36,7 @@ const EnhancedBeefForm = () => {
                 </Grid2>
                 <Grid2 size={12}>
                     <CustomHeader4 text="Address Information" />
-                    <AddressInformationForm {...{ formData, handleChange }} />
+                    <AddressInformationForm {...{ errors, formData, handleChange }} />
                 </Grid2>
                 <Grid2 size={12}>
                     <CustomHeader4 text="Parent/Guardian Information" />
