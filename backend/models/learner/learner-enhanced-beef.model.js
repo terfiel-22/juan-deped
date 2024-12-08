@@ -1,4 +1,8 @@
 import { model, Schema, Types } from "mongoose";
+import {
+  REQUEST_STATUS_ENUM,
+  REQUEST_STATUSES,
+} from "../../constants/RequestStatus.js";
 
 const learnerEnhancedBeefSchema = Schema(
   {
@@ -240,12 +244,18 @@ const learnerEnhancedBeefSchema = Schema(
     // Additional
     weightKg: Number,
     heightM: Number,
+
+    status: {
+      type: String,
+      enum: REQUEST_STATUS_ENUM,
+      default: REQUEST_STATUSES.PENDING,
+    },
   },
   { timestamps: true }
 );
 
 // Export Student Model
 export const LearnerEnhancedBeef = model(
-  "LearnerEnhancedBeef",
+  "Learner Enhanced Beef",
   learnerEnhancedBeefSchema
 );

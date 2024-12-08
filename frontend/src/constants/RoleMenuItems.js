@@ -14,6 +14,7 @@ import {
   IconStack,
   IconListSearch,
   IconNotebook,
+  IconNotes,
 } from '@tabler/icons';
 import { uniqueId } from 'lodash';
 
@@ -56,9 +57,9 @@ export const ADMIN_MENU_ITEMS = [
   },
   {
     id: uniqueId(),
-    title: 'Students',
-    icon: IconUsers,
-    href: '/admin/enrollment/students',
+    title: 'Enhanced BEEFs',
+    icon: IconNotes,
+    href: '/admin/enrollment/enhanced-beefs',
   },
   {
     navlabel: true,

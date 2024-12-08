@@ -51,3 +51,23 @@ export const fetchOwnEnhancedBeef = async (req, res, next) => {
     next(error);
   }
 };
+
+export const fetchEnhancedBeefs = async (req, res, next) => {
+  try {
+    const learnerEnhancedBeefs = await LearnerEnhancedBeef.find().select([
+      "email",
+      "mobile",
+      "lrn",
+      "lastName",
+      "firstName",
+      "middleName",
+      "birthDate",
+      "sex",
+      "age",
+      "status",
+    ]);
+    res.json(learnerEnhancedBeefs);
+  } catch (error) {
+    next(error);
+  }
+};
