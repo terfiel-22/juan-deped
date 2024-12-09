@@ -6,11 +6,13 @@ const CustomMUIDataTable = ({
     backendData,
     handleOpenDialog = () => { },
     setSelectedData = {},
+    isWithAddButton = true,
 }) => {
     const { columns, data, customToolBar } = useMUIDataTable({
         backendData,
         handleOpenDialog,
         setSelectedData,
+        isWithAddButton
     });
 
     const options = {

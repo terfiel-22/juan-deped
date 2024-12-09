@@ -9,6 +9,7 @@ const useMUIDataTable = ({
   backendData,
   handleOpenDialog,
   setSelectedData,
+  isWithAddButton,
   handlePrint = () => window.print(),
 }) => {
   const [columns, setColumns] = useState([]);
@@ -33,7 +34,7 @@ const useMUIDataTable = ({
   const customToolBar = (
     <>
       {printButton}
-      {addButton}
+      {isWithAddButton && addButton}
     </>
   );
 

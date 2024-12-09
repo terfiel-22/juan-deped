@@ -25,7 +25,7 @@ const EnhancedBeefs = () => {
         <PageContainer title="JuanDepEd | Enhanced BEEFs" description="this is EnhancedBeefs page">
             <Breadcrumb title="Enhanced BEEFs" items={BCrumb} />
             <Box>
-                <CustomMUIDataTable title={"Enhanced BEEF List"} backendData={storedData} />
+                <CustomMUIDataTable title={"Enhanced BEEF List"} backendData={storedData} isWithAddButton={false} />
             </Box>
         </PageContainer>
     );
