@@ -1,4 +1,5 @@
 import {
+  fetchEnhancedBeefById,
   fetchEnhancedBeefs,
   fetchOwnEnhancedBeef,
   saveEnhancedBeef,
@@ -19,6 +20,12 @@ export default (router) => {
     fetchEnhancedBeefs
   );
   router.get("/learner/enhanced-beef", isLearner, fetchOwnEnhancedBeef);
+  router.get(
+    "/learner/enhanced-beef/:learnerId",
+    isPersonnel,
+    isAdmin,
+    fetchEnhancedBeefById
+  );
   router.post(
     "/learner/enhanced-beef",
     isLearner,
