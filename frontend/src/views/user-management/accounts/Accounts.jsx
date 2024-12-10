@@ -19,14 +19,6 @@ const BCrumb = [
     },
 ];
 
-const defaultFormData = {
-    username: "",
-    email: "",
-    password: "",
-    cpassword: "",
-    role: ""
-};
-
 const Accounts = () => {
     /** Fetch Auths */
     const { storedData } = useRead({ url: '/personnels', setter: setAccounts, selector: selectAccounts });
