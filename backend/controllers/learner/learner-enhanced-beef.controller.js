@@ -117,7 +117,7 @@ export const updateEnhancedBeefStatus = async (req, res, next) => {
 
     res.json({
       message: "Successfully updated enhanced BEEF.",
-      updatedEnhancedBeef,
+      result: updatedEnhancedBeef,
     });
   } catch (error) {
     next(error);

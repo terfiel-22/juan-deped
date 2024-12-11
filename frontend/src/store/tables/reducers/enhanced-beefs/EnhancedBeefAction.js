@@ -1,3 +1,3 @@
 import { EnhancedBeefSlice } from './EnhancedBeefSlice';
 
-export const { setEnhancedBeefs } = EnhancedBeefSlice.actions;
+export const { setEnhancedBeefs, setUpdatedEnhancedBeef } = EnhancedBeefSlice.actions;

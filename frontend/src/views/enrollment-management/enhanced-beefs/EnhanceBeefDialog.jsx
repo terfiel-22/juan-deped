@@ -1,27 +1,31 @@
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import { Dialog, DialogActions, DialogContent, DialogTitle, Divider, Grid2, Paper, Typography } from '@mui/material';
+import { Dialog, DialogActions, DialogContent, DialogTitle, Divider, Grid2, MenuItem, Paper, Typography } from '@mui/material';
 import useFetch from '../../../hooks/crud/useFetch';
 import { dateToDateString } from '../../../utils/dateFormatter';
-import { REQUEST_STATUSES } from '../../../constants/RequestStatus';
-import axiosClient from '../../../utils/axiosClient';
-import { toastError, toastSuccess } from '../../../utils/toastEmitter';
-
+import { REQUEST_STATUS_ENUM, REQUEST_STATUSES } from '../../../constants/RequestStatus';
+import useUpdate from '../../../hooks/crud/useUpdate';
+import { useEffect, useState } from 'react';
+import { setUpdatedEnhancedBeef } from '../../../store/tables/reducers/enhanced-beefs/EnhancedBeefAction';
+import CustomSelect from '../../../components/forms/theme-elements/CustomSelect';
 
 const EnhanceBeefDialog = ({ isOpen, isFullScreen, handleClose, data = {} }) => {
+    const [status, setStatus] = useState(REQUEST_STATUSES.PENDING);
 
     const { data: enhanceBeef } = useFetch({ url: data && `/learner/enhanced-beef/${data?._id}` });
+    useEffect(() => {
+        if (enhanceBeef)
+            setStatus(enhanceBeef?.status);
+    }, [enhanceBeef])
+    const { handleUpdate } = useUpdate({ url: `/learner/enhanced-beef/${data?._id}`, formData: { status }, setter: setUpdatedEnhancedBeef })
 
-    const handleStatusUpdate = (id, status) => {
-        axiosClient
-            .put(`/learner/enhanced-beef/${id}`, { status })
-            .then(({ data }) => {
-                toastSuccess(data.message);
-            })
-            .catch(({ response: { data } }) => {
-                toastError(data.message);
-            });
+    const handleStatusUpdate = () => {
+        handleUpdate();
+        handleClose();
+    }
+
+    const handleChange = (e) => {
+        setStatus(e.target.value);
     }
 
     return enhanceBeef && (
@@ -219,24 +223,34 @@ const EnhanceBeefDialog = ({ isOpen, isFullScreen, handleClose, data = {} }) => 
                         <Typography variant="h5">Additional Information</Typography>
                         <Typography><strong>Weight (kg):</strong> {enhanceBeef.weightKg}</Typography>
                         <Typography><strong>Height (m):</strong> {enhanceBeef.heightM}</Typography>
+                        <Typography><strong>Submitted At:</strong> {dateToDateString(enhanceBeef.createdAt)}</Typography>
                     </Box>
                     <Divider />
 
                     {/* Application Information */}
                     <Box sx={{ marginTop: 2 }}>
-                        <Typography variant="h5">Application</Typography>
-                        <Typography><strong>Status:</strong> {enhanceBeef.status}</Typography>
-                        <Typography><strong>Submitted At:</strong> {dateToDateString(enhanceBeef.createdAt)}</Typography>
+                        <Typography variant="h5">Status</Typography>
+                        <CustomSelect
+                            required
+                            id="status"
+                            name="status"
+                            variant="outlined"
+                            fullWidth
+                            size="small"
+                            value={status}
+                            onChange={handleChange}
+                        >
+                            {
+                                REQUEST_STATUS_ENUM.map((status, index) => <MenuItem key={index} value={status}>{status}</MenuItem>)
+                            }
+                        </CustomSelect>
                     </Box>
                 </Paper>
             </DialogContent>
             <DialogActions sx={{ justifyContent: 'space-between' }}>
                 <Box>
-                    <Button color='info' type='button' sx={{ marginRight: '10px' }} onClick={() => handleStatusUpdate(enhanceBeef._id, REQUEST_STATUSES.APPROVED)}>
-                        Approve
-                    </Button>
-                    <Button color='warning' type='button' onClick={() => handleStatusUpdate(enhanceBeef._id, REQUEST_STATUSES.DENIED)}>
-                        Denied
+                    <Button color='info' type='button' sx={{ marginRight: '10px' }} onClick={handleStatusUpdate}>
+                        Save Changes
                     </Button>
                 </Box>
                 <Box>
