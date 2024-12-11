@@ -45,9 +45,8 @@ const enhanceBeefDataToRichTree = (data) => {
             id: 'addressInfo',
             label: 'Address Information',
             children: [
-                { id: 'grid-community7', label: '@mui/x-data-grid' },
-                { id: 'grid-pro8', label: '@mui/x-data-grid-pro' },
-                { id: 'grid-premium9', label: '@mui/x-data-grid-premium' },
+                { id: 'currentAddress', label: `Current Address: ${data.currentHouseNoStreet} ${data.currentStreetName} ${data.currentBarangay}, ${data.currentMunicipalityCity}, ${data.currentProvince}, ${data.currentCountry}, ${data.currentZipCode}` },
+                { id: 'permanentAddress', label: `Permanent Address: ${data.isSameAsCurrentAddress ? data.currentHouseNoStreet : data.houseNoStreet} ${data.isSameAsCurrentAddress ? data.currentStreetName : data.streetName} ${data.isSameAsCurrentAddress ? data.currentBarangay : data.barangay}, ${data.isSameAsCurrentAddress ? data.currentMunicipalityCity : data.municipalityCity}, ${data.isSameAsCurrentAddress ? data.currentProvince : data.province}, ${data.isSameAsCurrentAddress ? data.currentCountry : data.country}, ${data.isSameAsCurrentAddress ? data.currentZipCode : data.zipCode}` }
             ],
         },
         {
