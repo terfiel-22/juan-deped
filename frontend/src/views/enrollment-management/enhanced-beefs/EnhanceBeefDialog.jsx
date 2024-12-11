@@ -4,10 +4,25 @@ import Button from '@mui/material/Button';
 import { Dialog, DialogActions, DialogContent, DialogTitle, Divider, Grid2, Paper, Typography } from '@mui/material';
 import useFetch from '../../../hooks/crud/useFetch';
 import { dateToDateString } from '../../../utils/dateFormatter';
+import { REQUEST_STATUSES } from '../../../constants/RequestStatus';
+import axiosClient from '../../../utils/axiosClient';
+import { toastError, toastSuccess } from '../../../utils/toastEmitter';
+
 
 const EnhanceBeefDialog = ({ isOpen, isFullScreen, handleClose, data = {} }) => {
 
     const { data: enhanceBeef } = useFetch({ url: data && `/learner/enhanced-beef/${data?._id}` });
+
+    const handleStatusUpdate = (id, status) => {
+        axiosClient
+            .put(`/learner/enhanced-beef/${id}`, { status })
+            .then(({ data }) => {
+                toastSuccess(data.message);
+            })
+            .catch(({ response: { data } }) => {
+                toastError(data.message);
+            });
+    }
 
     return enhanceBeef && (
         <Dialog
@@ -217,10 +232,10 @@ const EnhanceBeefDialog = ({ isOpen, isFullScreen, handleClose, data = {} }) => 
             </DialogContent>
             <DialogActions sx={{ justifyContent: 'space-between' }}>
                 <Box>
-                    <Button color='info' type='button' sx={{ marginRight: '10px' }} onClick={handleClose}>
+                    <Button color='info' type='button' sx={{ marginRight: '10px' }} onClick={() => handleStatusUpdate(enhanceBeef._id, REQUEST_STATUSES.APPROVED)}>
                         Approve
                     </Button>
-                    <Button color='warning' type='button' onClick={handleClose}>
+                    <Button color='warning' type='button' onClick={() => handleStatusUpdate(enhanceBeef._id, REQUEST_STATUSES.DENIED)}>
                         Denied
                     </Button>
                 </Box>

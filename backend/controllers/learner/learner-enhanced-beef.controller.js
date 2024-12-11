@@ -83,3 +83,43 @@ export const fetchEnhancedBeefById = async (req, res, next) => {
     next(error);
   }
 };
+
+export const updateEnhancedBeefStatus = async (req, res, next) => {
+  try {
+    const { learnerId } = req.params;
+    const { status } = req.body;
+    const learnerEnhancedBeef = await LearnerEnhancedBeef.findById(learnerId);
+    if (!learnerEnhancedBeef)
+      throw new HttpError("Learner Enhanced BEEF not found", 404);
+
+    const updatedEnhancedBeef = await LearnerEnhancedBeef.findByIdAndUpdate(
+      learnerId,
+      { status },
+      {
+        new: true,
+        fields: {
+          email: 1,
+          mobile: 1,
+          lrn: 1,
+          lastName: 1,
+          firstName: 1,
+          middleName: 1,
+          birthDate: 1,
+          sex: 1,
+          age: 1,
+          status: 1,
+        },
+      }
+    );
+
+    if (!updatedEnhancedBeef)
+      throw new HttpError("Updating Learner Enhanced BEEF failed.", 400);
+
+    res.json({
+      message: "Successfully updated enhanced BEEF.",
+      updatedEnhancedBeef,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
