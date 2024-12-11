@@ -75,7 +75,9 @@ export const fetchEnhancedBeefs = async (req, res, next) => {
 export const fetchEnhancedBeefById = async (req, res, next) => {
   try {
     const { learnerId } = req.params;
-    const learnerEnhancedBeef = await LearnerEnhancedBeef.findById(learnerId);
+    const learnerEnhancedBeef = await LearnerEnhancedBeef.findById(
+      learnerId
+    ).populate(["seniorHighSchool.track", "seniorHighSchool.strand"]);
     res.json(learnerEnhancedBeef);
   } catch (error) {
     next(error);

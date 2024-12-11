@@ -1,125 +1,15 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
-import { Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
+import { Dialog, DialogActions, DialogContent, DialogTitle, Divider, Grid2, Paper, Typography } from '@mui/material';
 import useFetch from '../../../hooks/crud/useFetch';
-import { dateToLocaleDateString } from '../../../utils/dateFormatter';
-
-const enhanceBeefDataToRichTree = (data) => {
-    if (!data) return [
-        {
-            id: 'none',
-            label: 'None',
-        }
-    ];
-    return [
-        {
-            id: 'genInfo',
-            label: 'General Information',
-            children: [
-                { id: 'email', label: `Email: ${data.email}` },
-                { id: 'mobile', label: `Mobile: ${data.mobile}` },
-                { id: 'schoolYear', label: `School Year: ${data.schoolYear}` },
-                { id: 'gradeLevel', label: `Grade Level To Enroll: ${data.gradeLevelToEnroll}` },
-            ],
-        },
-        {
-            id: 'learnerInfo',
-            label: 'Learner Information',
-            children: [
-                { id: 'psa', label: `PSA Certificate No: ${data.psaBirthCertificateNo || "N/A"}` },
-                { id: 'lrn', label: `LRN: ${data.lrn || "N/A"}` },
-                { id: 'fullName', label: `Full Name: ${data.firstName} ${data.middleName} ${data.lastName} ${data.extensionName}` },
-                { id: 'birthdate', label: `Birthdate: ${dateToLocaleDateString(data.birthDate)}` },
-                { id: 'sex', label: `Sex: ${data.sex}` },
-                { id: 'age', label: `Age: ${data.age}` },
-                { id: 'placeOfBirth', label: `Place of Birth: ${data.placeOfBirth}` },
-                { id: 'motherTongue', label: `Mother Tongue: ${data.motherTongue}` },
-                { id: 'indigenousPeople', label: `Indigenous Community: ${data.indigenousPeople || "N/A"}` },
-                { id: 'fourPsHouseHoldId', label: `4P's Household ID: ${data.fourPsHouseHoldId || "N/A"}` },
-            ],
-        },
-        {
-            id: 'addressInfo',
-            label: 'Address Information',
-            children: [
-                { id: 'currentAddress', label: `Current Address: ${data.currentHouseNoStreet} ${data.currentStreetName} ${data.currentBarangay}, ${data.currentMunicipalityCity}, ${data.currentProvince}, ${data.currentCountry}, ${data.currentZipCode}` },
-                { id: 'permanentAddress', label: `Permanent Address: ${data.isSameAsCurrentAddress ? data.currentHouseNoStreet : data.houseNoStreet} ${data.isSameAsCurrentAddress ? data.currentStreetName : data.streetName} ${data.isSameAsCurrentAddress ? data.currentBarangay : data.barangay}, ${data.isSameAsCurrentAddress ? data.currentMunicipalityCity : data.municipalityCity}, ${data.isSameAsCurrentAddress ? data.currentProvince : data.province}, ${data.isSameAsCurrentAddress ? data.currentCountry : data.country}, ${data.isSameAsCurrentAddress ? data.currentZipCode : data.zipCode}` }
-            ],
-        },
-        {
-            id: 'parentGuardianInfo',
-            label: 'Parent/Guardian Information',
-            children: [
-                { id: 'grid-community10', label: '@mui/x-data-grid' },
-                { id: 'grid-pro11', label: '@mui/x-data-grid-pro' },
-                { id: 'grid-premium12', label: '@mui/x-data-grid-premium' },
-            ],
-        },
-        {
-            id: 'returningLearner',
-            label: 'For Returning Learner',
-            children: [
-                { id: 'grid-community13', label: '@mui/x-data-grid' },
-                { id: 'grid-pro14', label: '@mui/x-data-grid-pro' },
-                { id: 'grid-premium15', label: '@mui/x-data-grid-premium' },
-            ],
-        },
-        {
-            id: 'learnerInSHS',
-            label: 'For Learners in SHS',
-            children: [
-                { id: 'grid-community16', label: '@mui/x-data-grid' },
-                { id: 'grid-pro17', label: '@mui/x-data-grid-pro' },
-                { id: 'grid-premium18', label: '@mui/x-data-grid-premium' },
-            ],
-        },
-        {
-            id: 'pdlm',
-            label: 'Chosen Distance Learning Modalities',
-            children: [
-                { id: 'grid-community19', label: '@mui/x-data-grid' },
-                { id: 'grid-pro20', label: '@mui/x-data-grid-pro' },
-                { id: 'grid-premium21', label: '@mui/x-data-grid-premium' },
-            ],
-        },
-        {
-            id: 'ncPasser',
-            label: 'For NC Passer',
-            children: [
-                { id: 'grid-community22', label: '@mui/x-data-grid' },
-                { id: 'grid-pro23', label: '@mui/x-data-grid-pro' },
-                { id: 'grid-premium24', label: '@mui/x-data-grid-premium' },
-            ],
-        },
-        {
-            id: 'shsEligibility',
-            label: 'For SHS Eligibility',
-            children: [
-                { id: 'grid-community25', label: '@mui/x-data-grid' },
-                { id: 'grid-pro26', label: '@mui/x-data-grid-pro' },
-                { id: 'grid-premium27', label: '@mui/x-data-grid-premium' },
-            ],
-        },
-        {
-            id: 'addInfo',
-            label: 'Additional Information',
-            children: [
-                { id: 'grid-community28', label: '@mui/x-data-grid' },
-                { id: 'grid-pro29', label: '@mui/x-data-grid-pro' },
-                { id: 'grid-premium30', label: '@mui/x-data-grid-premium' },
-            ],
-        },
-    ];
-};
+import { dateToDateString } from '../../../utils/dateFormatter';
 
 const EnhanceBeefDialog = ({ isOpen, isFullScreen, handleClose, data = {} }) => {
 
-    const { data: enhanceBeef, readLoading } = useFetch({ url: data && `/learner/enhanced-beef/${data?._id}` });
+    const { data: enhanceBeef } = useFetch({ url: data && `/learner/enhanced-beef/${data?._id}` });
 
-    return (
+    return enhanceBeef && (
         <Dialog
             fullScreen={isFullScreen}
             open={isOpen}
@@ -127,16 +17,203 @@ const EnhanceBeefDialog = ({ isOpen, isFullScreen, handleClose, data = {} }) => 
             aria-labelledby="responsive-dialog-title"
         >
             <DialogTitle id="responsive-dialog-title">
-                Student Enhance BEEF
+                Enhanced Basic Education Enrollment Form
             </DialogTitle>
             <DialogContent>
-                <Stack spacing={2}>
-                    <Box>
-                        <RichTreeView
-                            items={enhanceBeefDataToRichTree(enhanceBeef)}
-                        />
+                <Paper elevation={3} sx={{ padding: 3, marginTop: 2, overflow: 'auto' }} className='paper'>
+                    {/* General Information */}
+                    <Box sx={{ marginTop: 2 }}>
+                        <Typography variant="h5">General Information</Typography>
+                        <Grid2 container justifyContent="space-between" mt={2}>
+                            <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
+                                <Typography><strong>Email:</strong> {enhanceBeef.email}</Typography>
+                                <Typography><strong>Mobile:</strong> {enhanceBeef.mobile}</Typography>
+                            </Grid2>
+                            <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
+                                <Typography><strong>School Year:</strong> {enhanceBeef.schoolYear}</Typography>
+                                <Typography><strong>Grade Level:</strong> {enhanceBeef.gradeLevelToEnroll}</Typography>
+                            </Grid2>
+                        </Grid2>
                     </Box>
-                </Stack>
+                    <Divider />
+
+                    {/* Learner Information */}
+                    <Box sx={{ marginTop: 2 }}>
+                        <Typography variant="h5">Learner Information</Typography>
+
+                        <Grid2 container justifyContent="space-between" mt={2}>
+                            <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
+                                <Typography><strong>First Name:</strong> {enhanceBeef.firstName}</Typography>
+                                <Typography><strong>Last Name:</strong> {enhanceBeef.lastName}</Typography>
+                                <Typography><strong>Middle Name:</strong> {enhanceBeef.middleName}</Typography>
+                                <Typography><strong>Birth Date:</strong> {new Date(enhanceBeef.birthDate).toLocaleDateString()}</Typography>
+                            </Grid2>
+                            <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
+                                <Typography><strong>Sex:</strong> {enhanceBeef.sex}</Typography>
+                                <Typography><strong>Age:</strong> {enhanceBeef.age}</Typography>
+                                <Typography><strong>Place of Birth:</strong> {enhanceBeef.placeOfBirth}</Typography>
+                                <Typography><strong>Mother Tongue:</strong> {enhanceBeef.motherTongue}</Typography>
+                            </Grid2>
+                        </Grid2>
+                        {enhanceBeef.isPsaAvailable && (
+                            <Typography><strong>PSA Birth Certificate No:</strong> {enhanceBeef.psaBirthCertificateNo}</Typography>
+                        )}
+                        {enhanceBeef.withLRN && (
+                            <Typography><strong>Learner Reference No:</strong> {enhanceBeef.lrn}</Typography>
+                        )}
+                        {enhanceBeef.isIndigenousPeople && (
+                            <Typography><strong>Indigenous People:</strong> {enhanceBeef.indigenousPeople}</Typography>
+                        )}
+                        {enhanceBeef.isFourPsBeneficiary && (
+                            <Typography><strong>Four Ps Household ID:</strong> {enhanceBeef.fourPsHouseHoldId}</Typography>
+                        )}
+                    </Box>
+                    <Divider />
+
+                    {/* Current Address */}
+                    <Box sx={{ marginTop: 2 }}>
+                        <Typography variant="h5">Current Address</Typography>
+
+                        <Grid2 container justifyContent="space-between" mt={2}>
+                            <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
+                                <Typography><strong>House No:</strong> {enhanceBeef.currentHouseNoStreet}</Typography>
+                                <Typography><strong>Street Name:</strong> {enhanceBeef.currentStreetName}</Typography>
+                                <Typography><strong>Barangay:</strong> {enhanceBeef.currentBarangay}</Typography>
+                                <Typography><strong>Municipality/City:</strong> {enhanceBeef.currentMunicipalityCity}</Typography>
+                            </Grid2>
+                            <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
+                                <Typography><strong>Province:</strong> {enhanceBeef.currentProvince}</Typography>
+                                <Typography><strong>Country:</strong> {enhanceBeef.currentCountry}</Typography>
+                                <Typography><strong>Zip Code:</strong> {enhanceBeef.currentZipCode}</Typography>
+                            </Grid2>
+                        </Grid2>
+                    </Box>
+                    <Divider />
+
+                    {/* Permanent Address */}
+                    <Box sx={{ marginTop: 2 }}>
+                        <Typography variant="h5">Permanent Address</Typography>
+                        <Grid2 container justifyContent="space-between" mt={2}>
+                            <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
+                                <Typography><strong>House No:</strong> {enhanceBeef.isSameAsCurrentAddress ? enhanceBeef.currentHouseNoStreet : enhanceBeef.houseNoStreet}</Typography>
+                                <Typography><strong>Street Name:</strong> {enhanceBeef.isSameAsCurrentAddress ? enhanceBeef.currentStreetName : enhanceBeef.streetName}</Typography>
+                                <Typography><strong>Barangay:</strong> {enhanceBeef.isSameAsCurrentAddress ? enhanceBeef.currentBarangay : enhanceBeef.barangay}</Typography>
+                                <Typography><strong>Municipality/City:</strong> {enhanceBeef.isSameAsCurrentAddress ? enhanceBeef.currentMunicipalityCity : enhanceBeef.municipalityCity}</Typography>
+                            </Grid2>
+                            <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}><Typography><strong>Province:</strong> {enhanceBeef.isSameAsCurrentAddress ? enhanceBeef.currentProvince : enhanceBeef.province}</Typography>
+                                <Typography><strong>Country:</strong> {enhanceBeef.isSameAsCurrentAddress ? enhanceBeef.currentCountry : enhanceBeef.country}</Typography>
+                                <Typography><strong>Zip Code:</strong> {enhanceBeef.isSameAsCurrentAddress ? enhanceBeef.currentZipCode : enhanceBeef.zipCode}</Typography>
+                            </Grid2>
+                        </Grid2>
+                    </Box>
+                    <Divider />
+
+                    {/* Parents or Guardians */}
+                    <Box sx={{ marginTop: 2 }}>
+                        <Typography variant="h5">Parents or Guardians</Typography>
+
+                        <Grid2 container justifyContent="space-between" mt={2}>
+                            <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
+                                <Typography><strong>Father's Name:</strong> {`${enhanceBeef.father.firstName} ${enhanceBeef.father.middleName} ${enhanceBeef.father.lastName}`}</Typography>
+                                <Typography><strong>Father's Contact:</strong> {enhanceBeef.father.contactNumber}</Typography>
+                                <Typography><strong>Father's Email:</strong> {enhanceBeef.father.email}</Typography>
+                                <Typography><strong>Mother's Name:</strong> {`${enhanceBeef.mother.firstName} ${enhanceBeef.mother.middleName} ${enhanceBeef.mother.lastName}`}</Typography>
+                                <Typography><strong>Mother's Contact:</strong> {enhanceBeef.mother.contactNumber}</Typography>
+                                <Typography><strong>Mother's Email:</strong> {enhanceBeef.mother.email}</Typography>
+                            </Grid2>
+                            <Grid2 size={{ xs: 12, sm: 12, lg: 6 }}>
+                                <Typography><strong>Guardian's Name:</strong> {`${enhanceBeef.guardian.firstName} ${enhanceBeef.guardian.middleName} ${enhanceBeef.guardian.lastName}`}</Typography>
+                                <Typography><strong>Guardian's Contact:</strong> {enhanceBeef.guardian.contactNumber}</Typography>
+                                <Typography><strong>Guardian's Email:</strong> {enhanceBeef.guardian.email}</Typography>
+                            </Grid2>
+                        </Grid2>
+                    </Box>
+                    <Divider />
+
+                    {/* Returning Learner */}
+                    {enhanceBeef.isReturnee && (
+                        <>
+                            <Box sx={{ marginTop: 2 }}>
+                                <Typography variant="h5">Returning Learner Information</Typography>
+                                <Typography><strong>Last Grade Level Completed:</strong> {enhanceBeef.returningLearner.lastGradeLevelCompleted}</Typography>
+                                <Typography><strong>Last School Year Completed:</strong> {enhanceBeef.returningLearner.lastSchoolYearCompleted}</Typography>
+                                <Typography><strong>Last School Attended:</strong> {enhanceBeef.returningLearner.lastSchoolAttended}</Typography>
+                                <Typography><strong>School ID:</strong> {enhanceBeef.returningLearner.schoolID}</Typography>
+                            </Box>
+                            <Divider />
+                        </>
+                    )}
+
+                    {/* Senior High School */}
+                    <Box sx={{ marginTop: 2 }}>
+                        <Typography variant="h5">Senior High School Information</Typography>
+                        <Typography><strong>Semester:</strong> {enhanceBeef.seniorHighSchool.semester}</Typography>
+                        <Typography><strong>Track:</strong> {enhanceBeef.seniorHighSchool.track.name}</Typography>
+                        <Typography><strong>Strand:</strong> {enhanceBeef.seniorHighSchool.strand.name}</Typography>
+                    </Box>
+                    <Divider />
+
+                    {/* Preferred Distance Learning Modalities */}
+                    <Box sx={{ marginTop: 2 }}>
+                        <Typography variant="h5">Preferred Distance Learning Modalities</Typography>
+                        <Grid2 container justifyContent="space-between" mt={2}>
+                            {enhanceBeef.preferredDistanceLearningModalities.isModularPrint && <Typography>• Modular (Print)</Typography>}
+                            {enhanceBeef.preferredDistanceLearningModalities.isOnline && <Typography>• Online</Typography>}
+                            {enhanceBeef.preferredDistanceLearningModalities.isRadioBased && <Typography>• Radio-Based Instruction</Typography>}
+                            {enhanceBeef.preferredDistanceLearningModalities.isBlended && <Typography>• Blended Learning</Typography>}
+                            {enhanceBeef.preferredDistanceLearningModalities.isModularDigital && <Typography>• Modular (Digital)</Typography>}
+                            {enhanceBeef.preferredDistanceLearningModalities.isEducationTV && <Typography>• Educational TV</Typography>}
+                            {enhanceBeef.preferredDistanceLearningModalities.isHomeschooling && <Typography>• Homeschooling</Typography>}
+                            {enhanceBeef.preferredDistanceLearningModalities.isFaceToFace && <Typography>• Face-to-Face</Typography>}
+                        </Grid2>
+                    </Box>
+                    <Divider />
+
+                    {/* NC Passer */}
+                    {enhanceBeef.ncPasser.isNcPasser && (
+                        <>
+                            <Box sx={{ marginTop: 2 }}>
+                                <Typography variant="h5">NC Passer Information</Typography>
+                                <Typography><strong>Certificate No:</strong> {enhanceBeef.ncPasser.certificateNo}</Typography>
+                                <Typography><strong>Specialization:</strong> {enhanceBeef.ncPasser.specialization}</Typography>
+                                <Typography><strong>Valid Until:</strong> {new Date(enhanceBeef.ncPasser.validUntil).toLocaleDateString()}</Typography>
+                            </Box>
+                            <Divider />
+                        </>
+                    )}
+
+                    {/* SHS Eligibility */}
+                    <Box sx={{ marginTop: 2 }}>
+                        <Typography variant="h5">SHS Eligibility</Typography>
+                        {enhanceBeef.shsEligibility.isHsCompleter && <Typography><strong>High School General Average:</strong> {enhanceBeef.shsEligibility.hsGenAve}</Typography>}
+                        {enhanceBeef.shsEligibility.isJhsCompleter && <Typography><strong>Junior High School General Average:</strong> {enhanceBeef.shsEligibility.jhsGenAve}</Typography>}
+                        {enhanceBeef.shsEligibility.graduationDate && <Typography><strong>Graduation Date:</strong> {new Date(enhanceBeef.shsEligibility.graduationDate).toLocaleDateString()}</Typography>}
+                        {enhanceBeef.shsEligibility.schoolName && <Typography><strong>School Name:</strong> {enhanceBeef.shsEligibility.schoolName}</Typography>}
+                        {enhanceBeef.shsEligibility.schoolAddress && <Typography><strong>School Address:</strong> {enhanceBeef.shsEligibility.schoolAddress}</Typography>}
+                        {enhanceBeef.shsEligibility.isPeptPasser && <Typography><strong>PEPT Rating:</strong> {enhanceBeef.shsEligibility.peptRating}</Typography>}
+                        {enhanceBeef.shsEligibility.isAlsPasser && <Typography><strong>ALS Rating:</strong> {enhanceBeef.shsEligibility.alsRating}</Typography>}
+                        {enhanceBeef.shsEligibility.isOtherExamPasser && <Typography><strong>Other Exam:</strong> {enhanceBeef.shsEligibility.otherExam}</Typography>}
+                        {enhanceBeef.shsEligibility.examDate && <Typography><strong>Exam Date:</strong> {new Date(enhanceBeef.shsEligibility.examDate).toLocaleDateString()}</Typography>}
+                        {enhanceBeef.shsEligibility.learningCenterName && <Typography><strong>Learning Center Name:</strong> {enhanceBeef.shsEligibility.learningCenterName}</Typography>}
+                        {enhanceBeef.shsEligibility.learningCenterAddress && <Typography><strong>Learning Center Address:</strong> {enhanceBeef.shsEligibility.learningCenterAddress}</Typography>}
+                    </Box>
+                    <Divider />
+
+                    {/* Additional Information */}
+                    <Box sx={{ marginTop: 2 }}>
+                        <Typography variant="h5">Additional Information</Typography>
+                        <Typography><strong>Weight (kg):</strong> {enhanceBeef.weightKg}</Typography>
+                        <Typography><strong>Height (m):</strong> {enhanceBeef.heightM}</Typography>
+                    </Box>
+                    <Divider />
+
+                    {/* Application Information */}
+                    <Box sx={{ marginTop: 2 }}>
+                        <Typography variant="h5">Application</Typography>
+                        <Typography><strong>Status:</strong> {enhanceBeef.status}</Typography>
+                        <Typography><strong>Submitted At:</strong> {dateToDateString(enhanceBeef.createdAt)}</Typography>
+                    </Box>
+                </Paper>
             </DialogContent>
             <DialogActions sx={{ justifyContent: 'space-between' }}>
                 <Box>

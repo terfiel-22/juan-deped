@@ -17,3 +17,7 @@ export const dateToIsoString = (date) => {
 export const dateToLocaleDateString = (date) => {
   return new Date(date).toLocaleDateString();
 };
+
+export const dateToDateString = (date) => {
+  return new Date(date).toDateString();
+};
