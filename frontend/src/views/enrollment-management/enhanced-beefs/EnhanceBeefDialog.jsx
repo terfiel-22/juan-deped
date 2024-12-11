@@ -132,7 +132,7 @@ const EnhanceBeefDialog = ({ isOpen, isFullScreen, handleClose, data = {} }) => 
             </DialogTitle>
             <DialogContent>
                 <Stack spacing={2}>
-                    <Box sx={{ minHeight: 350, minWidth: 450 }}>
+                    <Box>
                         <RichTreeView
                             items={enhanceBeefDataToRichTree(enhanceBeef)}
                         />
