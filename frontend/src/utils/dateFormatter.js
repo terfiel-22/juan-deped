@@ -9,3 +9,11 @@ export const formatDate = (dateString) => {
 export const isoDateFormatter = (isoDate) => {
   return new Date(isoDate);
 };
+
+export const dateToIsoString = (date) => {
+  return new Date(date).toISOString();
+};
+
+export const dateToLocaleDateString = (date) => {
+  return new Date(date).toLocaleDateString();
+};
