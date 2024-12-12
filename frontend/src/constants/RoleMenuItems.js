@@ -15,6 +15,7 @@ import {
   IconListSearch,
   IconNotebook,
   IconNotes,
+  IconListCheck,
 } from '@tabler/icons';
 import { uniqueId } from 'lodash';
 
@@ -54,6 +55,12 @@ export const ADMIN_MENU_ITEMS = [
     title: 'Schedules',
     icon: IconCalendarEvent,
     href: '/admin/enrollment/schedules',
+  },
+  {
+    id: uniqueId(),
+    title: 'Requirements',
+    icon: IconListCheck,
+    href: '/admin/enrollment/requirements',
   },
   {
     id: uniqueId(),

@@ -32,6 +32,7 @@ const SpecializedSubjects = Loadable(lazy(() => import("../../views/school-manag
 
 /** Enrollment Management */
 const Schedules = Loadable(lazy(() => import('../../views/enrollment-management/schedules/Schedule.jsx')));
+const EnrollmentRequirements = Loadable(lazy(() => import("../../views/enrollment-management/requirements/EnrollmentRequirements.jsx")));
 const EnhancedBeefs = Loadable(lazy(() => import("../../views/enrollment-management/enhanced-beefs/EnhancedBeefs.jsx")));
 
 export const ADMIN_ROUTER = {
@@ -58,6 +59,7 @@ export const ADMIN_ROUTER = {
         { path: '/admin/subject/applied-subjects', element: <AppliedSubjects /> },
         { path: '/admin/subject/specialized-subjects', element: <SpecializedSubjects /> },
         { path: '/admin/enrollment/schedules', element: <Schedules /> },
+        { path: '/admin/enrollment/requirements', element: <EnrollmentRequirements /> },
         { path: '/admin/enrollment/enhanced-beefs', element: <EnhancedBeefs /> },
     ]
 };
