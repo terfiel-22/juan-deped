@@ -11,7 +11,7 @@ import useTableDialog from '../../../hooks/shared/useTableDialog';
 
 const BCrumb = [
     {
-        to: '/admin/enrollment/students',
+        to: '/admin/enrollment/enhanced-beefs',
         title: 'Enrollment Management',
     },
     {
