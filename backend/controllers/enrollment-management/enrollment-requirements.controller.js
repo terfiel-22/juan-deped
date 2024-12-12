@@ -21,9 +21,13 @@ export const createEnrollmentRequirement = async (req, res, next) => {
 
     await newRequirement.save();
 
+    const result = await EnrollmentRequirement.findById(
+      newRequirement._id
+    ).select(["name", "description", "requirementFor", "submissionDeadline"]);
+
     res.status(200).json({
       message: "Successfully added new requirement.",
-      result: newRequirement,
+      result,
     });
   } catch (error) {
     next(error);
@@ -52,7 +56,7 @@ export const editEnrollmentRequirement = async (req, res, next) => {
         new: true,
         runValidators: true,
       }
-    );
+    ).select(["name", "description", "requirementFor", "submissionDeadline"]);
 
     if (!updatedRequirement)
       throw new HttpError("Updating requirement failed.", 400);
@@ -88,7 +92,12 @@ export const deleteEnrollmentRequirement = async (req, res, next) => {
 
 export const fetchEnrollmentRequirements = async (req, res, next) => {
   try {
-    const enrollmentRequirements = await EnrollmentRequirement.find();
+    const enrollmentRequirements = await EnrollmentRequirement.find().select([
+      "name",
+      "description",
+      "requirementFor",
+      "submissionDeadline",
+    ]);
     res.json(enrollmentRequirements);
   } catch (error) {
     next(error);

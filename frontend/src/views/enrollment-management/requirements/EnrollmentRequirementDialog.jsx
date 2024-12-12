@@ -17,7 +17,7 @@ const defaultData = {
     name: "",
     description: "",
     requirementFor: ENROLLMENT_REQUIREMENT_FOR.GRADE_11,
-    submissionDeadline: "",
+    submissionDeadline: dateFieldFormat(new Date()),
 };
 
 const EnrollmentRequirementDialog = ({ isOpen, isFullScreen, handleClose, data = defaultData }) => {
