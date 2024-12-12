@@ -21,3 +21,10 @@ export const dateToLocaleDateString = (date) => {
 export const dateToDateString = (date) => {
   return new Date(date).toDateString();
 };
+
+export const dateFieldFormat = (date) => {
+  const _date = new Date(date);
+  const formatDate = _date.getDate() < 10 ? `0${_date.getDate()}` : _date.getDate();
+  const formatMonth = _date.getMonth() < 10 ? `0${_date.getMonth()}` : _date.getMonth();
+  return [_date.getFullYear(), formatMonth, formatDate].join('-');
+};

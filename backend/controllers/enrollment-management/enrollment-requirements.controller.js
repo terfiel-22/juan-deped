@@ -5,7 +5,7 @@ export const createEnrollmentRequirement = async (req, res, next) => {
   try {
     const { name, description, requirementFor, submissionDeadline } = req.body;
 
-    if (!name || !description || !requirementFor || !submissionDeadline)
+    if (!name || !requirementFor || !submissionDeadline)
       throw new HttpError("Fill all fields.", 400);
 
     const requirementData = {
@@ -32,10 +32,10 @@ export const createEnrollmentRequirement = async (req, res, next) => {
 
 export const editEnrollmentRequirement = async (req, res, next) => {
   try {
-    const { enrollmentRequirementId } = req.params;
-    const { name, description, requirementFor, submissionDeadline } = req.body;
+    const { _id, name, description, requirementFor, submissionDeadline } =
+      req.body;
 
-    if (!name || !description || !requirementFor || !submissionDeadline)
+    if (!name || !requirementFor || !submissionDeadline)
       throw new HttpError("Fill all fields.", 400);
 
     const requirementData = {
@@ -46,7 +46,7 @@ export const editEnrollmentRequirement = async (req, res, next) => {
     };
 
     const updatedRequirement = await EnrollmentRequirement.findByIdAndUpdate(
-      enrollmentRequirementId,
+      _id,
       requirementData,
       {
         new: true,

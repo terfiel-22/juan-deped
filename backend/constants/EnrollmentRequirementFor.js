@@ -4,7 +4,7 @@ export const ENROLLMENT_REQUIREMENT_FOR_ENUM = [
   "Other",
 ];
 
-export const ENROLLMENT_REQUIREMENT_FORES = Object.freeze({
+export const ENROLLMENT_REQUIREMENT_FOR = Object.freeze({
   GRADE_11: "Grade 11",
   GRADE_12: "Grade 12",
   OTHER: "Other",

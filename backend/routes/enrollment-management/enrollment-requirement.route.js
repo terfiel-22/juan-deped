@@ -13,11 +13,7 @@ export default (router) => {
     isPersonnel,
     createEnrollmentRequirement
   );
-  router.put(
-    "/enrollment/requirement/:enrollmentRequirementId",
-    isPersonnel,
-    editEnrollmentRequirement
-  );
+  router.put("/enrollment/requirement", isPersonnel, editEnrollmentRequirement);
   router.delete(
     "/enrollment/requirement/:enrollmentRequirementId",
     isPersonnel,
